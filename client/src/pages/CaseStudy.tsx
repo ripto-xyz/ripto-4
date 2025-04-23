@@ -67,7 +67,10 @@ export default function CaseStudy() {
     );
   }
   
-  const categoriesArray = caseStudy.categories.split(',').map(cat => cat.trim());
+  // Only try to split categories if they exist
+  const categoriesArray = caseStudy.categories ? 
+    caseStudy.categories.split(',').map(cat => cat.trim()) : 
+    [];
   
   return (
     <div className="min-h-screen pt-24 pb-16">
@@ -131,7 +134,7 @@ export default function CaseStudy() {
             <div className="bg-gradient-to-br from-purple-900/40 to-blue-900/40 p-6 rounded-lg border border-purple-500/20">
               <h3 className="text-xl font-semibold mb-3">Technologies Used</h3>
               <div className="flex flex-wrap gap-2">
-                {caseStudy.technologies.map((tech, index) => (
+                {caseStudy.technologies && caseStudy.technologies.map((tech, index) => (
                   <Badge key={index} variant="outline" className="bg-purple-900/50 border-purple-500/30">
                     {tech}
                   </Badge>
@@ -141,10 +144,14 @@ export default function CaseStudy() {
             
             <div className="bg-gradient-to-br from-purple-900/40 to-blue-900/40 p-6 rounded-lg border border-purple-500/20">
               <h3 className="text-xl font-semibold mb-3">Testimonial</h3>
-              <blockquote className="text-gray-300 italic mb-4">
-                "{caseStudy.testimonial.text}"
-              </blockquote>
-              <p className="text-sm text-purple-300 font-medium">— {caseStudy.testimonial.author}</p>
+              {caseStudy.testimonial && (
+                <>
+                  <blockquote className="text-gray-300 italic mb-4">
+                    "{caseStudy.testimonial.text}"
+                  </blockquote>
+                  <p className="text-sm text-purple-300 font-medium">— {caseStudy.testimonial.author}</p>
+                </>
+              )}
             </div>
           </div>
         </div>
