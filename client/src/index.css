@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap');
 
+@font-face {
+  font-family: 'LITHOB';
+  src: url('/fonts/LITHOB.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -147,4 +155,10 @@ body {
 
 .dark-overlay {
   @apply absolute inset-0 bg-black/70 z-0;
+}
+
+.yellow-logo-text {
+  font-family: 'LITHOB', 'Arial Black', sans-serif;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
