@@ -192,18 +192,7 @@ export default function ContactSection() {
                 </div>
               </div>
               
-              <div className="bg-primary bg-opacity-10 p-6 rounded-xl mt-4">
-                <h3 className="text-xl font-bold mb-4 font-poppins">Ready to Transform Your Web3 Presence?</h3>
-                <p className="text-gray-300 mb-4">
-                  Schedule a free 30-minute consultation to discuss your project goals and how we can help you reach them.
-                </p>
-                <a 
-                  href="#" 
-                  className="inline-block px-6 py-2 bg-primary hover:bg-secondary text-white font-medium rounded-lg transition-colors duration-300"
-                >
-                  Book a Call
-                </a>
-              </div>
+              
             </div>
           </div>
         </div>
