@@ -75,10 +75,10 @@ body {
 
 .video-background {
   position: fixed;
-  top: -10%;  /* Hide the top 10% of the video */
+  top: -20%;  /* Hide the top 20% of the video */
   left: 0;
   min-width: 100%;
-  min-height: 110%;  /* Compensate for the hidden top */
+  min-height: 120%;  /* Compensate for the hidden top */
   width: auto;
   height: auto;
   z-index: -1;
