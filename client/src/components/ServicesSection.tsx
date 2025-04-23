@@ -1,0 +1,68 @@
+import { 
+  FileText, 
+  Users, 
+  FileCode, 
+  Layers2, 
+  Megaphone, 
+  LineChart 
+} from "lucide-react";
+
+const services = [
+  {
+    icon: <FileText className="h-10 w-10" />,
+    title: "Strategy Development",
+    description: "Tailored marketing strategies aligned with your blockchain project's unique goals and community."
+  },
+  {
+    icon: <Users className="h-10 w-10" />,
+    title: "Community Building",
+    description: "Creating engaged, loyal communities around your decentralized products and services."
+  },
+  {
+    icon: <FileCode className="h-10 w-10" />,
+    title: "Content Creation",
+    description: "Technical whitepapers, explainer content, and marketing materials that speak to both crypto natives and newcomers."
+  },
+  {
+    icon: <Layers2 className="h-10 w-10" />,
+    title: "Web3 UX/UI",
+    description: "Designing intuitive interfaces that make complex blockchain interactions accessible to all users."
+  },
+  {
+    icon: <Megaphone className="h-10 w-10" />,
+    title: "Social Promotion",
+    description: "Strategic promotion across Twitter, Discord, Telegram and other key platforms in the Web3 space."
+  },
+  {
+    icon: <LineChart className="h-10 w-10" />,
+    title: "Analytics & Insights",
+    description: "Data-driven insights to optimize your marketing efforts and measure on-chain engagement."
+  }
+];
+
+export default function ServicesSection() {
+  return (
+    <section id="services" className="scroll-section relative">
+      <div className="container mx-auto px-6 z-10 relative py-20">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 font-poppins">Our Services</h2>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Comprehensive marketing solutions tailored for the Web3 ecosystem
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <div key={index} className="service-card p-8 rounded-xl border border-gray-800">
+              <div className="text-primary mb-4">
+                {service.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-3 font-poppins">{service.title}</h3>
+              <p className="text-gray-300">{service.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
