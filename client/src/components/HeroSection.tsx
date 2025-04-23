@@ -6,7 +6,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-6 z-10 relative">
         <div className="max-w-3xl">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins leading-tight">
-            <span className="text-primary">Laurence</span> | <br />Web3 Marketing Pro
+            Web3 <span className="text-primary">Growth</span>
           </h1>
           <p className="text-xl md:text-2xl mb-10 text-gray-300">
             Innovative marketing solutions for blockchain projects and decentralized platforms
