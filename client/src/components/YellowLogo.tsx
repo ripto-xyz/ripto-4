@@ -11,9 +11,9 @@ export default function YellowLogo({ className = '' }: YellowLogoProps) {
         color: '#FFD700',
         textShadow: '0 0 10px rgba(255, 215, 0, 0.3)'
       }}>
-        <span className="yellow-logo-text">Laurence</span>
+        <span className="yellow-logo-text uppercase">LAURENCE</span>
         <span className="mx-2 opacity-80">|</span>
-        <span className="yellow-logo-text">ripto.eth</span>
+        <span className="yellow-logo-text uppercase">RIPTO.ETH</span>
       </div>
     </div>
   );
