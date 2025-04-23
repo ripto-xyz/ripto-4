@@ -37,13 +37,13 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       }`}
     >
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div onClick={() => window.location.href = '/'} className="cursor-pointer">
+        <div className="flex items-center justify-between gap-8">
+          <div onClick={() => window.location.href = '/'} className="cursor-pointer mr-4">
             <YellowLogo />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-8 flex-1 justify-end">
             <a 
               href="#home" 
               className={`${
