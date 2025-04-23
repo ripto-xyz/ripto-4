@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
+import LogoYellow from "./LogoYellow";
 
 interface NavbarProps {
   activeSection: string;
@@ -38,7 +39,9 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <a className="text-2xl font-bold font-poppins logo-text">Laurence | ripto.eth</a>
+            <a className="flex items-center">
+              <LogoYellow />
+            </a>
           </Link>
           
           {/* Desktop Menu */}
