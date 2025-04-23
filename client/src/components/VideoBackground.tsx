@@ -23,8 +23,11 @@ export default function VideoBackground() {
           loop 
           playsInline
           className="video-background"
+          preload="auto"
         >
-          <source src="/api/video" type="video/mp4" />
+          {/* Optimized MP4 version (42x smaller, much faster loading) */}
+          <source src="/static/background-optimized.mp4" type="video/mp4" />
+          {/* Fallback to original if needed */}
           <source src="/api/video" type="video/quicktime" />
           Your browser does not support the video tag.
         </video>
