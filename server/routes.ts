@@ -4,8 +4,12 @@ import { storage } from "./storage";
 import fs from "fs";
 import path from "path";
 import { contactSchema } from "@shared/schema";
+import express from "express";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Serve static files including the optimized video
+  app.use('/static', express.static(path.join(import.meta.dirname, '..', 'public')));
+  
   // Serve the video file
   app.get("/api/video", (req, res) => {
     const videoPath = path.join(import.meta.dirname, "..", "attached_assets", "spyro short.mov");
