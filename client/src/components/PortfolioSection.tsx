@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "wouter";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+
+interface PortfolioItem {
+  id: string;
+  title: string;
+  categories: string;
+  imageUrl: string;
+  description: string;
+}
 
 export default function PortfolioSection() {
-  const { data: portfolioItems = [] } = useQuery({
+  const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
     queryKey: ['/api/portfolio'],
     staleTime: Infinity,
   });
@@ -42,21 +53,26 @@ export default function PortfolioSection() {
         </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {portfolioItems.map((item, index) => (
-            <div key={index} className="portfolio-item overflow-hidden rounded-xl group">
-              <div className="relative overflow-hidden">
-                <img 
-                  src={item.imageUrl} 
-                  alt={item.title} 
-                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] to-transparent opacity-70"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold mb-2 font-poppins">{item.title}</h3>
-                  <p className="text-sm text-gray-300">{item.categories}</p>
+          {portfolioItems.map((item: PortfolioItem, index: number) => (
+            <Link href={`/case-study/${item.id}`} key={index}>
+              <div className="portfolio-item overflow-hidden rounded-xl group cursor-pointer h-full">
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={item.imageUrl} 
+                    alt={item.title} 
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] to-transparent opacity-70"></div>
+                  <div className="absolute bottom-0 left-0 p-6">
+                    <h3 className="text-xl font-bold mb-2 font-poppins">{item.title}</h3>
+                    <p className="text-sm text-gray-300 mb-2">{item.categories}</p>
+                    <div className="flex items-center text-purple-400 text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      View Case Study <ArrowRight className="ml-1 h-3 w-3" />
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         
