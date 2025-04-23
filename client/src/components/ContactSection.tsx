@@ -155,8 +155,8 @@ export default function ContactSection() {
                 <div>
                   <h3 className="text-xl font-bold mb-2 font-poppins">Email</h3>
                   <p className="text-gray-300">
-                    hello@web3mark.io<br />
-                    support@web3mark.io
+                    hello@ripto.eth<br />
+                    laurence@web3.marketing
                   </p>
                 </div>
               </div>

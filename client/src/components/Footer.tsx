@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link href="/">
-              <a className="text-2xl font-bold font-poppins logo-text mb-4 inline-block">WEB3MARK</a>
+              <a className="text-2xl font-bold font-poppins logo-text mb-4 inline-block">Laurence | ripto.eth</a>
             </Link>
             <p className="text-gray-300 mb-6 max-w-md">
               Specialized marketing agency helping blockchain projects and Web3 initiatives connect with their audience and achieve growth.
@@ -67,7 +67,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-          <p className="text-gray-400">© {new Date().getFullYear()} WEB3MARK. All rights reserved.</p>
+          <p className="text-gray-400">© {new Date().getFullYear()} Laurence | ripto.eth. All rights reserved.</p>
         </div>
       </div>
     </footer>

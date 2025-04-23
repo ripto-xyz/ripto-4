@@ -38,7 +38,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/">
-            <a className="text-2xl font-bold font-poppins logo-text">WEB3MARK</a>
+            <a className="text-2xl font-bold font-poppins logo-text">Laurence | ripto.eth</a>
           </Link>
           
           {/* Desktop Menu */}
