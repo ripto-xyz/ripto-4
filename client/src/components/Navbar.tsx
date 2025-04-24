@@ -48,7 +48,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#home" 
               className={`${
                 activeSection === 'home' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
             >
               Home
             </a>
@@ -56,7 +56,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#about" 
               className={`${
                 activeSection === 'about' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
             >
               About&nbsp;Me
             </a>
@@ -64,7 +64,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#services" 
               className={`${
                 activeSection === 'services' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
             >
               Services
             </a>
@@ -72,7 +72,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#portfolio" 
               className={`${
                 activeSection === 'portfolio' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
             >
               Portfolio
             </a>
@@ -80,7 +80,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#contact" 
               className={`${
                 activeSection === 'contact' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
             >
               Contact
             </a>
@@ -105,7 +105,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#home" 
                 className={`${
                   activeSection === 'home' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors whitespace-nowrap`}
+                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
               >
                 Home
               </a>
@@ -113,7 +113,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#about" 
                 className={`${
                   activeSection === 'about' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors whitespace-nowrap`}
+                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
               >
                 About&nbsp;Me
               </a>
@@ -121,7 +121,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#services" 
                 className={`${
                   activeSection === 'services' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors whitespace-nowrap`}
+                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
               >
                 Services
               </a>
@@ -129,7 +129,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#portfolio" 
                 className={`${
                   activeSection === 'portfolio' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors whitespace-nowrap`}
+                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
               >
                 Portfolio
               </a>
@@ -137,7 +137,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#contact" 
                 className={`${
                   activeSection === 'contact' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors whitespace-nowrap`}
+                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
               >
                 Contact
               </a>

@@ -144,6 +144,21 @@ section#contact {
   background: rgba(255, 255, 255, 0.1);
 }
 
+/* Navigation menu enhancements */
+nav a {
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+nav a.text-primary {
+  background-color: rgba(238, 210, 255, 0.1);
+}
+
 .logo-text {
   background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
   -webkit-background-clip: text;
