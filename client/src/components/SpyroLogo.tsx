@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react';
+// Import the font image directly to ensure it's properly bundled by Vite
+import spyroFontImg from '../../assets/spyrofont2.jpg';
 
 interface SpyroLogoProps {
   className?: string;
@@ -21,9 +23,20 @@ export default function SpyroLogo({ className = '', text }: SpyroLogoProps) {
     
     // Load the Spyro font image
     const fontImage = new Image();
-    fontImage.src = '/assets/spyrofont2.jpg';
+    fontImage.src = spyroFontImg; // Use the imported image
+    console.log('Loading image from imported source');
+    
+    // Add error handling for image load failures
+    fontImage.onerror = (e) => {
+      console.error('Failed to load Spyro font image:', e);
+      // Draw error text on canvas
+      ctx.fillStyle = '#FFD700';
+      ctx.font = 'bold 20px Arial';
+      ctx.fillText('LAURENCE | RIPTO.ETH', 10, 40);
+    };
     
     fontImage.onload = () => {
+      console.log('Spyro font image loaded successfully!');
       // Clear the canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
