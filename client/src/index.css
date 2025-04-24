@@ -169,50 +169,36 @@ body {
   100% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
 }
 
-/* Original yellow logo text style */
+/* Spyro-inspired logo text style */
 .yellow-logo-text {
   font-family: 'Arial Black', 'Impact', sans-serif;
   font-weight: 900;
   position: relative;
   display: inline-block;
-  letter-spacing: 1px;
   transform-style: preserve-3d;
   transform-origin: center;
-  color: #FFD700;
+  
+  /* Text coloring - bright yellow from the Spyro font */
+  color: #FFFF80; 
+  
+  /* 3D shadow effects to match Spyro font's depth */
   text-shadow: 
-    0 1px 0 #DAA520,
-    0 2px 0 #B8860B,
-    0 3px 0 #A67C00,
-    0 4px 4px rgba(0, 0, 0, 0.4);
-}
-
-/* New Spyro-inspired logo text style */
-.spyro-logo-text {
-  font-family: 'Arial Black', 'Impact', sans-serif;
-  font-weight: 900;
-  position: relative;
-  display: inline-block;
-  letter-spacing: 1px;
-  transform-style: preserve-3d;
-  transform-origin: center;
-  color: #E6DB74; /* Yellowish gold color from Spyro font */
-  text-shadow: 
-    /* Light edge at top for highlight */
-    0 -1px 1px rgba(255, 255, 200, 0.6),
-    /* Main 3D depth effect - note the negative Y values to create raised effect */
-    0 1px 0 #CFC76B,
-    0 2px 0 #BDB959, 
-    0 3px 0 #A09E2F, 
-    0 4px 0 #8C8A28,
-    /* Bottom shadow for depth */
-    0 5px 3px rgba(0, 0, 0, 0.6);
+    /* Top highlight for that shiny look */
+    0 -1px 0 #FFFFA0,
+    /* Main 3D depth layers - notice the gradually darkening yellows */
+    0px 1px 0 #E6DB74,
+    0px 2px 0 #CFC76B,
+    0px 3px 0 #BDB959, 
+    0px 4px 0 #A09E2F, 
+    1px 5px 0 #8C8A28,
+    /* Bottom shadow for depth - makes it look slightly raised */
+    2px 6px 6px rgba(0, 0, 0, 0.5);
   
   /* Character styling */
   letter-spacing: 1.5px;
   -webkit-text-stroke: 0.7px #827D00;
-  text-stroke: 0.7px #827D00;
   
-  /* 3D transformation */
+  /* 3D transformation - slight tilt for depth */
   transform: rotateX(10deg);
   
   /* Animations */
