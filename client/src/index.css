@@ -12,6 +12,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Enable smooth scrolling for the entire document */
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: 0 0% 100%;
   --foreground: 20 14.3% 4.1%;
@@ -148,15 +153,23 @@ section#contact {
 nav a {
   position: relative;
   transition: all 0.3s ease;
-  border-radius: 4px;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 nav a.text-primary {
-  background-color: rgba(238, 210, 255, 0.1);
+  background-color: rgba(238, 210, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(181, 104, 255, 0.25);
+}
+
+nav a:active {
+  transform: translateY(1px);
 }
 
 .logo-text {

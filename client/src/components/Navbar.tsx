@@ -48,7 +48,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#home" 
               className={`${
                 activeSection === 'home' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
             >
               Home
             </a>
@@ -56,7 +56,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#about" 
               className={`${
                 activeSection === 'about' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
             >
               About&nbsp;Me
             </a>
@@ -64,7 +64,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#services" 
               className={`${
                 activeSection === 'services' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
             >
               Services
             </a>
@@ -72,7 +72,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#portfolio" 
               className={`${
                 activeSection === 'portfolio' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
             >
               Portfolio
             </a>
@@ -80,7 +80,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#contact" 
               className={`${
                 activeSection === 'contact' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap px-2 py-1`}
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
             >
               Contact
             </a>
