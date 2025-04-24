@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const activeSection = useScrollSpy({
-    sectionIds: ["home", "services", "portfolio", "about", "contact"],
+    sectionIds: ["home", "about", "services", "portfolio", "contact"],
     offset: 100
   });
   
@@ -39,9 +39,9 @@ export default function Home() {
       />
       <main>
         <HeroSection />
+        <AboutSection />
         <ServicesSection />
         <PortfolioSection />
-        <AboutSection />
         <ContactSection />
       </main>
       <Footer />

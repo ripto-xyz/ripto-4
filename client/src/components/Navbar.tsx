@@ -53,6 +53,14 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               Home
             </a>
             <a 
+              href="#about" 
+              className={`${
+                activeSection === 'about' ? 'text-primary' : 'text-white'
+              } hover:text-primary transition-colors font-medium`}
+            >
+              About Me
+            </a>
+            <a 
               href="#services" 
               className={`${
                 activeSection === 'services' ? 'text-primary' : 'text-white'
@@ -67,14 +75,6 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               } hover:text-primary transition-colors font-medium`}
             >
               Portfolio
-            </a>
-            <a 
-              href="#about" 
-              className={`${
-                activeSection === 'about' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium`}
-            >
-              About
             </a>
             <a 
               href="#contact" 
@@ -110,6 +110,14 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 Home
               </a>
               <a 
+                href="#about" 
+                className={`${
+                  activeSection === 'about' ? 'text-primary' : 'text-white'
+                } hover:text-primary transition-colors`}
+              >
+                About Me
+              </a>
+              <a 
                 href="#services" 
                 className={`${
                   activeSection === 'services' ? 'text-primary' : 'text-white'
@@ -124,14 +132,6 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 } hover:text-primary transition-colors`}
               >
                 Portfolio
-              </a>
-              <a 
-                href="#about" 
-                className={`${
-                  activeSection === 'about' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors`}
-              >
-                About
               </a>
               <a 
                 href="#contact" 

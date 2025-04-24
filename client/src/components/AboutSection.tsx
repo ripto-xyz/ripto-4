@@ -49,12 +49,12 @@ export default function AboutSection() {
       <div className="container mx-auto px-6 z-10 relative py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">About Our Approach</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">About Me</h2>
             <p className="text-lg text-gray-300 mb-6">
-              We're a team of Web3 natives who understand the unique challenges of marketing in the blockchain space. Our approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
+              I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
             </p>
             <p className="text-lg text-gray-300 mb-6">
-              Whether you're launching a new token, growing a DeFi protocol, or building in the metaverse, we create marketing strategies that resonate with both crypto enthusiasts and mainstream audiences.
+              Whether you're launching a new token, growing a DeFi protocol, or building in the metaverse, I create marketing strategies that resonate with both crypto enthusiasts and mainstream audiences.
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
               {technologies.map((tech, index) => (
