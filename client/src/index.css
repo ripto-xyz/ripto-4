@@ -179,20 +179,20 @@ body {
   transform-origin: center;
   
   /* Text coloring - bright yellow from the Spyro font */
-  color: #FFFF80; 
+  color: #FFFF80;
   
   /* 3D shadow effects to match Spyro font's depth */
   text-shadow: 
     /* Top highlight for that shiny look */
     0 -1px 0 #FFFFA0,
-    /* Main 3D depth layers - notice the gradually darkening yellows */
+    /* Main 3D layers - right and bottom offset shadow with gradually darkening yellows */
     0px 1px 0 #E6DB74,
     0px 2px 0 #CFC76B,
     0px 3px 0 #BDB959, 
-    0px 4px 0 #A09E2F, 
+    1px 4px 0 #A09E2F,
     1px 5px 0 #8C8A28,
-    /* Bottom shadow for depth - makes it look slightly raised */
-    2px 6px 6px rgba(0, 0, 0, 0.5);
+    /* Bottom shadow for depth */
+    2px 6px 5px rgba(0, 0, 0, 0.4);
   
   /* Character styling */
   letter-spacing: 1.5px;
@@ -205,4 +205,52 @@ body {
   animation: 
     spyroFloat 5s ease-in-out infinite,
     spyroGlow 4s ease-in-out infinite;
+}
+
+/* Shadow elements for enhanced 3D shading */
+.yellow-logo-shadow {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Darker colors for the shadow */
+  color: #6B6500;
+  /* Position slightly offset for 3D effect - left and down */
+  transform: translate(-2px, 2px);
+  /* Blur the shadow slightly */
+  filter: blur(1px);
+  /* No animation on the shadow element */
+  opacity: 0.4;
+}
+
+/* Right-side shadow for dimension */
+.yellow-logo-shadow-right {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Brighter color for right side highlight */
+  color: #A09E2F;
+  /* Position slightly offset to the right */
+  transform: translate(2px, 0px);
+  /* Blur the shadow slightly */
+  filter: blur(1px);
+  /* No animation on the shadow element */
+  opacity: 0.5;
+}
+
+/* Bottom shadow for depth */
+.yellow-logo-shadow-bottom {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Darker brown/shadow color */
+  color: #5D5700;
+  /* Make it a bit bigger to create depth impression */
+  transform: scale(1.02);
+  /* Heavier blur for deeper shadow */
+  filter: blur(2px);
+  /* Lower opacity */
+  opacity: 0.35;
 }
