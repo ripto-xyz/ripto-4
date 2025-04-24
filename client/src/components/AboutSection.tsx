@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
+// Define types for the about data
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface AboutData {
+  stats: Stat[];
+  technologies: string[];
+}
+
 export default function AboutSection() {
-  const { data: aboutData } = useQuery({
+  const { data: aboutData } = useQuery<AboutData>({
     queryKey: ['/api/about'],
     staleTime: Infinity,
   });
@@ -32,7 +43,7 @@ export default function AboutSection() {
   }, []);
   
   // Default stats if API call isn't complete
-  const stats = aboutData?.stats || [
+  const stats: Stat[] = aboutData?.stats || [
     { value: "50+", label: "Projects Launched" },
     { value: "$100M+", label: "Total Raised" },
     { value: "250K+", label: "Community Members" },
@@ -40,7 +51,7 @@ export default function AboutSection() {
   ];
   
   // Default technologies if API call isn't complete
-  const technologies = aboutData?.technologies || [
+  const technologies: string[] = aboutData?.technologies || [
     "Blockchain", "DeFi", "NFTs", "DAOs", "Metaverse", "Web3 Social"
   ];
 
@@ -57,7 +68,7 @@ export default function AboutSection() {
               Whether you're launching a new token, growing a DeFi protocol, or building in the metaverse, I create marketing strategies that resonate with both crypto enthusiasts and mainstream audiences.
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
-              {technologies.map((tech, index) => (
+              {technologies.map((tech: string, index: number) => (
                 <div key={index} className="bg-primary bg-opacity-10 px-4 py-2 rounded-full">
                   <span className="text-primary font-medium">{tech}</span>
                 </div>

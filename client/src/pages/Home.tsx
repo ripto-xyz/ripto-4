@@ -10,8 +10,11 @@ import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  // Define the exact order of sections for navigation
+  const sectionOrder = ["home", "about", "services", "portfolio", "contact"];
+  
   const activeSection = useScrollSpy({
-    sectionIds: ["home", "about", "services", "portfolio", "contact"],
+    sectionIds: sectionOrder,
     offset: 100
   });
   
@@ -29,6 +32,21 @@ export default function Home() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [showMobileMenu]);
   
+  // Function to render sections in the correct order
+  const renderSections = () => {
+    // This ensures the exact order of sections in the DOM
+    const sections = {
+      home: <HeroSection key="home" />,
+      about: <AboutSection key="about" />,
+      services: <ServicesSection key="services" />,
+      portfolio: <PortfolioSection key="portfolio" />,
+      contact: <ContactSection key="contact" />
+    };
+    
+    // Return sections in the defined order
+    return sectionOrder.map(id => sections[id as keyof typeof sections]);
+  };
+  
   return (
     <div className="min-h-screen">
       <VideoBackground />
@@ -38,11 +56,7 @@ export default function Home() {
         setShowMobileMenu={setShowMobileMenu}
       />
       <main>
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <PortfolioSection />
-        <ContactSection />
+        {renderSections()}
       </main>
       <Footer />
     </div>
