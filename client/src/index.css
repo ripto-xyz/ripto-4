@@ -319,14 +319,14 @@ nav a:active {
   display: inline-block;
   text-transform: uppercase;
   
-  /* Complex color gradient for main text face */
+  /* Color gradient matched to reference image */
   background: linear-gradient(to bottom, 
-    #CEA5FF 0%, 
-    #AB70FF 20%, 
-    #9361DC 40%,
-    #8A4FE0 60%, 
-    #7A45C9 80%,
-    #6A3AB0 100%
+    #A78BCA 0%, 
+    #957AC0 15%, 
+    #866BB8 30%,
+    #7559B0 50%, 
+    #6B4BA3 75%,
+    #573D90 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -348,20 +348,20 @@ nav a:active {
     /* Right side highlight - creates the curved effect visible in reference */
     1px 0px 0px #cda1ff,
     
-    /* Orange/gold side shadow with gradient effect for 3D depth - precise sizing */
-    2px 2px 0 #FFBB6A,
-    3px 3px 0 #FFA046,
-    4px 4px 0 #FF9A3C,
-    4px 5px 0 #FF9032,
+    /* Orange/gold side shadow with gradient effect for 3D depth - matched to reference */
+    2px 2px 0 #FFA653,
+    3px 3px 0 #F49443,
+    4px 4px 0 #E38234,
+    4px 5px 0 #D97225,
     
-    /* Darker orange/brown for deeper bottom-right shadow - precise positions */
-    5px 5px 0 #E5732A,
-    5px 6px 0 #D4631A,
-    6px 6px 0 #C96122,
-    6px 7px 0 #B85118,
+    /* Darker orange/brown for deeper bottom-right shadow - matched to reference */
+    5px 5px 0 #C96218,
+    5px 6px 0 #BD5913,
+    6px 6px 0 #AA4F0E,
+    6px 7px 0 #9C4A0B,
     
     /* Dark shadow layers for maximum depth matching reference */
-    7px 7px 0 #964212,
+    7px 7px 0 #893E09,
     7px 8px 4px rgba(0, 0, 0, 0.4),
     8px 8px 8px rgba(0, 0, 0, 0.3),
     
@@ -387,12 +387,12 @@ nav a:active {
     text-shadow:
       0 -1px 0 #d8c2ff,
       0 -2px 0 #e5d5ff,
-      2px 2px 0 #FFBB6A,
-      3px 3px 0 #FFA046,
-      4px 4px 0 #FF9A3C,
-      5px 5px 0 #FF9032,
-      6px 6px 0 #E5732A,
-      7px 7px 0 #C96122,
+      2px 2px 0 #FFA653,
+      3px 3px 0 #F49443,
+      4px 4px 0 #E38234,
+      5px 5px 0 #D97225,
+      6px 6px 0 #C96218,
+      7px 7px 0 #AA4F0E,
       9px 9px 14px rgba(0, 0, 0, 0.7);
     transform: perspective(500px) rotateX(13deg) rotateY(-2.5deg) scale(1.02);
   }
@@ -407,12 +407,12 @@ nav a:active {
     margin-bottom: 0.5rem;
     -webkit-text-stroke: 1px #400099;
     background: linear-gradient(to bottom, 
-      #CEA5FF 0%, 
-      #AB70FF 20%, 
-      #9361DC 40%,
-      #8A4FE0 60%, 
-      #7A45C9 80%,
-      #6A3AB0 100%
+      #A78BCA 0%, 
+      #957AC0 15%, 
+      #866BB8 30%,
+      #7559B0 50%, 
+      #6B4BA3 75%,
+      #573D90 100%
     );
     -webkit-background-clip: text;
     background-clip: text;
@@ -428,15 +428,15 @@ nav a:active {
       /* Right side highlight */
       1px 0px 0px #cda1ff,
       
-      /* Orange/gold shadow layers - simplified but maintaining depth */
-      1px 1px 0 #FFBB6A,
-      2px 2px 0 #FFA046,
-      2px 3px 0 #FF9A3C,
-      3px 3px 0 #FF9032,
+      /* Orange/gold shadow layers - matched to reference */
+      1px 1px 0 #FFA653,
+      2px 2px 0 #F49443,
+      2px 3px 0 #E38234,
+      3px 3px 0 #D97225,
       
       /* Darker orange for deeper areas */
-      3px 4px 0 #E5732A,
-      4px 4px 0 #D4631A,
+      3px 4px 0 #C96218,
+      4px 4px 0 #AA4F0E,
       
       /* Final shadow for depth */
       0 4px 8px rgba(0, 0, 0, 0.6);
