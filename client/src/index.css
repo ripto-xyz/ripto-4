@@ -158,15 +158,15 @@ body {
 }
 
 @keyframes spyroFloat {
-  0% { transform: translateY(0) rotateX(10deg); }
-  50% { transform: translateY(-3px) rotateX(12deg); }
-  100% { transform: translateY(0) rotateX(10deg); }
+  0% { transform: perspective(800px) rotateX(15deg) scaleY(1.1) rotateZ(-1deg); }
+  50% { transform: perspective(800px) rotateX(17deg) scaleY(1.11) rotateZ(-0.5deg) translateY(-2px); }
+  100% { transform: perspective(800px) rotateX(15deg) scaleY(1.1) rotateZ(-1deg); }
 }
 
 @keyframes spyroGlow {
-  0% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
-  50% { filter: brightness(1.15) drop-shadow(0 0 4px rgba(255, 236, 27, 0.5)); }
-  100% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
+  0% { filter: brightness(1) drop-shadow(0 0 1px rgba(255, 236, 27, 0.2)); }
+  50% { filter: brightness(1.08) drop-shadow(0 0 3px rgba(255, 236, 27, 0.4)); }
+  100% { filter: brightness(1) drop-shadow(0 0 1px rgba(255, 236, 27, 0.2)); }
 }
 
 /* Original yellow logo text style */
@@ -192,31 +192,38 @@ body {
   font-weight: 900;
   position: relative;
   display: inline-block;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   transform-style: preserve-3d;
   transform-origin: center;
-  color: #E6DB74; /* Yellowish gold color from Spyro font */
+  color: #F5EB5E; /* Bright yellowish gold color from Spyro font */
+  
+  /* Uneven character effect to match hand-drawn style */
+  font-variant-caps: small-caps;
+  
   text-shadow: 
     /* Light edge at top for highlight */
-    0 -1px 1px rgba(255, 255, 200, 0.6),
-    /* Main 3D depth effect - note the negative Y values to create raised effect */
-    0 1px 0 #CFC76B,
-    0 2px 0 #BDB959, 
-    0 3px 0 #A09E2F, 
-    0 4px 0 #8C8A28,
-    /* Bottom shadow for depth */
-    0 5px 3px rgba(0, 0, 0, 0.6);
+    0 -1px 2px rgba(255, 255, 200, 0.7),
+    
+    /* Main 3D effect layers - looking at Spyro font image */
+    0px 1px 0 #E5DB4D,
+    0px 2px 0 #D0C746, 
+    0px 3px 0 #BBB33F, 
+    0px 4px 0 #A69F38,
+    1px 5px 0 #928C31,
+    
+    /* Bottom shadow for depth - Spyro has a slight side-angle to the shadow */
+    1px 6px 4px rgba(0, 0, 0, 0.5);
   
-  /* Character styling */
-  letter-spacing: 1.5px;
-  -webkit-text-stroke: 0.7px #827D00;
-  text-stroke: 0.7px #827D00;
+  /* Character styling to match the slightly irregular Spyro font */
+  letter-spacing: 2px;
+  -webkit-text-stroke: 0.8px #827C00;
+  text-stroke: 0.8px #827C00;
   
-  /* 3D transformation */
-  transform: rotateX(10deg);
+  /* Angled 3D effect */
+  transform: perspective(800px) rotateX(15deg) scaleY(1.1) rotateZ(-1deg);
   
   /* Animations */
   animation: 
-    spyroFloat 5s ease-in-out infinite,
-    spyroGlow 4s ease-in-out infinite;
+    spyroFloat 6s ease-in-out infinite,
+    spyroGlow 5s ease-in-out infinite;
 }
