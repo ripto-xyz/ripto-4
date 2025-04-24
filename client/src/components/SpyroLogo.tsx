@@ -78,18 +78,16 @@ export default function SpyroLogo({ className = '', text }: SpyroLogoProps) {
         'Í': [384, 293, 14, 34], // For í/Í
         'Ó': [588, 293, 35, 34], // For ó/Ó
         'Ú': [236, 342, 33, 34], // For ú/Ú
-        'Ü': [236, 342, 33, 34], // For ü/Ü
         'Ç': [165, 293, 31, 34], // For ç/Ç
         'Ä': [87, 293, 37, 34], // For ä/Ä
         'Ö': [588, 293, 35, 34], // For ö/Ö
-        'Ü': [236, 342, 33, 34], // For ü/Ü
       };
 
       // Draw the text
       let xPos = 10; // Starting position (moved left a bit)
       const yPos = 45; // Vertical position
-      const scale = 1.1; // Slightly smaller scale to fit better
-      const letterSpacing = 4; // Space between characters
+      const scale = 1.0; // Scale matches the original size
+      const letterSpacing = 3; // Space between characters
       
       // Convert text to uppercase since the font is all uppercase
       const upperText = text.toUpperCase();
@@ -126,20 +124,47 @@ export default function SpyroLogo({ className = '', text }: SpyroLogoProps) {
       // Add a subtle animation effect (slight floating)
       let floatOffset = 0;
       let direction = 1;
-      const floatSpeed = 0.05;
-      const floatMax = 1;
+      const floatSpeed = 0.03; // Slower, smoother animation
+      const floatMax = 1.5;    // Slightly larger movement
+      
+      // Add color cycling for the gold effect
+      let colorPhase = 0;
+      const colorSpeed = 0.005;
+      
+      // Add a glow effect
+      ctx.shadowColor = 'rgba(255, 230, 0, 0.5)';
+      ctx.shadowBlur = 5;
+      ctx.shadowOffsetX = 0;
+      ctx.shadowOffsetY = 0;
       
       const animate = () => {
         // Only animate if component is still mounted
         if (!canvas) return;
         
+        // Update floating animation
         floatOffset += floatSpeed * direction;
         if (floatOffset > floatMax || floatOffset < 0) {
           direction *= -1;
         }
         
+        // Update color cycling
+        colorPhase += colorSpeed;
+        if (colorPhase > Math.PI * 2) {
+          colorPhase = 0;
+        }
+        
+        // Calculate color based on phase
+        const goldenIntensity = Math.sin(colorPhase) * 20;
+        const glowColor = `rgba(255, ${210 + goldenIntensity}, 0, 0.5)`;
+        ctx.shadowColor = glowColor;
+        
         // Clear and redraw with new position
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Apply the calculated glow effect (we already set shadowColor above)
+        ctx.shadowBlur = 5;
+        ctx.shadowOffsetX = 0;
+        ctx.shadowOffsetY = 0;
         
         // Redraw all characters with slight offset
         xPos = 10;
