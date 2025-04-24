@@ -36,14 +36,14 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
         isScrolled ? 'bg-[#1A1A2E] bg-opacity-80 backdrop-blur-md' : 'bg-opacity-0'
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between gap-4">
+      <div className="container mx-auto px-2 py-4">
+        <div className="flex items-center justify-between gap-2">
           <div onClick={() => window.location.href = '/'} className="cursor-pointer">
             <YellowLogo />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-5 lg:space-x-8 flex-1 justify-end">
+          <div className="hidden md:flex space-x-2 lg:space-x-4 flex-1 justify-end">
             <a 
               href="#home" 
               className={`${
