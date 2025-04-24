@@ -36,19 +36,19 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
         isScrolled ? 'bg-[#1A1A2E] bg-opacity-80 backdrop-blur-md' : 'bg-opacity-0'
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between gap-8">
-          <div onClick={() => window.location.href = '/'} className="cursor-pointer mr-4">
+      <div className="container mx-auto px-4 py-4">
+        <div className="flex items-center justify-between gap-4">
+          <div onClick={() => window.location.href = '/'} className="cursor-pointer">
             <YellowLogo />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8 flex-1 justify-end">
+          <div className="hidden md:flex space-x-5 lg:space-x-8 flex-1 justify-end">
             <a 
               href="#home" 
               className={`${
                 activeSection === 'home' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium`}
+              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
             >
               Home
             </a>
@@ -64,7 +64,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#services" 
               className={`${
                 activeSection === 'services' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium`}
+              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
             >
               Services
             </a>
@@ -72,7 +72,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#portfolio" 
               className={`${
                 activeSection === 'portfolio' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium`}
+              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
             >
               Portfolio
             </a>
@@ -80,7 +80,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#contact" 
               className={`${
                 activeSection === 'contact' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium`}
+              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
             >
               Contact
             </a>
@@ -105,7 +105,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#home" 
                 className={`${
                   activeSection === 'home' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors`}
+                } hover:text-primary transition-colors whitespace-nowrap`}
               >
                 Home
               </a>
@@ -121,7 +121,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#services" 
                 className={`${
                   activeSection === 'services' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors`}
+                } hover:text-primary transition-colors whitespace-nowrap`}
               >
                 Services
               </a>
@@ -129,7 +129,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#portfolio" 
                 className={`${
                   activeSection === 'portfolio' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors`}
+                } hover:text-primary transition-colors whitespace-nowrap`}
               >
                 Portfolio
               </a>
@@ -137,7 +137,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#contact" 
                 className={`${
                   activeSection === 'contact' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors`}
+                } hover:text-primary transition-colors whitespace-nowrap`}
               >
                 Contact
               </a>
