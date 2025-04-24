@@ -32,21 +32,6 @@ export default function Home() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [showMobileMenu]);
   
-  // Function to render sections in the correct order
-  const renderSections = () => {
-    // This ensures the exact order of sections in the DOM
-    const sections = {
-      home: <HeroSection key="home" />,
-      about: <AboutSection key="about" />,
-      services: <ServicesSection key="services" />,
-      portfolio: <PortfolioSection key="portfolio" />,
-      contact: <ContactSection key="contact" />
-    };
-    
-    // Return sections in the defined order
-    return sectionOrder.map(id => sections[id as keyof typeof sections]);
-  };
-  
   return (
     <div className="min-h-screen">
       <VideoBackground />
@@ -55,8 +40,13 @@ export default function Home() {
         showMobileMenu={showMobileMenu}
         setShowMobileMenu={setShowMobileMenu}
       />
-      <main>
-        {renderSections()}
+      <main className="flex flex-col">
+        {/* IMPORTANT: Hard-coding the exact section order to ensure they appear correctly */}
+        <HeroSection />
+        <AboutSection />
+        <ServicesSection />
+        <PortfolioSection />
+        <ContactSection />
       </main>
       <Footer />
     </div>

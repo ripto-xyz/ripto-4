@@ -93,13 +93,35 @@ body {
   object-fit: cover;
 }
 
+/* Base styles for all sections */
 .scroll-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  position: relative; /* Ensure sections are positioned relative to their order in the DOM */
-  z-index: 1; /* Ensure proper stacking order */
-  scroll-margin-top: 80px; /* Add scroll margin for navigation offset */
+  position: relative;
+  z-index: 1;
+  scroll-margin-top: 80px;
+}
+
+/* Ensure sections appear in the exact order they're defined in the DOM */
+section#home {
+  order: 1;
+}
+
+section#about {
+  order: 2;
+}
+
+section#services {
+  order: 3;
+}
+
+section#portfolio {
+  order: 4;
+}
+
+section#contact {
+  order: 5;
 }
 
 .portfolio-item {
