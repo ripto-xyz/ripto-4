@@ -157,38 +157,53 @@ body {
   @apply absolute inset-0 bg-black/70 z-0;
 }
 
-@keyframes spyroPulse {
-  0% { text-shadow: 0 0 8px rgba(255, 140, 0, 0.7), 0 0 15px rgba(255, 165, 0, 0.6), 0 0 25px rgba(255, 69, 0, 0.4); }
-  50% { text-shadow: 0 0 12px rgba(255, 140, 0, 0.9), 0 0 20px rgba(255, 165, 0, 0.8), 0 0 35px rgba(255, 69, 0, 0.6); }
-  100% { text-shadow: 0 0 8px rgba(255, 140, 0, 0.7), 0 0 15px rgba(255, 165, 0, 0.6), 0 0 25px rgba(255, 69, 0, 0.4); }
+@keyframes spyroShine {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.2); }
+  100% { filter: brightness(1); }
 }
 
-@keyframes spyroFloat {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-2px); }
-  100% { transform: translateY(0px); }
+@keyframes spyroRotate {
+  0% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+  100% { transform: rotate(-1deg); }
 }
 
-@keyframes spyroColorShift {
-  0% { color: #FFA700; }
-  33% { color: #FFAE00; }
-  66% { color: #FFB700; }
-  100% { color: #FFA700; }
+@keyframes float {
+  0% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-2px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(-1deg); }
 }
 
 .yellow-logo-text {
-  font-family: 'Lithograph Bold', 'Arial Black', sans-serif;
-  letter-spacing: 0.05em;
-  animation: 
-    spyroPulse 3s infinite ease-in-out, 
-    spyroFloat 4s infinite ease-in-out,
-    spyroColorShift 5s infinite ease-in-out;
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
   position: relative;
   display: inline-block;
-  background: linear-gradient(to bottom, #FFD700, #FFA500);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  filter: drop-shadow(0 0 2px rgba(255, 165, 0, 0.7));
+  color: #F1E955; /* The bright yellowish color from the Spyro font */
+  
+  /* 3D effect to match Spyro's font */
+  text-shadow: 
+    0px 1px 0 #D6CE4A,
+    0px 2px 0 #BBB341, 
+    0px 3px 0 #A09E2F, 
+    0px 4px 0 #8C8A28, 
+    0px 5px 2px rgba(0, 0, 0, 0.6);
+  
+  /* Animation */
+  transform-style: preserve-3d;
+  transform-origin: center;
+  animation: float 6s ease-in-out infinite;
+  
+  /* Character spacing */
+  letter-spacing: 1px;
+  
+  /* Slightly uneven characters for hand-drawn feel */
+  font-variant-caps: small-caps;
+  
+  /* Add slight stroke for definition */
+  -webkit-text-stroke: 0.5px #9B8E00;
+  
+  /* Make characters a bit wider */
+  font-stretch: expanded;
 }
