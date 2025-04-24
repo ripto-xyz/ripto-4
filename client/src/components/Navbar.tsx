@@ -56,9 +56,9 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               href="#about" 
               className={`${
                 activeSection === 'about' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium`}
+              } hover:text-primary transition-colors font-medium whitespace-nowrap`}
             >
-              About Me
+              About&nbsp;Me
             </a>
             <a 
               href="#services" 
@@ -113,9 +113,9 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 href="#about" 
                 className={`${
                   activeSection === 'about' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors`}
+                } hover:text-primary transition-colors whitespace-nowrap`}
               >
-                About Me
+                About&nbsp;Me
               </a>
               <a 
                 href="#services" 
