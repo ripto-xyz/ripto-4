@@ -58,64 +58,42 @@ export default function AboutSection() {
   return (
     <section id="about" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container mx-auto px-6 z-10 relative py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins"><span className="whitespace-nowrap">About&nbsp;Me</span></h2>
-            <p className="text-lg text-gray-300 mb-6">
-              I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
-            </p>
-            <p className="text-lg text-gray-300 mb-6">
-              Whether you're launching a new token, growing a DeFi protocol, or building in the metaverse, I create marketing strategies that resonate with both crypto enthusiasts and mainstream audiences.
-            </p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              {technologies.map((tech: string, index: number) => (
-                <div key={index} className="bg-primary bg-opacity-10 px-4 py-2 rounded-full">
-                  <span className="text-primary font-medium">{tech}</span>
-                </div>
-              ))}
+        <div className="max-w-3xl mx-auto">
+          {/* White semi-transparent container behind the text */}
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/20">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 font-poppins text-center">
+              <span className="whitespace-nowrap">About&nbsp;Me</span>
+            </h2>
+            <div className="space-y-6">
+              <p className="text-lg md:text-xl text-white leading-relaxed">
+                I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
+              </p>
+              <p className="text-lg md:text-xl text-white leading-relaxed">
+                Whether you're launching a new token, growing a DeFi protocol, or building in the metaverse, I create marketing strategies that resonate with both crypto enthusiasts and mainstream audiences.
+              </p>
             </div>
-          </div>
-          
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1642052502340-8e71a2d9ea0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Web3 Marketing Illustration" 
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="mt-8">
-              <img 
-                src="https://images.unsplash.com/photo-1639815188546-c43c240e8335?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Blockchain Marketing Concept" 
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1629897048512-98ae449fef8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Decentralized Marketing Strategy" 
-                className="rounded-lg shadow-lg"
-              />
-            </div>
-            <div className="mt-8">
-              <img 
-                src="https://images.unsplash.com/photo-1642052294994-c1b8d63a6945?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" 
-                alt="Crypto Community Building" 
-                className="rounded-lg shadow-lg"
-              />
+            
+            {/* Technologies list displayed inline without buttons */}
+            <div className="mt-10 text-center">
+              <h3 className="text-xl font-semibold mb-4 text-white/90">Expertise In:</h3>
+              <p className="text-white text-lg md:text-xl font-medium">
+                {technologies.join(' • ')}
+              </p>
             </div>
           </div>
         </div>
         
-        <div className="mt-20">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index}>
-                <div className="text-4xl font-bold text-primary mb-2">{stat.value}</div>
-                <p className="text-gray-300">{stat.label}</p>
-              </div>
-            ))}
+        {/* Stats section with matching white semi-transparent background */}
+        <div className="mt-16">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/20">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {stats.map((stat, index) => (
+                <div key={index} className="p-3">
+                  <div className="text-3xl md:text-4xl font-bold text-white mb-3">{stat.value}</div>
+                  <p className="text-white/80 font-medium">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
