@@ -222,6 +222,27 @@ nav a:active {
   100% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
 }
 
+@keyframes portalFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(-1deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(8px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes portalGlow {
+  0% { filter: brightness(1) drop-shadow(0 0 5px rgba(138, 43, 226, 0.4)); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 15px rgba(138, 43, 226, 0.7)); }
+  100% { filter: brightness(1) drop-shadow(0 0 5px rgba(138, 43, 226, 0.4)); }
+}
+
+.spyro-portal {
+  animation: 
+    portalFloat 6s ease-in-out infinite,
+    portalGlow 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
 /* Spyro-inspired logo text style */
 .yellow-logo-text {
   font-family: 'Arial Black', 'Impact', sans-serif;
