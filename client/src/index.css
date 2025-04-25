@@ -109,6 +109,12 @@ body {
   scroll-margin-top: 80px;
 }
 
+/* Remove bottom padding from portfolio to connect with contact */
+section#portfolio {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
 /* Keep hero section full height */
 section#home {
   min-height: 100vh;
