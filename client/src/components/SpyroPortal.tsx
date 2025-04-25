@@ -5,7 +5,7 @@ export default function SpyroPortal() {
   return (
     <div className="spyro-portal w-full h-auto max-w-[350px] md:max-w-[500px]">
       <img 
-        src="/assets/portalme.png" 
+        src="/portalme.png" 
         alt="Spyro Sunny Beach portal" 
         className="w-full h-auto object-contain"
       />
