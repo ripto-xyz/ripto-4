@@ -59,21 +59,18 @@ export default function AboutSection() {
   return (
     <section id="about" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container mx-auto px-6 z-10 relative py-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           {/* White semi-transparent container behind the text with Spyro portal image */}
-          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/20 relative overflow-hidden">
-            <div className="flex flex-col md:flex-row gap-8 items-center">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/20 relative overflow-hidden max-w-6xl mx-auto">
+            <div className="flex flex-col md:flex-row gap-12 items-center">
               {/* Text content area */}
-              <div className="md:w-2/3">
+              <div className="md:w-1/2 lg:w-3/5">
                 <h2 className="text-3xl md:text-5xl font-bold mb-8 font-poppins md:text-left text-center">
                   <span className="whitespace-nowrap">About&nbsp;Me</span>
                 </h2>
                 <div className="space-y-6">
                   <p className="text-lg md:text-xl text-white leading-relaxed">
                     I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
-                  </p>
-                  <p className="text-lg md:text-xl text-white leading-relaxed">
-                    Whether you're launching a new token, growing a DeFi protocol, or building in the metaverse, I create marketing strategies that resonate with both crypto enthusiasts and mainstream audiences.
                   </p>
                 
                   {/* Technologies list displayed inline without buttons */}
@@ -86,9 +83,9 @@ export default function AboutSection() {
                 </div>
               </div>
               
-              {/* Spyro Sunny Beach portal SVG */}
-              <div className="md:w-1/3 flex justify-center items-center relative">
-                <div className="md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 w-64 h-64 md:w-auto md:h-auto">
+              {/* Spyro Sunny Beach portal image */}
+              <div className="md:w-1/2 lg:w-2/5 flex justify-center items-center relative">
+                <div className="flex justify-center w-full md:justify-end">
                   <SpyroPortal />
                 </div>
               </div>
