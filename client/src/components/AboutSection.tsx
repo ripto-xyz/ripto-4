@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import SpyroPortal from "./SpyroPortal";
 
 // Define types for the about data
 interface Stat {
@@ -85,14 +86,10 @@ export default function AboutSection() {
                 </div>
               </div>
               
-              {/* Spyro Sunny Beach portal image */}
+              {/* Spyro Sunny Beach portal SVG */}
               <div className="md:w-1/3 flex justify-center items-center relative">
                 <div className="md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 w-64 h-64 md:w-auto md:h-auto">
-                  <img 
-                    src="/portal.png" 
-                    alt="Spyro Sunny Beach portal" 
-                    className="w-full h-auto max-w-[280px] md:max-w-none object-contain spyro-portal"
-                  />
+                  <SpyroPortal />
                 </div>
               </div>
             </div>
