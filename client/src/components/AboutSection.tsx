@@ -85,14 +85,87 @@ export default function AboutSection() {
                 </div>
               </div>
               
-              {/* Spyro portal image */}
+              {/* Spyro portal SVG */}
               <div className="md:w-1/3 flex justify-center items-center relative">
                 <div className="md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 w-64 h-64 md:w-auto md:h-auto">
-                  <img 
-                    src="/spyro-portal.png" 
-                    alt="Spyro flying through a portal" 
-                    className="w-full h-auto max-w-[300px] md:max-w-none object-contain spyro-portal"
-                  />
+                  <div className="spyro-portal">
+                    <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                      {/* Portal background glow */}
+                      <defs>
+                        <radialGradient id="portalGlow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                          <stop offset="0%" style={{stopColor:"#9B59B6", stopOpacity:0.9}} />
+                          <stop offset="60%" style={{stopColor:"#7D3C98", stopOpacity:0.6}} />
+                          <stop offset="100%" style={{stopColor:"#4A235A", stopOpacity:0.1}} />
+                        </radialGradient>
+                      </defs>
+                      
+                      {/* Outer portal ring */}
+                      <ellipse cx="150" cy="100" rx="120" ry="80" fill="url(#portalGlow)" />
+                      
+                      {/* Inner portal swirl */}
+                      <path d="M150,100 
+                        C160,80 180,70 200,80 
+                        C220,90 230,110 220,130 
+                        C210,150 190,160 170,150 
+                        C150,140 140,120 150,100 
+                        Z" 
+                        fill="#8E44AD" opacity="0.7" />
+                      
+                      {/* Portal inner light */}
+                      <ellipse cx="150" cy="100" rx="80" ry="50" fill="#D2B4DE" opacity="0.5" />
+                      
+                      {/* Spyro silhouette flying through the portal */}
+                      <path d="M120,100 
+                        C130,90 140,85 150,90 
+                        C155,92 158,95 160,100 
+                        C162,105 163,110 165,115 
+                        C167,120 170,125 175,123 
+                        C180,121 182,115 185,110 
+                        C188,105 190,100 195,98 
+                        C200,96 205,95 210,100 
+                        C215,105 213,110 210,115 
+                        C205,120 200,122 195,120 
+                        C190,118 187,115 185,110 
+                        C183,115 180,120 175,125 
+                        C170,130 165,132 160,130 
+                        C155,128 150,125 145,120 
+                        C140,115 135,110 130,105 
+                        C125,100 120,95 120,100 
+                        Z" 
+                        fill="#6C3483" />
+                      
+                      {/* Spyro wings */}
+                      <path d="M150,100 
+                        C155,95 160,90 170,88 
+                        C180,86 190,88 195,95 
+                        C200,102 198,110 195,115 
+                        C192,120 187,123 180,125 
+                        C173,127 165,126 160,120 
+                        C155,114 150,105 150,100 
+                        Z" 
+                        fill="#884EA0" />
+                      
+                      {/* Spyro tail */}
+                      <path d="M120,100 
+                        C115,105 110,110 105,115 
+                        C100,120 95,125 90,120 
+                        C85,115 87,110 90,105 
+                        C93,100 98,97 105,95 
+                        C112,93 120,95 120,100 
+                        Z" 
+                        fill="#7D3C98" />
+                      
+                      {/* Magical particles around the portal */}
+                      <circle cx="100" cy="70" r="3" fill="#F4D03F" opacity="0.8" />
+                      <circle cx="210" cy="60" r="2" fill="#F4D03F" opacity="0.7" />
+                      <circle cx="240" cy="110" r="4" fill="#F4D03F" opacity="0.9" />
+                      <circle cx="180" cy="150" r="3" fill="#F4D03F" opacity="0.8" />
+                      <circle cx="90" cy="130" r="2" fill="#F4D03F" opacity="0.7" />
+                      <circle cx="60" cy="90" r="3" fill="#F4D03F" opacity="0.6" />
+                      <circle cx="130" cy="50" r="2" fill="#F4D03F" opacity="0.8" />
+                      <circle cx="220" cy="140" r="3" fill="#F4D03F" opacity="0.7" />
+                    </svg>
+                  </div>
                 </div>
               </div>
             </div>
