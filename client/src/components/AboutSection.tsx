@@ -58,11 +58,11 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
-      <div className="container mx-auto px-6 z-10 relative py-20">
-        <div className="max-w-6xl mx-auto">
+      <div className="container-fluid mx-auto px-4 z-10 relative py-20">
+        <div className="max-w-[1400px] mx-auto">
           {/* White semi-transparent container behind the text with Spyro portal image */}
-          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/20 relative overflow-hidden max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-12 items-center">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-10 md:p-12 shadow-xl border border-white/20 relative overflow-hidden w-full mx-auto">
+            <div className="flex flex-col md:flex-row gap-16 items-center">
               {/* Text content area */}
               <div className="md:w-1/2 lg:w-3/5">
                 <h2 className="text-3xl md:text-5xl font-bold mb-8 font-poppins md:text-left text-center">
@@ -95,7 +95,7 @@ export default function AboutSection() {
         
         {/* Stats section with matching white semi-transparent background */}
         <div className="mt-16">
-          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-8 shadow-xl border border-white/20">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-10 md:p-12 shadow-xl border border-white/20 w-full">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {stats.map((stat, index) => (
                 <div key={index} className="p-3">
