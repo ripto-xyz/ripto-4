@@ -89,7 +89,7 @@ export default function AboutSection() {
               <div className="md:w-1/3 flex justify-center items-center relative">
                 <div className="md:absolute md:right-0 md:top-1/2 md:transform md:-translate-y-1/2 w-64 h-64 md:w-auto md:h-auto">
                   <img 
-                    src="/assets/spyro-portal.png" 
+                    src="/spyro-portal.png" 
                     alt="Spyro flying through a portal" 
                     className="w-full h-auto max-w-[300px] md:max-w-none object-contain spyro-portal"
                   />
