@@ -13,6 +13,41 @@
   filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
 }
 
+/* Fallback portal styling */
+.portal-fallback {
+  width: 100%;
+  height: 300px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.portal-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  background: #ffd700;
+  padding: 10px;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.portal-content {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #4a90e2 0%, #1a75ff 70%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.portal-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  text-align: center;
+}
+
 @keyframes float {
   0% {
     transform: translateY(0px);
