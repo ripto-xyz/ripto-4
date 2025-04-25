@@ -101,7 +101,7 @@ body {
 /* Base styles for all sections */
 .scroll-section {
   min-height: auto;
-  padding: 3rem 0;
+  padding: 1.5rem 0;
   display: flex;
   align-items: center;
   position: relative;
