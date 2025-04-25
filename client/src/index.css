@@ -109,9 +109,16 @@ body {
   scroll-margin-top: 80px;
 }
 
-/* Remove bottom padding from portfolio to connect with contact */
+/* Remove margins and padding from sections to connect them */
 section#portfolio {
   padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Connect contact directly with portfolio */
+section#contact {
+  padding-top: 0;
+  margin-top: 0;
   margin-bottom: 0;
 }
 
