@@ -5,8 +5,8 @@ export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <section id="contact" className={`relative py-0 my-0 ${isVisible ? 'animate-fadeIn' : ''}`}>
-      <div className="max-w-3xl mx-auto relative -mt-8 mb-4">
+    <section id="contact" className={`relative py-0 my-8 ${isVisible ? 'animate-fadeIn' : ''}`}>
+      <div className="max-w-3xl mx-auto relative">
         {/* Orange opaque background container */}
         <div className="absolute inset-0 bg-orange-500 bg-opacity-95 rounded-xl shadow-xl"></div>
         
