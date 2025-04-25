@@ -8,7 +8,7 @@ export default function ContactSection() {
     <section id="contact" className={`scroll-section relative py-8 ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="max-w-2xl mx-auto relative">
         {/* Orange opaque background container */}
-        <div className="absolute inset-0 bg-orange-500 bg-opacity-90 rounded-xl shadow-xl"></div>
+        <div className="absolute inset-0 bg-orange-500 bg-opacity-95 rounded-xl shadow-xl"></div>
         
         <div className="relative z-10 px-6 py-6">
           <div className="text-center mb-4">
