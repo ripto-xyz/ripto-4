@@ -336,43 +336,46 @@ nav a:active {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   
-  /* Deep 3D effect with multiple precise shadow layers to match reference */
+  /* Spyro font 3D effect with enhanced shadows and contrasting edges */
   text-shadow:
-    /* Top-left interior highlight for dimensional effect */
-    -1px -1px 0 #d8c2ff,
-    
-    /* Top highlight */
+    /* Top highlight effect */
     0 -1px 0 #c7a3ff,
-    0 -2px 0 #d8c2ff,
     
-    /* Right side highlight - creates the curved effect visible in reference */
-    1px 0px 0px #cda1ff,
+    /* Left highlight/contour */
+    -1px 0px 0 #6F4DAF,
+    -1px -1px 0 #845DC0,
     
-    /* Orange/gold side shadow with gradient effect for 3D depth - matched to reference */
-    2px 2px 0 #FFA653,
-    3px 3px 0 #F49443,
-    4px 4px 0 #E38234,
-    4px 5px 0 #D97225,
+    /* Top-left edge definition */
+    -2px -1px 0 #5F3D99,
+    -2px -2px 1px #513482,
     
-    /* Darker orange/brown for deeper bottom-right shadow - matched to reference */
-    5px 5px 0 #C96218,
-    5px 6px 0 #BD5913,
-    6px 6px 0 #AA4F0E,
-    6px 7px 0 #9C4A0B,
+    /* Right edge highlight */
+    1px 0px 0px #AD91D6,
     
-    /* Dark shadow layers for maximum depth matching reference */
-    7px 7px 0 #893E09,
-    7px 8px 4px rgba(0, 0, 0, 0.4),
-    8px 8px 8px rgba(0, 0, 0, 0.3),
+    /* Orange/gold side shadow layer by layer - exact colors from reference */
+    2px 1px 0 #FFA653,
+    2px 2px 0 #F49443,
+    3px 2px 0 #E38234,
+    3px 3px 0 #D97225,
+    4px 3px 0 #CE6922,
+    4px 4px 0 #C96218,
     
-    /* Final depth shadow */
-    0px 8px 13px rgba(0, 0, 0, 0.7);
+    /* Deeper orange/brown shadow layers with pixel precision */
+    5px 4px 0 #BD5913,
+    5px 5px 0 #AD520F,
+    6px 5px 0 #A04D0D,
+    6px 6px 0 #964A0C,
+    7px 6px 0 #8B430A,
+    7px 7px 0 #7D3D08,
+    8px 7px 0 #6F3607,
+    
+    /* Bottom shadow for grounding */
+    0px 8px 10px rgba(0, 0, 0, 0.6);
   
   /* Slight skew for perspective */
   transform: perspective(500px) rotateX(12deg) rotateY(-2deg);
   
-  /* Dark purple outline around the text as in reference */
-  -webkit-text-stroke: 1.5px #400099;
+  /* No outline - using shading for depth instead */
   
   /* Add slight opacity variation to enhance 3D effect */
   opacity: 0.95;
@@ -385,15 +388,28 @@ nav a:active {
 @media (hover: hover) {
   .web3-growth-3d:hover {
     text-shadow:
+      /* Enhanced top and side highlights */
       0 -1px 0 #d8c2ff,
-      0 -2px 0 #e5d5ff,
+      -1px -1px 0 #9A76D0, 
+      -2px -2px 1px #6F4DAF,
+      1px 0px 0px #BDA5E3,
+      
+      /* Slightly shifted orange/gold shadow layers */
       2px 2px 0 #FFA653,
-      3px 3px 0 #F49443,
-      4px 4px 0 #E38234,
-      5px 5px 0 #D97225,
-      6px 6px 0 #C96218,
-      7px 7px 0 #AA4F0E,
-      9px 9px 14px rgba(0, 0, 0, 0.7);
+      3px 2px 0 #F49443,
+      3px 3px 0 #E38234,
+      4px 3px 0 #D97225,
+      4px 4px 0 #CE6922,
+      5px 4px 0 #C96218,
+      5px 5px 0 #BD5913,
+      6px 5px 0 #AD520F,
+      6px 6px 0 #A04D0D,
+      7px 6px 0 #964A0C,
+      7px 7px 0 #8B430A,
+      8px 7px 0 #7D3D08,
+      8px 8px 0 #6F3607,
+      /* Enhanced depth shadow */
+      0px 9px 12px rgba(0, 0, 0, 0.7);
     transform: perspective(500px) rotateX(13deg) rotateY(-2.5deg) scale(1.02);
   }
 }
@@ -405,7 +421,7 @@ nav a:active {
     letter-spacing: 1px;
     line-height: 1.3;
     margin-bottom: 0.5rem;
-    -webkit-text-stroke: 1px #400099;
+    /* No outline - using shading for depth instead */
     background: linear-gradient(to bottom, 
       #A78BCA 0%, 
       #957AC0 15%, 
@@ -417,29 +433,32 @@ nav a:active {
     -webkit-background-clip: text;
     background-clip: text;
     
-    /* Scaled down but still complex shadow effects for mobile */
+    /* Scaled down Spyro font 3D effect for mobile */
     text-shadow:
-      /* Interior highlight */
-      -1px -1px 0 #d8c2ff,
-      
-      /* Top highlight */
+      /* Top highlight effect */
       0 -1px 0 #c7a3ff,
       
-      /* Right side highlight */
-      1px 0px 0px #cda1ff,
+      /* Left edge definition through shading */
+      -1px 0px 0 #6F4DAF,
+      -1px -1px 0 #845DC0,
       
-      /* Orange/gold shadow layers - matched to reference */
+      /* Right edge highlight */
+      1px 0px 0px #AD91D6,
+      
+      /* Orange/gold shadow layers - simplified for mobile but with same technique */
       1px 1px 0 #FFA653,
-      2px 2px 0 #F49443,
-      2px 3px 0 #E38234,
-      3px 3px 0 #D97225,
+      2px 1px 0 #F49443,
+      2px 2px 0 #E38234,
+      3px 2px 0 #D97225,
+      3px 3px 0 #CE6922,
       
-      /* Darker orange for deeper areas */
-      3px 4px 0 #C96218,
-      4px 4px 0 #AA4F0E,
+      /* Deeper orange shadows with fewer layers for mobile */
+      4px 3px 0 #BD5913,
+      4px 4px 0 #A04D0D,
+      5px 4px 0 #8B430A,
       
-      /* Final shadow for depth */
-      0 4px 8px rgba(0, 0, 0, 0.6);
+      /* Bottom shadow for grounding */
+      0px 5px 8px rgba(0, 0, 0, 0.5);
       
     /* Adjust transform for better mobile display */
     transform: perspective(500px) rotateX(10deg) rotateY(-1deg);
