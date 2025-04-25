@@ -18,7 +18,7 @@ export default function ContactSection() {
             </p>
           </div>
 
-          <div className="flex flex-col md:flex-row items-center md:items-start justify-center gap-6 mt-4">
+          <div className="flex flex-col md:flex-row md:items-start justify-start gap-6 mt-4 md:pl-12">
             <div className="text-center md:text-left">
               <div className="flex flex-col items-center md:items-start">
                 <div className="text-white mb-2">
@@ -32,7 +32,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left md:ml-8">
               <div className="flex flex-col items-center md:items-start">
                 <div className="text-white mb-2">
                   <Mail size={20} strokeWidth={1.5} />
@@ -45,7 +45,7 @@ export default function ContactSection() {
               </div>
             </div>
 
-            <div className="text-center md:text-left">
+            <div className="text-center md:text-left md:ml-8">
               <div className="flex flex-col items-center md:items-start">
                 <div className="text-white mb-2">
                   <Users size={20} strokeWidth={1.5} />
