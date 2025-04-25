@@ -222,7 +222,7 @@ nav a:active {
   100% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
 }
 
-/* Spyro-inspired logo text style using layered shadow technique */
+/* Spyro-inspired logo text style */
 .yellow-logo-text {
   font-family: 'Arial Black', 'Impact', sans-serif;
   font-weight: 900;
@@ -231,51 +231,28 @@ nav a:active {
   transform-style: preserve-3d;
   transform-origin: center;
   
-  /* Text coloring with gradient for depth */
-  background: linear-gradient(to bottom, 
-    #FFFF9F 0%, 
-    #FFFF85 20%, 
-    #FFF570 40%,
-    #FFED50 60%, 
-    #FFE530 80%,
-    #FFDD00 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  /* Text coloring - bright yellow from the Spyro font */
+  color: #FFFF80;
   
-  /* Enhanced 3D shadow effects without outlines */
+  /* 3D shadow effects to match Spyro font's depth */
   text-shadow: 
-    /* Top and side highlights */
-    0 -1px 0 #FFFFD0,
-    -1px 0 0 #E6DB74,
-    -1px -1px 0 #F7EC85,
-    
-    /* Left edge definition through shading instead of outline */
-    -2px -1px 0 #CFC76B,
-    
-    /* Main 3D layers - precise right and bottom shadow positioning */
-    1px 0 0 #FFFFA0,
-    1px 1px 0 #E6DB74,
-    2px 1px 0 #D6C96A,
-    2px 2px 0 #CFC76B,
-    3px 2px 0 #C5BD65,
-    3px 3px 0 #BDB959,
-    4px 3px 0 #B1AD50,
-    4px 4px 0 #A09E2F, 
-    5px 4px 0 #999C20,
-    5px 5px 0 #8C8A28,
-    6px 5px 0 #777519,
-    6px 6px 0 #676610,
-    
-    /* Bottom shadow for grounding */
-    0 7px 10px rgba(0, 0, 0, 0.5);
+    /* Top highlight for that shiny look */
+    0 -1px 0 #FFFFA0,
+    /* Main 3D layers - right and bottom offset shadow with gradually darkening yellows */
+    0px 1px 0 #E6DB74,
+    0px 2px 0 #CFC76B,
+    0px 3px 0 #BDB959, 
+    1px 4px 0 #A09E2F,
+    1px 5px 0 #8C8A28,
+    /* Bottom shadow for depth */
+    2px 6px 5px rgba(0, 0, 0, 0.4);
   
   /* Character styling */
   letter-spacing: 1.5px;
+  -webkit-text-stroke: 0.7px #827D00;
   
   /* 3D transformation - slight tilt for depth */
-  transform: perspective(500px) rotateX(12deg) rotateY(-1deg);
+  transform: rotateX(10deg);
   
   /* Animations */
   animation: 
@@ -283,7 +260,53 @@ nav a:active {
     spyroGlow 4s ease-in-out infinite;
 }
 
-/* Shadow classes removed - now using text-shadow for the 3D effect */
+/* Shadow elements for enhanced 3D shading */
+.yellow-logo-shadow {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Darker colors for the shadow */
+  color: #6B6500;
+  /* Position slightly offset for 3D effect - left and down */
+  transform: translate(-2px, 2px);
+  /* Blur the shadow slightly */
+  filter: blur(1px);
+  /* No animation on the shadow element */
+  opacity: 0.4;
+}
+
+/* Right-side shadow for dimension */
+.yellow-logo-shadow-right {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Brighter color for right side highlight */
+  color: #A09E2F;
+  /* Position slightly offset to the right */
+  transform: translate(2px, 0px);
+  /* Blur the shadow slightly */
+  filter: blur(1px);
+  /* No animation on the shadow element */
+  opacity: 0.5;
+}
+
+/* Bottom shadow for depth */
+.yellow-logo-shadow-bottom {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Darker brown/shadow color */
+  color: #5D5700;
+  /* Make it a bit bigger to create depth impression */
+  transform: scale(1.02);
+  /* Heavier blur for deeper shadow */
+  filter: blur(2px);
+  /* Lower opacity */
+  opacity: 0.35;
+}
 
 /* Web3 Growth 3D Text Effect - Matches the provided reference image */
 .web3-growth-3d {
