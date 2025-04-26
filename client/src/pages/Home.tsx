@@ -7,7 +7,7 @@ import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
-import { useWheelNavigation } from "@/hooks/use-wheel-navigation";
+import { useWheelNav } from "@/hooks/useWheelNav";
 
 export default function Home() {
   // Determine active section with a simpler approach temporarily
@@ -15,7 +15,7 @@ export default function Home() {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   
   // Enable wheel-based section navigation
-  useWheelNavigation();
+  useWheelNav();
   
   // Simplified scroll listener to determine active section
   useEffect(() => {
