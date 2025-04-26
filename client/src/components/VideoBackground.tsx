@@ -4,8 +4,8 @@ export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   
-  // Use the high-quality video in the public folder
-  const videoSource = "/images/timeline3-new.mp4";
+  // Use a static path - direct to the public folder to avoid import issues
+  const videoPath = "/images/timeline3-new.mp4";
   
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -25,6 +25,9 @@ export default function VideoBackground() {
       
       videoElement.addEventListener('canplay', handleCanPlay);
       videoElement.addEventListener('error', handleError);
+      
+      // Force reload of the video element
+      videoElement.load();
       
       return () => {
         videoElement.removeEventListener('canplay', handleCanPlay);
@@ -51,8 +54,10 @@ export default function VideoBackground() {
           playsInline
           className="video-background"
           preload="auto"
-          src={videoSource}
-        />
+        >
+          <source src={videoPath} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
     </>
   );
