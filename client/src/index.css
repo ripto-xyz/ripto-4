@@ -573,3 +573,17 @@ header .web3-growth-3d {
     transform: perspective(500px) rotateX(10deg) rotateY(-1deg);
   }
 }
+
+/* Loading indicator for video */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  z-index: 5;
+  font-size: 1.2rem;
+}
