@@ -1,3 +1,4 @@
+import VideoBackground from "@/components/VideoBackground";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -61,7 +62,7 @@ export default function Home() {
   
   return (
     <div className="min-h-screen">
-      {/* Video background is now in the static HTML file */}
+      <VideoBackground />
       <Navbar 
         activeSection={activeSection} 
         showMobileMenu={showMobileMenu}
