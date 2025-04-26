@@ -1,67 +1,35 @@
-// Import a static image as fallback
-import React from 'react';
-
 export default function VideoBackground() {
-  // Create a video element reference
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-  
-  // Set up once on mount
-  React.useEffect(() => {
-    const videoElement = document.createElement('video');
-    videoElement.src = '/static/background-optimized.mp4';
-    videoElement.autoplay = true;
-    videoElement.loop = true;
-    videoElement.muted = true;
-    videoElement.style.position = 'absolute';
-    videoElement.style.width = '100%';
-    videoElement.style.height = '100%';
-    videoElement.style.objectFit = 'cover';
-    videoElement.style.top = '0';
-    videoElement.style.left = '0';
-    videoElement.style.zIndex = '-10';
-    
-    // Add to the container
-    const container = document.getElementById('video-container');
-    if (container) {
-      container.appendChild(videoElement);
-      
-      // Start playing
-      videoElement.play().catch(err => {
-        console.error('Video play error:', err);
-      });
-    }
-    
-    // Cleanup on unmount
-    return () => {
-      if (container && videoElement.parentNode === container) {
-        container.removeChild(videoElement);
-      }
-    };
-  }, []);
-  
   return (
-    <>
-      {/* Fixed background container */}
+    <div className="fixed inset-0 -z-10 w-full h-full overflow-hidden bg-black">
+      {/* Dark gradient overlay */}
       <div 
-        className="fixed inset-0 -z-10 w-full h-full overflow-hidden"
-        style={{ background: 'black' }}
-        id="video-container"
-      >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
-        
-        {/* Static image fallback if video fails */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: 'url(/static/background-optimized.mp4)', 
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            opacity: 0.3,
-            zIndex: -15
-          }}
-        />
-      </div>
-    </>
+        className="absolute inset-0 bg-gradient-to-b from-purple-900/40 via-black/80 to-black/90 pointer-events-none"
+      ></div>
+      
+      {/* Starry night effect */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: 'radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 5px)',
+          backgroundSize: '100px 100px',
+          backgroundPosition: '0 0, 50px 50px'
+        }}
+      ></div>
+      
+      {/* Animated gradient bottom */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-[20vh] bg-gradient-to-t from-purple-900/20 to-transparent"
+        style={{
+          animation: 'pulse 8s infinite alternate'
+        }}
+      ></div>
+      
+      <style jsx>{`
+        @keyframes pulse {
+          0% { opacity: 0.3; }
+          100% { opacity: 0.7; }
+        }
+      `}</style>
+    </div>
   );
 }
