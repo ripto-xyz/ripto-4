@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Array of section IDs in order of appearance
-export const sectionIds = ['home', 'about', 'services', 'portfolio', 'contact'];
+export const sectionIds = ['home', 'about', 'portfolio', 'services', 'contact'];
 
 // Function to get the next section ID
 export function getNextSectionId(currentSectionId: string): string | null {

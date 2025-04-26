@@ -61,20 +61,20 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               About&nbsp;Me
             </a>
             <a 
-              href="#services" 
-              className={`${
-                activeSection === 'services' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
-            >
-              Services
-            </a>
-            <a 
               href="#portfolio" 
               className={`${
                 activeSection === 'portfolio' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
             >
               Portfolio
+            </a>
+            <a 
+              href="#services" 
+              className={`${
+                activeSection === 'services' ? 'text-primary' : 'text-white'
+              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
+            >
+              Services
             </a>
             <a 
               href="#contact" 

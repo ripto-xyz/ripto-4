@@ -39,8 +39,8 @@ export default function Home() {
         {/* IMPORTANT: Hard-coding the exact section order to ensure they appear correctly */}
         <HeroSection />
         <AboutSection />
-        <ServicesSection />
         <PortfolioSection />
+        <ServicesSection />
       </main>
       <ContactSection />
       <Footer />

@@ -30,7 +30,7 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#services" className="text-white opacity-70 hover:opacity-100 transition-opacity">
+        <a href="#about" className="text-white opacity-70 hover:opacity-100 transition-opacity">
           <ArrowDown size={24} />
         </a>
       </div>
