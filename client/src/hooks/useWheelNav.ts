@@ -10,6 +10,9 @@ export function useWheelNav() {
   const isScrollingRef = useRef(false);
   const lastScrollTimeRef = useRef(0);
   const accumulatedDeltaRef = useRef(0);
+  
+  // Debug flag - useful for troubleshooting wheel navigation
+  const isDebugMode = false;
 
   useEffect(() => {
     const getActiveSection = () => {
@@ -70,8 +73,23 @@ export function useWheelNav() {
       // Detect if this is likely a trackpad or mouse wheel
       const isLikelyTrackpad = Math.abs(e.deltaY) < 40;
       
-      // Different thresholds based on input device
-      const threshold = isLikelyTrackpad ? 100 : 50;
+      // Get current active section
+      const activeSection = getActiveSection();
+      
+      // Higher thresholds for portfolio and services sections to require more deliberate swipes
+      let threshold;
+      if (activeSection === 'portfolio' || activeSection === 'services') {
+        // Require bigger swipes for these content-heavy sections
+        threshold = isLikelyTrackpad ? 150 : 80; // Higher threshold for content-heavy sections
+      } else {
+        // Normal threshold for other sections
+        threshold = isLikelyTrackpad ? 100 : 50;
+      }
+      
+      // Debug logging
+      if (isDebugMode) {
+        console.log(`Section: ${activeSection}, Device: ${isLikelyTrackpad ? 'trackpad' : 'mouse'}, Threshold: ${threshold}, Current delta: ${accumulatedDeltaRef.current}`);
+      }
       
       // Only process if accumulated delta is big enough
       if (accumulatedDeltaRef.current < threshold) {
@@ -86,12 +104,11 @@ export function useWheelNav() {
       lastScrollTimeRef.current = now;
       accumulatedDeltaRef.current = 0;
       
-      // Get current section and determine where to scroll
-      const currentSection = getActiveSection();
+      // Using activeSection for navigation
       
       if (e.deltaY > 0) {
         // Scrolling DOWN - go to next section
-        const nextSection = getNextSectionId(currentSection);
+        const nextSection = getNextSectionId(activeSection);
         if (nextSection) {
           scrollToSection(nextSection);
         } else {
@@ -100,7 +117,7 @@ export function useWheelNav() {
         }
       } else {
         // Scrolling UP - go to previous section
-        const prevSection = getPrevSectionId(currentSection);
+        const prevSection = getPrevSectionId(activeSection);
         if (prevSection) {
           scrollToSection(prevSection);
         } else {
@@ -110,9 +127,11 @@ export function useWheelNav() {
       }
       
       // Reset scrolling state after animation completes
+      // Use longer cooldown for portfolio and services sections
+      const cooldownTime = (activeSection === 'portfolio' || activeSection === 'services') ? 800 : 700;
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, 700);
+      }, cooldownTime);
     };
     
     // Add wheel event listener with passive: false to allow preventDefault
