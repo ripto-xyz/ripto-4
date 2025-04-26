@@ -10,9 +10,11 @@ export function useWheelNav() {
   const isScrollingRef = useRef(false);
   const lastScrollTimeRef = useRef(0);
   const accumulatedDeltaRef = useRef(0);
+  const scrollWindowStartTimeRef = useRef(0);
+  const scrollCountInWindowRef = useRef(0);
   
   // Debug flag - useful for troubleshooting wheel navigation
-  const isDebugMode = false;
+  const isDebugMode = true; // Temporarily enable debug mode
 
   useEffect(() => {
     const getActiveSection = () => {
@@ -76,19 +78,53 @@ export function useWheelNav() {
       // Get current active section
       const activeSection = getActiveSection();
       
+      // Special handling for portfolio section - count scrolls within a time window
+      if (activeSection === 'portfolio') {
+        const TIME_WINDOW_MS = 500; // 500ms time window
+        const now = Date.now();
+        
+        // Start a new time window if needed
+        if (now - scrollWindowStartTimeRef.current > TIME_WINDOW_MS) {
+          scrollWindowStartTimeRef.current = now;
+          scrollCountInWindowRef.current = 1;
+        } else {
+          // Still in the same time window, increment the count
+          scrollCountInWindowRef.current++;
+        }
+        
+        // If this is just the first or second scroll event in a new time window, 
+        // we'll require more scrolling before triggering navigation
+        if (scrollCountInWindowRef.current <= 2) {
+          accumulatedDeltaRef.current = Math.min(accumulatedDeltaRef.current, 50);
+        }
+      }
+      
       // Higher thresholds for portfolio and services sections to require more deliberate swipes
       let threshold;
-      if (activeSection === 'portfolio' || activeSection === 'services') {
-        // Require bigger swipes for these content-heavy sections
-        threshold = isLikelyTrackpad ? 150 : 80; // Higher threshold for content-heavy sections
+      if (activeSection === 'portfolio') {
+        // Even higher threshold specifically for portfolio section
+        threshold = isLikelyTrackpad ? 250 : 120; // Much higher threshold for portfolio
+      } else if (activeSection === 'services') {
+        // Moderate threshold for services section
+        threshold = isLikelyTrackpad ? 150 : 80;
       } else {
         // Normal threshold for other sections
         threshold = isLikelyTrackpad ? 100 : 50;
       }
       
-      // Debug logging
+      // Enhanced debug logging
       if (isDebugMode) {
-        console.log(`Section: ${activeSection}, Device: ${isLikelyTrackpad ? 'trackpad' : 'mouse'}, Threshold: ${threshold}, Current delta: ${accumulatedDeltaRef.current}`);
+        const scrollInfo = activeSection === 'portfolio' 
+          ? `, Scroll count: ${scrollCountInWindowRef.current}, Window age: ${Date.now() - scrollWindowStartTimeRef.current}ms` 
+          : '';
+          
+        console.log(
+          `Section: ${activeSection}${scrollInfo}, ` +
+          `Device: ${isLikelyTrackpad ? 'trackpad' : 'mouse'}, ` + 
+          `Delta: ${Math.round(e.deltaY)}, ` +
+          `Threshold: ${threshold}, ` + 
+          `Accumulated: ${Math.round(accumulatedDeltaRef.current)}`
+        );
       }
       
       // Only process if accumulated delta is big enough
@@ -101,7 +137,8 @@ export function useWheelNav() {
       
       // Mark as scrolling to prevent additional processing
       isScrollingRef.current = true;
-      lastScrollTimeRef.current = now;
+      const currentTime = Date.now();
+      lastScrollTimeRef.current = currentTime;
       accumulatedDeltaRef.current = 0;
       
       // Using activeSection for navigation
@@ -127,8 +164,15 @@ export function useWheelNav() {
       }
       
       // Reset scrolling state after animation completes
-      // Use longer cooldown for portfolio and services sections
-      const cooldownTime = (activeSection === 'portfolio' || activeSection === 'services') ? 800 : 700;
+      // Use even longer cooldown for portfolio section specifically
+      let cooldownTime;
+      if (activeSection === 'portfolio') {
+        cooldownTime = 1000; // Much longer cooldown for portfolio
+      } else if (activeSection === 'services') {
+        cooldownTime = 800; // Moderate cooldown for services
+      } else {
+        cooldownTime = 700; // Normal cooldown for other sections
+      }
       setTimeout(() => {
         isScrollingRef.current = false;
       }, cooldownTime);
