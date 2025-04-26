@@ -6,7 +6,7 @@ import PortfolioSection from "@/components/PortfolioSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import { useSwipeNavigation } from "@/hooks/use-swipe-navigation";
+import { useSwipeNavigation } from "@/hooks/use-swipe-navigation-fixed";
 import { useEffect, useState } from "react";
 
 export default function Home() {

@@ -3,23 +3,31 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
 import { useScrollSpy } from './use-scroll-spy';
 
 // Minimum distance (in pixels) required to register a swipe
-const MIN_SWIPE_DISTANCE = 100; // Increased from 50 to require a longer, more deliberate swipe
+const MIN_SWIPE_DISTANCE = 100; // Increased to require a longer, more deliberate swipe
 
 // Cooldown period to prevent rapid consecutive swipes (in milliseconds)
 const SWIPE_COOLDOWN = 800;
 
-// Threshold for when the user is near a section boundary (in percentage of viewport height)
-const SECTION_BOUNDARY_THRESHOLD = 0.15;
+// Threshold for wheel delta accumulation before triggering section change
+const WHEEL_DELTA_THRESHOLD = 300; 
+
+// Timeout to reset wheel accumulation if scrolling pauses
+const WHEEL_TIMEOUT = 200;
 
 export function useSwipeNavigation() {
+  // State for touch tracking
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [isOnCooldown, setIsOnCooldown] = useState(false);
-  const lastScrollTime = useRef<number>(0);
-  const activeSection = useScrollSpy({ sectionIds, offset: 100 });
   
-  // A ref to track if we're currently in a wheel-based scroll transition
+  // Refs for tracking various interactions
+  const lastScrollTime = useRef<number>(0);
+  const accumulatedWheelDelta = useRef<number>(0);
+  const wheelTimeoutRef = useRef<number | null>(null);
   const isScrollingToSection = useRef<boolean>(false);
+  
+  // Get current active section using ScrollSpy
+  const activeSection = useScrollSpy({ sectionIds, offset: 100 });
 
   // Helper to apply cooldown
   const applyCooldown = () => {
@@ -28,7 +36,6 @@ export function useSwipeNavigation() {
   };
 
   useEffect(() => {
-    
     // TOUCH NAVIGATION FOR MOBILE
     const handleTouchStart = (e: TouchEvent) => {
       setTouchStartX(e.touches[0].clientX);
@@ -44,6 +51,7 @@ export function useSwipeNavigation() {
       const distanceY = touchStartY - touchEndY;
       
       // Only consider vertical swipes (when Y movement is greater than X movement)
+      // and only when the swipe is long enough (MIN_SWIPE_DISTANCE)
       if (Math.abs(distanceY) > Math.abs(distanceX) && Math.abs(distanceY) > MIN_SWIPE_DISTANCE) {
         if (distanceY > 0) {
           // Swipe up - go to next section
@@ -74,18 +82,10 @@ export function useSwipeNavigation() {
         }
       }
       
+      // Reset touch tracking
       setTouchStartX(null);
       setTouchStartY(null);
     };
-
-    // Ref to track accumulated wheel delta
-    const accumulatedWheelDelta = useRef<number>(0);
-    // Ref to track wheel timeout
-    const wheelTimeoutRef = useRef<number | null>(null);
-    // Threshold for accumulated wheel movement to trigger section change
-    const WHEEL_DELTA_THRESHOLD = 300; // Higher value means less sensitive
-    // Timeout to reset accumulated delta if scrolling pauses
-    const WHEEL_TIMEOUT = 200;
 
     // WHEEL NAVIGATION FOR DESKTOP
     const handleWheel = (e: WheelEvent) => {
@@ -109,10 +109,11 @@ export function useSwipeNavigation() {
       // Only proceed if accumulated delta exceeds threshold in either direction
       if (Math.abs(accumulatedWheelDelta.current) < WHEEL_DELTA_THRESHOLD) return;
       
-      // Check the current section's position
+      // Get element for the current section
       const element = document.getElementById(activeSection);
       if (!element) return;
       
+      // Get positioning information
       const rect = element.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -162,7 +163,7 @@ export function useSwipeNavigation() {
       }
     };
 
-    // Keyboard navigation (arrow keys)
+    // KEYBOARD NAVIGATION (arrow keys and page up/down)
     const handleKeyDown = (e: KeyboardEvent) => {
       if (isOnCooldown || isScrollingToSection.current) return;
       
@@ -197,11 +198,17 @@ export function useSwipeNavigation() {
     document.addEventListener('wheel', handleWheel, { passive: true });
     document.addEventListener('keydown', handleKeyDown);
 
+    // Clean up event listeners
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('wheel', handleWheel);
       document.removeEventListener('keydown', handleKeyDown);
+      
+      // Clear any remaining timeout
+      if (wheelTimeoutRef.current) {
+        window.clearTimeout(wheelTimeoutRef.current);
+      }
     };
   }, [touchStartX, touchStartY, activeSection, isOnCooldown]);
 
