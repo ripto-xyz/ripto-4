@@ -52,33 +52,54 @@ export default function PortfolioSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="space-y-10 md:space-y-16">
           {portfolioItems.map((item: PortfolioItem, index: number) => (
-            <Link href={`/case-study/${item.id}`} key={index}>
-              <div className="portfolio-item overflow-hidden rounded-xl group cursor-pointer h-full shadow-md hover:shadow-lg transition-shadow duration-300">
-                <div className="relative overflow-hidden h-full">
+            <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8`}>
+              {/* Video placeholder */}
+              <div className="w-full md:w-1/2">
+                <div className="relative aspect-video bg-gray-800 rounded-xl overflow-hidden shadow-lg flex items-center justify-center group cursor-pointer">
+                  {/* Placeholder image that would be replaced with video */}
                   <img 
                     src={item.imageUrl} 
                     alt={item.title} 
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] to-transparent opacity-70"></div>
-                  <div className="absolute bottom-0 left-0 p-4 sm:p-6">
-                    {item.id === 'dex-growth-campaign' ? (
-                      <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-orange-500">
-                        {item.title}
-                      </h3>
-                    ) : (
-                      <h3 className="text-lg sm:text-xl font-bold mb-1 sm:mb-2 font-poppins">{item.title}</h3>
-                    )}
-                    <p className="text-xs sm:text-sm text-gray-300 mb-1 sm:mb-2">{item.categories}</p>
-                    <div className="flex items-center text-purple-400 text-xs sm:text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                      View Case Study <ArrowRight className="ml-1 h-3 w-3" />
+                  
+                  {/* Play button overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-full p-3 transform transition-transform duration-300 group-hover:scale-110">
+                      <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
                     </div>
                   </div>
+                  
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E] to-transparent opacity-50"></div>
                 </div>
               </div>
-            </Link>
+              
+              {/* Text content */}
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                {item.id === 'dex-growth-campaign' ? (
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 font-poppins bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-orange-500">
+                    {item.title}
+                  </h3>
+                ) : (
+                  <h3 className="text-xl sm:text-2xl font-bold mb-3 font-poppins">{item.title}</h3>
+                )}
+                
+                <p className="text-sm text-gray-300 mb-3">{item.categories}</p>
+                
+                <p className="text-base md:text-lg text-gray-200 mb-4 leading-relaxed">
+                  {item.description}
+                </p>
+                
+                <Link href={`/case-study/${item.id}`} className="flex items-center text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors w-fit">
+                  View Case Study <ArrowRight className="ml-1 h-4 w-4" />
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
         
