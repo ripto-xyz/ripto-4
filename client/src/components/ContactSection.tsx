@@ -12,7 +12,7 @@ export default function ContactSection() {
           {/* Pink container with Elora character */}
           <div className="relative">
             {/* Elora character positioned at top-right corner */}
-            <div className="absolute -top-16 -right-12 md:-top-20 md:-right-16 lg:-top-28 lg:-right-20 z-30 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
+            <div className="absolute -top-28 -right-4 md:-top-36 md:-right-6 lg:-top-44 lg:-right-8 z-30 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
               <img 
                 src={eloraImage} 
                 alt="Elora character" 
