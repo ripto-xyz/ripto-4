@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 // Array of section IDs in order of appearance
-export const sectionIds = ['hero', 'about', 'services', 'portfolio', 'contact'];
+export const sectionIds = ['home', 'about', 'services', 'portfolio', 'contact'];
 
 // Function to get the next section ID
 export function getNextSectionId(currentSectionId: string): string | null {
@@ -30,6 +30,10 @@ export function getPrevSectionId(currentSectionId: string): string | null {
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    // Ensure we scroll to the top of the section
+    window.scrollTo({
+      top: element.offsetTop,
+      behavior: 'smooth'
+    });
   }
 }

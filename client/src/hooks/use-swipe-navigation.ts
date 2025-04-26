@@ -12,6 +12,7 @@ const SWIPE_COOLDOWN = 800;
 const SECTION_BOUNDARY_THRESHOLD = 0.15;
 
 export function useSwipeNavigation() {
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [isOnCooldown, setIsOnCooldown] = useState(false);
   const lastScrollTime = useRef<number>(0);
@@ -27,20 +28,24 @@ export function useSwipeNavigation() {
   };
 
   useEffect(() => {
+    
     // TOUCH NAVIGATION FOR MOBILE
     const handleTouchStart = (e: TouchEvent) => {
+      setTouchStartX(e.touches[0].clientX);
       setTouchStartY(e.touches[0].clientY);
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      if (touchStartY === null || isOnCooldown || isScrollingToSection.current) return;
+      if (touchStartY === null || touchStartX === null || isOnCooldown || isScrollingToSection.current) return;
       
+      const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
-      const distance = touchStartY - touchEndY;
+      const distanceX = touchStartX - touchEndX;
+      const distanceY = touchStartY - touchEndY;
       
-      // If the distance is significant enough to register as a swipe
-      if (Math.abs(distance) > MIN_SWIPE_DISTANCE) {
-        if (distance > 0) {
+      // Only consider vertical swipes (when Y movement is greater than X movement)
+      if (Math.abs(distanceY) > Math.abs(distanceX) && Math.abs(distanceY) > MIN_SWIPE_DISTANCE) {
+        if (distanceY > 0) {
           // Swipe up - go to next section
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
@@ -69,33 +74,44 @@ export function useSwipeNavigation() {
         }
       }
       
+      setTouchStartX(null);
       setTouchStartY(null);
     };
 
     // WHEEL NAVIGATION FOR DESKTOP
     const handleWheel = (e: WheelEvent) => {
-      // Exit early if we're on cooldown, currently scrolling, or the wheel movement is too small
-      if (isOnCooldown || isScrollingToSection.current || Math.abs(e.deltaY) < 40) return;
+      // Exit early if we're on cooldown or currently scrolling
+      if (isOnCooldown || isScrollingToSection.current) return;
       
       // Get the current time to check for rapid wheel events
       const now = Date.now();
       
-      // If the wheel event is happening too soon after the last one, we'll ignore it to improve detection
-      if (now - lastScrollTime.current < 50) return;
+      // Detect fast scrolling patterns but allow short pauses
+      if (now - lastScrollTime.current < 50 && Math.abs(e.deltaY) < 60) return;
       lastScrollTime.current = now;
       
-      // Check if we're near the boundary of a section (15% from top or bottom of viewport)
+      // Determine if this is a significant scroll action
+      const isSignificantScroll = Math.abs(e.deltaY) > 35;
+      
+      if (!isSignificantScroll) return;
+      
+      // Check the current section's position
       const element = document.getElementById(activeSection);
-      if (element) {
-        const rect = element.getBoundingClientRect();
-        const viewportHeight = window.innerHeight;
-        
-        // Are we near the top or bottom boundary of the current section?
-        const isNearTop = rect.top > -viewportHeight * SECTION_BOUNDARY_THRESHOLD;
-        const isNearBottom = rect.bottom < viewportHeight * (1 + SECTION_BOUNDARY_THRESHOLD);
-        
-        if (e.deltaY > 0 && isNearBottom) {
-          // Scrolling down and near bottom - go to next section
+      if (!element) return;
+      
+      const rect = element.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      
+      // Calculate how far we are into the current section
+      const elementTop = rect.top + scrollTop;
+      const scrollPosition = scrollTop + viewportHeight / 2; // Middle of viewport
+      const distanceFromTop = scrollPosition - elementTop;
+      const percentThroughSection = (distanceFromTop / rect.height) * 100;
+      
+      if (e.deltaY > 0) { // Scrolling DOWN
+        // If we're at least 15% through the section, go to the next section
+        if (percentThroughSection > 15) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
             isScrollingToSection.current = true;
@@ -107,8 +123,10 @@ export function useSwipeNavigation() {
               isScrollingToSection.current = false;
             }, SWIPE_COOLDOWN);
           }
-        } else if (e.deltaY < 0 && isNearTop) {
-          // Scrolling up and near top - go to previous section
+        }
+      } else { // Scrolling UP
+        // If we're less than 85% through the section, go to the previous section
+        if (percentThroughSection < 85 && percentThroughSection > 0) {
           const prevSection = getPrevSectionId(activeSection);
           if (prevSection) {
             isScrollingToSection.current = true;
@@ -165,7 +183,7 @@ export function useSwipeNavigation() {
       document.removeEventListener('wheel', handleWheel);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [touchStartY, activeSection, isOnCooldown]);
+  }, [touchStartX, touchStartY, activeSection, isOnCooldown]);
 
   return { activeSection };
 }
