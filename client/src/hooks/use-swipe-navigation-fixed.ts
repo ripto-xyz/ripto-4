@@ -6,10 +6,13 @@ import { useScrollSpy } from './use-scroll-spy';
 const MIN_SWIPE_DISTANCE = 100; // Increased to require a longer, more deliberate swipe
 
 // Cooldown period to prevent rapid consecutive swipes (in milliseconds)
-const SWIPE_COOLDOWN = 800;
+const SWIPE_COOLDOWN = 1200; // Increased from 800ms to give more time between section changes
+
+// Additional wait time required after arriving at a new section (in milliseconds)
+const SECTION_ARRIVAL_GRACE_PERIOD = 1500;
 
 // Threshold for wheel delta accumulation before triggering section change
-const WHEEL_DELTA_THRESHOLD = 300; 
+const WHEEL_DELTA_THRESHOLD = 500; // Increased from 300 to require more scrolling
 
 // Timeout to reset wheel accumulation if scrolling pauses
 const WHEEL_TIMEOUT = 200;
@@ -25,6 +28,7 @@ export function useSwipeNavigation() {
   const accumulatedWheelDelta = useRef<number>(0);
   const wheelTimeoutRef = useRef<number | null>(null);
   const isScrollingToSection = useRef<boolean>(false);
+  const lastSectionChangeTime = useRef<number>(Date.now());
   
   // Get current active section using ScrollSpy
   const activeSection = useScrollSpy({ sectionIds, offset: 100 });
@@ -32,7 +36,13 @@ export function useSwipeNavigation() {
   // Helper to apply cooldown
   const applyCooldown = () => {
     setIsOnCooldown(true);
+    lastSectionChangeTime.current = Date.now();
     setTimeout(() => setIsOnCooldown(false), SWIPE_COOLDOWN);
+  };
+  
+  // Check if we're still in the grace period after changing sections
+  const isInGracePeriod = () => {
+    return (Date.now() - lastSectionChangeTime.current) < SECTION_ARRIVAL_GRACE_PERIOD;
   };
 
   useEffect(() => {
@@ -43,7 +53,7 @@ export function useSwipeNavigation() {
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      if (touchStartY === null || touchStartX === null || isOnCooldown || isScrollingToSection.current) return;
+      if (touchStartY === null || touchStartX === null || isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
@@ -89,8 +99,8 @@ export function useSwipeNavigation() {
 
     // WHEEL NAVIGATION FOR DESKTOP
     const handleWheel = (e: WheelEvent) => {
-      // Exit early if we're on cooldown or currently scrolling
-      if (isOnCooldown || isScrollingToSection.current) return;
+      // Exit early if we're on cooldown, scrolling, or in grace period
+      if (isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       // Clear any existing timeout to reset accumulated delta
       if (wheelTimeoutRef.current) {
@@ -125,8 +135,8 @@ export function useSwipeNavigation() {
       const percentThroughSection = (distanceFromTop / rect.height) * 100;
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
-        // Only go to next section if we're not just starting the current section
-        if (percentThroughSection > 20) {
+        // Only go to next section if we're at least 40% through the current section
+        if (percentThroughSection > 40) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
             isScrollingToSection.current = true;
@@ -143,8 +153,8 @@ export function useSwipeNavigation() {
           }
         }
       } else { // Scrolling UP
-        // Only go to previous section if we're not at the bottom of the current section
-        if (percentThroughSection < 80 && percentThroughSection > 0) {
+        // Only go to previous section if we're in the top 30% of the current section
+        if (percentThroughSection < 30 && percentThroughSection > 0) {
           const prevSection = getPrevSectionId(activeSection);
           if (prevSection) {
             isScrollingToSection.current = true;
@@ -165,7 +175,7 @@ export function useSwipeNavigation() {
 
     // KEYBOARD NAVIGATION (arrow keys and page up/down)
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isOnCooldown || isScrollingToSection.current) return;
+      if (isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
         const nextSection = getNextSectionId(activeSection);
