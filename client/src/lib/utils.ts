@@ -30,10 +30,24 @@ export function getPrevSectionId(currentSectionId: string): string | null {
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (element) {
-    // Ensure we scroll to the top of the section
+    // Custom smooth scrolling with a consistent experience
+    // This helps ensure transitions between sections are more reliable
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset;
+    
+    // Use a custom duration based on distance (faster for short distances, slower for long ones)
+    const distance = Math.abs(window.pageYOffset - offsetPosition);
+    const duration = Math.min(Math.max(distance / 4, 600), 1000); // Between 600ms and 1000ms
+    
     window.scrollTo({
-      top: element.offsetTop,
-      behavior: 'smooth'
+      top: offsetPosition,
+      behavior: 'smooth',
     });
+    
+    // Force focus on the section for better accessibility
+    setTimeout(() => {
+      element.setAttribute('tabindex', '-1');
+      element.focus({ preventScroll: true });
+    }, duration / 2);
   }
 }

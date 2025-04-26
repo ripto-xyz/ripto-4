@@ -9,10 +9,10 @@ const MIN_SWIPE_DISTANCE = 100; // Increased to require a longer, more deliberat
 const SWIPE_COOLDOWN = 1000; // Balanced cooldown time
 
 // Additional wait time required after arriving at a new section (in milliseconds)
-const SECTION_ARRIVAL_GRACE_PERIOD = 800; // Reduced from 1500ms
+const SECTION_ARRIVAL_GRACE_PERIOD = 600; // Shorter grace period for more responsive navigation
 
 // Threshold for wheel delta accumulation before triggering section change
-const WHEEL_DELTA_THRESHOLD = 350; // Reduced from 500 to make it more active
+const WHEEL_DELTA_THRESHOLD = 300; // More responsive wheel scrolling
 
 // Timeout to reset wheel accumulation if scrolling pauses
 const WHEEL_TIMEOUT = 200;
@@ -108,7 +108,15 @@ export function useSwipeNavigation() {
       }
       
       // Accumulate the wheel delta (keep sign for direction)
-      accumulatedWheelDelta.current += e.deltaY;
+      // Use a factor that increases accumulation based on direction and current section
+      let accumulationFactor = 1;
+      
+      // Special case for services section (make transitions to portfolio easier)
+      if (activeSection === 'services' && e.deltaY > 0) {
+        accumulationFactor = 1.5;
+      }
+      
+      accumulatedWheelDelta.current += (e.deltaY * accumulationFactor);
       
       // Set timeout to reset accumulated delta if user pauses scrolling
       wheelTimeoutRef.current = window.setTimeout(() => {
@@ -135,8 +143,10 @@ export function useSwipeNavigation() {
       const percentThroughSection = (distanceFromTop / rect.height) * 100;
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
-        // Only go to next section if we're at least 25% through the current section
-        if (percentThroughSection > 25) {
+        // Only go to next section if we're at least 20% through the current section
+        // Special handling for services section (easier to scroll past)
+        const threshold = activeSection === 'services' ? 15 : 20;
+        if (percentThroughSection > threshold) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
             isScrollingToSection.current = true;
