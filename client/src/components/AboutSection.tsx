@@ -21,6 +21,34 @@ export default function AboutSection() {
   
   const [isVisible, setIsVisible] = useState(false);
   
+  // Force scrollToTop behavior when this section becomes visible
+  useEffect(() => {
+    // Specific fix for the About section to ensure it appears at the top
+    const handleNavigation = () => {
+      if (window.location.hash === '#about') {
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+      }
+    };
+    
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleNavigation);
+    
+    // Check on component mount
+    if (window.location.hash === '#about') {
+      setTimeout(handleNavigation, 100);
+    }
+    
+    return () => {
+      window.removeEventListener('hashchange', handleNavigation);
+    };
+  }, []);
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -58,7 +86,7 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
-      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
+      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative pt-0 pb-12 sm:pb-16 md:pb-20">
         <div className="max-w-[1400px] mx-auto">
           {/* White semi-transparent container behind the text with Spyro portal image */}
           <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 relative overflow-hidden w-full mx-auto">

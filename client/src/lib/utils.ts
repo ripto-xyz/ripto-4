@@ -31,8 +31,13 @@ export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (element) {
     // Ensure we scroll to the top of the section
+    // Get any scroll-margin-top that might be applied to the section
+    const computedStyle = window.getComputedStyle(element);
+    const scrollMarginTop = parseInt(computedStyle.scrollMarginTop) || 0;
+    
+    // Adjust the scroll position to account for any custom margin
     window.scrollTo({
-      top: element.offsetTop,
+      top: Math.max(0, element.offsetTop - scrollMarginTop),
       behavior: 'smooth'
     });
   }

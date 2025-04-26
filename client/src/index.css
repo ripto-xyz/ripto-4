@@ -138,6 +138,7 @@ section#home {
 
 section#about {
   order: 2;
+  scroll-margin-top: 0px; /* Override the default to ensure it scrolls to the top */
 }
 
 section#services {
