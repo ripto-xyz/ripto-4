@@ -87,12 +87,19 @@ body {
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-white;
     font-family: 'Inter', sans-serif;
+    color: white;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', sans-serif;
+    color: white;
+  }
+  
+  /* Ensure all text has proper contrast against the dark background */
+  p, span, div, a, button, li {
+    color: white;
   }
 }
 
@@ -689,4 +696,21 @@ header .web3-growth-3d {
   100% {
     opacity: 0.5;
   }
+}
+
+/* Global text color overrides for the dark video background */
+.text-foreground,
+.text-primary-foreground,
+.text-secondary-foreground {
+  color: white !important;
+}
+
+body, p, span, h1, h2, h3, h4, h5, h6, a, button, li {
+  color: white !important;
+}
+
+/* Form controls need a different contrast */
+input, textarea, select {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }

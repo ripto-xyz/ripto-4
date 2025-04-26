@@ -7,7 +7,7 @@ interface YellowLogoProps {
 export default function YellowLogo({ className = '' }: YellowLogoProps) {
   return (
     <div className={`inline-block ${className}`}>
-      <div className="text-lg md:text-xl font-black tracking-wide whitespace-nowrap perspective-[1000px]">
+      <div className="text-lg md:text-xl font-black tracking-wide whitespace-nowrap perspective-[1000px] text-white">
         {/* Add multiple shadow layers for enhanced 3D effect */}
         <div className="relative inline-block">
           {/* Bottom shadow - deepest */}
