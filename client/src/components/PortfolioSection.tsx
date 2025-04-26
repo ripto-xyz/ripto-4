@@ -57,7 +57,9 @@ export default function PortfolioSection() {
                   {/* Text content */}
                   <div className="w-full md:w-1/2 flex flex-col justify-center">
                     <h3 className="text-xl sm:text-2xl font-bold mb-3 font-poppins text-white">{item.title}</h3>
+                    
                     <p className="text-sm text-white/80 mb-3 font-medium">{item.categories}</p>
+                    
                     <p className="text-base md:text-lg text-white mb-4 leading-relaxed">
                       {item.description}
                     </p>
