@@ -30,8 +30,8 @@ export function useSwipeNavigation() {
   const isScrollingToSection = useRef<boolean>(false);
   const lastSectionChangeTime = useRef<number>(Date.now());
   
-  // Get current active section using ScrollSpy
-  const activeSection = useScrollSpy({ sectionIds, offset: 100 });
+  // Get current active section using ScrollSpy with navbar offset
+  const activeSection = useScrollSpy({ sectionIds, offset: 120 });
 
   // Helper to apply cooldown
   const applyCooldown = () => {

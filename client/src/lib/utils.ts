@@ -30,9 +30,10 @@ export function getPrevSectionId(currentSectionId: string): string | null {
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (element) {
-    // Ensure we scroll to the top of the section
+    // Ensure we scroll to the top of the section minus the navbar height
+    // Using 100px offset to match the scroll-margin-top CSS value
     window.scrollTo({
-      top: element.offsetTop,
+      top: element.offsetTop - 100,
       behavior: 'smooth'
     });
   }

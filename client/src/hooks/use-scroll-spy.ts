@@ -12,7 +12,7 @@ interface SectionPosition {
   bottom: number;
 }
 
-export function useScrollSpy({ sectionIds, offset = 0 }: ScrollSpyOptions): string {
+export function useScrollSpy({ sectionIds, offset = 100 }: ScrollSpyOptions): string {
   const [activeSection, setActiveSection] = useState("");
   
   useEffect(() => {
