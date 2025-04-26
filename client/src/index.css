@@ -22,6 +22,7 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   height: 100vh;
+  background-color: #120738 !important; /* Force purple background color */
 }
 
 /* Scroll margins for sections */
@@ -36,7 +37,7 @@ body {
 /* This is moved below to consolidate with existing animation */
 
 :root {
-  --background: 0 0% 100%;
+  --background: 262 100% 14%; /* #120738 - changed to purple instead of white */
   --foreground: 20 14.3% 4.1%;
   --muted: 60 4.8% 95.9%;
   --muted-foreground: 25 5.3% 44.7%;
@@ -59,7 +60,7 @@ body {
 }
 
 .dark {
-  --background: 240 10% 3.9%;
+  --background: 262 100% 14%; /* #120738 */
   --foreground: 0 0% 98%;
   --muted: 240 3.7% 15.9%;
   --muted-foreground: 240 5% 64.9%;
