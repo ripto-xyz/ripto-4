@@ -65,7 +65,7 @@ html {
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-transparent;
   }
 
   body {
@@ -107,6 +107,7 @@ body {
   position: relative;
   z-index: 1;
   scroll-margin-top: 80px;
+  border: none !important;
 }
 
 /* Remove margins and padding from sections to connect them */
