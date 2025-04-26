@@ -3,52 +3,83 @@ import { videos } from "../assets";
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [mainVideoLoaded, setMainVideoLoaded] = useState(false);
+  const [placeholderLoaded, setPlaceholderLoaded] = useState(false);
+  const [currentSource, setCurrentSource] = useState(videos.timelinePlaceholder);
   
-  console.log("VideoBackground component rendering with imported video");
+  console.log("VideoBackground component rendering with progressive loading");
   
+  // First load the placeholder video for immediate display
   useEffect(() => {
-    // Start playing the video as soon as it's loaded
     const videoElement = videoRef.current;
     
     if (videoElement) {
-      // Add event listeners
-      const handleCanPlay = () => {
-        console.log("Video can now play");
-        setVideoLoaded(true);
+      // Event handlers for placeholder video
+      const handlePlaceholderCanPlay = () => {
+        console.log("Placeholder video can now play");
+        setPlaceholderLoaded(true);
         videoElement.play().catch(error => {
-          console.error("Error playing the video:", error);
+          console.error("Error playing the placeholder video:", error);
         });
-      };
-      
-      const handleLoadedData = () => {
-        console.log("Video data loaded successfully");
-        setVideoLoaded(true);
+        
+        // Start preloading the high-quality video
+        preloadMainVideo();
       };
       
       const handleError = (e: Event) => {
         console.error("Video error:", e);
       };
       
-      // Register event listeners
-      videoElement.addEventListener('canplay', handleCanPlay);
-      videoElement.addEventListener('loadeddata', handleLoadedData);
+      videoElement.addEventListener('canplay', handlePlaceholderCanPlay);
       videoElement.addEventListener('error', handleError);
       
-      // Clean up
       return () => {
-        videoElement.removeEventListener('canplay', handleCanPlay);
-        videoElement.removeEventListener('loadeddata', handleLoadedData);
+        videoElement.removeEventListener('canplay', handlePlaceholderCanPlay);
         videoElement.removeEventListener('error', handleError);
       };
     }
   }, []);
   
+  // Preload the main high-quality video
+  const preloadMainVideo = () => {
+    const preloadVideo = new Audio() as HTMLAudioElement;
+    
+    preloadVideo.oncanplaythrough = () => {
+      console.log("Main video preloaded successfully");
+      setMainVideoLoaded(true);
+      
+      // Switch to the high-quality version once it's preloaded
+      if (videoRef.current) {
+        // Store current time and playing state
+        const currentTime = videoRef.current.currentTime;
+        const isPlaying = !videoRef.current.paused;
+        
+        // Switch source
+        setCurrentSource(videos.timeline);
+        
+        // Restore playback state after source change
+        videoRef.current.oncanplay = () => {
+          videoRef.current!.currentTime = currentTime;
+          if (isPlaying) {
+            videoRef.current!.play();
+          }
+        };
+      }
+    };
+    
+    preloadVideo.onerror = () => {
+      console.error("Error preloading main video");
+    };
+    
+    preloadVideo.src = videos.timeline;
+    preloadVideo.load();
+  };
+  
   return (
     <>
       <div className="video-container">
         <div className="dark-overlay"></div>
-        {!videoLoaded && (
+        {!placeholderLoaded && (
           <div className="loading-indicator">
             Loading video...
           </div>
@@ -61,7 +92,7 @@ export default function VideoBackground() {
           playsInline
           className="video-background"
           preload="auto"
-          src={videos.timeline}
+          src={currentSource}
         />
       </div>
     </>
