@@ -10,7 +10,7 @@ export default function ContactSection() {
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto relative">
           <div className="relative">
-            <div className="absolute -top-28 right-0 md:-top-36 md:right-0 lg:-top-44 lg:right-0 z-30 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
+            <div className="absolute -top-28 right-[-80px] md:-top-36 md:right-[-100px] lg:-top-44 lg:right-[-120px] z-30 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
               <img 
                 src={eloraImage} 
                 alt="Elora character" 
