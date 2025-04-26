@@ -58,25 +58,25 @@ export default function AboutSection() {
 
   return (
     <section id="about" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
-      <div className="container-fluid mx-auto px-4 z-10 relative py-20">
+      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto">
           {/* White semi-transparent container behind the text with Spyro portal image */}
-          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-10 md:p-12 shadow-xl border border-white/20 relative overflow-hidden w-full mx-auto">
-            <div className="flex flex-col md:flex-row gap-16 items-center">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 relative overflow-hidden w-full mx-auto">
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-center">
               {/* Text content area */}
               <div className="md:w-1/2 lg:w-3/5">
-                <h2 className="text-3xl md:text-5xl font-bold mb-8 font-poppins md:text-left text-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6 font-poppins md:text-left text-center">
                   <span className="whitespace-nowrap">About&nbsp;Me</span>
                 </h2>
-                <div className="space-y-6">
-                  <p className="text-lg md:text-xl text-white leading-relaxed">
+                <div className="space-y-4 md:space-y-6">
+                  <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
                     I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
                   </p>
                 
                   {/* Technologies list displayed inline without buttons */}
-                  <div className="md:mt-10 mt-8">
-                    <h3 className="text-xl font-semibold mb-4 text-white/90 md:text-left text-center">Expertise In:</h3>
-                    <p className="text-white text-lg md:text-xl font-medium md:text-left text-center">
+                  <div className="mt-6 md:mt-8">
+                    <h3 className="text-lg md:text-xl font-semibold mb-3 text-white/90 md:text-left text-center">Expertise In:</h3>
+                    <p className="text-white text-base sm:text-lg md:text-xl font-medium md:text-left text-center">
                       {technologies.join(' • ')}
                     </p>
                   </div>
@@ -94,13 +94,13 @@ export default function AboutSection() {
         </div>
         
         {/* Stats section with matching white semi-transparent background */}
-        <div className="mt-16">
-          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-10 md:p-12 shadow-xl border border-white/20 w-full">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="mt-8 md:mt-12 lg:mt-16">
+          <div className="bg-white bg-opacity-15 backdrop-blur-md rounded-xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/20 w-full">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
               {stats.map((stat, index) => (
-                <div key={index} className="p-3">
-                  <div className="text-3xl md:text-4xl font-bold text-white mb-3">{stat.value}</div>
-                  <p className="text-white/80 font-medium">{stat.label}</p>
+                <div key={index} className="p-2 md:p-3">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 md:mb-3">{stat.value}</div>
+                  <p className="text-white/80 font-medium text-sm sm:text-base">{stat.label}</p>
                 </div>
               ))}
             </div>
