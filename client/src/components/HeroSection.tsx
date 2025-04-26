@@ -5,12 +5,12 @@ export default function HeroSection() {
     <section id="home" className="scroll-section relative">
       <div className="container mx-auto px-6 z-10 relative">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 leading-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500">
               Web3 Growth
             </span>
           </h1>
-          <p className="text-xl md:text-2xl mb-10 text-gray-300">
+          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl">
             Innovative marketing solutions for blockchain projects and decentralized platforms
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
