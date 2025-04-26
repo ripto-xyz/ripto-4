@@ -1,4 +1,40 @@
+import { useEffect } from 'react';
+
 export default function VideoBackground() {
+  // Add keyframes and animation styles once on mount
+  useEffect(() => {
+    // Create a style element
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = `
+      @keyframes pulse {
+        0% { opacity: 0.3; }
+        100% { opacity: 0.7; }
+      }
+      
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .animate-pulse-slow {
+        animation: pulse 8s infinite alternate;
+      }
+      
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+    `;
+    
+    // Append to document head
+    document.head.appendChild(styleElement);
+    
+    // Clean up
+    return () => {
+      document.head.removeChild(styleElement);
+    };
+  }, []);
+  
   return (
     <div className="fixed inset-0 -z-10 w-full h-full overflow-hidden bg-black">
       {/* Dark gradient overlay */}
@@ -24,12 +60,23 @@ export default function VideoBackground() {
         }}
       ></div>
       
-      <style jsx>{`
-        @keyframes pulse {
-          0% { opacity: 0.3; }
-          100% { opacity: 0.7; }
-        }
-      `}</style>
+      {/* Floating particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div 
+            key={i}
+            className="absolute rounded-full bg-purple-500/30"
+            style={{
+              width: `${Math.random() * 10 + 5}px`,
+              height: `${Math.random() * 10 + 5}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float ${Math.random() * 5 + 5}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          ></div>
+        ))}
+      </div>
     </div>
   );
 }
