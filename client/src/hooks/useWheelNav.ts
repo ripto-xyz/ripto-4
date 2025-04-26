@@ -19,8 +19,8 @@ export function useWheelNav() {
   const lastPortfolioNavigationTimeRef = useRef(0); // When we last navigated from portfolio
   const lastServicesNavigationTimeRef = useRef(0); // When we last navigated from services
   
-  // Debug flag - set to true for console logging
-  const isDebugMode = true;
+  // Debug flag - set to false for production
+  const isDebugMode = false;
 
   useEffect(() => {
     // Get the current active section based on scroll position
@@ -152,21 +152,36 @@ export function useWheelNav() {
         threshold = isLikelyTrackpad ? 100 : 50;
       }
       
-      // Enhanced debug logging
+      // Enhanced debug logging - but be careful not to cause runtime errors
       if (isDebugMode) {
-        const scrollInfo = activeSection === 'portfolio' 
-          ? `, Scroll count: ${scrollCountInWindowRef.current}, Window age: ${timestamp - scrollWindowStartTimeRef.current}ms` 
-          : '';
+        try {
+          // Create additional info for portfolio section
+          let scrollInfo = '';
+          if (activeSection === 'portfolio') {
+            scrollInfo = `, Scroll count: ${scrollCountInWindowRef.current}, Window age: ${timestamp - scrollWindowStartTimeRef.current}ms`;
+          }
           
-        console.log(
-          `Section: ${activeSection}${scrollInfo}, ` +
-          `Device: ${isLikelyTrackpad ? 'trackpad' : 'mouse'}, ` + 
-          `Delta: ${Math.round(e.deltaY)}, ` +
-          `Threshold: ${threshold}, ` + 
-          `Accumulated: ${Math.round(accumulatedDeltaRef.current)}` +
-          (isPortfolioInCooldown ? ' [PORTFOLIO COOLDOWN]' : '') +
-          (isServicesInCooldown ? ' [SERVICES COOLDOWN]' : '')
-        );
+          // Create cooldown indicators
+          let cooldownInfo = '';
+          if (isPortfolioInCooldown) {
+            cooldownInfo += ' [PORTFOLIO COOLDOWN]';
+          }
+          if (isServicesInCooldown) {
+            cooldownInfo += ' [SERVICES COOLDOWN]';
+          }
+          
+          // Log everything safely
+          console.log(
+            `Section: ${activeSection}${scrollInfo}, ` +
+            `Device: ${isLikelyTrackpad ? 'trackpad' : 'mouse'}, ` + 
+            `Delta: ${Math.round(e.deltaY)}, ` +
+            `Threshold: ${threshold}, ` + 
+            `Accumulated: ${Math.round(accumulatedDeltaRef.current)}${cooldownInfo}`
+          );
+        } catch (err) {
+          // Silently fail if there are any errors in the debug logging
+          console.log('Debug logging error, continuing navigation');
+        }
       }
       
       // Only process if accumulated delta is big enough
