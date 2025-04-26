@@ -1,9 +1,12 @@
-// Import all assets here
-import portalmeImage from '../../public/portalme.png';
+// Export all assets from this file
+import timelineVideo from './timeline3.mp4';
 
-// Export assets for use in components
-export const images = {
-  portalme: portalmeImage
+// Export images and other assets
+export const videos = {
+  timeline: timelineVideo,
 };
 
-export default images;
+// Export any other assets below
+export const images = {
+  // Add image imports here when needed
+};
