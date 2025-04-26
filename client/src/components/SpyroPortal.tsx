@@ -5,7 +5,7 @@ export default function SpyroPortal() {
   return (
     <div className="spyro-portal">
       <img 
-        src="/portalme.png" 
+        src="/images/portalme.png" 
         alt="Spyro Sunny Beach portal" 
         loading="eager"
       />
