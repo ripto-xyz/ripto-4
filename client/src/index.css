@@ -455,6 +455,32 @@ nav a:active {
   }
 }
 
+/* Portfolio item size */
+.portfolio-item .web3-growth-3d {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  /* Smaller shadows for portfolio item */
+  text-shadow:
+    0 -1px 0 #c7a3ff,
+    -1px 0px 0 #6F4DAF,
+    1px 0px 0px #AD91D6,
+    1px 1px 0 #FFA653,
+    2px 1px 0 #F49443,
+    2px 2px 0 #E38234,
+    3px 2px 0 #D97225,
+    3px 3px 0 #CE6922,
+    0px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Case study page - DEX Growth Campaign */
+header .web3-growth-3d {
+  font-size: 3.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+}
+
 /* Mobile responsive size */
 @media (max-width: 768px) {
   .web3-growth-3d {
