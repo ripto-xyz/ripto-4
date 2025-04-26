@@ -61,7 +61,7 @@ export default function AboutSection() {
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto">
           {/* White semi-transparent container behind the text with Spyro portal image */}
-          <div className="bg-white bg-opacity-25 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 relative overflow-hidden w-full mx-auto">
+          <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 relative overflow-hidden w-full mx-auto">
             <div className="flex flex-col md:flex-row gap-8 md:gap-12 lg:gap-16 items-center">
               {/* Text content area */}
               <div className="md:w-1/2 lg:w-3/5">
@@ -95,7 +95,7 @@ export default function AboutSection() {
         
         {/* Stats section with matching white semi-transparent background */}
         <div className="mt-8 md:mt-12 lg:mt-16">
-          <div className="bg-white bg-opacity-25 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/20 w-full">
+          <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/20 w-full">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
               {stats.map((stat, index) => (
                 <div key={index} className="p-2 md:p-3">
