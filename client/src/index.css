@@ -191,33 +191,6 @@ body {
   animation: fadeOut 3s ease-in-out forwards;
 }
 
-/* Navigation buttons styles */
-.nav-button {
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.nav-button::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.nav-button:hover::after {
-  opacity: 1;
-}
-
-.nav-button:active {
-  transform: scale(0.95);
-}
-
 /* Base styles for all sections - JS handles scrolling */
 .scroll-section {
   min-height: 100vh; /* Make all sections at least full viewport height */
