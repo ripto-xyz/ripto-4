@@ -56,16 +56,8 @@ export default function Home() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [showMobileMenu]);
   
-  // Simplified navigation function
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop - 100,
-        behavior: 'smooth'
-      });
-    }
-  };
+  // We don't need this function anymore as scrolling is handled in Navbar
+  // Removed unused scrollToSection function
   
   return (
     <div className="min-h-screen">

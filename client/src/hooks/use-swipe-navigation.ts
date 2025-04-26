@@ -104,25 +104,13 @@ export function useSwipeNavigation() {
       if (Math.abs(accumulatedWheelDelta.current) < WHEEL_DELTA_THRESHOLD) return;
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
-        // Special case for About section
-        if (activeSection === 'about') {
-          const nextSection = getNextSectionId(activeSection);
-          if (nextSection) {
-            isScrollingToSection.current = true;
-            scrollToSection(nextSection);
-            applyCooldown();
-            accumulatedWheelDelta.current = 0;
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
-          }
-        } else {
-          const nextSection = getNextSectionId(activeSection);
-          if (nextSection) {
-            isScrollingToSection.current = true;
-            scrollToSection(nextSection);
-            applyCooldown();
-            accumulatedWheelDelta.current = 0;
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
-          }
+        const nextSection = getNextSectionId(activeSection);
+        if (nextSection) {
+          isScrollingToSection.current = true;
+          scrollToSection(nextSection);
+          applyCooldown();
+          accumulatedWheelDelta.current = 0;
+          setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
         }
       } else { // Scrolling UP
         // Special case: prevent going from About back to Home
@@ -147,23 +135,12 @@ export function useSwipeNavigation() {
       if (isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
-        // Special case for About section
-        if (activeSection === 'about') {
-          const nextSection = getNextSectionId(activeSection);
-          if (nextSection) {
-            isScrollingToSection.current = true;
-            scrollToSection(nextSection);
-            applyCooldown();
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
-          }
-        } else {
-          const nextSection = getNextSectionId(activeSection);
-          if (nextSection) {
-            isScrollingToSection.current = true;
-            scrollToSection(nextSection);
-            applyCooldown();
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
-          }
+        const nextSection = getNextSectionId(activeSection);
+        if (nextSection) {
+          isScrollingToSection.current = true;
+          scrollToSection(nextSection);
+          applyCooldown();
+          setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
         }
       } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
         // Special case: prevent going from About back to Home
