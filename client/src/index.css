@@ -428,6 +428,32 @@ nav a:active {
   transition: all 0.3s ease;
 }
 
+/* Elora character animation */
+@keyframes eloraFloat {
+  0% { transform: translateY(0) rotate(6deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(6deg); }
+}
+
+.elora-character {
+  animation: eloraFloat 5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.elora-character:hover {
+  animation-play-state: paused;
+  transform: scale(1.1) rotate(-5deg);
+  transition: transform 0.3s ease;
+}
+
+.elora-character img {
+  transition: filter 0.3s ease;
+}
+
+.elora-character:hover img {
+  filter: drop-shadow(0 0 8px rgba(255, 210, 100, 0.8)) brightness(1.1);
+}
+
 /* Additional hover effect for desktop users */
 @media (hover: hover) {
   .web3-growth-3d:hover {

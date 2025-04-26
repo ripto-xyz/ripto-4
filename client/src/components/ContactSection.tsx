@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPin, Mail, Users } from "lucide-react";
+import eloraImage from "@assets/elora.png";
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,6 +11,15 @@ export default function ContactSection() {
         <div className="max-w-[900px] mx-auto relative">
           {/* Pink opaque background container */}
           <div className="absolute inset-0 bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl shadow-xl border border-[#D81B60]/20"></div>
+          
+          {/* Elora character positioned at top-right corner overlapping the border */}
+          <div className="absolute -top-16 -right-12 md:-top-20 md:-right-14 lg:-top-24 lg:-right-16 z-20 w-32 md:w-40 lg:w-48 elora-character">
+            <img 
+              src={eloraImage} 
+              alt="Elora character" 
+              className="w-full h-auto filter drop-shadow-lg"
+            />
+          </div>
           
           <div className="relative z-10 px-4 py-6 sm:py-8 md:py-10">
             <div className="text-center mb-4 sm:mb-6">
