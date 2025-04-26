@@ -6,11 +6,11 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className={`relative py-0 my-8 ${isVisible ? 'animate-fadeIn' : ''}`}>
-      <div className="max-w-3xl mx-auto relative">
+      <div className="max-w-3xl mx-auto relative px-4 sm:px-6 md:px-0">
         {/* Orange opaque background container */}
         <div className="absolute inset-0 bg-orange-500 bg-opacity-95 rounded-xl shadow-xl"></div>
         
-        <div className="relative z-10 px-6 py-6">
+        <div className="relative z-10 px-4 sm:px-6 py-6">
           <div className="text-center mb-4">
             <h2 className="text-2xl font-bold mb-2 font-poppins text-white">Get in Touch</h2>
             <p className="text-base text-white max-w-xl mx-auto opacity-90">
