@@ -185,25 +185,44 @@ export function useSwipeNavigation() {
           if (percentThroughSection > 50) {
             const nextSection = getNextSectionId(activeSection);
             if (nextSection) {
+              console.log('About to Portfolio - using special handling');
               isScrollingToSection.current = true;
-              scrollToSection(nextSection);
+              
+              // Force direct navigation to portfolio to bypass issues
+              const portfolioElement = document.getElementById('portfolio');
+              if (portfolioElement) {
+                window.scrollTo({
+                  top: portfolioElement.offsetTop - 95,
+                  behavior: 'smooth'
+                });
+              } else {
+                scrollToSection(nextSection);
+              }
+              
               applyCooldown();
               accumulatedWheelDelta.current = 0;
-              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
+              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
             }
           }
         } else { // Scrolling UP in About section
-          // Significantly increase threshold to prevent unintended navigation back to home
-          // This was 15% before, which was too low
-          if (percentThroughSection < 5) {
-            const prevSection = getPrevSectionId(activeSection);
-            if (prevSection) {
-              isScrollingToSection.current = true;
-              scrollToSection(prevSection);
-              applyCooldown();
-              accumulatedWheelDelta.current = 0;
-              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
+          // Make it virtually impossible to go back to home with scrolling
+          // This essentially disables scroll-based navigation from About to Home
+          if (percentThroughSection < 1) {
+            console.log('About to Home - using direct prevention');
+            // Instead of navigating to previous section, just scroll to top of current
+            isScrollingToSection.current = true;
+            
+            const aboutElement = document.getElementById('about');
+            if (aboutElement) {
+              window.scrollTo({
+                top: aboutElement.offsetTop - 95,
+                behavior: 'smooth'
+              });
             }
+            
+            applyCooldown();
+            accumulatedWheelDelta.current = 0;
+            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
           }
         }
       } 
@@ -214,11 +233,23 @@ export function useSwipeNavigation() {
           if (percentThroughSection < 30) {
             const prevSection = getPrevSectionId(activeSection);
             if (prevSection) {
+              console.log('Contact to Services - using special handling');
               isScrollingToSection.current = true;
-              scrollToSection(prevSection);
+              
+              // Force direct navigation to services to bypass issues
+              const servicesElement = document.getElementById('services');
+              if (servicesElement) {
+                window.scrollTo({
+                  top: servicesElement.offsetTop - 95,
+                  behavior: 'smooth'
+                });
+              } else {
+                scrollToSection(prevSection);
+              }
+              
               applyCooldown();
               accumulatedWheelDelta.current = 0;
-              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
+              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
             }
           }
         }
@@ -274,19 +305,39 @@ export function useSwipeNavigation() {
           // Extra protection for About section when using keyboard navigation
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
+            console.log('About to Portfolio - keyboard navigation');
             isScrollingToSection.current = true;
-            scrollToSection(nextSection);
+            
+            // Direct navigation to portfolio
+            const portfolioElement = document.getElementById('portfolio');
+            if (portfolioElement) {
+              window.scrollTo({
+                top: portfolioElement.offsetTop - 95,
+                behavior: 'smooth'
+              });
+            } else {
+              scrollToSection(nextSection);
+            }
+            
             applyCooldown();
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 200);
+            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
           }
         } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-          const prevSection = getPrevSectionId(activeSection);
-          if (prevSection) {
-            isScrollingToSection.current = true;
-            scrollToSection(prevSection);
-            applyCooldown();
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 200);
+          // Prevent going back to home
+          console.log('About to Home - keyboard prevented');
+          isScrollingToSection.current = true;
+          
+          // Keep in About section
+          const aboutElement = document.getElementById('about');
+          if (aboutElement) {
+            window.scrollTo({
+              top: aboutElement.offsetTop - 95,
+              behavior: 'smooth'
+            });
           }
+          
+          applyCooldown();
+          setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
         }
       }
       // Special handling for Home to About transition
@@ -305,10 +356,22 @@ export function useSwipeNavigation() {
         if (e.key === 'ArrowUp' || e.key === 'PageUp') {
           const prevSection = getPrevSectionId(activeSection);
           if (prevSection) {
+            console.log('Contact to Services - keyboard navigation');
             isScrollingToSection.current = true;
-            scrollToSection(prevSection);
+            
+            // Direct navigation to services
+            const servicesElement = document.getElementById('services');
+            if (servicesElement) {
+              window.scrollTo({
+                top: servicesElement.offsetTop - 95,
+                behavior: 'smooth'
+              });
+            } else {
+              scrollToSection(prevSection);
+            }
+            
             applyCooldown();
-            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 200);
+            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
           }
         }
       }

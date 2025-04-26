@@ -41,8 +41,8 @@ export default function Home() {
         <AboutSection />
         <PortfolioSection />
         <ServicesSection />
+        <ContactSection />
       </main>
-      <ContactSection />
       <Footer />
     </div>
   );
