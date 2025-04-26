@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import timelineVideo from '@assets/Timeline 3.mp4';
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -42,9 +43,7 @@ export default function VideoBackground() {
           zIndex: -1
         }}
       >
-        <source src="/attached_assets/timeline.mp4" type="video/mp4" />
-        <source src="/timeline-bg.mp4" type="video/mp4" />
-        <source src="/timeline.mp4" type="video/mp4" />
+        <source src={timelineVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
