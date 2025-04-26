@@ -1,16 +1,13 @@
-// Export all assets from this file
-import timelineVideo from './timeline3.mp4'; // Original high quality version
-import timelineOptimized from './timeline3-web-optimized.mp4'; // Web-optimized version (1280p, 30fps)
-import timelinePlaceholder from './timeline3-placeholder.mp4'; // Placeholder version for instant loading
+// Export all assets from this file with static paths instead of imports
+// This avoids the Vite import issues and runtime errors
 
-// Export videos with different quality options
+// Export videos with direct paths to public folder
 export const videos = {
-  timeline: timelineOptimized, // Default to optimized version for better loading
-  timelineHighQuality: timelineVideo, // Original high quality for powerful devices
-  timelinePlaceholder: timelinePlaceholder, // Ultra small placeholder
+  timeline: "/images/timeline3-original.mp4", // Use the original video
+  timelineNew: "/images/timeline3-new.mp4", // Backup option
 };
 
 // Export any other assets below
 export const images = {
-  // Add image imports here when needed
+  // Add image paths here when needed
 };
