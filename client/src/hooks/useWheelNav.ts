@@ -6,200 +6,23 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
  * Handles both devices by accounting for their different scroll characteristics.
  * Features reduced sensitivity for portfolio and services sections to allow better reading.
  */
+/**
+ * IMPORTANT: Wheel navigation has been completely disabled based on user feedback.
+ * We now use manual navigation through navbar and buttons only.
+ * This improves the reading experience in content-heavy sections (portfolio, services).
+ */
 export function useWheelNav() {
-  // State refs to persist across renders
-  const isScrollingRef = useRef(false);
-  const lastScrollTimeRef = useRef(0);
-  const accumulatedDeltaRef = useRef(0);
-
+  // This hook no longer adds wheel-based section navigation
+  // It's kept as a placeholder to avoid breaking existing code
+  
   useEffect(() => {
-    // Define types for section settings
-    type ScrollSettings = {
-      threshold: { trackpad: number; wheel: number; };
-      resetTime: number;
-      scrollDelay: number;
-    };
+    // No-op implementation - we've intentionally disabled wheel-based navigation
+    console.log('Wheel navigation is disabled - using navbar and manual navigation only');
     
-    type SectionSettings = {
-      [key: string]: ScrollSettings;
-    };
+    // We no longer add any wheel event listeners
     
-    // Section-specific settings to control scroll sensitivity
-    const sectionSettings: SectionSettings = {
-      'home': { 
-        threshold: { trackpad: 80, wheel: 40 }, 
-        resetTime: 200, 
-        scrollDelay: 700 
-      },
-      'about': { 
-        threshold: { trackpad: 80, wheel: 40 }, 
-        resetTime: 200, 
-        scrollDelay: 700 
-      },
-      'portfolio': { 
-        threshold: { trackpad: 350, wheel: 200 }, // Even higher values = much less sensitive
-        resetTime: 600,                           // Much longer time before resetting delta
-        scrollDelay: 1200                         // Longer animation delay
-      },
-      'services': { 
-        threshold: { trackpad: 350, wheel: 200 }, // Even higher values = much less sensitive 
-        resetTime: 600,                           // Much longer time before resetting delta
-        scrollDelay: 1200                         // Longer animation delay
-      },
-      'contact': { 
-        threshold: { trackpad: 80, wheel: 40 }, 
-        resetTime: 200, 
-        scrollDelay: 700 
-      }
-    };
-    
-    // Default settings if section not found
-    const defaultSettings = {
-      threshold: { trackpad: 80, wheel: 40 },
-      resetTime: 200,
-      scrollDelay: 700
-    };
-
-    const getActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2; // Use the middle of the viewport
-      
-      // Find which section contains the middle of the viewport
-      for (const sectionId of sectionIds) {
-        const section = document.getElementById(sectionId);
-        if (!section) continue;
-        
-        const rect = section.getBoundingClientRect();
-        const sectionTop = section.offsetTop;
-        const sectionBottom = sectionTop + rect.height;
-        
-        // If the middle of the viewport is within this section
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          return sectionId;
-        }
-      }
-      
-      // Fallback: use the closest section based on position
-      let closestSection = sectionIds[0];
-      let closestDistance = Infinity;
-      
-      for (const sectionId of sectionIds) {
-        const section = document.getElementById(sectionId);
-        if (!section) continue;
-        
-        const distance = Math.abs(section.offsetTop - scrollPosition);
-        if (distance < closestDistance) {
-          closestDistance = distance;
-          closestSection = sectionId;
-        }
-      }
-      
-      return closestSection;
-    };
-
-    // The wheel event handler
-    const handleWheel = (e: WheelEvent) => {
-      // Skip processing if already in a scroll animation
-      if (isScrollingRef.current) {
-        e.preventDefault();
-        return;
-      }
-      
-      const now = Date.now();
-      const timeSinceLastScroll = now - lastScrollTimeRef.current;
-      
-      // Get current section to determine threshold
-      const currentSection = getActiveSection();
-      
-      // Validate that currentSection is one of our known sections 
-      const isKnownSection = sectionIds.includes(currentSection);
-      
-      // Get settings for current section - with type safety
-      const settings = isKnownSection && currentSection in sectionSettings
-        ? sectionSettings[currentSection] 
-        : defaultSettings;
-      
-      // Reset accumulated delta if it's been a while - using section-specific reset time
-      if (timeSinceLastScroll > settings.resetTime) {
-        accumulatedDeltaRef.current = 0;
-      }
-      
-      // Accumulate delta values (helpful for trackpads that send lots of small deltas)
-      accumulatedDeltaRef.current += Math.abs(e.deltaY);
-      
-      // Detect if this is likely a trackpad or mouse wheel
-      const isLikelyTrackpad = Math.abs(e.deltaY) < 40;
-      
-      // Get appropriate threshold based on input device and section
-      const threshold = isLikelyTrackpad ? 
-        settings.threshold.trackpad : 
-        settings.threshold.wheel;
-      
-      // Only process if accumulated delta is big enough
-      if (accumulatedDeltaRef.current < threshold) {
-        return;
-      }
-      
-      // Prevent default scrolling
-      e.preventDefault();
-      
-      // Mark as scrolling to prevent additional processing
-      isScrollingRef.current = true;
-      lastScrollTimeRef.current = now;
-      accumulatedDeltaRef.current = 0;
-      
-      if (e.deltaY > 0) {
-        // Scrolling DOWN - go to next section
-        
-        // Special treatment for content-heavy sections - require an extra large scroll to leave
-        if (currentSection === 'portfolio' || currentSection === 'services') {
-          // Required scroll intensity varies by input device
-          const extraScrollThreshold = isLikelyTrackpad ? 500 : 300;
-          
-          // Only go to next section if the scroll is extremely large for content sections
-          if (Math.abs(e.deltaY) > extraScrollThreshold) {
-            const nextSection = getNextSectionId(currentSection);
-            if (nextSection) {
-              scrollToSection(nextSection);
-            } else {
-              isScrollingRef.current = false;
-            }
-          } else {
-            // For smaller scrolls in content sections, don't navigate
-            isScrollingRef.current = false;
-          }
-        } else {
-          // Normal behavior for other sections
-          const nextSection = getNextSectionId(currentSection);
-          if (nextSection) {
-            scrollToSection(nextSection);
-          } else {
-            // No next section available
-            isScrollingRef.current = false;
-          }
-        }
-      } else {
-        // Scrolling UP - go to previous section
-        const prevSection = getPrevSectionId(currentSection);
-        if (prevSection) {
-          scrollToSection(prevSection);
-        } else {
-          // No previous section available
-          isScrollingRef.current = false;
-        }
-      }
-      
-      // Reset scrolling state after animation completes - using section-specific delay
-      setTimeout(() => {
-        isScrollingRef.current = false;
-      }, settings.scrollDelay);
-    };
-    
-    // Add wheel event listener with passive: false to allow preventDefault
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    
-    // Cleanup
     return () => {
-      window.removeEventListener('wheel', handleWheel);
+      // No cleanup needed
     };
   }, []);
 }
