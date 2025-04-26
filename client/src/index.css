@@ -722,12 +722,3 @@ input, textarea, select {
 .yellow-logo-text {
   color: #FFFF80 !important;
 }
-
-/* 3. Web3 Growth gradient text */
-.web3-growth-text {
-  font-family: 'Arial Black', Impact, sans-serif;
-  letter-spacing: -0.5px;
-  font-weight: 900;
-  color: transparent !important;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
