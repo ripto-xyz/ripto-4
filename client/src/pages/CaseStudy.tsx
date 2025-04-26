@@ -87,9 +87,15 @@ export default function CaseStudy() {
         
         {/* Header */}
         <header className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-400">
-            {caseStudy.title}
-          </h1>
+          {caseStudy.id === 'dex-growth-campaign' ? (
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500">
+              {caseStudy.title}
+            </h1>
+          ) : (
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-400">
+              {caseStudy.title}
+            </h1>
+          )}
           <div className="flex flex-wrap gap-2 mb-6">
             {categoriesArray.map((category, index) => (
               <Badge key={index} variant="secondary" className="text-sm font-medium">
@@ -158,7 +164,13 @@ export default function CaseStudy() {
         
         {/* Call to action */}
         <div className="text-center bg-gradient-to-br from-purple-900/40 to-blue-900/40 p-8 rounded-lg border border-purple-500/20 mb-8">
-          <h2 className="text-2xl font-bold mb-3">Ready to Transform Your Web3 Growth Strategy?</h2>
+          {caseStudy.id === 'dex-growth-campaign' ? (
+            <h2 className="text-2xl font-bold mb-3 bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500">
+              Transform Your Web3 Growth Strategy Today
+            </h2>
+          ) : (
+            <h2 className="text-2xl font-bold mb-3">Ready to Transform Your Web3 Growth Strategy?</h2>
+          )}
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
             Let's discuss how we can apply similar strategies to help your project achieve exceptional results and stand out in the Web3 landscape.
           </p>
