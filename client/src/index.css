@@ -721,7 +721,14 @@ input, textarea, select {
   background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Exclude our gradient text from color overrides */
+/* Ensure gradient text displays correctly */
+.bg-clip-text.text-transparent {
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* Exclude our gradient 3D text from color overrides */
 .web3-growth-3d {
   color: transparent !important;
   -webkit-background-clip: text !important;
