@@ -11,12 +11,46 @@ export function useWheelNav() {
   const isScrollingRef = useRef(false);
   const lastScrollTimeRef = useRef(0);
   const accumulatedDeltaRef = useRef(0);
-  const isInContentSectionRef = useRef(false);
 
   useEffect(() => {
+    // Section-specific settings to control scroll sensitivity
+    const sectionSettings = {
+      'home': { 
+        threshold: { trackpad: 80, wheel: 40 }, 
+        resetTime: 200, 
+        scrollDelay: 700 
+      },
+      'about': { 
+        threshold: { trackpad: 80, wheel: 40 }, 
+        resetTime: 200, 
+        scrollDelay: 700 
+      },
+      'portfolio': { 
+        threshold: { trackpad: 250, wheel: 150 }, // Higher values = less sensitive
+        resetTime: 400,                           // Longer time before resetting delta
+        scrollDelay: 1100                         // Longer animation delay
+      },
+      'services': { 
+        threshold: { trackpad: 250, wheel: 150 }, 
+        resetTime: 400, 
+        scrollDelay: 1100 
+      },
+      'contact': { 
+        threshold: { trackpad: 80, wheel: 40 }, 
+        resetTime: 200, 
+        scrollDelay: 700 
+      }
+    };
+    
+    // Default settings if section not found
+    const defaultSettings = {
+      threshold: { trackpad: 80, wheel: 40 },
+      resetTime: 200,
+      scrollDelay: 700
+    };
+
     const getActiveSection = () => {
-      // Use more of the viewport to determine active section
-      const scrollPosition = window.scrollY + window.innerHeight / 2; 
+      const scrollPosition = window.scrollY + window.innerHeight / 2; // Use the middle of the viewport
       
       // Find which section contains the middle of the viewport
       for (const sectionId of sectionIds) {
@@ -29,8 +63,6 @@ export function useWheelNav() {
         
         // If the middle of the viewport is within this section
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-          // Set the content section ref to true if we're in portfolio or services
-          isInContentSectionRef.current = sectionId === 'portfolio' || sectionId === 'services';
           return sectionId;
         }
       }
@@ -50,8 +82,6 @@ export function useWheelNav() {
         }
       }
       
-      // Set the content section ref based on fallback section
-      isInContentSectionRef.current = closestSection === 'portfolio' || closestSection === 'services';
       return closestSection;
     };
 
@@ -66,10 +96,14 @@ export function useWheelNav() {
       const now = Date.now();
       const timeSinceLastScroll = now - lastScrollTimeRef.current;
       
-      // Reset accumulated delta if it's been a while
-      // Longer reset time for content sections to make scrolling less sensitive
-      const resetTime = isInContentSectionRef.current ? 400 : 200;
-      if (timeSinceLastScroll > resetTime) {
+      // Get current section to determine threshold
+      const currentSection = getActiveSection();
+      
+      // Get settings for current section
+      const settings = sectionSettings[currentSection] || defaultSettings;
+      
+      // Reset accumulated delta if it's been a while - using section-specific reset time
+      if (timeSinceLastScroll > settings.resetTime) {
         accumulatedDeltaRef.current = 0;
       }
       
@@ -79,17 +113,10 @@ export function useWheelNav() {
       // Detect if this is likely a trackpad or mouse wheel
       const isLikelyTrackpad = Math.abs(e.deltaY) < 40;
       
-      // Get current section to determine threshold
-      const currentSection = getActiveSection();
-      
-      // Different thresholds based on input device and section
-      // Higher threshold for portfolio and services sections to make navigation less sensitive
-      let threshold = isLikelyTrackpad ? 100 : 50;
-      
-      // Higher threshold for portfolio and services sections (content-heavy areas)
-      if (currentSection === 'portfolio' || currentSection === 'services') {
-        threshold = isLikelyTrackpad ? 200 : 120; // Double the standard threshold
-      }
+      // Get appropriate threshold based on input device and section
+      const threshold = isLikelyTrackpad ? 
+        settings.threshold.trackpad : 
+        settings.threshold.wheel;
       
       // Only process if accumulated delta is big enough
       if (accumulatedDeltaRef.current < threshold) {
@@ -124,12 +151,10 @@ export function useWheelNav() {
         }
       }
       
-      // Reset scrolling state after animation completes
-      // Use longer delay for portfolio and services sections
-      const resetDelay = isInContentSectionRef.current ? 1000 : 700;
+      // Reset scrolling state after animation completes - using section-specific delay
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, resetDelay);
+      }, settings.scrollDelay);
     };
     
     // Add wheel event listener with passive: false to allow preventDefault
