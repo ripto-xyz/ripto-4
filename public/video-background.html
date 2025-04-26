@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .dark-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    
+    video {
+      position: absolute;
+      top: -20%;
+      left: 0;
+      min-width: 100%;
+      min-height: 120%;
+      width: auto;
+      height: auto;
+      z-index: 0;
+      object-fit: cover;
+    }
+    
+    .loading-indicator {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 4px solid white;
+      animation: spin 1s linear infinite;
+      margin-bottom: 10px;
+    }
+    
+    .loading-text {
+      font-family: sans-serif;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes pulse {
+      0% { opacity: 0.5; }
+      50% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <div class="dark-overlay"></div>
+    <div class="loading-indicator" id="loading">
+      <div class="spinner"></div>
+      <div class="loading-text">Loading video...</div>
+    </div>
+    <video id="background-video" autoplay muted loop playsinline>
+      <source src="/images/timeline3-original.mp4" type="video/mp4">
+      <source src="/images/timeline3-new.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const video = document.getElementById('background-video');
+    const loading = document.getElementById('loading');
+    
+    // Hide loading indicator when video can play
+    video.addEventListener('canplay', function() {
+      console.log('Video can now play');
+      loading.style.display = 'none';
+    });
+    
+    // Handle errors
+    video.addEventListener('error', function(e) {
+      console.error('Video error:', e);
+      // Try to reload with the backup source
+      if (video.currentSrc.includes('timeline3-original.mp4')) {
+        console.log('Trying backup video source');
+        video.innerHTML = '<source src="/images/timeline3-new.mp4" type="video/mp4">';
+        video.load();
+      }
+    });
+  </script>
+</body>
+</html>
