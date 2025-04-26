@@ -192,8 +192,9 @@ export function useSwipeNavigation() {
             }
           }
         } else { // Scrolling UP in About section
-          // Only go back to home if we're very close to the top and clearly intending to go back
-          if (percentThroughSection < 15) {
+          // Significantly increase threshold to prevent unintended navigation back to home
+          // This was 15% before, which was too low
+          if (percentThroughSection < 5) {
             const prevSection = getPrevSectionId(activeSection);
             if (prevSection) {
               isScrollingToSection.current = true;

@@ -54,6 +54,17 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
             <a 
               href="#about" 
+              onClick={(e) => {
+                e.preventDefault();
+                // Direct navigation to about to avoid scroll issues
+                const aboutSection = document.getElementById('about');
+                if (aboutSection) {
+                  window.scrollTo({
+                    top: aboutSection.offsetTop - 100, // Offset to account for navbar
+                    behavior: 'smooth'
+                  });
+                }
+              }}
               className={`${
                 activeSection === 'about' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -121,7 +132,19 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 Home
               </a>
               <a 
-                href="#about" 
+                href="#about"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowMobileMenu(false); // Close mobile menu
+                  // Direct navigation to about to avoid scroll issues
+                  const aboutSection = document.getElementById('about');
+                  if (aboutSection) {
+                    window.scrollTo({
+                      top: aboutSection.offsetTop - 100, // Offset to account for navbar
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
                 className={`${
                   activeSection === 'about' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
