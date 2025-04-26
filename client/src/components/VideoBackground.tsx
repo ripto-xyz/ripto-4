@@ -6,20 +6,41 @@ export default function VideoBackground() {
 
   // Add event listener for when document is clicked to ensure video plays
   useEffect(() => {
+    console.log("VideoBackground mounted, video path: /videos/timeline.mp4");
+    
+    // Verify video file availability
+    fetch('/videos/timeline.mp4', { method: 'HEAD' })
+      .then(response => {
+        if (response.ok) {
+          console.log("Video file exists on server:", response.status, response.statusText);
+        } else {
+          console.error("Video file not found on server:", response.status, response.statusText);
+        }
+      })
+      .catch(err => {
+        console.error("Error checking video file:", err);
+      });
+    
     const playVideo = () => {
       if (videoRef.current) {
-        videoRef.current.play().catch(e => {
-          console.error("Error playing video:", e);
-        });
+        console.log("Attempting to play video...");
+        videoRef.current.play()
+          .then(() => console.log("Video playback started successfully"))
+          .catch(e => {
+            console.error("Error playing video:", e);
+          });
       }
     };
 
     // Try to play immediately
     if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // If autoplay fails, set up click handler
-        document.addEventListener('click', playVideo, { once: true });
-      });
+      videoRef.current.play()
+        .then(() => console.log("Video autoplay successful"))
+        .catch((err) => {
+          console.log("Video autoplay failed, will attempt on click:", err);
+          // If autoplay fails, set up click handler
+          document.addEventListener('click', playVideo, { once: true });
+        });
     }
 
     return () => {
@@ -40,7 +61,14 @@ export default function VideoBackground() {
         muted 
         loop 
         playsInline
-        onError={(e) => console.error("Video error:", e)}
+        onLoadStart={() => console.log("Video load started")}
+        onLoadedData={() => console.log("Video data loaded")}
+        onCanPlay={() => console.log("Video can play")}
+        onPlaying={() => console.log("Video is playing")}
+        onError={(e) => console.error("Video error:", e.currentTarget.error)}
+        onSeeking={() => console.log("Video seeking")}
+        onSeeked={() => console.log("Video seeked")}
+        preload="auto"
         style={{
           objectFit: 'cover',
           width: '100%',
@@ -51,7 +79,7 @@ export default function VideoBackground() {
           zIndex: -1
         }}
       >
-        <source src="/video/timeline.mp4" type="video/mp4" />
+        <source src="/videos/timeline.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
