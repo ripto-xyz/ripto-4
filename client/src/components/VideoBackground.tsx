@@ -1,19 +1,39 @@
 import { useEffect, useRef, useState } from 'react';
 import timelineVideo from '@assets/Timeline 3.mp4';
 
-// Video quality options - Currently only one is available but more can be added
-const videoQualityOptions = {
+// Define type for quality options
+type VideoQuality = 'high' | 'medium' | 'low';
+
+interface VideoQualityOption {
+  src: string;
+  minConnectionSpeed: number;
+  label: string;
+}
+
+// Video quality options with different quality levels
+const videoQualityOptions: Record<VideoQuality, VideoQualityOption> = {
   high: {
-    src: timelineVideo,
-    minConnectionSpeed: 5 // Mbps
+    src: timelineVideo, // Original high quality video
+    minConnectionSpeed: 5, // Mbps
+    label: 'High Quality (4K)'
   },
-  // Medium and low quality versions could be added here when available
+  medium: {
+    src: '/video/timeline-medium.mp4', // Medium quality version
+    minConnectionSpeed: 2, // Mbps
+    label: 'Medium Quality (960p)'
+  },
+  low: {
+    src: '/video/timeline-medium.mp4', // Using medium as fallback for low quality
+    minConnectionSpeed: 0, // Always available
+    label: 'Low Quality (960p)'
+  }
 };
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [selectedQuality, setSelectedQuality] = useState<'high' | 'medium' | 'low'>('high');
+  const [selectedQuality, setSelectedQuality] = useState<VideoQuality>('high');
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [showQualityInfo, setShowQualityInfo] = useState<boolean>(false);
 
   useEffect(() => {
     // Test connection speed
@@ -30,11 +50,9 @@ export default function VideoBackground() {
           if (connectionType === '4g') {
             setSelectedQuality('high');
           } else if (connectionType === '3g') {
-            // If we had medium quality, we would use it here
-            setSelectedQuality('high'); // Fallback to high for now
+            setSelectedQuality('medium');
           } else {
-            // If we had low quality, we would use it here
-            setSelectedQuality('high'); // Fallback to high for now
+            setSelectedQuality('low');
           }
         } else {
           // Fallback method for browsers without Navigation API
@@ -54,12 +72,10 @@ export default function VideoBackground() {
           // Select quality based on speed
           if (speedInMbps >= videoQualityOptions.high.minConnectionSpeed) {
             setSelectedQuality('high');
-          } else if (speedInMbps >= 2) { // Example threshold
-            // Would use medium quality if available
-            setSelectedQuality('high'); // Fallback to high for now
+          } else if (speedInMbps >= videoQualityOptions.medium.minConnectionSpeed) {
+            setSelectedQuality('medium');
           } else {
-            // Would use low quality if available
-            setSelectedQuality('high'); // Fallback to high for now
+            setSelectedQuality('low');
           }
         }
       } catch (error) {
@@ -80,10 +96,22 @@ export default function VideoBackground() {
     if (videoElement && !isLoading) {
       const playPromise = videoElement.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
+        playPromise.then(() => {
+          // Show quality notification for 3 seconds when video starts playing
+          setShowQualityInfo(true);
+          setTimeout(() => {
+            setShowQualityInfo(false);
+          }, 3000);
+        })
+        .catch(() => {
           // Auto-play was prevented, try again on user interaction
           document.addEventListener('click', () => {
-            videoElement.play();
+            videoElement.play().then(() => {
+              setShowQualityInfo(true);
+              setTimeout(() => {
+                setShowQualityInfo(false);
+              }, 3000);
+            });
           }, { once: true });
         });
       }
