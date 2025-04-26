@@ -105,17 +105,25 @@ body {
   display: flex;
   align-items: center;
   position: relative;
-  z-index: 1;
   scroll-margin-top: 80px;
-  border: none !important; /* Explicitly remove any borders */
+  
+  /* Fix for blue lines/borders */
+  border: none !important;
   border-top: none !important;
   border-bottom: none !important;
+  outline: none !important;
+  
+  /* Force background to match body */
+  background-color: #080F1E;
 }
 
 /* Fix for blue lines between sections */
 .scroll-section::before,
 .scroll-section::after {
   content: none !important;
+  display: none !important;
+  border: none !important;
+  background: transparent !important;
 }
 
 /* Remove margins and padding from sections to connect them */
@@ -133,6 +141,20 @@ section#contact {
   border-top: none !important;
 }
 
+/* Specific fixes for the services and portfolio sections */
+section#services {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Direct spacing fix between services and portfolio */
+section#services + section#portfolio {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  border-top: none !important;
+}
+
 /* Ensure no space between sections */
 section {
   border: none !important;
@@ -147,6 +169,45 @@ section {
 body {
   @apply bg-[#080F1E];
   color: white;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Additional fix for blue lines that might appear */
+html, body, #root, main {
+  background-color: #080F1E;
+}
+
+/* Remove borders from all elements */
+*, *::before, *::after {
+  border-color: transparent !important;
+}
+
+/* No duplicate needed - z-index rules applied in section IDs below */
+
+/* Layering for sections to avoid blue lines */
+section#home { 
+  z-index: 5; 
+  margin-bottom: -2px !important; /* Negative margins to ensure no gaps */
+}
+section#about { 
+  z-index: 4; 
+  margin-top: -2px !important;
+  margin-bottom: -2px !important;
+}
+section#services { 
+  z-index: 3; 
+  margin-top: -2px !important;
+  margin-bottom: -2px !important;
+}
+section#portfolio { 
+  z-index: 2; 
+  margin-top: -2px !important;
+  margin-bottom: -2px !important;
+}
+section#contact { 
+  z-index: 1; 
+  margin-top: -2px !important;
 }
 
 /* Keep hero section full height */
