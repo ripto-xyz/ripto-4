@@ -6,17 +6,12 @@ import PortfolioSection from "@/components/PortfolioSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import { useScrollSpy } from "@/hooks/use-scroll-spy";
+import { useSwipeNavigation } from "@/hooks/use-swipe-navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  // Define the exact order of sections for navigation
-  const sectionOrder = ["home", "about", "services", "portfolio", "contact"];
-  
-  const activeSection = useScrollSpy({
-    sectionIds: sectionOrder,
-    offset: 100
-  });
+  // Use our custom swipe navigation hook
+  const { activeSection } = useSwipeNavigation();
   
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   
