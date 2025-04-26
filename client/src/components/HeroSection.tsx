@@ -5,8 +5,8 @@ export default function HeroSection() {
     <section id="home" className="scroll-section relative">
       <div className="container mx-auto px-6 z-10 relative">
         <div className="max-w-3xl">
-          <h1 className="mb-6 leading-tight">
-            <div className="web3-growth-3d">Web3 Growth</div>
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-white">
+            Web3 Growth
           </h1>
           <p className="text-xl md:text-2xl mb-10 text-gray-300">
             Innovative marketing solutions for blockchain projects and decentralized platforms
