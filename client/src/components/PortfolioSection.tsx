@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "wouter";
-import { ArrowRight } from "lucide-react";
 
 interface PortfolioItem {
   id: string;
@@ -94,10 +92,6 @@ export default function PortfolioSection() {
                   <p className="text-base md:text-lg text-gray-200 mb-4 leading-relaxed">
                     {item.description}
                   </p>
-                  
-                  <Link href={`/case-study/${item.id}`} className="flex items-center text-purple-400 text-sm font-medium hover:text-purple-300 transition-colors w-fit">
-                    View Case Study <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
                 </div>
               </div>
             ))}
