@@ -1,0 +1,74 @@
+/* Smoke transition effect */
+.smoke-transition {
+  position: relative;
+  overflow: hidden;
+}
+
+.smoke-transition::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.smoke-transition::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.smoke-transition.active::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.smoke-transition.active::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smoke animation for sections when they appear */
+.smoke-in {
+  animation: smokeIn 1.2s ease-out forwards;
+}
+
+@keyframes smokeIn {
+  0% {
+    opacity: 0;
+    filter: blur(15px);
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* Ensure normal scrolling still works */
+html {
+  scroll-behavior: smooth;
+}
+
+/* CSS to prevent jolting during animations */
+.scroll-section {
+  min-height: 100vh;
+  will-change: transform, opacity;
+}

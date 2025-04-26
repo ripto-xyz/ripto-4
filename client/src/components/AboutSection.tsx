@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SpyroPortal from "./SpyroPortal";
+import SmokeTransition from "./SmokeTransition";
 
 // Define types for the about data
 interface Stat {
