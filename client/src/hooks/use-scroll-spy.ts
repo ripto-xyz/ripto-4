@@ -23,10 +23,10 @@ export function useScrollSpy({ sectionIds, offset = 0 }: ScrollSpyOptions): stri
       const middleOfViewport = scrollPosition + (windowHeight / 3); // Use 1/3 instead of 1/2 for better UX
       
       // Get all section positions
-      const sections = sectionIds
-        .map((sectionId) => {
+      const sections: SectionPosition[] = sectionIds
+        .map((sectionId): SectionPosition => {
           const element = document.getElementById(sectionId);
-          if (!element) return { id: sectionId, position: 0, height: 0 };
+          if (!element) return { id: sectionId, position: 0, height: 0, bottom: 0 };
           
           const rect = element.getBoundingClientRect();
           const bottom = rect.top + window.scrollY + rect.height;

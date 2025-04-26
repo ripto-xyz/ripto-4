@@ -14,7 +14,7 @@ export default function ContactSection() {
           <div className="relative z-10 px-4 py-6 sm:py-8 md:py-10">
             <div className="text-center mb-4 sm:mb-6">
               <h2 className="text-2xl sm:text-3xl font-bold mb-2 font-poppins text-white">Get in Touch</h2>
-              <p className="text-sm sm:text-base text-white max-w-xl mx-auto opacity-90">
+              <p className="text-sm sm:text-base text-white max-w-xl mx-auto font-medium">
                 Ready to elevate your Web3 marketing? Let's discuss your project.
               </p>
             </div>
@@ -26,7 +26,7 @@ export default function ContactSection() {
                     <MapPin size={18} strokeWidth={1.5} />
                   </div>
                   <h3 className="text-sm sm:text-base font-bold font-poppins text-white mb-1">Location</h3>
-                  <p className="text-white text-xs sm:text-sm opacity-90">
+                  <p className="text-white text-xs sm:text-sm font-medium">
                     Global, Remote-First<br />
                     Based in Sevilla, Spain
                   </p>
@@ -39,7 +39,7 @@ export default function ContactSection() {
                     <Mail size={18} strokeWidth={1.5} />
                   </div>
                   <h3 className="text-sm sm:text-base font-bold font-poppins text-white mb-1">Email</h3>
-                  <p className="text-white text-xs sm:text-sm opacity-90">
+                  <p className="text-white text-xs sm:text-sm font-medium">
                     hello@ripto.eth<br />
                     laurence@web3.marketing
                   </p>
