@@ -9,7 +9,7 @@ export default function ContactSection() {
       <div className="container mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[900px] mx-auto relative">
           {/* Pink opaque background container */}
-          <div className="absolute inset-0 bg-pink-500 bg-opacity-25 rounded-xl shadow-xl border border-pink-500/20"></div>
+          <div className="absolute inset-0 bg-pink-500 bg-opacity-25 backdrop-blur-sm rounded-xl shadow-xl border border-pink-500/20"></div>
           
           <div className="relative z-10 px-4 py-6 sm:py-8 md:py-10">
             <div className="text-center mb-4 sm:mb-6">
