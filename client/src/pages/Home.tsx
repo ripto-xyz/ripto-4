@@ -1,3 +1,4 @@
+import VideoBackground from "@/components/VideoBackground";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -64,6 +65,7 @@ export default function Home() {
   
   return (
     <div className="min-h-screen">
+      <VideoBackground />
       <Navbar 
         activeSection={activeSection} 
         showMobileMenu={showMobileMenu}

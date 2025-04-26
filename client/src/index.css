@@ -22,7 +22,6 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   height: 100vh;
-  background-color: #120738 !important; /* Force purple background color */
 }
 
 /* Scroll margins for sections */
@@ -37,7 +36,7 @@ body {
 /* This is moved below to consolidate with existing animation */
 
 :root {
-  --background: 262 100% 14%; /* #120738 - changed to purple instead of white */
+  --background: 0 0% 100%;
   --foreground: 20 14.3% 4.1%;
   --muted: 60 4.8% 95.9%;
   --muted-foreground: 25 5.3% 44.7%;
@@ -60,7 +59,7 @@ body {
 }
 
 .dark {
-  --background: 262 100% 14%; /* #120738 */
+  --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
   --muted: 240 3.7% 15.9%;
   --muted-foreground: 240 5% 64.9%;
@@ -99,27 +98,6 @@ body {
 
 /* HTML and body styles are already set above */
 
-.video-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: -2;
-  background-color: #120738; /* Fallback background color if video fails */
-}
-
-.dark-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  z-index: -1;
-}
-
 .video-background {
   position: fixed;
   top: -20%;  /* Hide the top 20% of the video */
@@ -128,7 +106,7 @@ body {
   min-height: 120%;  /* Compensate for the hidden top */
   width: auto;
   height: auto;
-  z-index: -3; /* Lower z-index so it's behind overlay */
+  z-index: -1;
   object-fit: cover;
 }
 
