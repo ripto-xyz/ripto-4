@@ -359,7 +359,7 @@ nav a:active {
   transform-origin: center;
   
   /* Text coloring - bright yellow from the Spyro font */
-  color: #FFFF80;
+  color: #FFFF80 !important;
   
   /* 3D shadow effects to match Spyro font's depth */
   text-shadow: 
@@ -455,9 +455,9 @@ nav a:active {
     #6B4BA3 75%,
     #573D90 100%
   );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
   
   /* Inner shading for depth */
   box-decoration-break: clone;
@@ -609,8 +609,9 @@ header .web3-growth-3d {
       #6B4BA3 75%,
       #573D90 100%
     );
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    color: transparent !important;
     
     /* Scaled down Spyro font 3D effect for mobile */
     text-shadow:
@@ -705,7 +706,12 @@ header .web3-growth-3d {
   color: white !important;
 }
 
-body, p, span, h1, h2, h3, h4, h5, h6, a, button, li {
+body, p, h1, h2, h3, h4, h5, h6, a, button, li {
+  color: white !important;
+}
+
+/* Exclude special styled text from global color override */
+span:not(.yellow-logo-text):not(.yellow-logo-shadow):not(.yellow-logo-shadow-right):not(.yellow-logo-shadow-bottom) {
   color: white !important;
 }
 
@@ -713,4 +719,11 @@ body, p, span, h1, h2, h3, h4, h5, h6, a, button, li {
 input, textarea, select {
   color: white !important;
   background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Exclude our gradient text from color overrides */
+.web3-growth-3d {
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
 }
