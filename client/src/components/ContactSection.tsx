@@ -1,9 +1,31 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MapPin, Mail, Users } from "lucide-react";
 import eloraImage from "@assets/elora.png";
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    
+    const section = document.getElementById('contact');
+    if (section) {
+      observer.observe(section);
+    }
+    
+    return () => {
+      if (section) {
+        observer.unobserve(section);
+      }
+    };
+  }, []);
 
   return (
     <section id="contact" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>

@@ -16,12 +16,32 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a 
               href="#portfolio" 
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('portfolio');
+                if (element) {
+                  window.scrollTo({
+                    top: element.offsetTop - 100,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
               className="px-8 py-3 bg-primary hover:bg-secondary text-white font-medium rounded-full transition-colors duration-300 text-center"
             >
               View Our Work
             </a>
             <a 
               href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('contact');
+                if (element) {
+                  window.scrollTo({
+                    top: element.offsetTop - 100,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
               className="px-8 py-3 bg-transparent border border-white hover:border-primary hover:text-primary text-white font-medium rounded-full transition-all duration-300 text-center"
             >
               Get in Touch
@@ -30,7 +50,20 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <a href="#about" className="text-white opacity-70 hover:opacity-100 transition-opacity">
+        <a 
+          href="#about" 
+          onClick={(e) => {
+            e.preventDefault();
+            const element = document.getElementById('about');
+            if (element) {
+              window.scrollTo({
+                top: element.offsetTop - 90, // Slightly adjusted for About section
+                behavior: 'smooth'
+              });
+            }
+          }}
+          className="text-white opacity-70 hover:opacity-100 transition-opacity"
+        >
           <ArrowDown size={24} />
         </a>
       </div>

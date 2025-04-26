@@ -95,6 +95,16 @@ export default function PortfolioSection() {
             <div className="text-center mt-8 md:mt-12">
               <a 
                 href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    window.scrollTo({
+                      top: element.offsetTop - 95, // Adjusted for Contact section
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
                 className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-primary hover:bg-secondary text-white font-medium rounded-full transition-colors duration-300 text-sm sm:text-base"
               >
                 Ready to Work Together?
