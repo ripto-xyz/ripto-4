@@ -17,6 +17,7 @@ export function useWheelNav() {
   const scrollWindowStartTimeRef = useRef(0);
   const scrollCountInWindowRef = useRef(0);
   const lastPortfolioNavigationTimeRef = useRef(0); // When we last navigated from portfolio
+  const lastServicesNavigationTimeRef = useRef(0); // When we last navigated from services
   
   // Debug flag - set to true for console logging
   const isDebugMode = true;
@@ -116,6 +117,18 @@ export function useWheelNav() {
         }
       }
       
+      // Check if the services section is in its cooldown period
+      let isServicesInCooldown = false;
+      if (activeSection === 'services') {
+        const SERVICES_COOLDOWN_MS = 2000; // 2-second cooldown for services section
+        const timeSinceLastNavigation = timestamp - lastServicesNavigationTimeRef.current;
+        isServicesInCooldown = timeSinceLastNavigation < SERVICES_COOLDOWN_MS;
+        
+        if (isServicesInCooldown && isDebugMode) {
+          console.log(`Services in cooldown! ${Math.round((SERVICES_COOLDOWN_MS - timeSinceLastNavigation)/1000)}s remaining`);
+        }
+      }
+      
       // Set appropriate threshold based on section and cooldown status
       let threshold;
       if (activeSection === 'portfolio') {
@@ -127,8 +140,13 @@ export function useWheelNav() {
           threshold = isLikelyTrackpad ? 250 : 120;
         }
       } else if (activeSection === 'services') {
-        // Moderate threshold for services
-        threshold = isLikelyTrackpad ? 150 : 80;
+        if (isServicesInCooldown) {
+          // Higher threshold during the cooldown period
+          threshold = isLikelyTrackpad ? 400 : 200;
+        } else {
+          // Standard threshold for services without cooldown
+          threshold = isLikelyTrackpad ? 150 : 80;
+        }
       } else {
         // Normal threshold for other sections
         threshold = isLikelyTrackpad ? 100 : 50;
@@ -146,7 +164,8 @@ export function useWheelNav() {
           `Delta: ${Math.round(e.deltaY)}, ` +
           `Threshold: ${threshold}, ` + 
           `Accumulated: ${Math.round(accumulatedDeltaRef.current)}` +
-          (isPortfolioInCooldown ? ' [COOLDOWN]' : '')
+          (isPortfolioInCooldown ? ' [PORTFOLIO COOLDOWN]' : '') +
+          (isServicesInCooldown ? ' [SERVICES COOLDOWN]' : '')
         );
       }
       
@@ -163,9 +182,11 @@ export function useWheelNav() {
       lastScrollTimeRef.current = timestamp;
       accumulatedDeltaRef.current = 0;
       
-      // If navigating from the portfolio section, update the timestamp
+      // Update timestamps for sections with cooldown periods
       if (activeSection === 'portfolio') {
         lastPortfolioNavigationTimeRef.current = timestamp;
+      } else if (activeSection === 'services') {
+        lastServicesNavigationTimeRef.current = timestamp;
       }
       
       // Navigate to the next/previous section
