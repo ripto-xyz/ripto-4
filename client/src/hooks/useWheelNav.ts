@@ -85,9 +85,9 @@ export function useWheelNav() {
       // Get current active section
       const activeSection = getActiveSection();
       
-      // Handle time windows for accumulated scrolls (used by portfolio section)
-      if (activeSection === 'portfolio') {
-        const TIME_WINDOW_MS = 500; // 500ms time window
+      // Handle time windows for accumulated scrolls (used by portfolio and services sections)
+      if (activeSection === 'portfolio' || activeSection === 'services') {
+        const TIME_WINDOW_MS = 600; // 600ms time window (increased from 500ms)
         
         // Start a new time window if needed
         if (timestamp - scrollWindowStartTimeRef.current > TIME_WINDOW_MS) {
@@ -98,10 +98,11 @@ export function useWheelNav() {
           scrollCountInWindowRef.current++;
         }
         
-        // If this is just the first or second scroll event in a new time window, 
-        // we'll require more scrolling before triggering navigation
-        if (scrollCountInWindowRef.current <= 2) {
-          accumulatedDeltaRef.current = Math.min(accumulatedDeltaRef.current, 50);
+        // For both portfolio and services: require more deliberate scrolling patterns
+        if (scrollCountInWindowRef.current <= 3) { // Increased from 2 to 3 events needed
+          // Significantly reduce the accumulated delta for the first few scroll events
+          // This makes it much harder to trigger navigation with just a few quick scroll events
+          accumulatedDeltaRef.current = Math.min(accumulatedDeltaRef.current, 40);
         }
       }
       
@@ -134,18 +135,18 @@ export function useWheelNav() {
       if (activeSection === 'portfolio') {
         if (isPortfolioInCooldown) {
           // Much higher threshold during the cooldown period
-          threshold = isLikelyTrackpad ? 500 : 250;
+          threshold = isLikelyTrackpad ? 600 : 350; // Increased for less sensitivity
         } else {
           // Standard threshold for portfolio without cooldown
-          threshold = isLikelyTrackpad ? 250 : 120;
+          threshold = isLikelyTrackpad ? 350 : 200; // Increased for less sensitivity
         }
       } else if (activeSection === 'services') {
         if (isServicesInCooldown) {
           // Higher threshold during the cooldown period
-          threshold = isLikelyTrackpad ? 400 : 200;
+          threshold = isLikelyTrackpad ? 500 : 300; // Increased for less sensitivity
         } else {
           // Standard threshold for services without cooldown
-          threshold = isLikelyTrackpad ? 150 : 80;
+          threshold = isLikelyTrackpad ? 250 : 150; // Increased for less sensitivity
         }
       } else {
         // Normal threshold for other sections
