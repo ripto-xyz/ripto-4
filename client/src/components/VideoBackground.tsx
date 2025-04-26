@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import timelineVideo from '../assets/timeline3.mp4'; // Direct import
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
   
-  // Log direct import for debugging
-  console.log("Using direct import for video:", timelineVideo);
+  // Use the high-quality video in the public folder
+  const videoSource = "/images/timeline3-new.mp4";
   
   useEffect(() => {
     const videoElement = videoRef.current;
@@ -52,7 +51,7 @@ export default function VideoBackground() {
           playsInline
           className="video-background"
           preload="auto"
-          src={timelineVideo} // Use direct import
+          src={videoSource}
         />
       </div>
     </>
