@@ -26,7 +26,7 @@ export default function VideoBackground() {
           preload="auto"
         >
           {/* Optimized MP4 version (42x smaller, much faster loading) */}
-          <source src="/images/background-optimized.mp4" type="video/mp4" />
+          <source src="/background-optimized.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
