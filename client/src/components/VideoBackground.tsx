@@ -58,9 +58,7 @@ export default function VideoBackground() {
           className="video-background"
           preload="auto"
         >
-          {/* New optimized background video */}
-          <source src="/timeline-3-optimized.mp4" type="video/mp4" />
-          {/* Fallback to the original background video */}
+          {/* Temporarily reverting to the original video while we debug */}
           <source src="/background-optimized.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
