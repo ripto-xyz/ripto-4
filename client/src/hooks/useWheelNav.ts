@@ -85,8 +85,8 @@ export function useWheelNav() {
       // Get current active section
       const activeSection = getActiveSection();
       
-      // Handle time windows for accumulated scrolls (used by portfolio and services sections)
-      if (activeSection === 'portfolio' || activeSection === 'services') {
+      // Handle time windows for accumulated scrolls (only for portfolio section)
+      if (activeSection === 'portfolio') {
         const TIME_WINDOW_MS = 600; // 600ms time window (increased from 500ms)
         
         // Start a new time window if needed
@@ -98,7 +98,7 @@ export function useWheelNav() {
           scrollCountInWindowRef.current++;
         }
         
-        // For both portfolio and services: require more deliberate scrolling patterns
+        // For portfolio section: require more deliberate scrolling patterns
         if (scrollCountInWindowRef.current <= 3) { // Increased from 2 to 3 events needed
           // Significantly reduce the accumulated delta for the first few scroll events
           // This makes it much harder to trigger navigation with just a few quick scroll events
@@ -143,10 +143,10 @@ export function useWheelNav() {
       } else if (activeSection === 'services') {
         if (isServicesInCooldown) {
           // Higher threshold during the cooldown period
-          threshold = isLikelyTrackpad ? 500 : 300; // Increased for less sensitivity
+          threshold = isLikelyTrackpad ? 400 : 200; // Restored to original value
         } else {
           // Standard threshold for services without cooldown
-          threshold = isLikelyTrackpad ? 250 : 150; // Increased for less sensitivity
+          threshold = isLikelyTrackpad ? 150 : 80; // Restored to original value
         }
       } else {
         // Normal threshold for other sections
