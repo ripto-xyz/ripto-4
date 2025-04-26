@@ -98,6 +98,27 @@ body {
 
 /* HTML and body styles are already set above */
 
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+  background-color: #120738; /* Fallback background color if video fails */
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
 .video-background {
   position: fixed;
   top: -20%;  /* Hide the top 20% of the video */
@@ -106,7 +127,7 @@ body {
   min-height: 120%;  /* Compensate for the hidden top */
   width: auto;
   height: auto;
-  z-index: -1;
+  z-index: -3; /* Lower z-index so it's behind overlay */
   object-fit: cover;
 }
 
