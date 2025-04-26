@@ -44,7 +44,7 @@ export default function PortfolioSection() {
   return (
     <section id="portfolio" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
-        <div className="bg-orange-500 bg-opacity-10 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-orange-500/15 relative overflow-hidden w-full mx-auto">
+        <div className="bg-orange-500 bg-opacity-25 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-orange-500/20 relative overflow-hidden w-full mx-auto">
           <div className="text-center mb-10 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins">Our Portfolio</h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
