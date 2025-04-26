@@ -3,32 +3,49 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
 import { useScrollSpy } from './use-scroll-spy';
 
 // Minimum distance (in pixels) required to register a swipe
-const MIN_SWIPE_DISTANCE = 100; // Increased from 50 to require a longer, more deliberate swipe
+const MIN_SWIPE_DISTANCE = 100; // Increased to require a longer, more deliberate swipe
 
 // Cooldown period to prevent rapid consecutive swipes (in milliseconds)
-const SWIPE_COOLDOWN = 800;
+const SWIPE_COOLDOWN = 1000; // Balanced cooldown time
 
-// Threshold for when the user is near a section boundary (in percentage of viewport height)
-const SECTION_BOUNDARY_THRESHOLD = 0.15;
+// Additional wait time required after arriving at a new section (in milliseconds)
+const SECTION_ARRIVAL_GRACE_PERIOD = 800; // Reduced from 1500ms
+
+// Threshold for wheel delta accumulation before triggering section change
+const WHEEL_DELTA_THRESHOLD = 350; // Reduced from 500 to make it more active
+
+// Timeout to reset wheel accumulation if scrolling pauses
+const WHEEL_TIMEOUT = 200;
 
 export function useSwipeNavigation() {
+  // State for touch tracking
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [isOnCooldown, setIsOnCooldown] = useState(false);
-  const lastScrollTime = useRef<number>(0);
-  const activeSection = useScrollSpy({ sectionIds, offset: 100 });
   
-  // A ref to track if we're currently in a wheel-based scroll transition
+  // Refs for tracking various interactions
+  const lastScrollTime = useRef<number>(0);
+  const accumulatedWheelDelta = useRef<number>(0);
+  const wheelTimeoutRef = useRef<number | null>(null);
   const isScrollingToSection = useRef<boolean>(false);
+  const lastSectionChangeTime = useRef<number>(Date.now());
+  
+  // Get current active section using ScrollSpy
+  const activeSection = useScrollSpy({ sectionIds, offset: 100 });
 
   // Helper to apply cooldown
   const applyCooldown = () => {
     setIsOnCooldown(true);
+    lastSectionChangeTime.current = Date.now();
     setTimeout(() => setIsOnCooldown(false), SWIPE_COOLDOWN);
+  };
+  
+  // Check if we're still in the grace period after changing sections
+  const isInGracePeriod = () => {
+    return (Date.now() - lastSectionChangeTime.current) < SECTION_ARRIVAL_GRACE_PERIOD;
   };
 
   useEffect(() => {
-    
     // TOUCH NAVIGATION FOR MOBILE
     const handleTouchStart = (e: TouchEvent) => {
       setTouchStartX(e.touches[0].clientX);
@@ -36,7 +53,7 @@ export function useSwipeNavigation() {
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      if (touchStartY === null || touchStartX === null || isOnCooldown || isScrollingToSection.current) return;
+      if (touchStartY === null || touchStartX === null || isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       const touchEndX = e.changedTouches[0].clientX;
       const touchEndY = e.changedTouches[0].clientY;
@@ -44,6 +61,7 @@ export function useSwipeNavigation() {
       const distanceY = touchStartY - touchEndY;
       
       // Only consider vertical swipes (when Y movement is greater than X movement)
+      // and only when the swipe is long enough (MIN_SWIPE_DISTANCE)
       if (Math.abs(distanceY) > Math.abs(distanceX) && Math.abs(distanceY) > MIN_SWIPE_DISTANCE) {
         if (distanceY > 0) {
           // Swipe up - go to next section
@@ -74,23 +92,15 @@ export function useSwipeNavigation() {
         }
       }
       
+      // Reset touch tracking
       setTouchStartX(null);
       setTouchStartY(null);
     };
 
-    // Ref to track accumulated wheel delta
-    const accumulatedWheelDelta = useRef<number>(0);
-    // Ref to track wheel timeout
-    const wheelTimeoutRef = useRef<number | null>(null);
-    // Threshold for accumulated wheel movement to trigger section change
-    const WHEEL_DELTA_THRESHOLD = 300; // Higher value means less sensitive
-    // Timeout to reset accumulated delta if scrolling pauses
-    const WHEEL_TIMEOUT = 200;
-
     // WHEEL NAVIGATION FOR DESKTOP
     const handleWheel = (e: WheelEvent) => {
-      // Exit early if we're on cooldown or currently scrolling
-      if (isOnCooldown || isScrollingToSection.current) return;
+      // Exit early if we're on cooldown, scrolling, or in grace period
+      if (isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       // Clear any existing timeout to reset accumulated delta
       if (wheelTimeoutRef.current) {
@@ -109,10 +119,11 @@ export function useSwipeNavigation() {
       // Only proceed if accumulated delta exceeds threshold in either direction
       if (Math.abs(accumulatedWheelDelta.current) < WHEEL_DELTA_THRESHOLD) return;
       
-      // Check the current section's position
+      // Get element for the current section
       const element = document.getElementById(activeSection);
       if (!element) return;
       
+      // Get positioning information
       const rect = element.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -124,8 +135,8 @@ export function useSwipeNavigation() {
       const percentThroughSection = (distanceFromTop / rect.height) * 100;
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
-        // Only go to next section if we're not just starting the current section
-        if (percentThroughSection > 20) {
+        // Only go to next section if we're at least 25% through the current section
+        if (percentThroughSection > 25) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
             isScrollingToSection.current = true;
@@ -142,8 +153,8 @@ export function useSwipeNavigation() {
           }
         }
       } else { // Scrolling UP
-        // Only go to previous section if we're not at the bottom of the current section
-        if (percentThroughSection < 80 && percentThroughSection > 0) {
+        // Only go to previous section if we're in the top 30% of the current section
+        if (percentThroughSection < 30 && percentThroughSection > 0) {
           const prevSection = getPrevSectionId(activeSection);
           if (prevSection) {
             isScrollingToSection.current = true;
@@ -162,9 +173,9 @@ export function useSwipeNavigation() {
       }
     };
 
-    // Keyboard navigation (arrow keys)
+    // KEYBOARD NAVIGATION (arrow keys and page up/down)
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (isOnCooldown || isScrollingToSection.current) return;
+      if (isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
       if (e.key === 'ArrowDown' || e.key === 'PageDown') {
         const nextSection = getNextSectionId(activeSection);
@@ -197,11 +208,17 @@ export function useSwipeNavigation() {
     document.addEventListener('wheel', handleWheel, { passive: true });
     document.addEventListener('keydown', handleKeyDown);
 
+    // Clean up event listeners
     return () => {
       document.removeEventListener('touchstart', handleTouchStart);
       document.removeEventListener('touchend', handleTouchEnd);
       document.removeEventListener('wheel', handleWheel);
       document.removeEventListener('keydown', handleKeyDown);
+      
+      // Clear any remaining timeout
+      if (wheelTimeoutRef.current) {
+        window.clearTimeout(wheelTimeoutRef.current);
+      }
     };
   }, [touchStartX, touchStartY, activeSection, isOnCooldown]);
 
