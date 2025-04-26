@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import timelineVideo from '@assets/Timeline 3.mp4';
 
 // Define type for quality options
 type VideoQuality = 'high' | 'medium' | 'low';
@@ -13,19 +12,19 @@ interface VideoQualityOption {
 // Video quality options with different quality levels
 const videoQualityOptions: Record<VideoQuality, VideoQualityOption> = {
   high: {
-    src: timelineVideo, // Original high quality video
+    src: '/video/timeline.mp4', // Original high quality video
     minConnectionSpeed: 5, // Mbps
-    label: 'High Quality (4K)'
+    label: 'High Quality (HD)'
   },
   medium: {
-    src: '/video/timeline-medium.mp4', // Medium quality version
+    src: '/video/timeline.mp4', // Using the same video path
     minConnectionSpeed: 2, // Mbps
-    label: 'Medium Quality (960p)'
+    label: 'Medium Quality (HD)'
   },
   low: {
-    src: '/video/timeline-medium.mp4', // Using medium as fallback for low quality
+    src: '/video/timeline.mp4', // Using the same video path 
     minConnectionSpeed: 0, // Always available
-    label: 'Low Quality (960p)'
+    label: 'Standard Quality'
   }
 };
 
