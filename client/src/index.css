@@ -107,12 +107,22 @@ body {
   position: relative;
   z-index: 1;
   scroll-margin-top: 80px;
+  border: none !important; /* Explicitly remove any borders */
+  border-top: none !important;
+  border-bottom: none !important;
+}
+
+/* Fix for blue lines between sections */
+.scroll-section::before,
+.scroll-section::after {
+  content: none !important;
 }
 
 /* Remove margins and padding from sections to connect them */
 section#portfolio {
   padding-bottom: 0;
   margin-bottom: 0;
+  border-bottom: none !important;
 }
 
 /* Connect contact directly with portfolio */
@@ -120,6 +130,23 @@ section#contact {
   padding-top: 0;
   margin-top: 0;
   margin-bottom: 0;
+  border-top: none !important;
+}
+
+/* Ensure no space between sections */
+section {
+  border: none !important;
+  outline: none !important;
+  border-top: none !important;
+  border-bottom: none !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Fix for blue line between sections */
+body {
+  @apply bg-[#080F1E];
+  color: white;
 }
 
 /* Keep hero section full height */
