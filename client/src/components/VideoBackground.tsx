@@ -12,17 +12,17 @@ interface VideoQualityOption {
 // Video quality options with different quality levels
 const videoQualityOptions: Record<VideoQuality, VideoQualityOption> = {
   high: {
-    src: '/video/timeline.mp4', // Original high quality video
+    src: '/video/timeline-high.mp4', // Original high quality video
     minConnectionSpeed: 5, // Mbps
     label: 'High Quality (HD)'
   },
   medium: {
-    src: '/video/timeline.mp4', // Using the same video path
+    src: '/video/timeline-medium.mp4', // Medium quality version
     minConnectionSpeed: 2, // Mbps
     label: 'Medium Quality (HD)'
   },
   low: {
-    src: '/video/timeline.mp4', // Using the same video path 
+    src: '/video/timeline-medium.mp4', // Medium quality for low spec
     minConnectionSpeed: 0, // Always available
     label: 'Standard Quality'
   }
@@ -153,6 +153,12 @@ export default function VideoBackground() {
         muted 
         loop 
         playsInline
+        onError={(e) => {
+          console.error("Video error:", e);
+          console.log("Video path:", videoQualityOptions[selectedQuality].src);
+        }}
+        onLoadStart={() => console.log("Video loading started")}
+        onCanPlay={() => console.log("Video can play now")}
         style={{
           objectFit: 'cover',
           width: '100%',
