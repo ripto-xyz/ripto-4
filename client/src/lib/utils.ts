@@ -31,11 +31,14 @@ export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (!element) return;
 
-  // Simple offset mapping
+  // Simple offset mapping - increased offsets to ensure complete section transition
   const offsets: {[key: string]: number} = {
-    'about': 90,
-    'contact': 95,
-    'default': 100
+    'home': 0,    // Home should have no offset
+    'about': 120, // Increased to ensure hero disappears completely
+    'portfolio': 120,
+    'services': 120,
+    'contact': 120,
+    'default': 120
   };
   
   // Get offset with fallback to default

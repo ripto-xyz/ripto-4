@@ -13,7 +13,7 @@ export function useWheelNav() {
 
   useEffect(() => {
     const getActiveSection = () => {
-      const scrollPosition = window.scrollY + 100;
+      const scrollPosition = window.scrollY + 120; // Increased offset to match our new scrolling values
       
       // Find the current section in view (search from bottom to top)
       for (let i = sectionIds.length - 1; i >= 0; i--) {

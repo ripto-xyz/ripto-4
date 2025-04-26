@@ -20,9 +20,9 @@ export default function Home() {
   // Simplified scroll listener to determine active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 120;
+      const scrollPosition = window.scrollY + 120; // Using consistent offset value
       
-      // Get all sections
+      // Get all sections - already imported from utils
       const sections = ['home', 'about', 'portfolio', 'services', 'contact'];
       
       for (const section of sections) {
