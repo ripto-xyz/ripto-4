@@ -78,6 +78,17 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
             <a 
               href="#contact" 
+              onClick={(e) => {
+                e.preventDefault();
+                // Direct navigation to contact to avoid scroll issues
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                  window.scrollTo({
+                    top: contactSection.offsetTop - 100, // Offset to account for navbar
+                    behavior: 'smooth'
+                  });
+                }
+              }}
               className={`${
                 activeSection === 'contact' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -135,6 +146,18 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               </a>
               <a 
                 href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  setShowMobileMenu(false); // Close mobile menu
+                  // Direct navigation to contact to avoid scroll issues
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    window.scrollTo({
+                      top: contactSection.offsetTop - 100, // Offset to account for navbar
+                      behavior: 'smooth'
+                    });
+                  }
+                }}
                 className={`${
                   activeSection === 'contact' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}

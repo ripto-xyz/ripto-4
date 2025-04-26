@@ -102,6 +102,19 @@ export function useSwipeNavigation() {
             }
           }
         }
+        // Special handling for Contact section 
+        else if (activeSection === 'contact' && distanceY < 0) {
+          // Require a more deliberate swipe to leave Contact section
+          if (Math.abs(distanceY) > MIN_SWIPE_DISTANCE * 1.3) {
+            const prevSection = getPrevSectionId(activeSection);
+            if (prevSection) {
+              isScrollingToSection.current = true;
+              scrollToSection(prevSection);
+              applyCooldown();
+              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 200);
+            }
+          }
+        }
         // Normal navigation for other sections
         else if (distanceY > 0) { // Swipe UP - go to next section
           const nextSection = getNextSectionId(activeSection);
@@ -192,6 +205,22 @@ export function useSwipeNavigation() {
           }
         }
       } 
+      // Special handling for Contact section
+      else if (activeSection === 'contact') {
+        // Contact section needs special handling too
+        if (accumulatedWheelDelta.current < 0) { // Scrolling UP from Contact
+          if (percentThroughSection < 30) {
+            const prevSection = getPrevSectionId(activeSection);
+            if (prevSection) {
+              isScrollingToSection.current = true;
+              scrollToSection(prevSection);
+              applyCooldown();
+              accumulatedWheelDelta.current = 0;
+              setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN);
+            }
+          }
+        }
+      }
       // For all other sections
       else if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
         // Only go to next section if we're at least 35% through the current section
@@ -267,6 +296,18 @@ export function useSwipeNavigation() {
           applyCooldown();
           // Extended cooldown for home to about transition
           setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 300);
+        }
+      }
+      // Special handling for Contact section
+      else if (activeSection === 'contact') {
+        if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+          const prevSection = getPrevSectionId(activeSection);
+          if (prevSection) {
+            isScrollingToSection.current = true;
+            scrollToSection(prevSection);
+            applyCooldown();
+            setTimeout(() => { isScrollingToSection.current = false; }, SWIPE_COOLDOWN + 200);
+          }
         }
       }
       // Normal keyboard navigation for other sections
