@@ -3,8 +3,8 @@
 
 // Export videos with direct paths to public folder
 export const videos = {
-  timelineHigh: "/video/timeline-high.mp4",
-  timelineMedium: "/video/timeline-medium.mp4",
+  timeline: "/images/timeline3-original.mp4", // Use the original video
+  timelineNew: "/images/timeline3-new.mp4", // Backup option
 };
 
 // Export any other assets below
