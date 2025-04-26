@@ -431,7 +431,7 @@ nav a:active {
 /* Elora character animation */
 @keyframes eloraFloat {
   0% { transform: translateY(0) rotate(6deg); }
-  50% { transform: translateY(-10px) rotate(3deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
   100% { transform: translateY(0) rotate(6deg); }
 }
 
@@ -442,16 +442,16 @@ nav a:active {
 
 .elora-character:hover {
   animation-play-state: paused;
-  transform: scale(1.1) rotate(-5deg);
-  transition: transform 0.3s ease;
+  transform: scale(1.15) rotate(-8deg);
+  transition: transform 0.5s ease;
 }
 
 .elora-character img {
-  transition: filter 0.3s ease;
+  transition: filter 0.5s ease;
 }
 
 .elora-character:hover img {
-  filter: drop-shadow(0 0 8px rgba(255, 210, 100, 0.8)) brightness(1.1);
+  filter: drop-shadow(0 0 15px rgba(255, 210, 100, 0.8)) brightness(1.15);
 }
 
 /* Additional hover effect for desktop users */

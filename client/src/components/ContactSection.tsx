@@ -13,7 +13,7 @@ export default function ContactSection() {
           <div className="absolute inset-0 bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl shadow-xl border border-[#D81B60]/20"></div>
           
           {/* Elora character positioned at top-right corner overlapping the border */}
-          <div className="absolute -top-16 -right-12 md:-top-20 md:-right-14 lg:-top-24 lg:-right-16 z-20 w-32 md:w-40 lg:w-48 elora-character">
+          <div className="absolute -top-24 -right-16 md:-top-32 md:-right-20 lg:-top-40 lg:-right-24 z-20 w-48 md:w-64 lg:w-80 elora-character">
             <img 
               src={eloraImage} 
               alt="Elora character" 
