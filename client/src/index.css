@@ -180,6 +180,17 @@ body {
   100% { opacity: 0.5; }
 }
 
+/* Fade out animation for video quality indicator */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade-out {
+  animation: fadeOut 3s ease-in-out forwards;
+}
+
 /* Base styles for all sections - JS handles scrolling */
 .scroll-section {
   min-height: 100vh; /* Make all sections at least full viewport height */

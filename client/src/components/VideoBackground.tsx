@@ -131,6 +131,21 @@ export default function VideoBackground() {
         </div>
       )}
       
+      {/* Quality information - shows briefly when video starts playing */}
+      {showQualityInfo && !isLoading && (
+        <div className="absolute bottom-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg z-10 text-sm fade-out shadow-lg border border-white/10 backdrop-blur-sm">
+          <div className="font-semibold flex items-center">
+            <svg className="w-4 h-4 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            {videoQualityOptions[selectedQuality].label}
+          </div>
+          <div className="text-xs opacity-80 mt-1 pl-6">
+            Based on your connection speed
+          </div>
+        </div>
+      )}
+      
       {/* Video element */}
       <video 
         ref={videoRef}
