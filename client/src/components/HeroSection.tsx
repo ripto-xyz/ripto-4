@@ -7,7 +7,7 @@ export default function HeroSection() {
       <div className="container mx-auto px-6 z-10 relative">
         <div className="max-w-3xl mx-auto md:mx-0">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500 drop-shadow-sm tracking-tighter">
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-500 via-purple-600 to-orange-500 drop-shadow-sm tracking-tighter web3-growth-text">
               Web3 Growth
             </span>
           </h1>

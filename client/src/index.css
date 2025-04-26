@@ -699,38 +699,35 @@ header .web3-growth-3d {
   }
 }
 
-/* Global text color overrides for the dark video background */
-.text-foreground,
-.text-primary-foreground,
-.text-secondary-foreground {
-  color: white !important;
-}
-
-body, p, h1, h2, h3, h4, h5, h6, a, button, li {
-  color: white !important;
-}
-
-/* Exclude special styled text from global color override */
-span:not(.yellow-logo-text):not(.yellow-logo-shadow):not(.yellow-logo-shadow-right):not(.yellow-logo-shadow-bottom) {
-  color: white !important;
+/* Global text color for the dark video background */
+body, p, h1, h2, h3, h4, h5, h6, a, button, li, .text-foreground, .text-primary-foreground, .text-secondary-foreground {
+  color: white;
 }
 
 /* Form controls need a different contrast */
 input, textarea, select {
-  color: white !important;
-  background-color: rgba(255, 255, 255, 0.1) !important;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Ensure gradient text displays correctly */
+/* Special styling exceptions */
+/* 1. Gradient text needs to be transparent */
 .bg-clip-text.text-transparent {
   color: transparent !important;
   -webkit-background-clip: text !important;
   background-clip: text !important;
 }
 
-/* Exclude our gradient 3D text from color overrides */
-.web3-growth-3d {
+/* 2. Yellow logo text needs its specific color */
+.yellow-logo-text {
+  color: #FFFF80 !important;
+}
+
+/* 3. Web3 Growth gradient text */
+.web3-growth-text {
+  font-family: 'Arial Black', Impact, sans-serif;
+  letter-spacing: -0.5px;
+  font-weight: 900;
   color: transparent !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
