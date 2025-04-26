@@ -6,13 +6,13 @@ import { useScrollSpy } from './use-scroll-spy';
 const MIN_SWIPE_DISTANCE = 100; // Increased to require a longer, more deliberate swipe
 
 // Cooldown period to prevent rapid consecutive swipes (in milliseconds)
-const SWIPE_COOLDOWN = 1200; // Increased from 800ms to give more time between section changes
+const SWIPE_COOLDOWN = 1000; // Balanced cooldown time
 
 // Additional wait time required after arriving at a new section (in milliseconds)
-const SECTION_ARRIVAL_GRACE_PERIOD = 1500;
+const SECTION_ARRIVAL_GRACE_PERIOD = 800; // Reduced from 1500ms
 
 // Threshold for wheel delta accumulation before triggering section change
-const WHEEL_DELTA_THRESHOLD = 500; // Increased from 300 to require more scrolling
+const WHEEL_DELTA_THRESHOLD = 350; // Reduced from 500 to make it more active
 
 // Timeout to reset wheel accumulation if scrolling pauses
 const WHEEL_TIMEOUT = 200;
@@ -135,8 +135,8 @@ export function useSwipeNavigation() {
       const percentThroughSection = (distanceFromTop / rect.height) * 100;
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
-        // Only go to next section if we're at least 40% through the current section
-        if (percentThroughSection > 40) {
+        // Only go to next section if we're at least 25% through the current section
+        if (percentThroughSection > 25) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
             isScrollingToSection.current = true;
