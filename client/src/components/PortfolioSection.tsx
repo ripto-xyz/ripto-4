@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { scrollToSection } from "@/lib/utils";
 
 interface PortfolioItem {
   id: string;
@@ -97,13 +98,7 @@ export default function PortfolioSection() {
                 href="#contact" 
                 onClick={(e) => {
                   e.preventDefault();
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    window.scrollTo({
-                      top: element.offsetTop - 95, // Adjusted for Contact section
-                      behavior: 'smooth'
-                    });
-                  }
+                  scrollToSection('contact');
                 }}
                 className="inline-block px-6 sm:px-8 py-2 sm:py-3 bg-primary hover:bg-secondary text-white font-medium rounded-full transition-colors duration-300 text-sm sm:text-base"
               >

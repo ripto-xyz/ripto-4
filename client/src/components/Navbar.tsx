@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import YellowLogo from "./YellowLogo";
+import { scrollToSection } from "@/lib/utils";
 
 interface NavbarProps {
   activeSection: string;
@@ -29,16 +30,10 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     setShowMobileMenu(!showMobileMenu);
   };
   
-  // Simplified scroll function
+  // Enhanced scroll function using our utility
   const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      window.scrollTo({
-        top: section.offsetTop - 100,
-        behavior: 'smooth'
-      });
-    }
+    scrollToSection(sectionId);
     setShowMobileMenu(false);
   };
 

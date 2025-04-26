@@ -1,4 +1,5 @@
 import { ArrowDown } from "lucide-react";
+import { scrollToSection } from "@/lib/utils";
 
 export default function HeroSection() {
   return (
@@ -18,13 +19,7 @@ export default function HeroSection() {
               href="#portfolio" 
               onClick={(e) => {
                 e.preventDefault();
-                const element = document.getElementById('portfolio');
-                if (element) {
-                  window.scrollTo({
-                    top: element.offsetTop - 100,
-                    behavior: 'smooth'
-                  });
-                }
+                scrollToSection('portfolio');
               }}
               className="px-8 py-3 bg-primary hover:bg-secondary text-white font-medium rounded-full transition-colors duration-300 text-center"
             >
@@ -34,13 +29,7 @@ export default function HeroSection() {
               href="#contact" 
               onClick={(e) => {
                 e.preventDefault();
-                const element = document.getElementById('contact');
-                if (element) {
-                  window.scrollTo({
-                    top: element.offsetTop - 100,
-                    behavior: 'smooth'
-                  });
-                }
+                scrollToSection('contact');
               }}
               className="px-8 py-3 bg-transparent border border-white hover:border-primary hover:text-primary text-white font-medium rounded-full transition-all duration-300 text-center"
             >
@@ -54,13 +43,7 @@ export default function HeroSection() {
           href="#about" 
           onClick={(e) => {
             e.preventDefault();
-            const element = document.getElementById('about');
-            if (element) {
-              window.scrollTo({
-                top: element.offsetTop - 90, // Slightly adjusted for About section
-                behavior: 'smooth'
-              });
-            }
+            scrollToSection('about');
           }}
           className="text-white opacity-70 hover:opacity-100 transition-opacity"
         >
