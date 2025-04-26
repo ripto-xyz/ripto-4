@@ -12,22 +12,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Enhanced scrolling system for snapping to sections */
+/* Enhanced scrolling system - handled by JS instead of CSS snap */
 html {
   scroll-behavior: smooth;
 }
 
-/* Main content container with scroll-snap */
+/* Main content container */
 body {
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-snap-type: y mandatory;
   height: 100vh;
 }
 
-/* Scrolling snap definitions are integrated into the main scroll-section styles below */
-
-/* Adjust scroll margin to account for sticky header */
+/* Scroll margins for sections */
 #home {
   scroll-margin-top: 0;
 }
@@ -113,7 +110,7 @@ body {
   object-fit: cover;
 }
 
-/* Base styles for all sections with scroll-snapping */
+/* Base styles for all sections - JS handles scrolling */
 .scroll-section {
   min-height: 100vh; /* Make all sections at least full viewport height */
   padding: 1.5rem 0;
@@ -122,8 +119,6 @@ body {
   position: relative;
   z-index: 1;
   scroll-margin-top: 120px; /* Increased to prevent navbar overlap */
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
   overflow: hidden;
 }
 

@@ -2,12 +2,12 @@ import { useEffect, useState, useRef } from 'react';
 import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from '@/lib/utils';
 import { useScrollSpy } from './use-scroll-spy';
 
-// Simplified constants
-const MIN_SWIPE_DISTANCE = 120;
-const SWIPE_COOLDOWN = 1000; 
-const SECTION_ARRIVAL_GRACE_PERIOD = 1000;
-const WHEEL_DELTA_THRESHOLD = 450;
-const WHEEL_TIMEOUT = 200;
+// Simplified constants - Adjusted for more sensitivity
+const MIN_SWIPE_DISTANCE = 100;
+const SWIPE_COOLDOWN = 800; 
+const SECTION_ARRIVAL_GRACE_PERIOD = 800;
+const WHEEL_DELTA_THRESHOLD = 100; // Lowered threshold to detect wheel movements more easily
+const WHEEL_TIMEOUT = 100; // Quicker timeout for more responsive scrolling
 
 export function useSwipeNavigation() {
   // State for touch tracking
@@ -83,29 +83,53 @@ export function useSwipeNavigation() {
       setTouchStartY(null);
     };
 
-    // WHEEL NAVIGATION FOR DESKTOP
+    // WHEEL NAVIGATION FOR DESKTOP - Enhanced for big movements with preventDefault
     const handleWheel = (e: WheelEvent) => {
       // Exit early if needed
       if (isOnCooldown || isScrollingToSection.current || isInGracePeriod()) return;
       
-      // Manage wheel delta with timeout
-      if (wheelTimeoutRef.current) {
-        window.clearTimeout(wheelTimeoutRef.current);
+      // For large wheel movements (like touchpad gestures or mouse wheel), 
+      // trigger immediately to make it more responsive
+      const isLargeMovement = Math.abs(e.deltaY) > 100;
+      
+      // Process the wheel event
+      let shouldTriggerScroll = false;
+      
+      // Accumulate smaller movements, but trigger immediately for large movements
+      if (!isLargeMovement) {
+        // Manage wheel delta with timeout
+        if (wheelTimeoutRef.current) {
+          window.clearTimeout(wheelTimeoutRef.current);
+        }
+        
+        accumulatedWheelDelta.current += e.deltaY;
+        
+        wheelTimeoutRef.current = window.setTimeout(() => {
+          accumulatedWheelDelta.current = 0;
+          wheelTimeoutRef.current = null;
+        }, WHEEL_TIMEOUT);
+        
+        // Check if we should trigger scroll
+        shouldTriggerScroll = Math.abs(accumulatedWheelDelta.current) >= WHEEL_DELTA_THRESHOLD;
+      } else {
+        // For large movements, trigger immediately
+        accumulatedWheelDelta.current = e.deltaY;
+        shouldTriggerScroll = true;
+        
+        // Prevent default browser scrolling for large movements
+        e.preventDefault();
       }
       
-      accumulatedWheelDelta.current += e.deltaY;
+      // Only proceed if we should trigger scrolling
+      if (!shouldTriggerScroll) return;
       
-      wheelTimeoutRef.current = window.setTimeout(() => {
-        accumulatedWheelDelta.current = 0;
-        wheelTimeoutRef.current = null;
-      }, WHEEL_TIMEOUT);
-      
-      // Only proceed if delta exceeds threshold
-      if (Math.abs(accumulatedWheelDelta.current) < WHEEL_DELTA_THRESHOLD) return;
-      
+      // Determine whether to go to next or previous section
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
         const nextSection = getNextSectionId(activeSection);
         if (nextSection) {
+          // Prevent default browser scrolling
+          e.preventDefault();
+          
           isScrollingToSection.current = true;
           scrollToSection(nextSection);
           applyCooldown();
@@ -116,11 +140,15 @@ export function useSwipeNavigation() {
         // Special case: prevent going from About back to Home
         if (activeSection === 'about') {
           // Just stay in About section
+          e.preventDefault();
           return;
         }
         
         const prevSection = getPrevSectionId(activeSection);
         if (prevSection) {
+          // Prevent default browser scrolling
+          e.preventDefault();
+          
           isScrollingToSection.current = true;
           scrollToSection(prevSection);
           applyCooldown();
@@ -161,8 +189,8 @@ export function useSwipeNavigation() {
 
     // Register event listeners
     document.addEventListener('touchstart', handleTouchStart, { passive: true });
-    document.addEventListener('touchend', handleTouchEnd, { passive: true });
-    document.addEventListener('wheel', handleWheel, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: false });
+    document.addEventListener('wheel', handleWheel, { passive: false }); // Set to non-passive to allow preventDefault
     document.addEventListener('keydown', handleKeyDown);
 
     // Clean up event listeners
