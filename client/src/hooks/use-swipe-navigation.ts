@@ -77,8 +77,9 @@ export function useSwipeNavigation() {
               }
             }
           } else { // Swipe DOWN from About section to Home
-            // Require longer swipe to go back to Home
-            if (Math.abs(distanceY) > MIN_SWIPE_DISTANCE * 1.4) {
+            // Require much longer swipe to go back to Home
+            // This was 1.4, now 2.0 to make it much harder to go back to home
+            if (Math.abs(distanceY) > MIN_SWIPE_DISTANCE * 2.0) {
               const prevSection = getPrevSectionId(activeSection);
               if (prevSection) {
                 isScrollingToSection.current = true;

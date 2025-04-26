@@ -30,11 +30,39 @@ export function getPrevSectionId(currentSectionId: string): string | null {
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (element) {
-    // Ensure we scroll to the top of the section minus the navbar height
-    // Using 100px offset to match the scroll-margin-top CSS value
-    window.scrollTo({
-      top: element.offsetTop - 100,
-      behavior: 'smooth'
+    // Special handling for navigating from About to Home
+    // This helps prevent unintentional navigation from About to Home
+    const currentSection = sectionIds.find(id => {
+      const el = document.getElementById(id);
+      if (!el) return false;
+      const rect = el.getBoundingClientRect();
+      return rect.top <= 120 && rect.bottom > 120; // Check if section is at top of viewport
     });
+    
+    // If we're in About section and trying to go back to Home,
+    // add extra validation to make sure it's intentional
+    if (currentSection === 'about' && sectionId === 'home') {
+      // Check if we're very close to the top of the About section
+      const aboutEl = document.getElementById('about');
+      if (aboutEl) {
+        const rect = aboutEl.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        // Only allow going back to home if we're in the top 5% of the About section
+        // This helps prevent accidental navigation
+        if (rect.top > -(viewportHeight * 0.05)) {
+          // Ensure we scroll to the top of the section minus the navbar height
+          window.scrollTo({
+            top: element.offsetTop - 100,
+            behavior: 'smooth'
+          });
+        }
+      }
+    } else {
+      // Normal navigation for all other sections
+      window.scrollTo({
+        top: element.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }
   }
 }
