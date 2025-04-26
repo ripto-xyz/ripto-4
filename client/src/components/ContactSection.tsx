@@ -8,9 +8,9 @@ export default function ContactSection() {
   return (
     <section id="contact" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
-        <div className="max-w-[1400px] mx-auto">
+        <div className="max-w-[1400px] mx-auto relative">
           {/* Elora character positioned at top-right corner overlapping the border */}
-          <div className="absolute -top-24 -right-10 md:-top-32 md:-right-12 lg:-top-40 lg:-right-16 z-30 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
+          <div className="absolute top-[-100px] right-[50px] md:top-[-125px] md:right-[60px] lg:top-[-155px] lg:right-[75px] z-30 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
             <img 
               src={eloraImage} 
               alt="Elora character" 
