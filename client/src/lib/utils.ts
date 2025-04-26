@@ -29,59 +29,80 @@ export function getPrevSectionId(currentSectionId: string): string | null {
 // Function to scroll to a section
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
-  if (element) {
-    // Custom smooth scrolling with a consistent experience
-    // This helps ensure transitions between sections are more reliable
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset;
+  if (!element) return;
+  
+  // Get position of the element
+  const elementRect = element.getBoundingClientRect();
+  const offsetPosition = elementRect.top + window.pageYOffset;
+  
+  // Simple scroll for all sections
+  if (sectionId === 'portfolio') {
+    // For portfolio, use direct JavaScript animation for more control
+    const startPosition = window.pageYOffset;
+    const distance = offsetPosition - startPosition;
+    const duration = 500; // Faster, more direct scroll
     
-    // Handle portfolio section differently
-    if (sectionId === 'portfolio') {
-      // Faster, more direct scrolling for portfolio section
-      const duration = 600; // Faster for portfolio
-      
-      // Prepare the portfolio section for a clean transition
-      const portfolioSection = document.getElementById('portfolio');
-      if (portfolioSection) {
-        // Ensure it's fully visible during transition
-        portfolioSection.style.opacity = '0.95';
-        
-        // Ensure it's properly positioned using hardware acceleration
-        portfolioSection.style.transform = 'translate3d(0,0,0)';
-        portfolioSection.style.backfaceVisibility = 'hidden';
-        
-        // Restore normal styles after transition
-        setTimeout(() => {
-          portfolioSection.style.opacity = '';
-          portfolioSection.style.transform = '';
-        }, duration + 100);
+    // Prepare all sections for smooth transition
+    sectionIds.forEach(id => {
+      const section = document.getElementById(id);
+      if (section && id !== sectionId) {
+        // Make other sections more transparent during transition
+        section.style.opacity = '0.7';
       }
+    });
+    
+    // Make sure portfolio section is visible
+    element.style.opacity = '1';
+    element.style.willChange = 'transform';
+    
+    // Create a safer animation approach
+    let startTime = 0;
+    
+    // Define our animation step
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const timeElapsed = timestamp - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
       
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
+      // Ease-out curve for smoother stop
+      const ease = 1 - Math.pow(1 - progress, 3);
+      window.scrollTo(0, startPosition + distance * ease);
       
-      // Force focus on the section for better accessibility
-      setTimeout(() => {
+      if (timeElapsed < duration) {
+        requestAnimationFrame(step);
+      } else {
+        // End of animation, reset any properties
+        sectionIds.forEach(id => {
+          const section = document.getElementById(id);
+          if (section) {
+            section.style.opacity = '';
+            section.style.willChange = '';
+          }
+        });
+        
+        // Focus the target element (already checked above that element exists)
+        if (element) {
+          element.setAttribute('tabindex', '-1');
+          element.focus({ preventScroll: true });
+        }
+      }
+    };
+    
+    // Start the animation
+    requestAnimationFrame(step);
+  } else {
+    // For other sections, use standard smooth scrolling
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+    
+    // Focus element after scroll completes (already checked above that element exists)
+    setTimeout(() => {
+      if (element) {
         element.setAttribute('tabindex', '-1');
         element.focus({ preventScroll: true });
-      }, duration / 2);
-    } else {
-      // Regular sections use adaptive duration
-      const distance = Math.abs(window.pageYOffset - offsetPosition);
-      const duration = Math.min(Math.max(distance / 4, 600), 1000); // Between 600ms and 1000ms
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth',
-      });
-      
-      // Force focus on the section for better accessibility
-      setTimeout(() => {
-        element.setAttribute('tabindex', '-1');
-        element.focus({ preventScroll: true });
-      }, duration / 2);
-    }
+      }
+    }, 600);
   }
 }

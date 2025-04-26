@@ -4,18 +4,20 @@ export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   
   useEffect(() => {
+    // Only run once after mount
+    const videoElement = videoRef.current;
+    
     // Start playing the video as soon as it's loaded
-    if (videoRef.current) {
-      // Force the video to play
+    if (videoElement) {
       const playVideo = async () => {
         try {
-          await videoRef.current?.play();
+          await videoElement.play();
           console.log("Video playing successfully");
         } catch (error) {
           console.error("Error playing the video:", error);
           // Try again after a short delay
           setTimeout(() => {
-            videoRef.current?.play().catch(e => console.error("Retry failed:", e));
+            videoElement.play().catch(e => console.error("Retry failed:", e));
           }, 1000);
         }
       };
@@ -25,8 +27,8 @@ export default function VideoBackground() {
     
     return () => {
       // Cleanup function
-      if (videoRef.current) {
-        videoRef.current.pause();
+      if (videoElement) {
+        videoElement.pause();
       }
     };
   }, []);
@@ -36,23 +38,25 @@ export default function VideoBackground() {
       {/* Dark overlay to make content more visible */}
       <div className="absolute inset-0 bg-black/70 pointer-events-none"></div>
       
-      {/* Video element */}
+      {/* Video element with inline styles for maximum compatibility */}
       <video 
         ref={videoRef}
         autoPlay 
         muted 
         loop 
         playsInline
-        className="absolute top-0 left-0 min-w-full min-h-full w-auto h-auto object-cover"
         style={{ 
-          transform: 'translate(0, 0)', 
-          top: '-20%',
-          minHeight: '120%'
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: '-20',
+          transform: 'translateZ(0)' // Force hardware acceleration
         }}
       >
-        {/* Optimized MP4 version */}
         <source src="/static/background-optimized.mp4" type="video/mp4" />
-        <source src="/api/video" type="video/quicktime" />
         Your browser does not support the video tag.
       </video>
     </div>
