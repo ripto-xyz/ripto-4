@@ -86,7 +86,17 @@ body {
   overflow-x: hidden;
 }
 
-/* Video styles now applied directly in the component using inline styles and Tailwind classes */
+.video-background {
+  position: fixed;
+  top: -20%;  /* Hide the top 20% of the video */
+  left: 0;
+  min-width: 100%;
+  min-height: 120%;  /* Compensate for the hidden top */
+  width: auto;
+  height: auto;
+  z-index: -1;
+  object-fit: cover;
+}
 
 /* Base styles for all sections */
 .scroll-section {
@@ -95,32 +105,14 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 1;
   scroll-margin-top: 80px;
-  
-  /* Fix for blue lines/borders */
-  border: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  outline: none !important;
-  
-  /* Force background to match body */
-  background-color: #080F1E;
-}
-
-/* Fix for blue lines between sections */
-.scroll-section::before,
-.scroll-section::after {
-  content: none !important;
-  display: none !important;
-  border: none !important;
-  background: transparent !important;
 }
 
 /* Remove margins and padding from sections to connect them */
 section#portfolio {
   padding-bottom: 0;
   margin-bottom: 0;
-  border-bottom: none !important;
 }
 
 /* Connect contact directly with portfolio */
@@ -128,86 +120,6 @@ section#contact {
   padding-top: 0;
   margin-top: 0;
   margin-bottom: 0;
-  border-top: none !important;
-}
-
-/* Specific fixes for the services and portfolio sections */
-section#services {
-  border-bottom: none !important;
-  margin-bottom: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-/* Direct spacing fix between services and portfolio */
-section#services + section#portfolio {
-  margin-top: 0 !important;
-  padding-top: 0 !important;
-  border-top: none !important;
-}
-
-/* Ensure no space between sections */
-section {
-  border: none !important;
-  outline: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  margin-top: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-/* Fix for blue line between sections */
-body {
-  @apply bg-[#080F1E];
-  color: white;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* Additional fix for blue lines that might appear */
-html, body, #root, main {
-  background-color: #080F1E;
-}
-
-/* Remove borders from all elements */
-*, *::before, *::after {
-  border-color: transparent !important;
-}
-
-/* No duplicate needed - z-index rules applied in section IDs below */
-
-/* Layering for sections to avoid blue lines */
-section#home { 
-  z-index: 5; 
-  margin-bottom: -2px !important; /* Negative margins to ensure no gaps */
-}
-section#about { 
-  z-index: 4; 
-  margin-top: -2px !important;
-  margin-bottom: -2px !important;
-}
-section#services { 
-  z-index: 3; 
-  margin-top: -2px !important;
-  margin-bottom: -2px !important;
-  position: relative;
-  transform: translateZ(0); /* Hardware acceleration */
-  will-change: transform; /* Pre-optimize for transitions */
-  backface-visibility: hidden; /* Prevent visual artifacts */
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
-}
-section#portfolio { 
-  z-index: 2; 
-  margin-top: -2px !important;
-  margin-bottom: -2px !important;
-  position: relative;
-  transform: translateZ(0); /* Hardware acceleration */
-  will-change: transform; /* Pre-optimize for transitions */
-  backface-visibility: hidden; /* Prevent visual artifacts */
-  transition: transform 0.3s ease-out, opacity 0.3s ease-out !important;
-}
-section#contact { 
-  z-index: 1; 
-  margin-top: -2px !important;
 }
 
 /* Keep hero section full height */
@@ -316,7 +228,6 @@ nav a:active {
 
 .dark-overlay {
   @apply absolute inset-0 bg-black/70 z-0;
-  pointer-events: none; /* Ensure clicks pass through the overlay */
 }
 
 @keyframes spyroFloat {
