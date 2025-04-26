@@ -118,20 +118,20 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                 About&nbsp;Me
               </a>
               <a 
-                href="#services" 
-                className={`${
-                  activeSection === 'services' ? 'text-primary' : 'text-white'
-                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
-              >
-                Services
-              </a>
-              <a 
                 href="#portfolio" 
                 className={`${
                   activeSection === 'portfolio' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
               >
                 Portfolio
+              </a>
+              <a 
+                href="#services" 
+                className={`${
+                  activeSection === 'services' ? 'text-primary' : 'text-white'
+                } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
+              >
+                Services
               </a>
               <a 
                 href="#contact" 
