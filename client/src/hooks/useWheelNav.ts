@@ -13,8 +13,19 @@ export function useWheelNav() {
   const accumulatedDeltaRef = useRef(0);
 
   useEffect(() => {
+    // Define types for section settings
+    type ScrollSettings = {
+      threshold: { trackpad: number; wheel: number; };
+      resetTime: number;
+      scrollDelay: number;
+    };
+    
+    type SectionSettings = {
+      [key: string]: ScrollSettings;
+    };
+    
     // Section-specific settings to control scroll sensitivity
-    const sectionSettings = {
+    const sectionSettings: SectionSettings = {
       'home': { 
         threshold: { trackpad: 80, wheel: 40 }, 
         resetTime: 200, 
@@ -26,14 +37,14 @@ export function useWheelNav() {
         scrollDelay: 700 
       },
       'portfolio': { 
-        threshold: { trackpad: 250, wheel: 150 }, // Higher values = less sensitive
-        resetTime: 400,                           // Longer time before resetting delta
-        scrollDelay: 1100                         // Longer animation delay
+        threshold: { trackpad: 350, wheel: 200 }, // Even higher values = much less sensitive
+        resetTime: 600,                           // Much longer time before resetting delta
+        scrollDelay: 1200                         // Longer animation delay
       },
       'services': { 
-        threshold: { trackpad: 250, wheel: 150 }, 
-        resetTime: 400, 
-        scrollDelay: 1100 
+        threshold: { trackpad: 350, wheel: 200 }, // Even higher values = much less sensitive 
+        resetTime: 600,                           // Much longer time before resetting delta
+        scrollDelay: 1200                         // Longer animation delay
       },
       'contact': { 
         threshold: { trackpad: 80, wheel: 40 }, 
@@ -99,8 +110,13 @@ export function useWheelNav() {
       // Get current section to determine threshold
       const currentSection = getActiveSection();
       
-      // Get settings for current section
-      const settings = sectionSettings[currentSection] || defaultSettings;
+      // Validate that currentSection is one of our known sections 
+      const isKnownSection = sectionIds.includes(currentSection);
+      
+      // Get settings for current section - with type safety
+      const settings = isKnownSection && currentSection in sectionSettings
+        ? sectionSettings[currentSection] 
+        : defaultSettings;
       
       // Reset accumulated delta if it's been a while - using section-specific reset time
       if (timeSinceLastScroll > settings.resetTime) {
