@@ -3,16 +3,16 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
 import { useScrollSpy } from './use-scroll-spy';
 
 // Minimum distance (in pixels) required to register a swipe
-const MIN_SWIPE_DISTANCE = 100; // Increased to require a longer, more deliberate swipe
+const MIN_SWIPE_DISTANCE = 120; // Increased to require a longer, more deliberate swipe
 
 // Cooldown period to prevent rapid consecutive swipes (in milliseconds)
-const SWIPE_COOLDOWN = 1000; // Balanced cooldown time
+const SWIPE_COOLDOWN = 1200; // Increased to prevent accidental double swipes
 
 // Additional wait time required after arriving at a new section (in milliseconds)
-const SECTION_ARRIVAL_GRACE_PERIOD = 800; // Reduced from 1500ms
+const SECTION_ARRIVAL_GRACE_PERIOD = 1000; // Increased to prevent section skipping
 
 // Threshold for wheel delta accumulation before triggering section change
-const WHEEL_DELTA_THRESHOLD = 350; // Reduced from 500 to make it more active
+const WHEEL_DELTA_THRESHOLD = 450; // Increased to require more deliberate scrolling
 
 // Timeout to reset wheel accumulation if scrolling pauses
 const WHEEL_TIMEOUT = 200;
@@ -135,8 +135,9 @@ export function useSwipeNavigation() {
       const percentThroughSection = (distanceFromTop / rect.height) * 100;
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
-        // Only go to next section if we're at least 25% through the current section
-        if (percentThroughSection > 25) {
+        // Only go to next section if we're at least 35% through the current section
+        // This helps prevent accidental jumps when not far enough through the section
+        if (percentThroughSection > 35) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {
             isScrollingToSection.current = true;
@@ -153,8 +154,9 @@ export function useSwipeNavigation() {
           }
         }
       } else { // Scrolling UP
-        // Only go to previous section if we're in the top 30% of the current section
-        if (percentThroughSection < 30 && percentThroughSection > 0) {
+        // Only go to previous section if we're in the top 25% of the current section
+        // Reduced from 30% to make it slightly less sensitive when scrolling up
+        if (percentThroughSection < 25 && percentThroughSection > 0) {
           const prevSection = getPrevSectionId(activeSection);
           if (prevSection) {
             isScrollingToSection.current = true;

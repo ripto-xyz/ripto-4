@@ -20,7 +20,8 @@ export function useScrollSpy({ sectionIds, offset = 0 }: ScrollSpyOptions): stri
       // Get current scroll position
       const scrollPosition = window.scrollY + offset;
       const windowHeight = window.innerHeight;
-      const middleOfViewport = scrollPosition + (windowHeight / 3); // Use 1/3 instead of 1/2 for better UX
+      // Use 2/5 of viewport height from top for better detection accuracy
+      const middleOfViewport = scrollPosition + (windowHeight * 0.4);
       
       // Get all section positions
       const sections: SectionPosition[] = sectionIds
@@ -39,10 +40,13 @@ export function useScrollSpy({ sectionIds, offset = 0 }: ScrollSpyOptions): stri
         })
         .filter(section => section.height > 0); // Only consider sections that are rendered
       
-      // First, check if any section contains the middle of the viewport
+      // First, check if any section contains the reference point in the viewport
+      // Add a minimum threshold to prevent rapid switching between sections
       const sectionInMiddle = sections.find(
         section => section.position <= middleOfViewport && 
-                   section.bottom >= middleOfViewport
+                   section.bottom >= middleOfViewport &&
+                   // Ensure we're at least 50px into the section to avoid flicker at boundaries
+                   middleOfViewport >= (section.position + 50)
       );
       
       if (sectionInMiddle) {
