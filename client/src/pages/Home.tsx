@@ -1,4 +1,3 @@
-import VideoBackground from "@/components/VideoBackground";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
@@ -60,12 +59,9 @@ export default function Home() {
     return () => document.removeEventListener("click", handleClickOutside);
   }, [showMobileMenu]);
   
-  // We don't need this function anymore as scrolling is handled in Navbar
-  // Removed unused scrollToSection function
-  
   return (
     <div className="min-h-screen">
-      <VideoBackground />
+      {/* Video background is now in the static HTML file */}
       <Navbar 
         activeSection={activeSection} 
         showMobileMenu={showMobileMenu}
