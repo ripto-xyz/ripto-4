@@ -205,38 +205,44 @@ export function useWheelNav() {
       }
       
       // Navigate to the next/previous section with additional safeguards
-      if (e.deltaY > 0) {
-        // Scrolling DOWN - go to next section
-        const nextSection = getNextSectionId(activeSection);
-        if (nextSection) {
-          // If coming from portfolio, make sure we clear any pending animations
-          if (activeSection === 'portfolio') {
-            // Forcefully stop any ongoing animations first
-            window.scrollTo({ top: window.scrollY });
+      try {
+        if (e.deltaY > 0) {
+          // Scrolling DOWN - go to next section
+          const nextSection = getNextSectionId(activeSection);
+          if (nextSection) {
+            // If coming from portfolio, make sure we clear any pending animations
+            if (activeSection === 'portfolio') {
+              // Forcefully stop any ongoing animations first
+              window.scrollTo({ top: window.scrollY });
+            }
+            
+            // Then do the smooth scroll to the target section
+            scrollToSection(nextSection);
+          } else {
+            // No next section available
+            isScrollingRef.current = false;
           }
-          
-          // Then do the smooth scroll to the target section
-          scrollToSection(nextSection);
         } else {
-          // No next section available
-          isScrollingRef.current = false;
-        }
-      } else {
-        // Scrolling UP - go to previous section
-        const prevSection = getPrevSectionId(activeSection);
-        if (prevSection) {
-          // If coming from services, make sure we clear any pending animations first
-          if (activeSection === 'services') {
-            // Forcefully stop any ongoing animations first
-            window.scrollTo({ top: window.scrollY });
+          // Scrolling UP - go to previous section
+          const prevSection = getPrevSectionId(activeSection);
+          if (prevSection) {
+            // If coming from services, make sure we clear any pending animations first
+            if (activeSection === 'services') {
+              // Forcefully stop any ongoing animations first
+              window.scrollTo({ top: window.scrollY });
+            }
+            
+            // Then do the smooth scroll to the target section
+            scrollToSection(prevSection);
+          } else {
+            // No previous section available
+            isScrollingRef.current = false;
           }
-          
-          // Then do the smooth scroll to the target section
-          scrollToSection(prevSection);
-        } else {
-          // No previous section available
-          isScrollingRef.current = false;
         }
+      } catch (error) {
+        console.error("Error in wheel navigation:", error);
+        // Release scrolling lock so user can still navigate
+        isScrollingRef.current = false;
       }
       
       // Reset scrolling state after animation completes
