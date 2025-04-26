@@ -13,17 +13,39 @@ export function useWheelNav() {
 
   useEffect(() => {
     const getActiveSection = () => {
-      const scrollPosition = window.scrollY + 120; // Increased offset to match our new scrolling values
+      const scrollPosition = window.scrollY + window.innerHeight / 2; // Use the middle of the viewport
       
-      // Find the current section in view (search from bottom to top)
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sectionIds[i]);
-        if (section && section.offsetTop <= scrollPosition) {
-          return sectionIds[i];
+      // Find which section contains the middle of the viewport
+      for (const sectionId of sectionIds) {
+        const section = document.getElementById(sectionId);
+        if (!section) continue;
+        
+        const rect = section.getBoundingClientRect();
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + rect.height;
+        
+        // If the middle of the viewport is within this section
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          return sectionId;
         }
       }
       
-      return sectionIds[0]; // Default to first section
+      // Fallback: use the closest section based on position
+      let closestSection = sectionIds[0];
+      let closestDistance = Infinity;
+      
+      for (const sectionId of sectionIds) {
+        const section = document.getElementById(sectionId);
+        if (!section) continue;
+        
+        const distance = Math.abs(section.offsetTop - scrollPosition);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestSection = sectionId;
+        }
+      }
+      
+      return closestSection;
     };
 
     // The wheel event handler
