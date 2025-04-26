@@ -30,7 +30,16 @@ export function getPrevSectionId(currentSectionId: string): string | null {
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (element) {
-    // Ensure we scroll to the top of the section
+    // Special case for About section to ensure it scrolls to the very top
+    if (sectionId === 'about') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
+    // For other sections, ensure we scroll to the top of the section
     // Get any scroll-margin-top that might be applied to the section
     const computedStyle = window.getComputedStyle(element);
     const scrollMarginTop = parseInt(computedStyle.scrollMarginTop) || 0;

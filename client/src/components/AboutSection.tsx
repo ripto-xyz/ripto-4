@@ -85,7 +85,7 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className={`scroll-section relative ${isVisible ? 'animate-fadeIn' : ''}`}>
+    <section id="about" className={`scroll-section relative mt-0 pt-0 ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative pt-0 pb-12 sm:pb-16 md:pb-20">
         <div className="max-w-[1400px] mx-auto">
           {/* White semi-transparent container behind the text with Spyro portal image */}

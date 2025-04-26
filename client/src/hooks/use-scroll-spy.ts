@@ -39,6 +39,12 @@ export function useScrollSpy({ sectionIds, offset = 0 }: ScrollSpyOptions): stri
         })
         .filter(section => section.height > 0); // Only consider sections that are rendered
       
+      // Special case for the About section - if we're at the top, it's active
+      if (scrollPosition < 10) {
+        setActiveSection('home');
+        return;
+      }
+      
       // First, check if any section contains the middle of the viewport
       const sectionInMiddle = sections.find(
         section => section.position <= middleOfViewport && 
