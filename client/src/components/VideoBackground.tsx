@@ -27,11 +27,20 @@ export default function VideoBackground() {
       {/* Video element */}
       <video 
         ref={videoRef}
-        className="absolute top-0 left-0 min-w-full min-h-full w-auto h-auto object-cover z-[-1]"
+        className="absolute top-[-20%] left-0 min-w-full min-h-[120%] w-auto h-auto object-cover z-[-1]"
         autoPlay 
         muted 
         loop 
         playsInline
+        style={{
+          objectFit: 'cover',
+          width: '100%',
+          height: '120%',
+          position: 'absolute',
+          top: '-20%',
+          left: 0,
+          zIndex: -1
+        }}
       >
         <source src="/attached_assets/timeline.mp4" type="video/mp4" />
         <source src="/timeline-bg.mp4" type="video/mp4" />
