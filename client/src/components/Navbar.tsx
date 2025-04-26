@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "wouter";
 import { Menu, X } from "lucide-react";
 import YellowLogo from "./YellowLogo";
 
@@ -29,6 +28,19 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     e.stopPropagation();
     setShowMobileMenu(!showMobileMenu);
   };
+  
+  // Simplified scroll function
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (section) {
+      window.scrollTo({
+        top: section.offsetTop - 100,
+        behavior: 'smooth'
+      });
+    }
+    setShowMobileMenu(false);
+  };
 
   return (
     <nav 
@@ -38,7 +50,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     >
       <div className="container mx-auto px-2 py-4">
         <div className="flex items-center justify-between gap-2">
-          <div onClick={() => window.location.href = '/'} className="cursor-pointer">
+          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer">
             <YellowLogo />
           </div>
           
@@ -46,6 +58,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
           <div className="hidden md:flex space-x-2 lg:space-x-4 flex-1 justify-end">
             <a 
               href="#home" 
+              onClick={(e) => handleNavClick(e, 'home')}
               className={`${
                 activeSection === 'home' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -54,17 +67,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
             <a 
               href="#about" 
-              onClick={(e) => {
-                e.preventDefault();
-                // Direct navigation to about to avoid scroll issues
-                const aboutSection = document.getElementById('about');
-                if (aboutSection) {
-                  window.scrollTo({
-                    top: aboutSection.offsetTop - 100, // Offset to account for navbar
-                    behavior: 'smooth'
-                  });
-                }
-              }}
+              onClick={(e) => handleNavClick(e, 'about')}
               className={`${
                 activeSection === 'about' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -73,6 +76,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
             <a 
               href="#portfolio" 
+              onClick={(e) => handleNavClick(e, 'portfolio')}
               className={`${
                 activeSection === 'portfolio' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -81,6 +85,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
             <a 
               href="#services" 
+              onClick={(e) => handleNavClick(e, 'services')}
               className={`${
                 activeSection === 'services' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -89,17 +94,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
             <a 
               href="#contact" 
-              onClick={(e) => {
-                e.preventDefault();
-                // Direct navigation to contact to avoid scroll issues
-                const contactSection = document.getElementById('contact');
-                if (contactSection) {
-                  window.scrollTo({
-                    top: contactSection.offsetTop - 100, // Offset to account for navbar
-                    behavior: 'smooth'
-                  });
-                }
-              }}
+              onClick={(e) => handleNavClick(e, 'contact')}
               className={`${
                 activeSection === 'contact' ? 'text-primary' : 'text-white'
               } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
@@ -125,6 +120,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             <div className="flex flex-col space-y-4" onClick={(e) => e.stopPropagation()}>
               <a 
                 href="#home" 
+                onClick={(e) => handleNavClick(e, 'home')}
                 className={`${
                   activeSection === 'home' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
@@ -133,18 +129,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               </a>
               <a 
                 href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setShowMobileMenu(false); // Close mobile menu
-                  // Direct navigation to about to avoid scroll issues
-                  const aboutSection = document.getElementById('about');
-                  if (aboutSection) {
-                    window.scrollTo({
-                      top: aboutSection.offsetTop - 100, // Offset to account for navbar
-                      behavior: 'smooth'
-                    });
-                  }
-                }}
+                onClick={(e) => handleNavClick(e, 'about')}
                 className={`${
                   activeSection === 'about' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
@@ -153,6 +138,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               </a>
               <a 
                 href="#portfolio" 
+                onClick={(e) => handleNavClick(e, 'portfolio')}
                 className={`${
                   activeSection === 'portfolio' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
@@ -161,6 +147,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               </a>
               <a 
                 href="#services" 
+                onClick={(e) => handleNavClick(e, 'services')}
                 className={`${
                   activeSection === 'services' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
@@ -169,18 +156,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               </a>
               <a 
                 href="#contact" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  setShowMobileMenu(false); // Close mobile menu
-                  // Direct navigation to contact to avoid scroll issues
-                  const contactSection = document.getElementById('contact');
-                  if (contactSection) {
-                    window.scrollTo({
-                      top: contactSection.offsetTop - 100, // Offset to account for navbar
-                      behavior: 'smooth'
-                    });
-                  }
-                }}
+                onClick={(e) => handleNavClick(e, 'contact')}
                 className={`${
                   activeSection === 'contact' ? 'text-primary' : 'text-white'
                 } hover:text-primary transition-colors text-lg font-medium whitespace-nowrap py-2`}
