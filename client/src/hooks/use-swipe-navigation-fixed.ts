@@ -113,7 +113,12 @@ export function useSwipeNavigation() {
       
       // Special case for services section (make transitions to portfolio easier)
       if (activeSection === 'services' && e.deltaY > 0) {
-        accumulationFactor = 1.5;
+        accumulationFactor = 3.0; // Much higher factor to make transitions to portfolio much easier
+      }
+      
+      // Special case for about section (make transitions to services easier)
+      if (activeSection === 'about' && e.deltaY > 0) {
+        accumulationFactor = 2.0; // Higher factor for about → services transition
       }
       
       accumulatedWheelDelta.current += (e.deltaY * accumulationFactor);
@@ -144,8 +149,13 @@ export function useSwipeNavigation() {
       
       if (accumulatedWheelDelta.current > 0) { // Scrolling DOWN
         // Only go to next section if we're at least 20% through the current section
-        // Special handling for services section (easier to scroll past)
-        const threshold = activeSection === 'services' ? 15 : 20;
+        // Special handling for sections to make transitions more predictable
+        let threshold = 20; // Default threshold
+        if (activeSection === 'services') {
+          threshold = 10; // Much lower threshold for services section
+        } else if (activeSection === 'portfolio') {
+          threshold = 25; // Higher threshold for portfolio section
+        }
         if (percentThroughSection > threshold) {
           const nextSection = getNextSectionId(activeSection);
           if (nextSection) {

@@ -35,19 +35,53 @@ export function scrollToSection(sectionId: string): void {
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset;
     
-    // Use a custom duration based on distance (faster for short distances, slower for long ones)
-    const distance = Math.abs(window.pageYOffset - offsetPosition);
-    const duration = Math.min(Math.max(distance / 4, 600), 1000); // Between 600ms and 1000ms
-    
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: 'smooth',
-    });
-    
-    // Force focus on the section for better accessibility
-    setTimeout(() => {
-      element.setAttribute('tabindex', '-1');
-      element.focus({ preventScroll: true });
-    }, duration / 2);
+    // Handle portfolio section differently
+    if (sectionId === 'portfolio') {
+      // Faster, more direct scrolling for portfolio section
+      const duration = 600; // Faster for portfolio
+      
+      // Prepare the portfolio section for a clean transition
+      const portfolioSection = document.getElementById('portfolio');
+      if (portfolioSection) {
+        // Ensure it's fully visible during transition
+        portfolioSection.style.opacity = '0.95';
+        
+        // Ensure it's properly positioned using hardware acceleration
+        portfolioSection.style.transform = 'translate3d(0,0,0)';
+        portfolioSection.style.backfaceVisibility = 'hidden';
+        
+        // Restore normal styles after transition
+        setTimeout(() => {
+          portfolioSection.style.opacity = '';
+          portfolioSection.style.transform = '';
+        }, duration + 100);
+      }
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+      
+      // Force focus on the section for better accessibility
+      setTimeout(() => {
+        element.setAttribute('tabindex', '-1');
+        element.focus({ preventScroll: true });
+      }, duration / 2);
+    } else {
+      // Regular sections use adaptive duration
+      const distance = Math.abs(window.pageYOffset - offsetPosition);
+      const duration = Math.min(Math.max(distance / 4, 600), 1000); // Between 600ms and 1000ms
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth',
+      });
+      
+      // Force focus on the section for better accessibility
+      setTimeout(() => {
+        element.setAttribute('tabindex', '-1');
+        element.focus({ preventScroll: true });
+      }, duration / 2);
+    }
   }
 }
