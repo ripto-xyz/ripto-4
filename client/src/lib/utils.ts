@@ -33,36 +33,65 @@ export function scrollToSection(sectionId: string): void {
 
   // Get the viewport height to help calculate position
   const viewportHeight = window.innerHeight;
-  const elementHeight = element.getBoundingClientRect().height;
+  const documentHeight = document.body.scrollHeight;
+  const elementRect = element.getBoundingClientRect();
+  const elementHeight = elementRect.height;
   
-  // Improved offset mapping - adjusts based on section height and viewport
-  const offsets: {[key: string]: number} = {
-    'home': 0,                  // Home should always be at the very top
-    'about': 100,               // Standard offset for about
-    'portfolio': 100,           // Standard offset for portfolio
-    'services': 80,             // Reduced offset to stop properly at services
-    'contact': Math.min(80, viewportHeight * 0.1),  // Smaller offset for contact to ensure it's visible
-    'default': 100
-  };
+  // Check which direction we're scrolling from
+  const currentScroll = window.scrollY;
+  const elementTop = element.offsetTop;
+  const isScrollingDown = currentScroll < elementTop;
   
-  // Get offset with fallback to default
-  const offset = offsets[sectionId] || offsets.default;
+  // Custom positioning by section
+  let targetPosition;
   
-  // Calculate final position
-  let targetPosition = element.offsetTop - offset;
-  
-  // For services section, ensure it doesn't scroll too far
-  if (sectionId === 'services') {
-    // Make sure we don't scroll beyond what's needed to see the section title
-    targetPosition = Math.min(targetPosition, element.offsetTop - 80);
+  switch(sectionId) {
+    case 'home':
+      // Always go to the very top for home
+      targetPosition = 0;
+      break;
+      
+    case 'about':
+      // Standard offset for about
+      targetPosition = elementTop - 100;
+      break;
+      
+    case 'portfolio':
+      // Standard offset for portfolio
+      targetPosition = elementTop - 100;
+      break;
+      
+    case 'services':
+      // Make sure the services section is properly visible at the top of the viewport
+      // with enough room to see the section title and first content items
+      targetPosition = Math.max(0, elementTop - 90);
+      
+      // When scrolling down to services, ensure we don't scroll too far
+      if (isScrollingDown) {
+        // Force a slightly higher position to ensure the section heading is visible
+        targetPosition = Math.max(0, elementTop - 90); 
+      }
+      break;
+      
+    case 'contact':
+      // For contact section, ensure it stops at a good visible position without going too far
+      const maxScroll = documentHeight - viewportHeight;
+      
+      // When scrolling down to contact, ensure we can see the top of the section
+      // without scrolling all the way to the bottom of the page
+      targetPosition = Math.max(0, elementTop - 90);
+      
+      // Absolute limit - never go beyond what the browser allows
+      targetPosition = Math.min(targetPosition, maxScroll - 10);
+      break;
+      
+    default:
+      // Default behavior for any other sections
+      targetPosition = elementTop - 100;
   }
   
-  // For contact section, ensure it stops properly
-  if (sectionId === 'contact') {
-    // Make sure we see the section and don't scroll beyond it
-    const maxScroll = document.body.scrollHeight - viewportHeight;
-    targetPosition = Math.min(targetPosition, maxScroll);
-  }
+  // Safety check - prevent scrolling beyond document limits
+  targetPosition = Math.max(0, Math.min(targetPosition, documentHeight - viewportHeight));
   
   try {
     window.scrollTo({

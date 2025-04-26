@@ -149,12 +149,33 @@ export function useWheelNav() {
       
       if (e.deltaY > 0) {
         // Scrolling DOWN - go to next section
-        const nextSection = getNextSectionId(currentSection);
-        if (nextSection) {
-          scrollToSection(nextSection);
+        
+        // Special treatment for content-heavy sections - require an extra large scroll to leave
+        if (currentSection === 'portfolio' || currentSection === 'services') {
+          // Required scroll intensity varies by input device
+          const extraScrollThreshold = isLikelyTrackpad ? 500 : 300;
+          
+          // Only go to next section if the scroll is extremely large for content sections
+          if (Math.abs(e.deltaY) > extraScrollThreshold) {
+            const nextSection = getNextSectionId(currentSection);
+            if (nextSection) {
+              scrollToSection(nextSection);
+            } else {
+              isScrollingRef.current = false;
+            }
+          } else {
+            // For smaller scrolls in content sections, don't navigate
+            isScrollingRef.current = false;
+          }
         } else {
-          // No next section available
-          isScrollingRef.current = false;
+          // Normal behavior for other sections
+          const nextSection = getNextSectionId(currentSection);
+          if (nextSection) {
+            scrollToSection(nextSection);
+          } else {
+            // No next section available
+            isScrollingRef.current = false;
+          }
         }
       } else {
         // Scrolling UP - go to previous section
