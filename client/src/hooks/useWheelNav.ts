@@ -4,16 +4,19 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
 /**
  * A simple but robust hook for section-to-section navigation using mouse wheel or trackpad.
  * Handles both devices by accounting for their different scroll characteristics.
+ * Features reduced sensitivity for portfolio and services sections to allow better reading.
  */
 export function useWheelNav() {
   // State refs to persist across renders
   const isScrollingRef = useRef(false);
   const lastScrollTimeRef = useRef(0);
   const accumulatedDeltaRef = useRef(0);
+  const isInContentSectionRef = useRef(false);
 
   useEffect(() => {
     const getActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2; // Use the middle of the viewport
+      // Use more of the viewport to determine active section
+      const scrollPosition = window.scrollY + window.innerHeight / 2; 
       
       // Find which section contains the middle of the viewport
       for (const sectionId of sectionIds) {
@@ -26,6 +29,8 @@ export function useWheelNav() {
         
         // If the middle of the viewport is within this section
         if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          // Set the content section ref to true if we're in portfolio or services
+          isInContentSectionRef.current = sectionId === 'portfolio' || sectionId === 'services';
           return sectionId;
         }
       }
@@ -45,6 +50,8 @@ export function useWheelNav() {
         }
       }
       
+      // Set the content section ref based on fallback section
+      isInContentSectionRef.current = closestSection === 'portfolio' || closestSection === 'services';
       return closestSection;
     };
 
@@ -60,7 +67,9 @@ export function useWheelNav() {
       const timeSinceLastScroll = now - lastScrollTimeRef.current;
       
       // Reset accumulated delta if it's been a while
-      if (timeSinceLastScroll > 200) {
+      // Longer reset time for content sections to make scrolling less sensitive
+      const resetTime = isInContentSectionRef.current ? 400 : 200;
+      if (timeSinceLastScroll > resetTime) {
         accumulatedDeltaRef.current = 0;
       }
       
@@ -70,8 +79,17 @@ export function useWheelNav() {
       // Detect if this is likely a trackpad or mouse wheel
       const isLikelyTrackpad = Math.abs(e.deltaY) < 40;
       
-      // Different thresholds based on input device
-      const threshold = isLikelyTrackpad ? 100 : 50;
+      // Get current section to determine threshold
+      const currentSection = getActiveSection();
+      
+      // Different thresholds based on input device and section
+      // Higher threshold for portfolio and services sections to make navigation less sensitive
+      let threshold = isLikelyTrackpad ? 100 : 50;
+      
+      // Higher threshold for portfolio and services sections (content-heavy areas)
+      if (currentSection === 'portfolio' || currentSection === 'services') {
+        threshold = isLikelyTrackpad ? 200 : 120; // Double the standard threshold
+      }
       
       // Only process if accumulated delta is big enough
       if (accumulatedDeltaRef.current < threshold) {
@@ -85,9 +103,6 @@ export function useWheelNav() {
       isScrollingRef.current = true;
       lastScrollTimeRef.current = now;
       accumulatedDeltaRef.current = 0;
-      
-      // Get current section and determine where to scroll
-      const currentSection = getActiveSection();
       
       if (e.deltaY > 0) {
         // Scrolling DOWN - go to next section
@@ -110,9 +125,11 @@ export function useWheelNav() {
       }
       
       // Reset scrolling state after animation completes
+      // Use longer delay for portfolio and services sections
+      const resetDelay = isInContentSectionRef.current ? 1000 : 700;
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, 700);
+      }, resetDelay);
     };
     
     // Add wheel event listener with passive: false to allow preventDefault
