@@ -36,22 +36,26 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     
     // First immediately update the active section
     // This makes the navbar highlight change instantly when clicked
-    if (sectionId === activeSection) return; // Skip if already active
-    
-    // For Contact, always update the active section immediately
-    if (sectionId === 'contact') {
-      // We bypass the parent component's state by applying the class directly
-      const links = document.querySelectorAll('nav a');
-      links.forEach(link => {
-        if (link.getAttribute('href') === '#contact') {
-          link.classList.add('text-primary');
-          link.classList.remove('text-white');
-        } else {
-          link.classList.remove('text-primary');
-          link.classList.add('text-white');
-        }
-      });
+    if (sectionId === activeSection) {
+      // Even if already active, still scroll to the section
+      scrollToSection(sectionId);
+      setShowMobileMenu(false);
+      return;
     }
+    
+    // For all sections, immediately update the navbar highlight state
+    // We'll do this by directly manipulating the DOM to avoid state update delays
+    const links = document.querySelectorAll('nav a');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${sectionId}`) {
+        link.classList.add('text-primary');
+        link.classList.remove('text-white');
+      } else {
+        link.classList.remove('text-primary');
+        link.classList.add('text-white');
+      }
+    });
     
     // Then scroll to the section
     scrollToSection(sectionId);

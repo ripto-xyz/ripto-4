@@ -41,67 +41,104 @@ export default function Home() {
   // Use wheel navigation hook, but it will check for Firefox internally
   useWheelNav(isFirefox);
   
-  // Completely revised section detection approach
+  // More robust section detection approach
   useEffect(() => {
     const handleScroll = () => {
-      // Define center point - using 40% from the top of the viewport as our "focus point"
       const viewportHeight = window.innerHeight;
-      const focusPoint = viewportHeight * 0.4;
+      const scrollPosition = window.scrollY;
+      const scrollThreshold = 80; // How many pixels to scroll before home is no longer active
       
-      // Get all our sections in order
       const sections = ['home', 'about', 'portfolio', 'services', 'contact'];
       
-      // Find which section is most visible at our focus point
-      let maxVisibility = -1;
-      let mostVisibleSection = 'home'; // Default to home
+      // Special case for the top of the page - always highlight home
+      if (scrollPosition < scrollThreshold) {
+        setActiveSection('home');
+        return;
+      }
       
-      sections.forEach(sectionId => {
+      // We'll use a different approach for section detection:
+      // 1. Calculate how much of each section is visible in the viewport
+      // 2. Weight it by how close the section's center is to our focus point
+      // 3. Add special bonus for sections that cross the 1/3 point of viewport
+      const focusPoint = viewportHeight * 0.33; // Focus point at 1/3 down the viewport
+      let bestSection = '';
+      let bestScore = -1;
+      
+      // Process sections in reverse order to give later sections precedence
+      // when scores are close
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const sectionId = sections[i];
         const element = document.getElementById(sectionId);
-        if (!element) return;
+        if (!element) continue;
         
         const rect = element.getBoundingClientRect();
         
-        // Skip sections that are completely out of view
-        if (rect.bottom < 0 || rect.top > viewportHeight) return;
+        // Skip if completely out of view
+        if (rect.bottom <= 0 || rect.top >= viewportHeight) continue;
         
-        // Calculate section visibility score
-        let visibilityScore = 0;
+        // Calculate visibility percentage (how much of the section is in view)
+        const visibleTop = Math.max(0, rect.top);
+        const visibleBottom = Math.min(viewportHeight, rect.bottom);
+        const visibleHeight = visibleBottom - visibleTop;
+        const visibilityPercentage = visibleHeight / rect.height;
         
-        // Special rule for home section - always fully visible when at the top
-        if (sectionId === 'home' && window.scrollY < 100) {
-          visibilityScore = 1000;
-        } 
-        // Special rule for contact section - more weight when it's visible
-        else if (sectionId === 'contact' && rect.top < viewportHeight) {
-          // Calculate how close the section top is to our focus point
-          const distance = Math.abs(rect.top - focusPoint);
-          visibilityScore = 800 - distance;
+        // Calculate how much of the viewport this section occupies
+        const viewportOccupancy = visibleHeight / viewportHeight;
+        
+        // Calculate distance from the section's center to our focus point
+        const sectionCenter = rect.top + (rect.height / 2);
+        const distanceFromFocus = Math.abs(sectionCenter - focusPoint);
+        const normalizedDistance = distanceFromFocus / viewportHeight; // 0-1 range
+        
+        // Calculate final score - weighing visibility heavily
+        let score = (visibilityPercentage * 0.5) + (viewportOccupancy * 0.3) - (normalizedDistance * 0.2);
+        
+        // Boost score for whichever section contains the 1/3 viewport mark
+        if (rect.top <= focusPoint && rect.bottom >= focusPoint) {
+          score += 0.3;
+        }
+        
+        // Special boosts for specific sections
+        if (sectionId === 'portfolio') {
+          // Portfolio gets a slight boost to help with the transition from about
+          score += 0.05;
+        } else if (sectionId === 'contact' && rect.top < viewportHeight) {
+          // Contact gets a boost when it starts becoming visible
+          score += 0.15;
+        }
+        
+        // Debug logging - remove in production
+        // console.log(`Section ${sectionId}: score=${score.toFixed(2)} (vis=${visibilityPercentage.toFixed(2)}, occ=${viewportOccupancy.toFixed(2)}, dist=${normalizedDistance.toFixed(2)})`);
+        
+        // Update best section (only if significantly better or it's later in the page)
+        const THRESHOLD = 0.01; // Score must be better by this amount unless section is later
+        if (score > bestScore + THRESHOLD || (score > bestScore - THRESHOLD && i < sections.indexOf(bestSection))) {
+          bestScore = score;
+          bestSection = sectionId;
+        }
+      }
+      
+      // If we couldn't find a visible section, fall back to traditional method
+      // by finding which section we're scrolled into
+      if (!bestSection) {
+        for (const sectionId of sections) {
+          const element = document.getElementById(sectionId);
+          if (!element) continue;
           
-          // Extra weight when contact is a significant portion of the viewport
-          if (rect.height > viewportHeight / 3) {
-            visibilityScore += 100;
+          const top = element.offsetTop - 100;
+          const bottom = top + element.offsetHeight;
+          
+          if (scrollPosition >= top && scrollPosition < bottom) {
+            bestSection = sectionId;
+            break;
           }
         }
-        // Normal sections
-        else {
-          // Calculate how much of the section is visible, and how centered it is
-          const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
-          const centerPoint = rect.top + (rect.height / 2);
-          const distanceFromFocus = Math.abs(centerPoint - focusPoint);
-          
-          // Score based on visibility and proximity to our focus point
-          visibilityScore = (visibleHeight / rect.height) * 500 - distanceFromFocus;
-        }
-        
-        // Update the most visible section
-        if (visibilityScore > maxVisibility) {
-          maxVisibility = visibilityScore;
-          mostVisibleSection = sectionId;
-        }
-      });
+      }
       
-      // Set the active section
-      setActiveSection(mostVisibleSection);
+      // Only update if we have a valid section and it's different
+      if (bestSection && bestSection !== activeSection) {
+        setActiveSection(bestSection);
+      }
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -110,7 +147,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
+  }, [activeSection]);
   
   // Close mobile menu when clicking anywhere else
   useEffect(() => {
