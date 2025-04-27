@@ -48,25 +48,25 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
   return (
     <div className={className}>
       <style>{styles}</style>
-      <div className="logo-container">
-        <img className="letter" src={L} alt="L" style={{ left: '0px' }} />
-        <img className="letter" src={A} alt="A" style={{ left: '10px' }} />
-        <img className="letter" src={U} alt="U" style={{ left: '40px' }} />
-        <img className="letter" src={R} alt="R" style={{ left: '60px' }} />
-        <img className="letter" src={E} alt="E" style={{ left: '80px' }} />
-        <img className="letter" src={N} alt="N" style={{ left: '100px' }} />
-        <img className="letter" src={C} alt="C" style={{ left: '120px' }} />
-        <img className="letter" src={E} alt="E" style={{ left: '140px' }} />
-        <img className="letter" src={PIPE} alt="|" style={{ left: '170px' }} />
-        <img className="letter" src={R} alt="R" style={{ left: '190px' }} />
-        <img className="letter" src={I} alt="I" style={{ left: '210px' }} />
-        <img className="letter" src={P} alt="P" style={{ left: '230px' }} />
-        <img className="letter" src={T} alt="T" style={{ left: '250px' }} />
-        <img className="letter" src={O} alt="O" style={{ left: '270px' }} />
-        <img className="letter-dot" src={DOT} alt="." style={{ left: '290px', top: '16px' }} />
-        <img className="letter" src={E} alt="E" style={{ left: '305px' }} />
-        <img className="letter" src={T} alt="T" style={{ left: '325px' }} />
-        <img className="letter" src={H} alt="H" style={{ left: '345px' }} />
+      <div className="logo-container spyro-logo-animated">
+        <img className="letter letter-animated" src={L} alt="L" style={{ left: '0px', animationDelay: '0.0s' }} />
+        <img className="letter letter-animated" src={A} alt="A" style={{ left: '10px', animationDelay: '0.1s' }} />
+        <img className="letter letter-animated" src={U} alt="U" style={{ left: '40px', animationDelay: '0.2s' }} />
+        <img className="letter letter-animated" src={R} alt="R" style={{ left: '60px', animationDelay: '0.3s' }} />
+        <img className="letter letter-animated" src={E} alt="E" style={{ left: '80px', animationDelay: '0.4s' }} />
+        <img className="letter letter-animated" src={N} alt="N" style={{ left: '100px', animationDelay: '0.5s' }} />
+        <img className="letter letter-animated" src={C} alt="C" style={{ left: '120px', animationDelay: '0.6s' }} />
+        <img className="letter letter-animated" src={E} alt="E" style={{ left: '140px', animationDelay: '0.7s' }} />
+        <img className="letter letter-animated" src={PIPE} alt="|" style={{ left: '170px', animationDelay: '0.8s' }} />
+        <img className="letter letter-animated" src={R} alt="R" style={{ left: '190px', animationDelay: '0.9s' }} />
+        <img className="letter letter-animated" src={I} alt="I" style={{ left: '210px', animationDelay: '1.0s' }} />
+        <img className="letter letter-animated" src={P} alt="P" style={{ left: '230px', animationDelay: '1.1s' }} />
+        <img className="letter letter-animated" src={T} alt="T" style={{ left: '250px', animationDelay: '1.2s' }} />
+        <img className="letter letter-animated" src={O} alt="O" style={{ left: '270px', animationDelay: '1.3s' }} />
+        <img className="letter-dot letter-animated" src={DOT} alt="." style={{ left: '290px', top: '16px', animationDelay: '1.4s' }} />
+        <img className="letter letter-animated" src={E} alt="E" style={{ left: '305px', animationDelay: '1.5s' }} />
+        <img className="letter letter-animated" src={T} alt="T" style={{ left: '325px', animationDelay: '1.6s' }} />
+        <img className="letter letter-animated" src={H} alt="H" style={{ left: '345px', animationDelay: '1.7s' }} />
         
         {/* Create a transparent overlay div with the right width */}
         <div style={{ height: '32px', width: '365px' }}></div>
