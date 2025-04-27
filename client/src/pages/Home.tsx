@@ -41,42 +41,67 @@ export default function Home() {
   // Use wheel navigation hook, but it will check for Firefox internally
   useWheelNav(isFirefox);
   
-  // Improved scroll listener to determine active section
+  // Completely revised section detection approach
   useEffect(() => {
     const handleScroll = () => {
-      // Calculate viewport height and scroll position 
-      const windowHeight = window.innerHeight;
-      const scrollPosition = window.scrollY + windowHeight * 0.35; // Check position 35% down the viewport
+      // Define center point - using 40% from the top of the viewport as our "focus point"
+      const viewportHeight = window.innerHeight;
+      const focusPoint = viewportHeight * 0.4;
       
-      // Special case: check if we're at the bottom of the page (contact section)
-      const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
-      if (isAtBottom) {
-        setActiveSection('contact');
-        return;
-      }
-      
-      // Get all sections
+      // Get all our sections in order
       const sections = ['home', 'about', 'portfolio', 'services', 'contact'];
       
-      // Start from the last section (contact) and work backwards
-      // This helps when sections are close together - the last one gets precedence
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        const element = document.getElementById(section);
-        if (!element) continue;
+      // Find which section is most visible at our focus point
+      let maxVisibility = -1;
+      let mostVisibleSection = 'home'; // Default to home
+      
+      sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (!element) return;
         
         const rect = element.getBoundingClientRect();
-        const sectionTop = rect.top + window.scrollY;
-        const sectionBottom = sectionTop + rect.height;
         
-        // Special handling for contact section - make it activate sooner
-        const threshold = section === 'contact' ? windowHeight * 0.2 : 0;
+        // Skip sections that are completely out of view
+        if (rect.bottom < 0 || rect.top > viewportHeight) return;
         
-        if (scrollPosition >= sectionTop - threshold && scrollPosition < sectionBottom) {
-          setActiveSection(section);
-          break;
+        // Calculate section visibility score
+        let visibilityScore = 0;
+        
+        // Special rule for home section - always fully visible when at the top
+        if (sectionId === 'home' && window.scrollY < 100) {
+          visibilityScore = 1000;
+        } 
+        // Special rule for contact section - more weight when it's visible
+        else if (sectionId === 'contact' && rect.top < viewportHeight) {
+          // Calculate how close the section top is to our focus point
+          const distance = Math.abs(rect.top - focusPoint);
+          visibilityScore = 800 - distance;
+          
+          // Extra weight when contact is a significant portion of the viewport
+          if (rect.height > viewportHeight / 3) {
+            visibilityScore += 100;
+          }
         }
-      }
+        // Normal sections
+        else {
+          // Calculate how much of the section is visible, and how centered it is
+          const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+          const centerPoint = rect.top + (rect.height / 2);
+          const distanceFromFocus = Math.abs(centerPoint - focusPoint);
+          
+          // Score based on visibility and proximity to our focus point
+          visibilityScore = (visibleHeight / rect.height) * 500 - distanceFromFocus;
+        }
+        
+        // Update the most visible section
+        if (visibilityScore > maxVisibility) {
+          maxVisibility = visibilityScore;
+          mostVisibleSection = sectionId;
+        }
+      });
+      
+      // Set the active section
+      setActiveSection(mostVisibleSection);
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
