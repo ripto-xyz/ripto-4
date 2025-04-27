@@ -30,9 +30,30 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     setShowMobileMenu(!showMobileMenu);
   };
   
-  // Enhanced scroll function using our utility
+  // Enhanced scroll function with immediate section highlighting
   const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
+    
+    // First immediately update the active section
+    // This makes the navbar highlight change instantly when clicked
+    if (sectionId === activeSection) return; // Skip if already active
+    
+    // For Contact, always update the active section immediately
+    if (sectionId === 'contact') {
+      // We bypass the parent component's state by applying the class directly
+      const links = document.querySelectorAll('nav a');
+      links.forEach(link => {
+        if (link.getAttribute('href') === '#contact') {
+          link.classList.add('text-primary');
+          link.classList.remove('text-white');
+        } else {
+          link.classList.remove('text-primary');
+          link.classList.add('text-white');
+        }
+      });
+    }
+    
+    // Then scroll to the section
     scrollToSection(sectionId);
     setShowMobileMenu(false);
   };

@@ -48,13 +48,13 @@ export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (!element) return;
 
-  // Simple offset mapping - increased offsets to ensure complete section transition
+  // Offset mapping - adjusted for optimal section positioning
   const offsets: {[key: string]: number} = {
     'home': 0,     // Home should have no offset
     'about': 120,  // Increased to ensure hero disappears completely
     'portfolio': 120,
     'services': 120,
-    'contact': 120,
+    'contact': 80,  // Reduced offset for contact to make it appear sooner
     'default': 120
   };
   
@@ -106,20 +106,54 @@ export function scrollToSection(sectionId: string): void {
   
   // Special handling for problematic transitions in other browsers
   if ((currentSectionId === 'portfolio' && sectionId === 'services') || 
-      (currentSectionId === 'services' && sectionId === 'portfolio')) {
+      (currentSectionId === 'services' && sectionId === 'portfolio') ||
+      sectionId === 'contact') { // Always use special handling for contact section
+    
     // First, cancel any existing animations by doing an immediate scroll to current position
     window.scrollTo({
       top: window.scrollY,
       behavior: 'auto'
     });
     
-    // Then, after a brief delay, perform the smooth scroll
-    setTimeout(() => {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }, 50);
+    // Special case for contact section - ensure we scroll all the way 
+    if (sectionId === 'contact') {
+      // For contact section, we want to ensure we scroll to the maximum position
+      // that allows the section to be fully visible
+      const htmlHeight = document.documentElement.scrollHeight;
+      const windowHeight = window.innerHeight;
+      const contactEl = document.getElementById('contact');
+      
+      if (contactEl) {
+        // For full visibility of contact, scroll enough to show the full section
+        setTimeout(() => {
+          const maxScroll = htmlHeight - windowHeight;
+          // Scroll a bit beyond the normal position to ensure contact is fully visible
+          const scrollPos = Math.min(maxScroll, targetPosition + 50);
+          
+          window.scrollTo({
+            top: scrollPos, 
+            behavior: 'smooth'
+          });
+        }, 50);
+      } else {
+        // Fallback to normal scrolling if contact section isn't found
+        setTimeout(() => {
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }, 50);
+      }
+    } else {
+      // For other problematic sections, use the original approach
+      setTimeout(() => {
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }, 50);
+    }
+    
     return;
   }
   
