@@ -25,10 +25,10 @@ interface SpyroLogoProps {
 
 export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
   // Set a consistent height for all letters
-  const letterHeight = 16; // much smaller height
+  const letterHeight = 24; // moderate height - not too small, not too large
 
   // Define the space between letters - using negative margin for tighter spacing
-  const letterSpacing = -12; // pixels (negative for overlap) - very aggressive
+  const letterSpacing = -6; // pixels (negative for overlap) - moderate overlap
 
   // Create a style for the container
   const containerStyle = {
@@ -37,9 +37,9 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
     justifyContent: 'flex-start',
     gap: `${letterSpacing}px`,
     marginLeft: `${-letterSpacing/2}px`, // compensate for the negative spacing on first item
-    transform: 'scale(0.7)', // scale down the entire logo significantly
+    transform: 'scale(0.9)', // moderate scale down 
     transformOrigin: 'left center',
-    maxWidth: '160px', // strict width limit
+    maxWidth: '180px', // width limit but not too restrictive
   };
 
   // Create a style for each letter
