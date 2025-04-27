@@ -1,2 +1,0 @@
-Checking for unused component files:
-No unused component files found

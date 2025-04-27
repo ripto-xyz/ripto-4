@@ -1,3 +1,0 @@
-Removing redundant API JSON files:
-removed 'client/public/api/about.json'
-removed 'client/public/api/portfolio.json'

@@ -1,4 +1,0 @@
-Removing empty directories:
-client/public/images
-client/public/api
-client/public/assets
