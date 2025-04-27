@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import timelineVideo from '@assets/Timeline 3.mp4';
+import spyroNewVideo from '@assets/Spyro New 2(1).mp4';
 
 // This is the immediate solution - create a static background placeholder
 // that looks similar to the video to show immediately while the video loads
@@ -97,7 +97,7 @@ export default function VideoBackground() {
           transition: 'opacity 0.5s ease-in-out'
         }}
       >
-        <source src={timelineVideo} type="video/mp4" />
+        <source src={spyroNewVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
