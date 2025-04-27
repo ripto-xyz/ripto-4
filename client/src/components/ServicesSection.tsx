@@ -42,10 +42,10 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="scroll-section relative pb-16 md:pb-20 lg:pb-24">
-      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
+    <section id="services" className="scroll-section relative pb-8 md:pb-10 lg:pb-12">
+      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-8 sm:py-10 md:py-12">
         <div className="max-w-[1400px] mx-auto">
-          <div className="text-center mb-10 md:mb-16">
+          <div className="text-center mb-6 md:mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins">Our Services</h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
               Comprehensive marketing solutions tailored for the Web3 ecosystem

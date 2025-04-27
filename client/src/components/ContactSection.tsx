@@ -28,18 +28,18 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section id="contact" className={`scroll-section relative overflow-visible pt-16 md:pt-20 lg:pt-24 ${isVisible ? 'animate-fadeIn' : ''}`}>
-      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
+    <section id="contact" className={`scroll-section relative overflow-visible pt-4 md:pt-6 lg:pt-8 ${isVisible ? 'animate-fadeIn' : ''}`}>
+      <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-8 sm:py-10 md:py-12">
         <div className="max-w-[1400px] mx-auto relative overflow-visible">
           <div className="relative overflow-visible">
-            <div className="absolute -top-20 right-[-40px] md:-top-24 md:right-[-60px] lg:-top-28 lg:right-[-80px] z-50 w-40 md:w-56 lg:w-72 elora-character" style={{ pointerEvents: 'none' }}>
+            <div className="absolute -top-16 right-[-40px] md:-top-20 md:right-[-60px] lg:-top-24 lg:right-[-80px] z-50 w-40 md:w-56 lg:w-72 elora-character" style={{ pointerEvents: 'none' }}>
               <img 
                 src={eloraImage} 
                 alt="Elora character" 
                 className="w-full h-auto filter drop-shadow-lg"
               />
             </div>
-            <div className="bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#D81B60]/20 relative overflow-visible w-full mx-auto mt-10">
+            <div className="bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#D81B60]/20 relative overflow-visible w-full mx-auto mt-4">
               <div className="text-center mb-6 sm:mb-8">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 font-poppins text-white">Get in Touch</h2>
                 <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-medium">
