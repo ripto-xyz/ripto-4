@@ -46,12 +46,12 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       <div className="max-w-[1400px] mx-auto px-2 sm:px-6 py-4">
         {/* Complete redesign for mobile */}
         <div className="flex flex-nowrap items-center justify-between w-full">
-          {/* Logo container scaled down more for better proportion with menu button */}
+          {/* Logo container larger to fit better with hamburger menu */}
           <div onClick={(e) => handleNavClick(e, 'home')} 
                className="cursor-pointer overflow-visible"
                style={{ 
-                 maxWidth: '70%', 
-                 transform: 'scale(0.45)',
+                 maxWidth: '80%', 
+                 transform: 'scale(0.75)',
                  transformOrigin: 'left center',
                  flex: '0 0 auto'
                }}>
@@ -107,14 +107,14 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
           </div>
           
-          {/* Mobile menu button - positioned absolutely with larger size */}
+          {/* Mobile menu button - adjusted position for better balance with larger logo */}
           <div className="flex md:hidden bg-opacity-80 bg-[#1A1A2E] rounded-md absolute right-1 top-4 p-2">
             <button 
               onClick={toggleMobileMenu} 
               className="text-white focus:outline-none"
-              style={{ width: '30px', height: '30px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{ width: '34px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              {showMobileMenu ? <X size={30} /> : <Menu size={30} />}
+              {showMobileMenu ? <X size={32} /> : <Menu size={32} />}
             </button>
           </div>
         </div>
