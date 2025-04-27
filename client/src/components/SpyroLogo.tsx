@@ -46,9 +46,13 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
 
   // Create a simpler approach with absolute positioning
   return (
-    <div className={className}>
+    <div className={`${className} portal-effect`}>
       <style>{styles}</style>
-      <div className="logo-container spyro-logo-animated">
+      <div className="logo-container spyro-logo-animated relative">
+        {/* Portal glow outer ring */}
+        <div className="absolute -inset-2 blur-lg opacity-30 bg-gradient-to-r from-purple-500 via-yellow-300 to-purple-500 animate-pulse rounded-full"></div>
+        
+        {/* Letter images with animation */}
         <img className="letter letter-animated-3" src={L} alt="L" style={{ left: '0px', animationDelay: '0.0s' }} />
         <img className="letter letter-animated-1" src={A} alt="A" style={{ left: '10px', animationDelay: '0.1s' }} />
         <img className="letter letter-animated-2" src={U} alt="U" style={{ left: '40px', animationDelay: '0.2s' }} />
