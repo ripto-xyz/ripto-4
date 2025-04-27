@@ -46,7 +46,29 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       <div className="container mx-auto px-6 py-4">
         <div className="grid grid-cols-12 items-center w-full">
           <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer col-span-4 lg:col-span-3">
-            <SpyroLogo />
+            {/* Direct HTML with custom inline styles */}
+            <div className="inline-block">
+              <div style={{maxWidth: '60px', whiteSpace: 'nowrap', transform: 'scale(0.9)', transformOrigin: 'left center'}}>
+                <img src="/images/L.png" alt="L" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/A.png" alt="A" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/U.png" alt="U" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/R.png" alt="R" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/E.png" alt="E" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/N.png" alt="N" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/C.png" alt="C" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/E.png" alt="E" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/PIPE.png" alt="|" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/R.png" alt="R" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/I.png" alt="I" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/P.png" alt="P" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/T.png" alt="T" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/O.png" alt="O" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/DOT.png" alt="." style={{height: '14px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/E.png" alt="E" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/T.png" alt="T" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src="/images/H.png" alt="H" style={{height: '28px', marginRight: '0', display: 'inline-block', verticalAlign: 'middle'}} />
+              </div>
+            </div>
           </div>
           
           {/* Desktop Menu */}

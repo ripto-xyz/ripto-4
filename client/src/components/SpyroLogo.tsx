@@ -57,38 +57,53 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
     display: 'inline-block',
   };
 
+  // CSS-based approach instead of containerStyle with extremely aggressive negative margins
+  const inlineStyleCSS = `
+    .spyro-logo-container img {
+      height: ${letterHeight}px;
+      margin-right: -25px; /* extremely aggressive overlap */
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .spyro-logo-container .dot {
+      height: ${letterHeight/2}px;
+      margin-right: -22px;
+    }
+    .spyro-logo-container {
+      max-width: 85px;
+      white-space: nowrap;
+      transform: scale(0.9);
+      transform-origin: left center;
+    }
+  `;
+
   return (
     <div className={`inline-block ${className}`}>
-      <div style={containerStyle} className="whitespace-nowrap">
+      <style dangerouslySetInnerHTML={{__html: inlineStyleCSS}} />
+      <div className="spyro-logo-container">
         {/* LAURENCE */}
-        <img src={L} alt="L" style={letterStyle} />
-        <img src={A} alt="A" style={letterStyle} />
-        <img src={U} alt="U" style={letterStyle} />
-        <img src={R} alt="R" style={letterStyle} />
-        <img src={E} alt="E" style={letterStyle} />
-        <img src={N} alt="N" style={letterStyle} />
-        <img src={C} alt="C" style={letterStyle} />
-        <img src={E} alt="E" style={letterStyle} />
-        
-        {/* Space */}
-        <div style={spaceStyle}></div>
+        <img src={L} alt="L" />
+        <img src={A} alt="A" />
+        <img src={U} alt="U" />
+        <img src={R} alt="R" />
+        <img src={E} alt="E" />
+        <img src={N} alt="N" />
+        <img src={C} alt="C" />
+        <img src={E} alt="E" />
         
         {/* Pipe */}
-        <img src={PIPE} alt="|" style={letterStyle} />
-        
-        {/* Space */}
-        <div style={spaceStyle}></div>
+        <img src={PIPE} alt="|" />
         
         {/* RIPTO.ETH */}
-        <img src={R} alt="R" style={letterStyle} />
-        <img src={I} alt="I" style={letterStyle} />
-        <img src={P} alt="P" style={letterStyle} />
-        <img src={T} alt="T" style={letterStyle} />
-        <img src={O} alt="O" style={letterStyle} />
-        <img src={DOT} alt="." style={{...letterStyle, height: `${letterHeight/2}px`}} />
-        <img src={E} alt="E" style={letterStyle} />
-        <img src={T} alt="T" style={letterStyle} />
-        <img src={H} alt="H" style={letterStyle} />
+        <img src={R} alt="R" />
+        <img src={I} alt="I" />
+        <img src={P} alt="P" />
+        <img src={T} alt="T" />
+        <img src={O} alt="O" />
+        <img src={DOT} alt="." className="dot" />
+        <img src={E} alt="E" />
+        <img src={T} alt="T" />
+        <img src={H} alt="H" />
       </div>
     </div>
   );
