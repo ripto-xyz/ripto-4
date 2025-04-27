@@ -45,12 +45,12 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     >
       <div className="container mx-auto px-2 py-4">
         <div className="flex items-center justify-between gap-2">
-          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer">
+          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer flex-shrink-0 mr-8">
             <SpyroLogo />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-2 lg:space-x-4 flex-1 justify-end">
+          <div className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-end">
             <a 
               href="#home" 
               onClick={(e) => handleNavClick(e, 'home')}
