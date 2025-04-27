@@ -45,13 +45,13 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
     >
       <div className="container mx-auto px-6 py-4">
         <div className="grid grid-cols-12 items-center w-full">
-          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer col-span-9 lg:col-span-8 overflow-visible">
+          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer col-span-6 sm:col-span-7 md:col-span-8 lg:col-span-8 overflow-visible">
             {/* Simple SpyroLogo component with absolute positioning and extremely wide spacing */}
             <SpyroLogo className="overflow-visible" />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex justify-end space-x-3 lg:space-x-4 col-span-3 lg:col-span-4">
+          <div className="hidden md:flex justify-end space-x-2 lg:space-x-4 col-span-4 md:col-span-4 lg:col-span-4">
             <a 
               href="#home" 
               onClick={(e) => handleNavClick(e, 'home')}
@@ -100,7 +100,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
           </div>
           
           {/* Mobile menu button */}
-          <div className="md:hidden absolute right-6">
+          <div className="md:hidden col-span-6 sm:col-span-5 flex justify-end">
             <button 
               onClick={toggleMobileMenu} 
               className="text-white focus:outline-none"
