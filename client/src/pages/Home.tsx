@@ -13,9 +13,33 @@ export default function Home() {
   // Determine active section with a simpler approach temporarily
   const [activeSection, setActiveSection] = useState('home');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isFirefox, setIsFirefox] = useState(false);
   
-  // Enable wheel-based section navigation
-  useWheelNav();
+  // Check if the browser is Firefox
+  useEffect(() => {
+    const firefoxDetected = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    setIsFirefox(firefoxDetected);
+    
+    // Apply Firefox-specific CSS
+    if (firefoxDetected) {
+      document.body.classList.add('firefox-browser');
+      
+      // Disable smooth scroll behavior on Firefox
+      const style = document.createElement('style');
+      style.textContent = `
+        html {
+          scroll-behavior: auto !important;
+        }
+        body {
+          overflow-y: auto !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
+  
+  // Use wheel navigation hook, but it will check for Firefox internally
+  useWheelNav(isFirefox);
   
   // Simplified scroll listener to determine active section
   useEffect(() => {

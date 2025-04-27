@@ -8,8 +8,11 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
  * - Special handling for portfolio section with 3-second cooldown
  * - Accumulates delta values for better trackpad handling
  * - Prevents accidental navigation with various thresholds
+ * - Can be disabled for Firefox browsers
+ * 
+ * @param disableForFirefox - Whether to disable wheel navigation for Firefox (defaults to false)
  */
-export function useWheelNav() {
+export function useWheelNav(disableForFirefox = false) {
   // State refs to persist across renders
   const isScrollingRef = useRef(false);
   const lastScrollTimeRef = useRef(0);
@@ -23,6 +26,16 @@ export function useWheelNav() {
   const isDebugMode = false;
 
   useEffect(() => {
+    // If this hook should be disabled for Firefox, check if we're on Firefox
+    if (disableForFirefox) {
+      // Check if we're on Firefox
+      const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+      if (isFirefox) {
+        // Don't set up the wheel handler on Firefox
+        return;
+      }
+    }
+    
     // Get the current active section based on scroll position
     const getActiveSection = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 2;
@@ -262,5 +275,5 @@ export function useWheelNav() {
     return () => {
       window.removeEventListener('wheel', handleWheel);
     };
-  }, []);
+  }, [disableForFirefox]);
 }
