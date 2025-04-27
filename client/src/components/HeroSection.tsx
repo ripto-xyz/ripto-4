@@ -5,16 +5,16 @@ export default function HeroSection() {
   return (
     <section id="home" className="scroll-section relative flex items-center justify-center">
       <div className="container mx-auto px-6 z-10 relative">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 leading-tight text-center">
+        <div className="max-w-3xl" style={{ marginLeft: '300px' }}>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 leading-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500 drop-shadow-sm tracking-tighter">
               Web3 Growth
             </span>
           </h1>
-          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl mx-auto text-center">
+          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl">
             Innovative marketing solutions for blockchain projects and decentralized platforms
           </p>
-          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center">
+          <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a 
               href="#portfolio" 
               onClick={(e) => {
