@@ -65,7 +65,7 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
         <img className="letter letter-animated-5" src={O} alt="O" style={{ left: '270px', animationDelay: '1.3s' }} />
         <img className="letter-dot letter-animated-4" src={DOT} alt="." style={{ left: '290px', top: '16px', animationDelay: '1.4s' }} />
         <img className="letter letter-animated-2" src={E} alt="E" style={{ left: '305px', animationDelay: '1.5s' }} />
-        <img className="letter letter-animated-1" src={T} alt="T" style={{ left: '323px', animationDelay: '1.6s' }} />
+        <img className="letter letter-animated-1" src={T} alt="T" style={{ left: '323px', top: '2px', animationDelay: '1.6s' }} />
         <img className="letter letter-animated-3" src={H} alt="H" style={{ left: '345px', animationDelay: '1.7s' }} />
         
         {/* Create a transparent overlay div with the right width */}
