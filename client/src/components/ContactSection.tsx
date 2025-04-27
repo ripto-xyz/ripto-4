@@ -125,13 +125,12 @@ export default function ContactSection() {
                         </a>
                         
                         {/* Simple tooltip that appears on hover */}
-                        <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 
+                        <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-3 px-3 py-1 
                                       bg-gray-900/90 text-white text-xs rounded-md 
                                       opacity-0 group-hover:opacity-100 transition-opacity duration-200
-                                      pointer-events-none z-50 whitespace-nowrap shadow-lg
-                                      before:content-[''] before:absolute before:left-1/2 before:-top-1
-                                      before:w-2 before:h-2 before:bg-gray-900/90 before:transform
-                                      before:rotate-45 before:-translate-x-1/2">
+                                      pointer-events-none z-50 whitespace-nowrap shadow-lg">
+                          <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 
+                                      w-2 h-2 bg-gray-900/90 rotate-45"></div>
                           riptothecrypto
                         </div>
                       </div>
