@@ -97,11 +97,11 @@ export default function VideoBackground() {
       const playPromise = videoElement.play();
       if (playPromise !== undefined) {
         playPromise.then(() => {
-          // Show quality notification for 5 seconds when video starts playing
+          // Show quality notification for 3 seconds when video starts playing
           setShowQualityInfo(true);
           setTimeout(() => {
             setShowQualityInfo(false);
-          }, 5000);
+          }, 3000);
         })
         .catch(() => {
           // Auto-play was prevented, try again on user interaction
@@ -110,7 +110,7 @@ export default function VideoBackground() {
               setShowQualityInfo(true);
               setTimeout(() => {
                 setShowQualityInfo(false);
-              }, 5000);
+              }, 3000);
             });
           }, { once: true });
         });
@@ -133,7 +133,7 @@ export default function VideoBackground() {
       
       {/* Quality information - shows briefly when video starts playing */}
       {showQualityInfo && !isLoading && (
-        <div className="absolute md:bottom-4 md:right-4 top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg z-10 text-sm fade-out shadow-lg border border-white/10 backdrop-blur-sm">
+        <div className="absolute bottom-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg z-10 text-sm fade-out shadow-lg border border-white/10 backdrop-blur-sm">
           <div className="font-semibold flex items-center">
             <svg className="w-4 h-4 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
