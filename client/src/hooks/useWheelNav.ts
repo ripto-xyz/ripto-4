@@ -38,9 +38,11 @@ export function useWheelNav(disableForFirefox = false) {
     
     // Get the current active section based on scroll position
     const getActiveSection = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      // Use a point slightly above the center of the viewport for better detection of sections
+      // This helps us correctly identify the About section when coming from Portfolio
+      const scrollPosition = window.scrollY + window.innerHeight * 0.4;
       
-      // Find which section contains the middle of the viewport
+      // Find which section contains our detection point
       for (const sectionId of sectionIds) {
         const section = document.getElementById(sectionId);
         if (!section) continue;
@@ -49,7 +51,20 @@ export function useWheelNav(disableForFirefox = false) {
         const sectionTop = section.offsetTop;
         const sectionBottom = sectionTop + rect.height;
         
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        // Use a slight bias for the portfolio-about transition
+        let adjustedTop = sectionTop;
+        let adjustedBottom = sectionBottom;
+        
+        // Portfolio section gets a slight expansion at the top
+        if (sectionId === 'portfolio') {
+          adjustedTop -= 50;
+        }
+        // About section gets a slight expansion at the bottom
+        else if (sectionId === 'about') {
+          adjustedBottom += 50;
+        }
+        
+        if (scrollPosition >= adjustedTop && scrollPosition < adjustedBottom) {
           return sectionId;
         }
       }
@@ -62,7 +77,12 @@ export function useWheelNav(disableForFirefox = false) {
         const section = document.getElementById(sectionId);
         if (!section) continue;
         
-        const distance = Math.abs(section.offsetTop - scrollPosition);
+        // Calculate distance with a bias favoring the section above
+        // This helps with upward scrolling detection
+        const bias = 0.2 * window.innerHeight; // 20% of viewport height
+        const distance = Math.abs(section.offsetTop - scrollPosition) - 
+                       (section.offsetTop < scrollPosition ? bias : 0);
+        
         if (distance < closestDistance) {
           closestDistance = distance;
           closestSection = sectionId;
@@ -239,8 +259,8 @@ export function useWheelNav(disableForFirefox = false) {
         // Scrolling UP - go to previous section
         const prevSection = getPrevSectionId(activeSection);
         if (prevSection) {
-          // If coming from services, make sure we clear any pending animations first
-          if (activeSection === 'services') {
+          // If coming from portfolio or services, make sure we clear any pending animations first
+          if (activeSection === 'services' || activeSection === 'portfolio') {
             // Forcefully stop any ongoing animations first
             window.scrollTo({ top: window.scrollY });
           }

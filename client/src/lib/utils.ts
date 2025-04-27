@@ -107,6 +107,7 @@ export function scrollToSection(sectionId: string): void {
   // Special handling for problematic transitions in other browsers
   if ((currentSectionId === 'portfolio' && sectionId === 'services') || 
       (currentSectionId === 'services' && sectionId === 'portfolio') ||
+      (currentSectionId === 'portfolio' && sectionId === 'about') ||
       sectionId === 'contact') { // Always use special handling for contact section
     
     // First, cancel any existing animations by doing an immediate scroll to current position
