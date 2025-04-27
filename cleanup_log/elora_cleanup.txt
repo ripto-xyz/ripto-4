@@ -1,0 +1,2 @@
+Removing redundant Elora images:
+removed 'client/public/images/elora.png'
