@@ -29,7 +29,8 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
       position: relative;
       height: 32px;
       line-height: 1;
-      width: auto;
+      width: 210px;
+      overflow: visible;
     }
     .letter {
       position: absolute;
@@ -49,26 +50,26 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
       <style>{styles}</style>
       <div className="logo-container">
         <img className="letter" src={L} alt="L" style={{ left: '0px' }} />
-        <img className="letter" src={A} alt="A" style={{ left: '7px' }} />
-        <img className="letter" src={U} alt="U" style={{ left: '15px' }} />
-        <img className="letter" src={R} alt="R" style={{ left: '21px' }} />
-        <img className="letter" src={E} alt="E" style={{ left: '27px' }} />
-        <img className="letter" src={N} alt="N" style={{ left: '33px' }} />
-        <img className="letter" src={C} alt="C" style={{ left: '39px' }} />
-        <img className="letter" src={E} alt="E" style={{ left: '45px' }} />
-        <img className="letter" src={PIPE} alt="|" style={{ left: '53px' }} />
-        <img className="letter" src={R} alt="R" style={{ left: '58px' }} />
-        <img className="letter" src={I} alt="I" style={{ left: '64px' }} />
-        <img className="letter" src={P} alt="P" style={{ left: '67px' }} />
-        <img className="letter" src={T} alt="T" style={{ left: '73px' }} />
-        <img className="letter" src={O} alt="O" style={{ left: '79px' }} />
-        <img className="letter-dot" src={DOT} alt="." style={{ left: '85px', top: '16px' }} />
-        <img className="letter" src={E} alt="E" style={{ left: '88px' }} />
-        <img className="letter" src={T} alt="T" style={{ left: '94px' }} />
-        <img className="letter" src={H} alt="H" style={{ left: '100px' }} />
+        <img className="letter" src={A} alt="A" style={{ left: '12px' }} />
+        <img className="letter" src={U} alt="U" style={{ left: '24px' }} />
+        <img className="letter" src={R} alt="R" style={{ left: '36px' }} />
+        <img className="letter" src={E} alt="E" style={{ left: '48px' }} />
+        <img className="letter" src={N} alt="N" style={{ left: '60px' }} />
+        <img className="letter" src={C} alt="C" style={{ left: '72px' }} />
+        <img className="letter" src={E} alt="E" style={{ left: '84px' }} />
+        <img className="letter" src={PIPE} alt="|" style={{ left: '102px' }} />
+        <img className="letter" src={R} alt="R" style={{ left: '114px' }} />
+        <img className="letter" src={I} alt="I" style={{ left: '126px' }} />
+        <img className="letter" src={P} alt="P" style={{ left: '132px' }} />
+        <img className="letter" src={T} alt="T" style={{ left: '144px' }} />
+        <img className="letter" src={O} alt="O" style={{ left: '156px' }} />
+        <img className="letter-dot" src={DOT} alt="." style={{ left: '168px', top: '16px' }} />
+        <img className="letter" src={E} alt="E" style={{ left: '174px' }} />
+        <img className="letter" src={T} alt="T" style={{ left: '186px' }} />
+        <img className="letter" src={H} alt="H" style={{ left: '198px' }} />
         
         {/* Create a transparent overlay div with the right width */}
-        <div style={{ height: '32px', width: '110px' }}></div>
+        <div style={{ height: '32px', width: '210px' }}></div>
       </div>
     </div>
   );
