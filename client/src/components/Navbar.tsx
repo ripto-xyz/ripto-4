@@ -43,7 +43,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
         isScrolled ? 'bg-[#1A1A2E] bg-opacity-90 backdrop-blur-md' : 'bg-opacity-0'
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
+      <div className="max-w-[1400px] mx-auto px-2 sm:px-6 py-4">
         {/* Using flex with nowrap for mobile */}
         <div className="flex flex-nowrap items-center justify-between w-full">
           {/* Logo container with responsive width */}
@@ -52,9 +52,10 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                style={{ 
                  maxWidth: '100%', 
                  width: 'auto', 
-                 transform: 'scale(0.65)',
+                 transform: 'scale(0.6)',
                  transformOrigin: 'left center',
-                 flex: '0 1 auto'
+                 flex: '0 1 auto',
+                 marginRight: '8px'
                }}>
             <SpyroLogo className="overflow-visible" />
           </div>
@@ -109,10 +110,11 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
           </div>
           
           {/* Mobile menu button */}
-          <div className="flex md:hidden">
+          <div className="flex md:hidden pr-2">
             <button 
               onClick={toggleMobileMenu} 
               className="text-white focus:outline-none ml-auto"
+              style={{ minWidth: '24px', minHeight: '24px' }}
             >
               {showMobileMenu ? <X size={24} /> : <Menu size={24} />}
             </button>
