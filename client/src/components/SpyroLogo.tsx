@@ -50,7 +50,7 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
       <style>{styles}</style>
       <div className="logo-container">
         <img className="letter" src={L} alt="L" style={{ left: '0px' }} />
-        <img className="letter" src={A} alt="A" style={{ left: '20px' }} />
+        <img className="letter" src={A} alt="A" style={{ left: '8px' }} />
         <img className="letter" src={U} alt="U" style={{ left: '40px' }} />
         <img className="letter" src={R} alt="R" style={{ left: '60px' }} />
         <img className="letter" src={E} alt="E" style={{ left: '80px' }} />
