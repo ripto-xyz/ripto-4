@@ -22,8 +22,8 @@ export function useWheelNav(disableForFirefox = false) {
   const lastPortfolioNavigationTimeRef = useRef(0); // When we last navigated from portfolio
   const lastServicesNavigationTimeRef = useRef(0); // When we last navigated from services
   
-  // Debug flag - set to false for production
-  const isDebugMode = false;
+  // Debug flag - set to true for troubleshooting
+  const isDebugMode = true;
 
   useEffect(() => {
     // If this hook should be disabled for Firefox, check if we're on Firefox
@@ -238,16 +238,18 @@ export function useWheelNav(disableForFirefox = false) {
         lastServicesNavigationTimeRef.current = timestamp;
       }
       
+      // Add a debug log to see the active section
+      if (isDebugMode) {
+        console.log(`Active section before navigation: ${activeSection}`);
+      }
+      
       // Navigate to the next/previous section with additional safeguards
       if (e.deltaY > 0) {
         // Scrolling DOWN - go to next section
         const nextSection = getNextSectionId(activeSection);
         if (nextSection) {
-          // If coming from portfolio, make sure we clear any pending animations
-          if (activeSection === 'portfolio') {
-            // Forcefully stop any ongoing animations first
-            window.scrollTo({ top: window.scrollY });
-          }
+          // Always forcefully stop any ongoing animations first
+          window.scrollTo({ top: window.scrollY });
           
           // Then do the smooth scroll to the target section
           scrollToSection(nextSection);
@@ -257,19 +259,28 @@ export function useWheelNav(disableForFirefox = false) {
         }
       } else {
         // Scrolling UP - go to previous section
-        const prevSection = getPrevSectionId(activeSection);
-        if (prevSection) {
-          // If coming from portfolio or services, make sure we clear any pending animations first
-          if (activeSection === 'services' || activeSection === 'portfolio') {
-            // Forcefully stop any ongoing animations first
-            window.scrollTo({ top: window.scrollY });
-          }
+        
+        // IMPORTANT FIX: If we're in portfolio section, ALWAYS go to about
+        // This direct override solves the skipping issue
+        if (activeSection === 'portfolio') {
+          // Forcefully stop any ongoing animations first
+          window.scrollTo({ top: window.scrollY });
           
-          // Then do the smooth scroll to the target section
-          scrollToSection(prevSection);
+          // Force navigation to about section
+          scrollToSection('about');
         } else {
-          // No previous section available
-          isScrollingRef.current = false;
+          // Normal navigation for non-portfolio sections
+          const prevSection = getPrevSectionId(activeSection);
+          if (prevSection) {
+            // Always forcefully stop any ongoing animations first
+            window.scrollTo({ top: window.scrollY });
+            
+            // Then do the smooth scroll to the target section
+            scrollToSection(prevSection);
+          } else {
+            // No previous section available
+            isScrollingRef.current = false;
+          }
         }
       }
       
