@@ -44,18 +44,16 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-2 sm:px-6 py-4">
-        {/* Using flex with nowrap for mobile */}
+        {/* Complete redesign for mobile */}
         <div className="flex flex-nowrap items-center justify-between w-full">
-          {/* Logo container with responsive width */}
+          {/* Logo container scaled down significantly */}
           <div onClick={(e) => handleNavClick(e, 'home')} 
-               className="cursor-pointer overflow-visible mr-2"
+               className="cursor-pointer overflow-visible"
                style={{ 
-                 maxWidth: '100%', 
-                 width: 'auto', 
-                 transform: 'scale(0.6)',
+                 maxWidth: '80%', 
+                 transform: 'scale(0.5)',
                  transformOrigin: 'left center',
-                 flex: '0 1 auto',
-                 marginRight: '8px'
+                 flex: '0 0 auto'
                }}>
             <SpyroLogo className="overflow-visible" />
           </div>
@@ -109,12 +107,12 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
           </div>
           
-          {/* Mobile menu button */}
-          <div className="flex md:hidden pr-2">
+          {/* Mobile menu button - positioned absolutely */}
+          <div className="flex md:hidden bg-opacity-80 bg-[#1A1A2E] rounded-md absolute right-1 top-4 p-2">
             <button 
               onClick={toggleMobileMenu} 
-              className="text-white focus:outline-none ml-auto"
-              style={{ minWidth: '24px', minHeight: '24px' }}
+              className="text-white focus:outline-none"
+              style={{ width: '24px', height: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               {showMobileMenu ? <X size={24} /> : <Menu size={24} />}
             </button>
