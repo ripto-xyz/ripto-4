@@ -26,15 +26,15 @@ export function getPrevSectionId(currentSectionId: string): string | null {
   return sectionIds[currentIndex - 1];
 }
 
-// Function to scroll to a section - improved version with better transition handling
+// Function to scroll to a section - simplified to fix the portfolio-services transition
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
   if (!element) return;
 
-  // Simple offset mapping - increased offsets to ensure complete section transition
+  // Simple offset mapping
   const offsets: {[key: string]: number} = {
     'home': 0,     // Home should have no offset
-    'about': 120,  // Increased to ensure hero disappears completely
+    'about': 120,  // Offset for other sections
     'portfolio': 120,
     'services': 120,
     'contact': 120,
@@ -47,42 +47,7 @@ export function scrollToSection(sectionId: string): void {
   // Calculate the target position
   const targetPosition = element.offsetTop - offset;
   
-  // Find current active section for special handling
-  const currentPosition = window.scrollY;
-  let currentSectionId = '';
-  
-  // Find which section we're currently in
-  for (const id of sectionIds) {
-    const section = document.getElementById(id);
-    if (!section) continue;
-    
-    if (currentPosition >= section.offsetTop - 150 && 
-        currentPosition < section.offsetTop + section.clientHeight - 150) {
-      currentSectionId = id;
-      break;
-    }
-  }
-  
-  // Special handling for problematic transitions
-  if ((currentSectionId === 'portfolio' && sectionId === 'services') || 
-      (currentSectionId === 'services' && sectionId === 'portfolio')) {
-    // First, cancel any existing animations by doing an immediate scroll to current position
-    window.scrollTo({
-      top: window.scrollY,
-      behavior: 'auto'
-    });
-    
-    // Then, after a brief delay, perform the smooth scroll
-    setTimeout(() => {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }, 50);
-    return;
-  }
-  
-  // Normal scrolling for other cases
+  // Simple scroll with no special handling - just direct smooth scroll
   try {
     window.scrollTo({
       top: targetPosition,
