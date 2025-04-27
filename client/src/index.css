@@ -354,10 +354,21 @@ nav a:active {
 }
 
 .spyro-portal {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
   animation: 
     portalFloat 6s ease-in-out infinite,
     portalGlow 4s ease-in-out infinite;
   transform-origin: center;
+}
+
+/* Responsive adjustments for the portal */
+@media (min-width: 768px) {
+  .spyro-portal {
+    max-width: 500px;
+  }
 }
 
 /* Spyro-inspired logo text style */
