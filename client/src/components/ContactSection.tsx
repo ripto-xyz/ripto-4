@@ -32,7 +32,7 @@ export default function ContactSection() {
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto relative overflow-visible">
           <div className="relative overflow-visible">
-            <div className="absolute -top-14 right-[-40px] md:-top-20 md:right-[-60px] lg:-top-24 lg:right-[-80px] z-50 w-40 md:w-56 lg:w-72 elora-character" style={{ pointerEvents: 'none' }}>
+            <div className="absolute -top-20 right-[-40px] md:-top-24 md:right-[-60px] lg:-top-28 lg:right-[-80px] z-50 w-40 md:w-56 lg:w-72 elora-character" style={{ pointerEvents: 'none' }}>
               <img 
                 src={eloraImage} 
                 alt="Elora character" 
