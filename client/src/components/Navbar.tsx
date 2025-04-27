@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import SpyroLogo from "./SpyroLogo";
+import YellowLogo from "./YellowLogo";
 import { scrollToSection } from "@/lib/utils";
 
 interface NavbarProps {
@@ -46,7 +46,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       <div className="container mx-auto px-2 py-4">
         <div className="flex items-center justify-between gap-2">
           <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer">
-            <SpyroLogo />
+            <YellowLogo />
           </div>
           
           {/* Desktop Menu */}
