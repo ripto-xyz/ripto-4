@@ -32,14 +32,14 @@ export default function ContactSection() {
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto relative overflow-visible">
           <div className="relative overflow-visible">
-            <div className="absolute -top-28 right-[-60px] md:-top-36 md:right-[-80px] lg:-top-44 lg:right-[-100px] z-50 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
+            <div className="absolute -top-36 right-[-60px] md:-top-44 md:right-[-80px] lg:-top-52 lg:right-[-100px] z-50 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
               <img 
                 src={eloraImage} 
                 alt="Elora character" 
                 className="w-full h-auto filter drop-shadow-lg"
               />
             </div>
-            <div className="bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#D81B60]/20 relative overflow-visible w-full mx-auto">
+            <div className="bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#D81B60]/20 relative overflow-visible w-full mx-auto mt-10">
               <div className="text-center mb-6 sm:mb-8">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 font-poppins text-white">Get in Touch</h2>
                 <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-medium">
