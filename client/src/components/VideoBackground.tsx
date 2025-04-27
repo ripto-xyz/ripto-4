@@ -1,21 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import timelineVideo from '@assets/Timeline 3.mp4';
 
-// This is the immediate solution - create a static background placeholder
-// that looks similar to the video to show immediately while the video loads
+// Use the highly compressed version (513KB) instead of the original (30MB)
+const COMPRESSED_VIDEO_URL = '/video/compressed/timeline-compressed.mp4';
+
+// Black background placeholder shows immediately
 const PLACEHOLDER_BG_COLOR = "#000000";
 
 export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false); // Don't show loading indicator
   const [videoReady, setVideoReady] = useState<boolean>(false);
 
-  // Preload the video in the background
+  // Handle video loading and playback
   useEffect(() => {
-    // Show the placeholder immediately
-    setIsLoading(false);
-    
-    // Try to force play the video as soon as it's loaded
     const videoElement = videoRef.current;
     if (videoElement) {
       const handleVideoReady = () => {
@@ -35,8 +32,7 @@ export default function VideoBackground() {
       
       videoElement.addEventListener('loadeddata', handleVideoReady);
       
-      // Also set a timeout to show video after a few seconds regardless
-      // This helps if the loadeddata event doesn't fire for some reason
+      // Fallback timeout to ensure video shows even if the event doesn't fire
       const timeoutId = setTimeout(() => {
         if (!videoReady) {
           console.log('Video load timeout - showing anyway');
@@ -48,7 +44,7 @@ export default function VideoBackground() {
             }, { once: true });
           });
         }
-      }, 5000);
+      }, 3000);
       
       return () => {
         videoElement.removeEventListener('loadeddata', handleVideoReady);
@@ -68,7 +64,7 @@ export default function VideoBackground() {
       {/* Dark overlay */}
       <div className="absolute top-0 left-0 w-full h-full bg-black/50 z-0"></div>
       
-      {/* Loading indicator - now optional as we have the placeholder */}
+      {/* Loading indicator - hidden by default */}
       {isLoading && (
         <div className="loading-indicator">
           <div className="spinner"></div>
@@ -76,7 +72,7 @@ export default function VideoBackground() {
         </div>
       )}
       
-      {/* Video element - fades in when ready */}
+      {/* Video element - uses compressed version and fades in when ready */}
       <video 
         ref={videoRef}
         className="absolute top-[-20%] left-0 min-w-full min-h-[120%] w-auto h-auto object-cover z-[-1]"
@@ -97,7 +93,7 @@ export default function VideoBackground() {
           transition: 'opacity 0.5s ease-in-out'
         }}
       >
-        <source src={timelineVideo} type="video/mp4" />
+        <source src={COMPRESSED_VIDEO_URL} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
