@@ -28,7 +28,7 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section id="contact" className={`scroll-section relative overflow-visible pt-24 md:pt-28 lg:pt-36 ${isVisible ? 'animate-fadeIn' : ''}`}>
+    <section id="contact" className={`scroll-section relative overflow-visible pt-16 md:pt-20 lg:pt-24 ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto relative overflow-visible">
           <div className="relative overflow-visible">
