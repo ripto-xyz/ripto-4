@@ -5,7 +5,7 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
  * Robust hook for section-to-section navigation using mouse wheel or trackpad.
  * Features:
  * - Detects trackpad vs mouse wheel
- * - Special handling for portfolio section with 3-second cooldown
+ * - Special handling for portfolio section with 2-second cooldown
  * - Accumulates delta values for better trackpad handling
  * - Prevents accidental navigation with various thresholds
  * - Can be disabled for Firefox browsers
@@ -122,7 +122,7 @@ export function useWheelNav(disableForFirefox = false) {
       // Check if the portfolio section is in its cooldown period
       let isPortfolioInCooldown = false;
       if (activeSection === 'portfolio') {
-        const PORTFOLIO_COOLDOWN_MS = 3000; // 3-second cooldown for portfolio section
+        const PORTFOLIO_COOLDOWN_MS = 2000; // 2-second cooldown for portfolio section
         const timeSinceLastNavigation = timestamp - lastPortfolioNavigationTimeRef.current;
         isPortfolioInCooldown = timeSinceLastNavigation < PORTFOLIO_COOLDOWN_MS;
         
