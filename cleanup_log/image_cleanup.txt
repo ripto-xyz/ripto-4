@@ -1,0 +1,3 @@
+Removing redundant image files:
+removed 'public/spyro-portal.png'
+removed 'public/spyro-portal-sunny-beach.png'
