@@ -79,7 +79,7 @@ export default function VideoBackground() {
       {/* Video element - fades in when ready */}
       <video 
         ref={videoRef}
-        className="absolute top-[-20%] left-0 min-w-full min-h-[120%] w-auto h-auto object-cover z-[-1]"
+        className="absolute top-0 left-0 min-w-full min-h-full w-auto h-auto object-cover z-[-1]"
         autoPlay 
         muted 
         loop 
@@ -88,9 +88,9 @@ export default function VideoBackground() {
         style={{
           objectFit: 'cover',
           width: '100%',
-          height: '120%',
+          height: '100%',
           position: 'absolute',
-          top: '-20%',
+          top: 0,
           left: 0,
           zIndex: -1,
           opacity: videoReady ? 1 : 0,
