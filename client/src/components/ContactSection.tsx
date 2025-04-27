@@ -46,13 +46,13 @@ export default function ContactSection() {
                   Ready to elevate your Web3 marketing? Let's discuss your project.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-10">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 mt-10 sm:mt-12">
                 <div className="text-center flex justify-center">
-                  <div className="flex flex-col items-center max-w-[250px]">
-                    <div className="text-white mb-2 sm:mb-3">
+                  <div className="flex flex-col items-center max-w-[270px]">
+                    <div className="text-white mb-3 sm:mb-4">
                       <MapPin size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
-                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-2">Location</h3>
+                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-3">Location</h3>
                     <p className="text-sm sm:text-base md:text-lg text-white font-medium">
                       Global, Remote-First<br />
                       Based in Sevilla, Spain
@@ -60,11 +60,11 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div className="text-center flex justify-center">
-                  <div className="flex flex-col items-center max-w-[250px]">
-                    <div className="text-white mb-2 sm:mb-3">
+                  <div className="flex flex-col items-center max-w-[270px]">
+                    <div className="text-white mb-3 sm:mb-4">
                       <Mail size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
-                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-2">Email</h3>
+                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-3">Email</h3>
                     <p className="text-sm sm:text-base md:text-lg text-white font-medium">
                       <a 
                         href="mailto:hello@ripto.eth" 
@@ -85,12 +85,12 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div className="text-center flex justify-center">
-                  <div className="flex flex-col items-center max-w-[250px]">
-                    <div className="text-white mb-2 sm:mb-3">
+                  <div className="flex flex-col items-center max-w-[270px]">
+                    <div className="text-white mb-3 sm:mb-4">
                       <Users size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
-                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-2">Connect</h3>
-                    <div className="flex items-center justify-center space-x-5 sm:space-x-6 mt-1">
+                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-3">Connect</h3>
+                    <div className="flex items-center justify-center space-x-6 sm:space-x-8 mt-2">
                       {/* X/Twitter icon - fixed size */}
                       <a 
                         href="https://x.com/RiptoTheCrypto" 
