@@ -39,7 +39,7 @@ export function useWheelNav() {
       const isTrackpad = Math.abs(e.deltaY) < 40;
       
       // Find current section
-      const sections = {};
+      const sections: Record<string, HTMLElement | null> = {};
       for (const id of sectionIds) {
         sections[id] = document.getElementById(id);
       }

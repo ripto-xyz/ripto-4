@@ -12,9 +12,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Enhanced scrolling system - handled by JS instead of CSS snap */
+/* Enhanced scrolling system with both JS navigation and CSS snap */
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y proximity; /* Use proximity for a more natural feel */
 }
 
 /* Main content container */
@@ -22,6 +23,19 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   height: 100vh;
+}
+
+/* Add scroll-snap alignment for better section stopping */
+.scroll-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+}
+
+/* Special treatment for services section to ensure it stops properly */
+#services {
+  scroll-snap-align: start;
+  scroll-snap-stop: always; /* Force stop at services section */
+  min-height: 100vh; /* Ensure it takes up full viewport height */
 }
 
 /* Scroll margins for sections */
