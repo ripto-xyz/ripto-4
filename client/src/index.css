@@ -592,13 +592,53 @@ input, textarea, select {
   animation: spyroLogoFloat 6s ease-in-out infinite;
 }
 
-/* Individual letter animations with slight delays for writing effect */
-.letter-animated {
-  animation: letterFloat 3s ease-in-out infinite;
+/* Individual letter animations with slight delays and variations */
+.letter-animated-1 {
+  animation: letterFloat1 3.1s ease-in-out infinite;
 }
 
-@keyframes letterFloat {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-1px); }
-  100% { transform: translateY(0); }
+.letter-animated-2 {
+  animation: letterFloat2 2.9s ease-in-out infinite;
+}
+
+.letter-animated-3 {
+  animation: letterFloat3 3.2s ease-in-out infinite;
+}
+
+.letter-animated-4 {
+  animation: letterFloat4 3.0s ease-in-out infinite;
+}
+
+.letter-animated-5 {
+  animation: letterFloat5 3.3s ease-in-out infinite;
+}
+
+@keyframes letterFloat1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1.5px) rotate(0.2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes letterFloat2 {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-1px) translateX(0.6px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes letterFloat3 {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-0.8px) translateX(-0.4px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes letterFloat4 {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(0.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes letterFloat5 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1.2px) rotate(-0.3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
 }
