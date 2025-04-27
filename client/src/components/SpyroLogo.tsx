@@ -59,7 +59,7 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
         <img className="letter letter-animated-2" src={E} alt="E" style={{ left: '140px', animationDelay: '0.7s' }} />
         <img className="letter letter-animated-4" src={PIPE} alt="|" style={{ left: '170px', animationDelay: '0.8s', height: '40px', marginTop: '-4px' }} />
         <img className="letter letter-animated-5" src={R} alt="R" style={{ left: '195px', animationDelay: '0.9s' }} />
-        <img className="letter letter-animated-2" src={I} alt="I" style={{ left: '217px', animationDelay: '1.0s', height: '28px', marginTop: '2px' }} />
+        <img className="letter letter-animated-2" src={I} alt="I" style={{ left: '217px', animationDelay: '1.0s', height: '32px', marginTop: '0px' }} />
         <img className="letter letter-animated-1" src={P} alt="P" style={{ left: '235px', animationDelay: '1.1s' }} />
         <img className="letter letter-animated-3" src={T} alt="T" style={{ left: '255px', animationDelay: '1.2s' }} />
         <img className="letter letter-animated-5" src={O} alt="O" style={{ left: '275px', animationDelay: '1.3s' }} />
