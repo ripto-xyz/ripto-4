@@ -56,6 +56,33 @@ export default function Home() {
         return;
       }
       
+      // Explicit check for home - only active when truly at the top
+      // This prevents home from staying highlighted when moving down the page
+      const aboutSection = document.getElementById('about');
+      if (aboutSection) {
+        const aboutTop = aboutSection.offsetTop;
+        // If we're more than 20% into the about section, never highlight home
+        if (scrollPosition > aboutTop * 0.2) {
+          // We're definitely not in home section
+          if (activeSection === 'home') {
+            // Find the next appropriate section
+            for (const sectionId of sections) {
+              if (sectionId === 'home') continue;
+              const element = document.getElementById(sectionId);
+              if (!element) continue;
+              
+              const sectionTop = element.offsetTop - 150;
+              const sectionBottom = sectionTop + element.offsetHeight;
+              
+              if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                setActiveSection(sectionId);
+                return;
+              }
+            }
+          }
+        }
+      }
+      
       // We'll use a different approach for section detection:
       // 1. Calculate how much of each section is visible in the viewport
       // 2. Weight it by how close the section's center is to our focus point
@@ -100,8 +127,15 @@ export default function Home() {
         
         // Special boosts for specific sections
         if (sectionId === 'portfolio') {
-          // Portfolio gets a slight boost to help with the transition from about
-          score += 0.05;
+          // Portfolio gets a significant boost to help with the transition from about
+          score += 0.25;
+          
+          // Extra boost for portfolio when it's just starting to appear
+          if (rect.top < viewportHeight && rect.top > 0) {
+            // The earlier in the viewport, the more boost it gets
+            const earlyBoost = 0.3 * (1 - (rect.top / viewportHeight));
+            score += earlyBoost;
+          }
         } else if (sectionId === 'contact' && rect.top < viewportHeight) {
           // Contact gets a boost when it starts becoming visible
           score += 0.15;
