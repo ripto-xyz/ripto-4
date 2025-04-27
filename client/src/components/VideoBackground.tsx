@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import timelineVideo from '@assets/Timeline_cropped.mp4';
+import timelineVideo from '@assets/Timeline 3.mp4';
 
 // This is the immediate solution - create a static background placeholder
 // that looks similar to the video to show immediately while the video loads
