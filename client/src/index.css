@@ -462,12 +462,6 @@ nav a:active {
 /* Elora character animation */
 @keyframes eloraFloat {
   0% { transform: translateY(0) rotate(6deg); }
-  50% { transform: translateY(-10px) rotate(3deg); }
-  100% { transform: translateY(0) rotate(6deg); }
-}
-
-@keyframes eloraFloatDesktop {
-  0% { transform: translateY(0) rotate(6deg); }
   50% { transform: translateY(-15px) rotate(3deg); }
   100% { transform: translateY(0) rotate(6deg); }
 }
@@ -475,12 +469,6 @@ nav a:active {
 .elora-character {
   animation: eloraFloat 5s ease-in-out infinite;
   transform-origin: center center;
-}
-
-@media (min-width: 768px) {
-  .elora-character {
-    animation: eloraFloatDesktop 5s ease-in-out infinite;
-  }
 }
 
 .elora-character:hover {
@@ -550,21 +538,6 @@ nav a:active {
   }
   100% {
     opacity: 0.5;
-  }
-}
-
-/* Fade-out animation for quality notification */
-.fade-out {
-  animation: fadeOut 3s forwards;
-  animation-delay: 1s;
-}
-
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
   }
 }
 
