@@ -238,47 +238,67 @@ export function useWheelNav(disableForFirefox = false) {
         lastServicesNavigationTimeRef.current = timestamp;
       }
       
-      // Add a debug log to see the active section
+      // Add detailed debug logs
       if (isDebugMode) {
+        // Get all section positions for debugging
+        const portfolioElement = document.getElementById('portfolio');
+        const aboutElement = document.getElementById('about');
+        const servicesElement = document.getElementById('services');
+        
         console.log(`Active section before navigation: ${activeSection}`);
+        console.log(`Scroll position: ${document.documentElement.scrollTop}`);
+        
+        if (portfolioElement) {
+          console.log(`Portfolio offsetTop: ${portfolioElement.offsetTop}`);
+        }
+        if (aboutElement) {
+          console.log(`About offsetTop: ${aboutElement.offsetTop}`);
+        }
+        if (servicesElement) {
+          console.log(`Services offsetTop: ${servicesElement.offsetTop}`);
+        }
       }
       
-      // Navigate to the next/previous section with additional safeguards
+      // Get references to portfolio and services sections for logic below
+      const portfolioElement = document.getElementById('portfolio');
+      const portfolioTop = portfolioElement ? portfolioElement.offsetTop : 0;
+      
       if (e.deltaY > 0) {
-        // Scrolling DOWN - go to next section
-        const nextSection = getNextSectionId(activeSection);
-        if (nextSection) {
-          // Always forcefully stop any ongoing animations first
+        // Scrolling DOWN
+        if (activeSection === 'portfolio') {
+          // If we're in portfolio, ALWAYS go to services next
           window.scrollTo({ top: window.scrollY });
-          
-          // Then do the smooth scroll to the target section
-          scrollToSection(nextSection);
+          scrollToSection('services');
         } else {
-          // No next section available
-          isScrollingRef.current = false;
+          // Otherwise, use normal navigation
+          const nextSection = getNextSectionId(activeSection);
+          if (nextSection) {
+            window.scrollTo({ top: window.scrollY });
+            scrollToSection(nextSection);
+          } else {
+            isScrollingRef.current = false;
+          }
         }
       } else {
-        // Scrolling UP - go to previous section
-        
-        // IMPORTANT FIX: If we're in portfolio section, ALWAYS go to about
-        // This direct override solves the skipping issue
-        if (activeSection === 'portfolio') {
-          // Forcefully stop any ongoing animations first
+        // Scrolling UP
+        if (activeSection === 'portfolio' || 
+           (activeSection === 'services' && 
+            document.documentElement.scrollTop <= portfolioTop + 50)) {
+          // If we're in portfolio OR if we're in services but still near the portfolio area,
+          // ALWAYS go to about
           window.scrollTo({ top: window.scrollY });
-          
-          // Force navigation to about section
           scrollToSection('about');
+        } else if (activeSection === 'services') {
+          // If we're in services (and not near portfolio), go to portfolio
+          window.scrollTo({ top: window.scrollY });
+          scrollToSection('portfolio');
         } else {
-          // Normal navigation for non-portfolio sections
+          // For other sections, use normal navigation
           const prevSection = getPrevSectionId(activeSection);
           if (prevSection) {
-            // Always forcefully stop any ongoing animations first
             window.scrollTo({ top: window.scrollY });
-            
-            // Then do the smooth scroll to the target section
             scrollToSection(prevSection);
           } else {
-            // No previous section available
             isScrollingRef.current = false;
           }
         }
