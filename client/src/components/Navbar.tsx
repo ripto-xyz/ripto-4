@@ -1,7 +1,22 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import SpyroLogo from "./SpyroLogo";
 import { scrollToSection } from "@/lib/utils";
+
+// Import letter assets directly 
+import L from '@/assets/L.png';
+import A from '@/assets/A.png';
+import U from '@/assets/U.png';
+import R from '@/assets/R.png';
+import E from '@/assets/E.png';
+import N from '@/assets/N.png';
+import C from '@/assets/C.png';
+import PIPE from '@/assets/PIPE.png';
+import I from '@/assets/I.png';
+import P from '@/assets/P.png';
+import T from '@/assets/T.png';
+import O from '@/assets/O.png';
+import DOT from '@/assets/DOT.png';
+import H from '@/assets/H.png';
 
 interface NavbarProps {
   activeSection: string;
@@ -48,25 +63,25 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
           <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer col-span-4 lg:col-span-3">
             {/* Direct HTML with custom inline styles */}
             <div className="inline-block">
-              <div style={{maxWidth: '60px', whiteSpace: 'nowrap', transform: 'scale(0.9)', transformOrigin: 'left center'}}>
-                <img src="/images/L.png" alt="L" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/A.png" alt="A" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/U.png" alt="U" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/R.png" alt="R" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/E.png" alt="E" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/N.png" alt="N" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/C.png" alt="C" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/E.png" alt="E" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/PIPE.png" alt="|" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/R.png" alt="R" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/I.png" alt="I" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/P.png" alt="P" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/T.png" alt="T" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/O.png" alt="O" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/DOT.png" alt="." style={{height: '14px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/E.png" alt="E" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/T.png" alt="T" style={{height: '28px', marginRight: '-26px', display: 'inline-block', verticalAlign: 'middle'}} />
-                <img src="/images/H.png" alt="H" style={{height: '28px', marginRight: '0', display: 'inline-block', verticalAlign: 'middle'}} />
+              <div style={{maxWidth: '50px', whiteSpace: 'nowrap', transform: 'scale(0.85)', transformOrigin: 'left center'}}>
+                <img src={L} alt="L" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={A} alt="A" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={U} alt="U" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={R} alt="R" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={E} alt="E" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={N} alt="N" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={C} alt="C" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={E} alt="E" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={PIPE} alt="|" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={R} alt="R" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={I} alt="I" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={P} alt="P" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={T} alt="T" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={O} alt="O" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={DOT} alt="." style={{height: '14px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={E} alt="E" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={T} alt="T" style={{height: '28px', marginRight: '-30px', display: 'inline-block', verticalAlign: 'middle'}} />
+                <img src={H} alt="H" style={{height: '28px', marginRight: '0', display: 'inline-block', verticalAlign: 'middle'}} />
               </div>
             </div>
           </div>
