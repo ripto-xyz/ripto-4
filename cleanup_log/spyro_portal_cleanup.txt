@@ -1,0 +1,2 @@
+Removing redundant spyro portal files from assets:
+removed 'client/src/assets/spyro-portal.png'
