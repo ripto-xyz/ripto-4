@@ -44,12 +44,18 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
-        {/* Using flex instead of grid for better control */}
-        <div className="flex flex-wrap items-center justify-between w-full">
-          {/* Logo container with fixed width */}
+        {/* Using flex with nowrap for mobile */}
+        <div className="flex flex-nowrap items-center justify-between w-full">
+          {/* Logo container with responsive width */}
           <div onClick={(e) => handleNavClick(e, 'home')} 
-               className="cursor-pointer overflow-visible"
-               style={{ minWidth: '300px', flex: '0 0 auto' }}>
+               className="cursor-pointer overflow-visible mr-2"
+               style={{ 
+                 maxWidth: '100%', 
+                 width: 'auto', 
+                 transform: 'scale(0.65)',
+                 transformOrigin: 'left center',
+                 flex: '0 1 auto'
+               }}>
             <SpyroLogo className="overflow-visible" />
           </div>
           

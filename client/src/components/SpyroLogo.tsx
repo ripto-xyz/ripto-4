@@ -32,6 +32,12 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
       width: 370px;
       overflow: visible;
     }
+    
+    @media (max-width: 640px) {
+      .logo-container {
+        width: 370px; /* Keep width but it will be scaled by transform in Navbar */
+      }
+    }
     .letter {
       position: absolute;
       height: 32px;
