@@ -43,21 +43,24 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
         isScrolled ? 'bg-[#1A1A2E] bg-opacity-90 backdrop-blur-md' : 'bg-opacity-0'
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
-        <div className="grid grid-cols-12 items-center w-full">
-          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer col-span-6 sm:col-span-7 md:col-span-8 lg:col-span-8 overflow-visible">
-            {/* Simple SpyroLogo component with absolute positioning and extremely wide spacing */}
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 py-4">
+        {/* Using flex instead of grid for better control */}
+        <div className="flex flex-wrap items-center justify-between w-full">
+          {/* Logo container with fixed width */}
+          <div onClick={(e) => handleNavClick(e, 'home')} 
+               className="cursor-pointer overflow-visible"
+               style={{ minWidth: '300px', flex: '0 0 auto' }}>
             <SpyroLogo className="overflow-visible" />
           </div>
           
-          {/* Desktop Menu */}
-          <div className="hidden md:flex justify-end space-x-2 lg:space-x-4 col-span-4 md:col-span-4 lg:col-span-4">
+          {/* Desktop Menu - will shrink first before wrapping */}
+          <div className="hidden md:flex justify-end space-x-2 lg:space-x-4">
             <a 
               href="#home" 
               onClick={(e) => handleNavClick(e, 'home')}
               className={`${
                 activeSection === 'home' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-base lg:text-lg whitespace-nowrap`}
             >
               Home
             </a>
@@ -66,7 +69,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               onClick={(e) => handleNavClick(e, 'about')}
               className={`${
                 activeSection === 'about' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-base lg:text-lg whitespace-nowrap`}
             >
               About&nbsp;Me
             </a>
@@ -75,7 +78,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               onClick={(e) => handleNavClick(e, 'portfolio')}
               className={`${
                 activeSection === 'portfolio' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-base lg:text-lg whitespace-nowrap`}
             >
               Portfolio
             </a>
@@ -84,7 +87,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               onClick={(e) => handleNavClick(e, 'services')}
               className={`${
                 activeSection === 'services' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-base lg:text-lg whitespace-nowrap`}
             >
               Services
             </a>
@@ -93,26 +96,26 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
               onClick={(e) => handleNavClick(e, 'contact')}
               className={`${
                 activeSection === 'contact' ? 'text-primary' : 'text-white'
-              } hover:text-primary transition-colors font-medium text-lg whitespace-nowrap`}
+              } hover:text-primary transition-colors font-medium text-base lg:text-lg whitespace-nowrap`}
             >
               Contact
             </a>
           </div>
           
           {/* Mobile menu button */}
-          <div className="md:hidden col-span-6 sm:col-span-5 flex justify-end">
+          <div className="flex md:hidden">
             <button 
               onClick={toggleMobileMenu} 
-              className="text-white focus:outline-none"
+              className="text-white focus:outline-none ml-auto"
             >
               {showMobileMenu ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
         
-        {/* Mobile Menu */}
+        {/* Mobile Menu - now full width and below the header */}
         {showMobileMenu && (
-          <div className="md:hidden mt-4 bg-[#1A1A2E] bg-opacity-95 p-4 rounded-lg animate-fadeIn">
+          <div className="md:hidden w-full mt-4 bg-[#1A1A2E] bg-opacity-95 p-4 rounded-lg animate-fadeIn">
             <div className="flex flex-col space-y-4" onClick={(e) => e.stopPropagation()}>
               <a 
                 href="#home" 
