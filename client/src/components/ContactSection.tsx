@@ -46,7 +46,7 @@ export default function ContactSection() {
                   Ready to elevate your Web3 marketing? Let's discuss your project.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 mt-10 sm:mt-12">
+              <div className="flex flex-col md:flex-row items-center justify-around gap-8 sm:gap-10 mt-10 sm:mt-12">
                 <div className="text-center flex justify-center">
                   <div className="flex flex-col items-center max-w-[270px]">
                     <div className="text-white mb-3 sm:mb-4">
