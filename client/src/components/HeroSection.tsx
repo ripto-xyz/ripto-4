@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section id="home" className="scroll-section relative flex items-center justify-center">
       <div className="container mx-auto px-6 z-10 relative">
-        <div className="max-w-3xl" style={{ marginLeft: '300px' }}>
+        <div className="max-w-3xl" style={{ marginLeft: '170px' }}>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 leading-tight">
             <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500 drop-shadow-sm tracking-tighter">
               Web3 Growth
