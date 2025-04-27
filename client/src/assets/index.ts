@@ -3,8 +3,7 @@
 
 // Export videos with direct paths to public folder
 export const videos = {
-  timeline: "/images/timeline3-original.mp4", // Use the original video
-  timelineNew: "/images/timeline3-new.mp4", // Backup option
+  // All timeline videos have been replaced with the optimized Spyro video
 };
 
 // Export any other assets below
