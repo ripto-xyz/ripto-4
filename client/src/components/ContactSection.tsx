@@ -47,8 +47,8 @@ export default function ContactSection() {
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-10">
-                <div className="text-center md:text-left md:pl-2">
-                  <div className="flex flex-col items-center md:items-start">
+                <div className="text-center md:text-left flex justify-center md:justify-start">
+                  <div className="flex flex-col items-center md:items-start max-w-[250px]">
                     <div className="text-white mb-2 sm:mb-3">
                       <MapPin size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
@@ -59,8 +59,8 @@ export default function ContactSection() {
                     </p>
                   </div>
                 </div>
-                <div className="text-center md:text-left">
-                  <div className="flex flex-col items-center md:items-start">
+                <div className="text-center flex justify-center">
+                  <div className="flex flex-col items-center max-w-[250px]">
                     <div className="text-white mb-2 sm:mb-3">
                       <Mail size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
@@ -84,13 +84,13 @@ export default function ContactSection() {
                     </p>
                   </div>
                 </div>
-                <div className="text-center md:text-left">
-                  <div className="flex flex-col items-center md:items-start">
+                <div className="text-center md:text-right flex justify-center md:justify-end">
+                  <div className="flex flex-col items-center md:items-end max-w-[250px]">
                     <div className="text-white mb-2 sm:mb-3">
                       <Users size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
                     <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-2">Connect</h3>
-                    <div className="flex items-center space-x-5 sm:space-x-6 mt-1">
+                    <div className="flex items-center justify-center md:justify-end space-x-5 sm:space-x-6 mt-1">
                       {/* X/Twitter icon - fixed size */}
                       <a 
                         href="https://x.com/RiptoTheCrypto" 
