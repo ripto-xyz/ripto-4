@@ -1,23 +1,23 @@
 import React from 'react';
 
 // Import all the individual letter/symbol images
-import L from '@assets/L.png';
-import A from '@assets/A.png';
-import U from '@assets/U.png';
-import R from '@assets/R.png';
-import E from '@assets/E.png';
-import N from '@assets/N.png';
-import C from '@assets/C.png';
+import L from '../assets/L.png';
+import A from '../assets/A.png';
+import U from '../assets/U.png';
+import R from '../assets/R.png';
+import E from '../assets/E.png';
+import N from '../assets/N.png';
+import C from '../assets/C.png';
 // Second E reuses the first E
-import PIPE from '@assets/PIPE.png';
+import PIPE from '../assets/PIPE.png';
 // Second R reuses the first R
-import I from '@assets/I.png';
-import P from '@assets/P.png';
-import T from '@assets/T.png';
-import O from '@assets/O.png';
-import DOT from '@assets/DOT.png';
+import I from '../assets/I.png';
+import P from '../assets/P.png';
+import T from '../assets/T.png';
+import O from '../assets/O.png';
+import DOT from '../assets/DOT.png';
 // Third E reuses the first E
-import H from '@assets/H.png';
+import H from '../assets/H.png';
 
 interface SpyroLogoProps {
   className?: string;
@@ -25,17 +25,18 @@ interface SpyroLogoProps {
 
 export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
   // Set a consistent height for all letters
-  const letterHeight = 24; // base height in pixels
+  const letterHeight = 32; // base height in pixels - increased for better visibility
 
-  // Define the space between letters
-  const letterSpacing = 2; // pixels
+  // Define the space between letters - using negative margin for tighter spacing
+  const letterSpacing = -5; // pixels (negative for overlap)
 
   // Create a style for the container
   const containerStyle = {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     gap: `${letterSpacing}px`,
+    marginLeft: `${-letterSpacing/2}px`, // compensate for the negative spacing on first item
   };
 
   // Create a style for each letter
@@ -43,10 +44,11 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
     height: `${letterHeight}px`,
     width: 'auto',
     display: 'inline-block',
+    filter: 'drop-shadow(0px 1px 1px rgba(0,0,0,0.3))', // add subtle shadow for better visibility
   };
 
-  // Define a larger gap for the space and pipe
-  const spaceWidth = letterHeight / 2;
+  // Define a gap for the space and pipe
+  const spaceWidth = 4; // fixed small spacing
   const spaceStyle = {
     width: `${spaceWidth}px`,
     display: 'inline-block',
