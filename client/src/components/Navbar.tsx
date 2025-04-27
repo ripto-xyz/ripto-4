@@ -44,13 +44,13 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       }`}
     >
       <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between gap-6">
-          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer flex-shrink-0 mr-14">
+        <div className="grid grid-cols-12 items-center w-full">
+          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer col-span-4 lg:col-span-3">
             <SpyroLogo />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-end">
+          <div className="hidden md:flex justify-end space-x-4 lg:space-x-5 col-span-8 lg:col-span-9">
             <a 
               href="#home" 
               onClick={(e) => handleNavClick(e, 'home')}
@@ -99,7 +99,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
           </div>
           
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden absolute right-6">
             <button 
               onClick={toggleMobileMenu} 
               className="text-white focus:outline-none"
