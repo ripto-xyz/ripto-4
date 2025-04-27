@@ -26,89 +26,70 @@ export function getPrevSectionId(currentSectionId: string): string | null {
   return sectionIds[currentIndex - 1];
 }
 
-// Function to scroll to a section - completely rebuilt for maximum reliability
+// Function to scroll to a section - improved version with better transition handling
 export function scrollToSection(sectionId: string): void {
-  // Get all sections
-  const sections: Record<string, HTMLElement | null> = {};
+  const element = document.getElementById(sectionId);
+  if (!element) return;
+
+  // Simple offset mapping - increased offsets to ensure complete section transition
+  const offsets: {[key: string]: number} = {
+    'home': 0,     // Home should have no offset
+    'about': 120,  // Increased to ensure hero disappears completely
+    'portfolio': 120,
+    'services': 120,
+    'contact': 120,
+    'default': 120
+  };
+  
+  // Get offset with fallback to default
+  const offset = offsets[sectionId] || offsets.default;
+  
+  // Calculate the target position
+  const targetPosition = element.offsetTop - offset;
+  
+  // Find current active section for special handling
+  const currentPosition = window.scrollY;
+  let currentSectionId = '';
+  
+  // Find which section we're currently in
   for (const id of sectionIds) {
-    sections[id] = document.getElementById(id);
-  }
-  
-  // Exit if target section is missing
-  if (!sections[sectionId]) return;
-  
-  // Calculate current section
-  const windowMiddle = window.scrollY + window.innerHeight / 2;
-  let currentSectionId = sectionIds[0]; // Default to first section
-  
-  // Determine which section we're currently in
-  for (const id of sectionIds) {
-    if (!sections[id]) continue;
+    const section = document.getElementById(id);
+    if (!section) continue;
     
-    const sectionTop = sections[id]!.offsetTop;
-    const sectionHeight = sections[id]!.clientHeight;
-    
-    if (windowMiddle >= sectionTop && windowMiddle < sectionTop + sectionHeight) {
+    if (currentPosition >= section.offsetTop - 150 && 
+        currentPosition < section.offsetTop + section.clientHeight - 150) {
       currentSectionId = id;
       break;
     }
   }
   
-  // Get target section position - always use hardcoded offsets for consistency
-  // Use ViewportHeight units to be more consistent and stop at exact section boundaries
-  const viewportHeight = window.innerHeight;
-  
-  // Special case for Services section to ensure it always stays visible
-  if (sectionId === 'services') {
-    // Cancel any ongoing scrolling first
-    window.scrollTo({top: window.scrollY, behavior: 'auto'});
+  // Special handling for problematic transitions
+  if ((currentSectionId === 'portfolio' && sectionId === 'services') || 
+      (currentSectionId === 'services' && sectionId === 'portfolio')) {
+    // First, cancel any existing animations by doing an immediate scroll to current position
+    window.scrollTo({
+      top: window.scrollY,
+      behavior: 'auto'
+    });
     
-    // Forcefully position to a specific value to ensure consistency
+    // Then, after a brief delay, perform the smooth scroll
     setTimeout(() => {
-      // Get the exact services section position
-      const servicesTop = sections.services!.offsetTop;
-      
-      // Use an absolutely fixed position
       window.scrollTo({
-        top: servicesTop,
+        top: targetPosition,
         behavior: 'smooth'
       });
     }, 50);
     return;
   }
   
-  // For all other sections, use normal scrolling with appropriate offset
-  const offsets: {[key: string]: number} = {
-    'home': 0,
-    'about': 0, 
-    'portfolio': 0,
-    'contact': 0,
-    'default': 0
-  };
-  
-  const offset = offsets[sectionId] || offsets.default;
-  const targetPosition = sections[sectionId]!.offsetTop - offset;
-  
-  // Special handling for portfolio-services transitions
-  if ((currentSectionId === 'portfolio' && sectionId === 'services') || 
-      (currentSectionId === 'services' && sectionId === 'portfolio')) {
-    
-    // Stop any ongoing scrolling
-    window.scrollTo({top: window.scrollY, behavior: 'auto'});
-    
-    // Then navigate with a delay
-    setTimeout(() => {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }, 100);
-    return;
+  // Normal scrolling for other cases
+  try {
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  } catch (err) {
+    // Fallback for older browsers
+    window.scrollTo(0, targetPosition);
   }
-  
-  // Standard scroll for other transitions
-  window.scrollTo({
-    top: targetPosition,
-    behavior: 'smooth'
-  });
 }
