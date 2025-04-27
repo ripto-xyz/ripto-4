@@ -27,8 +27,23 @@ export function useWheelNav() {
     const getActiveSection = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 2;
       
+      // Special case for services section - use a slightly larger detection area
+      // to help it "catch" scroll events more reliably
+      const servicesSection = document.getElementById('services');
+      if (servicesSection) {
+        const rect = servicesSection.getBoundingClientRect();
+        const sectionTop = servicesSection.offsetTop - 50; // Extend top boundary
+        const sectionBottom = sectionTop + rect.height + 100; // Extend bottom boundary
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          return 'services';
+        }
+      }
+      
       // Find which section contains the middle of the viewport
       for (const sectionId of sectionIds) {
+        if (sectionId === 'services') continue; // Skip services as we handled it above
+        
         const section = document.getElementById(sectionId);
         if (!section) continue;
         
@@ -121,7 +136,7 @@ export function useWheelNav() {
       // Check if the services section is in its cooldown period
       let isServicesInCooldown = false;
       if (activeSection === 'services') {
-        const SERVICES_COOLDOWN_MS = 2000; // 2-second cooldown for services section
+        const SERVICES_COOLDOWN_MS = 2500; // 2.5-second cooldown for services section
         const timeSinceLastNavigation = timestamp - lastServicesNavigationTimeRef.current;
         isServicesInCooldown = timeSinceLastNavigation < SERVICES_COOLDOWN_MS;
         
@@ -143,10 +158,10 @@ export function useWheelNav() {
       } else if (activeSection === 'services') {
         if (isServicesInCooldown) {
           // Higher threshold during the cooldown period
-          threshold = isLikelyTrackpad ? 400 : 200; // Restored to original value
+          threshold = isLikelyTrackpad ? 400 : 200; // Higher threshold for services
         } else {
           // Standard threshold for services without cooldown
-          threshold = isLikelyTrackpad ? 150 : 80; // Restored to original value
+          threshold = isLikelyTrackpad ? 300 : 150; // Increased to improve section stopping
         }
       } else {
         // Normal threshold for other sections
@@ -245,7 +260,7 @@ export function useWheelNav() {
       if (activeSection === 'portfolio') {
         cooldownTime = 1000; // Longer cooldown for portfolio
       } else if (activeSection === 'services') {
-        cooldownTime = 800; // Moderate cooldown for services
+        cooldownTime = 1000; // Increased cooldown for services to match portfolio
       } else {
         cooldownTime = 700; // Normal cooldown for other sections
       }

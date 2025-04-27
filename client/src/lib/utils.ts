@@ -72,13 +72,23 @@ export function scrollToSection(sectionId: string): void {
       behavior: 'auto'
     });
     
-    // Then, after a brief delay, perform the smooth scroll
+    // Then, after a brief delay, perform the smooth scroll with a longer duration
     setTimeout(() => {
-      window.scrollTo({
-        top: targetPosition,
-        behavior: 'smooth'
-      });
-    }, 50);
+      // Set a longer scroll duration for these problematic transitions
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      } else {
+        // Fallback to standard scrollTo if the section element is not found
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
     return;
   }
   
