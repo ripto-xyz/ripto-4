@@ -26,6 +26,23 @@ export function getPrevSectionId(currentSectionId: string): string | null {
   return sectionIds[currentIndex - 1];
 }
 
+// Function for animation step that works in ES5 strict mode
+function animateScrollStep(currentTime: number, startTime: number, startPosition: number, distance: number, duration: number) {
+  const elapsed = currentTime - startTime;
+  const progress = Math.min(elapsed / duration, 1);
+  
+  // Ease out cubic function for smoother stop
+  const easeProgress = 1 - Math.pow(1 - progress, 3);
+  
+  window.scrollTo(0, startPosition + distance * easeProgress);
+  
+  if (progress < 1) {
+    requestAnimationFrame((timestamp) => {
+      animateScrollStep(timestamp, startTime, startPosition, distance, duration);
+    });
+  }
+}
+
 // Function to scroll to a section - improved version with better transition handling
 export function scrollToSection(sectionId: string): void {
   const element = document.getElementById(sectionId);
@@ -62,8 +79,32 @@ export function scrollToSection(sectionId: string): void {
       break;
     }
   }
+
+  // Detect Firefox for browser-specific handling
+  const isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
   
-  // Special handling for problematic transitions
+  // Firefox-specific scrolling behavior
+  if (isFirefox) {
+    // Cancel any existing animations with immediate scroll
+    window.scrollTo({
+      top: window.scrollY,
+      behavior: 'auto'
+    });
+    
+    // Use a simpler approach for Firefox
+    const scrollDuration = 600; // Duration in ms
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    
+    // Use our animation function defined outside the block
+    requestAnimationFrame((timestamp) => {
+      animateScrollStep(timestamp, timestamp, startPosition, distance, scrollDuration);
+    });
+    
+    return;
+  }
+  
+  // Special handling for problematic transitions in other browsers
   if ((currentSectionId === 'portfolio' && sectionId === 'services') || 
       (currentSectionId === 'services' && sectionId === 'portfolio')) {
     // First, cancel any existing animations by doing an immediate scroll to current position

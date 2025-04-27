@@ -9,6 +9,13 @@ export default function VideoBackground() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [videoReady, setVideoReady] = useState<boolean>(false);
+  const [isFirefox, setIsFirefox] = useState<boolean>(false);
+
+  // Detect Firefox on component mount
+  useEffect(() => {
+    const firefoxDetected = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+    setIsFirefox(firefoxDetected);
+  }, []);
 
   // Preload the video in the background
   useEffect(() => {
@@ -94,7 +101,13 @@ export default function VideoBackground() {
           left: 0,
           zIndex: -1,
           opacity: videoReady ? 1 : 0,
-          transition: 'opacity 0.5s ease-in-out'
+          transition: 'opacity 0.5s ease-in-out',
+          // For Firefox, use a transform to trigger hardware acceleration and reduce CPU load
+          transform: isFirefox ? 'translateZ(0)' : 'none',
+          // In Firefox, lower the quality to improve performance
+          willChange: isFirefox ? 'transform' : 'auto',
+          // For Firefox, we'll use a filter to slightly blur the video to reduce rendering load
+          filter: isFirefox ? 'blur(0.5px)' : 'none'
         }}
       >
         <source src={spyroNewVideo} type="video/mp4" />
