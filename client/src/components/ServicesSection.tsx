@@ -42,7 +42,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="scroll-section relative pb-24 md:pb-32 lg:pb-40">
+    <section id="services" className="scroll-section relative pb-44 md:pb-56 lg:pb-64">
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center mb-10 md:mb-16">

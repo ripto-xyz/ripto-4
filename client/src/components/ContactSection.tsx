@@ -28,11 +28,11 @@ export default function ContactSection() {
   }, []);
 
   return (
-    <section id="contact" className={`scroll-section relative overflow-visible ${isVisible ? 'animate-fadeIn' : ''}`}>
+    <section id="contact" className={`scroll-section relative overflow-visible pt-24 md:pt-28 lg:pt-36 ${isVisible ? 'animate-fadeIn' : ''}`}>
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto relative overflow-visible">
           <div className="relative overflow-visible">
-            <div className="absolute -top-36 right-[-60px] md:-top-44 md:right-[-80px] lg:-top-52 lg:right-[-100px] z-50 w-48 md:w-64 lg:w-80 elora-character" style={{ pointerEvents: 'none' }}>
+            <div className="absolute -top-32 right-[-40px] md:-top-40 md:right-[-60px] lg:-top-48 lg:right-[-80px] z-50 w-40 md:w-56 lg:w-72 elora-character" style={{ pointerEvents: 'none' }}>
               <img 
                 src={eloraImage} 
                 alt="Elora character" 
