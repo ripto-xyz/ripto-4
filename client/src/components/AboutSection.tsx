@@ -78,8 +78,12 @@ export default function AboutSection() {
                   {/* Technologies list displayed inline without buttons */}
                   <div className="mt-6 md:mt-8">
                     <h3 className="text-lg md:text-xl font-semibold mb-3 text-white/90 md:text-left text-center">Expertise In:</h3>
-                    <p className="text-white text-base sm:text-lg md:text-xl font-medium md:text-left text-center">
-                      {technologies.join(' • ')}
+                    <p className="text-white text-base sm:text-lg md:text-xl font-medium md:text-left text-center flex flex-wrap justify-center md:justify-start gap-2">
+                      {technologies.map((tech, index) => (
+                        <span key={index} className="inline-flex">
+                          {tech}{index < technologies.length - 1 && <span className="mx-1">•</span>}
+                        </span>
+                      ))}
                     </p>
                   </div>
                 </div>
