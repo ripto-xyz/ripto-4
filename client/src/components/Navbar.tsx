@@ -54,7 +54,7 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
                  transform: 'scale(0.75)',
                  transformOrigin: 'left center',
                  flex: '0 0 auto',
-                 marginTop: '4px' /* Move the logo down a bit to align with hamburger */
+                 marginTop: '8px' /* Move the logo down a bit more to align with hamburger */
                }}>
             <SpyroLogo className="overflow-visible" />
           </div>
