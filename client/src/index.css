@@ -371,7 +371,72 @@ nav a:active {
   }
 }
 
-/* Spyro-inspired logo text style */
+/* Spyro-inspired font styles */
+/* Base style for all Spyro font letters */
+[class^="spyro-letter-"], [class*=" spyro-letter-"], .spyro-symbol {
+  display: inline-block;
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  color: #FFFF80;
+  text-shadow: 
+    0 -1px 0 #FFFFA0,
+    0px 1px 0 #E6DB74,
+    0px 2px 0 #CFC76B,
+    0px 3px 0 #BDB959, 
+    1px 4px 0 #A09E2F,
+    1px 5px 0 #8C8A28,
+    2px 6px 5px rgba(0, 0, 0, 0.4);
+  -webkit-text-stroke: 0.7px #827D00;
+  letter-spacing: 1px;
+  padding: 0 1px;
+  font-size: 1.25rem;
+  line-height: 1;
+  user-select: none;
+  transform-style: preserve-3d;
+  animation: 
+    spyroLetterFloat 3s ease-in-out infinite,
+    spyroGlow 4s ease-in-out infinite;
+  animation-delay: calc(var(--letter-index, 0) * 0.1s);
+  text-transform: uppercase;
+}
+
+/* Individual letter transformations to match Spyro font style */
+.spyro-letter-L { transform: rotate(-1deg) scale(1.05); }
+.spyro-letter-A { transform: rotate(1deg) scale(1.02); }
+.spyro-letter-U { transform: rotate(-1deg) scale(1.04); }
+.spyro-letter-R { transform: rotate(2deg) scale(1.03); }
+.spyro-letter-E { transform: rotate(-2deg) scale(1.05); }
+.spyro-letter-N { transform: rotate(1deg) scale(1.04); }
+.spyro-letter-C { transform: rotate(-1deg) scale(1.02); }
+.spyro-letter-I { transform: rotate(1deg) scale(1.03); }
+.spyro-letter-P { transform: rotate(-2deg) scale(1.04); }
+.spyro-letter-T { transform: rotate(0deg) scale(1.05); }
+.spyro-letter-O { transform: rotate(-1deg) scale(1.03); }
+.spyro-letter-H { transform: rotate(1deg) scale(1.04); }
+
+/* Symbol styling */
+.spyro-symbol {
+  color: #E6DB74;
+  transform: translateY(-1px);
+  animation-delay: 0s !important;
+}
+
+/* Responsive sizing for larger screens */
+@media (min-width: 768px) {
+  [class^="spyro-letter-"], [class*=" spyro-letter-"], .spyro-symbol {
+    font-size: 1.5rem;
+    padding: 0 1px;
+  }
+}
+
+/* Animation for the floating effect of letters */
+@keyframes spyroLetterFloat {
+  0% { transform: translateY(0px) rotateZ(var(--rotation, 0deg)) scale(var(--scale, 1)); }
+  50% { transform: translateY(-3px) rotateZ(calc(var(--rotation, 0deg) + 1deg)) scale(calc(var(--scale, 1) * 1.05)); }
+  100% { transform: translateY(0px) rotateZ(var(--rotation, 0deg)) scale(var(--scale, 1)); }
+}
+
+/* Legacy Yellow Logo style - keeping for reference and compatibility */
 .yellow-logo-text {
   font-family: 'Arial Black', 'Impact', sans-serif;
   font-weight: 900;
