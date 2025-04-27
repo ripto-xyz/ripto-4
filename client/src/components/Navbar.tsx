@@ -46,14 +46,15 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       <div className="max-w-[1400px] mx-auto px-2 sm:px-6 py-4">
         {/* Complete redesign for mobile */}
         <div className="flex flex-nowrap items-center justify-between w-full">
-          {/* Logo container larger to fit better with hamburger menu */}
+          {/* Logo container with adjusted vertical position to align with hamburger */}
           <div onClick={(e) => handleNavClick(e, 'home')} 
                className="cursor-pointer overflow-visible"
                style={{ 
                  maxWidth: '80%', 
                  transform: 'scale(0.75)',
                  transformOrigin: 'left center',
-                 flex: '0 0 auto'
+                 flex: '0 0 auto',
+                 marginTop: '4px' /* Move the logo down a bit to align with hamburger */
                }}>
             <SpyroLogo className="overflow-visible" />
           </div>
