@@ -565,34 +565,6 @@ input, textarea, select {
   color: #FFFF80 !important;
 }
 
-/* Portal shimmer effect - extremely subtle glow around letters */
-@keyframes portalShimmer {
-  0% { filter: drop-shadow(0 0 1px rgba(255, 255, 128, 0.1)); }
-  50% { filter: drop-shadow(0 0 1px rgba(255, 255, 128, 0.2)); }
-  100% { filter: drop-shadow(0 0 1px rgba(255, 255, 128, 0.1)); }
-}
-
-/* Portal glow effect - very subtle letter glow */
-@keyframes portalGlow {
-  0% { filter: drop-shadow(0 0 1px rgba(255, 255, 128, 0.1)) brightness(1); }
-  50% { filter: drop-shadow(0 0 1px rgba(255, 223, 0, 0.15)) brightness(1.02); }
-  100% { filter: drop-shadow(0 0 1px rgba(255, 255, 128, 0.1)) brightness(1); }
-}
-
-/* Very minimal brightness shift */
-@keyframes colorFlicker {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.02); }
-  100% { filter: brightness(1); }
-}
-
-/* Portal effect class - much more minimal */
-.portal-effect {
-  position: relative;
-  z-index: 1;
-  overflow: visible;
-}
-
 /* Yellow logo container animation */
 @keyframes yellowLogoFloat {
   0% { transform: translateY(0) translateX(0) rotate(0deg); }
@@ -604,17 +576,7 @@ input, textarea, select {
 
 .yellow-logo-container {
   display: inline-block;
-  position: relative;
   animation: yellowLogoFloat 6s ease-in-out infinite;
-}
-
-/* Portal glow effect for the container */
-/* Text glow effect - much more subtle */
-.yellow-logo-text {
-  animation: 
-    spyroFloat 5s ease-in-out infinite,
-    portalGlow 4s ease-in-out infinite;
-  filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.5));
 }
 
 /* Spyro Logo PNG animations */

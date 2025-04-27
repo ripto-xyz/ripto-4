@@ -7,8 +7,7 @@ interface YellowLogoProps {
 export default function YellowLogo({ className = '' }: YellowLogoProps) {
   return (
     <div className={`yellow-logo-container ${className}`}>
-      {/* Portal inner content */}
-      <div className="relative text-lg md:text-xl font-black tracking-wide whitespace-nowrap perspective-[1000px] text-white">
+      <div className="text-lg md:text-xl font-black tracking-wide whitespace-nowrap perspective-[1000px] text-white">
         {/* Add multiple shadow layers for enhanced 3D effect */}
         <div className="relative inline-block">
           {/* Bottom shadow - deepest */}

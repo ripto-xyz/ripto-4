@@ -36,30 +36,19 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
       position: absolute;
       height: 32px;
       display: block;
-      filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.15));
-      animation: letterGlow 3s infinite ease-in-out;
     }
     .letter-dot {
       position: absolute;
       height: 16px;
       display: block;
-      filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.15));
-      animation: letterGlow 3s infinite ease-in-out;
-    }
-    @keyframes letterGlow {
-      0% { filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.1)); }
-      50% { filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.2)); }
-      100% { filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.1)); }
     }
   `;
 
   // Create a simpler approach with absolute positioning
   return (
-    <div className={`${className}`}>
+    <div className={className}>
       <style>{styles}</style>
-      <div className="logo-container spyro-logo-animated relative">
-        
-        {/* Letter images with animation */}
+      <div className="logo-container spyro-logo-animated">
         <img className="letter letter-animated-3" src={L} alt="L" style={{ left: '0px', animationDelay: '0.0s' }} />
         <img className="letter letter-animated-1" src={A} alt="A" style={{ left: '10px', animationDelay: '0.1s' }} />
         <img className="letter letter-animated-2" src={U} alt="U" style={{ left: '40px', animationDelay: '0.2s' }} />
