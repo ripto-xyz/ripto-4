@@ -564,3 +564,17 @@ input, textarea, select {
 .yellow-logo-text {
   color: #FFFF80 !important;
 }
+
+/* Yellow logo container animation */
+@keyframes yellowLogoFloat {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  25% { transform: translateY(-3px) translateX(2px) rotate(0.3deg); }
+  50% { transform: translateY(-1px) translateX(3px) rotate(0.5deg); }
+  75% { transform: translateY(2px) translateX(-1px) rotate(-0.3deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+.yellow-logo-container {
+  display: inline-block;
+  animation: yellowLogoFloat 6s ease-in-out infinite;
+}
