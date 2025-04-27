@@ -27,8 +27,8 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
   // Set a consistent height for all letters
   const letterHeight = 32; // larger height for better visibility
 
-  // Define the space between letters - using negative margin for tighter spacing
-  const letterSpacing = -6; // pixels (negative for overlap) - moderate overlap
+  // Define the space between letters - using extremely aggressive negative margin for very tight spacing
+  const letterSpacing = -18; // pixels (negative for extreme overlap)
 
   // Create a style for the container
   const containerStyle = {
@@ -39,7 +39,7 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
     marginLeft: `${-letterSpacing/2}px`, // compensate for the negative spacing on first item
     transform: 'scale(1)', // no scale down
     transformOrigin: 'left center',
-    maxWidth: '225px', // wider to accommodate full-size logo
+    maxWidth: '120px', // much narrower with the extreme tight spacing
   };
 
   // Create a style for each letter
@@ -50,8 +50,8 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
     filter: 'drop-shadow(0px 1px 1px rgba(0,0,0,0.3))', // add subtle shadow for better visibility
   };
 
-  // Define a gap for the space and pipe - now very minimal
-  const spaceWidth = 1; // fixed tiny spacing
+  // Define a gap for the pipe - now completely eliminated
+  const spaceWidth = 0; // no extra space
   const spaceStyle = {
     width: `${spaceWidth}px`,
     display: 'inline-block',
