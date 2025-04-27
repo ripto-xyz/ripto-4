@@ -41,15 +41,27 @@ export default function Home() {
   // Use wheel navigation hook, but it will check for Firefox internally
   useWheelNav(isFirefox);
   
-  // Simplified scroll listener to determine active section
+  // Improved scroll listener to determine active section
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + 120; // Using consistent offset value
+      // Calculate viewport height and scroll position 
+      const windowHeight = window.innerHeight;
+      const scrollPosition = window.scrollY + windowHeight * 0.35; // Check position 35% down the viewport
       
-      // Get all sections - already imported from utils
+      // Special case: check if we're at the bottom of the page (contact section)
+      const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+      if (isAtBottom) {
+        setActiveSection('contact');
+        return;
+      }
+      
+      // Get all sections
       const sections = ['home', 'about', 'portfolio', 'services', 'contact'];
       
-      for (const section of sections) {
+      // Start from the last section (contact) and work backwards
+      // This helps when sections are close together - the last one gets precedence
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = sections[i];
         const element = document.getElementById(section);
         if (!element) continue;
         
@@ -57,7 +69,10 @@ export default function Home() {
         const sectionTop = rect.top + window.scrollY;
         const sectionBottom = sectionTop + rect.height;
         
-        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        // Special handling for contact section - make it activate sooner
+        const threshold = section === 'contact' ? windowHeight * 0.2 : 0;
+        
+        if (scrollPosition >= sectionTop - threshold && scrollPosition < sectionBottom) {
           setActiveSection(section);
           break;
         }
