@@ -36,21 +36,28 @@ export default function SpyroLogo({ className = '' }: SpyroLogoProps) {
       position: absolute;
       height: 32px;
       display: block;
+      filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.15));
+      animation: letterGlow 3s infinite ease-in-out;
     }
     .letter-dot {
       position: absolute;
       height: 16px;
       display: block;
+      filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.15));
+      animation: letterGlow 3s infinite ease-in-out;
+    }
+    @keyframes letterGlow {
+      0% { filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.1)); }
+      50% { filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.2)); }
+      100% { filter: drop-shadow(0 0 1px rgba(255, 236, 150, 0.1)); }
     }
   `;
 
   // Create a simpler approach with absolute positioning
   return (
-    <div className={`${className} portal-effect`}>
+    <div className={`${className}`}>
       <style>{styles}</style>
       <div className="logo-container spyro-logo-animated relative">
-        {/* Portal glow outer ring */}
-        <div className="absolute -inset-2 blur-lg opacity-30 bg-gradient-to-r from-purple-500 via-yellow-300 to-purple-500 animate-pulse rounded-full"></div>
         
         {/* Letter images with animation */}
         <img className="letter letter-animated-3" src={L} alt="L" style={{ left: '0px', animationDelay: '0.0s' }} />

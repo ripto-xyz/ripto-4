@@ -6,9 +6,7 @@ interface YellowLogoProps {
 
 export default function YellowLogo({ className = '' }: YellowLogoProps) {
   return (
-    <div className={`yellow-logo-container portal-effect ${className}`}>
-      {/* Portal glow outer ring */}
-      <div className="absolute inset-0 rounded-full blur-lg opacity-40 bg-yellow-300 animate-pulse"></div>
+    <div className={`yellow-logo-container ${className}`}>
       {/* Portal inner content */}
       <div className="relative text-lg md:text-xl font-black tracking-wide whitespace-nowrap perspective-[1000px] text-white">
         {/* Add multiple shadow layers for enhanced 3D effect */}
