@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { scrollToSection } from "@/lib/utils";
+import { fetchWithFallback } from "../utils/api";
 
 interface PortfolioItem {
   id: string;
@@ -13,6 +14,7 @@ interface PortfolioItem {
 export default function PortfolioSection() {
   const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
     queryKey: ['/api/portfolio'],
+    queryFn: () => fetchWithFallback<PortfolioItem[]>('/api/portfolio'),
     staleTime: Infinity,
   });
   

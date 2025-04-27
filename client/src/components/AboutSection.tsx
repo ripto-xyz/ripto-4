@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SpyroPortal from "./SpyroPortal";
+import { fetchWithFallback } from "../utils/api";
 
 // Define types for the about data
 interface Stat {
@@ -16,6 +17,7 @@ interface AboutData {
 export default function AboutSection() {
   const { data: aboutData } = useQuery<AboutData>({
     queryKey: ['/api/about'],
+    queryFn: () => fetchWithFallback<AboutData>('/api/about'),
     staleTime: Infinity,
   });
   
