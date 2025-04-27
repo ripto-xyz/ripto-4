@@ -56,7 +56,7 @@ export default function PortfolioSection() {
             
             <div className="space-y-10 md:space-y-16">
               {portfolioItems.map((item: PortfolioItem, index: number) => (
-                <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8`}>
+                <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8 items-center`}>
                   {/* Video placeholder */}
                   <div className="w-full md:w-1/2">
                     <div className="relative aspect-video bg-gray-800 rounded-xl overflow-hidden shadow-lg flex items-center justify-center group cursor-pointer">
