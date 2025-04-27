@@ -43,14 +43,14 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
         isScrolled ? 'bg-[#1A1A2E] bg-opacity-90 backdrop-blur-md' : 'bg-opacity-0'
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between gap-4">
-          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer flex-shrink-0 mr-8">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between gap-6">
+          <div onClick={(e) => handleNavClick(e, 'home')} className="cursor-pointer flex-shrink-0 mr-14">
             <SpyroLogo />
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-5 lg:space-x-7 flex-1 justify-end">
+          <div className="hidden md:flex space-x-4 lg:space-x-6 flex-1 justify-end">
             <a 
               href="#home" 
               onClick={(e) => handleNavClick(e, 'home')}
