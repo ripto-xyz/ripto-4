@@ -1,4 +1,5 @@
 import React from "react";
+import "./SpyroPortal.css";
 
 export default function SpyroPortal() {
   return (
@@ -7,7 +8,6 @@ export default function SpyroPortal() {
         src="/images/portalme.png" 
         alt="Spyro Sunny Beach portal" 
         loading="eager"
-        className="w-full h-auto object-contain"
       />
     </div>
   );
