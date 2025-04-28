@@ -59,8 +59,8 @@ export default function ContactSection() {
                     </p>
                   </div>
                 </div>
-                <div className="text-center flex justify-center w-full md:w-auto">
-                  <div className="flex flex-col items-center max-w-[270px] w-full">
+                <div className="text-center flex justify-center">
+                  <div className="flex flex-col items-center max-w-[270px]">
                     <div className="text-white mb-3 sm:mb-4">
                       <Mail size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
@@ -84,8 +84,8 @@ export default function ContactSection() {
                     </p>
                   </div>
                 </div>
-                <div className="text-center flex justify-center w-full md:w-auto">
-                  <div className="flex flex-col items-center max-w-[270px] w-full">
+                <div className="text-center flex justify-center">
+                  <div className="flex flex-col items-center max-w-[270px]">
                     <div className="text-white mb-3 sm:mb-4">
                       <Users size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
                     </div>
