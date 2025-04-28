@@ -1,3 +1,0 @@
-Checking for unused CSS files:
-rm: cannot remove 'public/styles/old-styles.css': No such file or directory
-rm: cannot remove 'public/styles/outdated-styles.css': No such file or directory

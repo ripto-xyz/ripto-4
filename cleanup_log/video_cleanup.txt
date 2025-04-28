@@ -1,6 +1,0 @@
-Removing redundant video files:
-removed 'public/video/timeline-high.mp4'
-removed 'public/timeline.mp4'
-removed 'public/timeline-bg.mp4'
-removed 'public/images/timeline3-new.mp4'
-removed 'public/images/timeline3-original.mp4'

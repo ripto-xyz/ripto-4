@@ -1,7 +1,0 @@
-Removing redundant portal images:
-removed 'client/public/assets/portalme.png'
-removed 'client/public/assets/portal.png'
-removed 'client/public/images/portalme.png'
-removed 'client/src/assets/portalme.png'
-removed 'public/img/portalme.png'
-removed 'public/portal.png'

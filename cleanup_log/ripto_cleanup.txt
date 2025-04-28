@@ -1,3 +1,0 @@
-Removing redundant Ripto images:
-removed 'client/public/images/Ripto.png'
-removed 'public/Ripto.jpg'
