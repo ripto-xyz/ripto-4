@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MapPin, Mail, Users } from "lucide-react";
+import { MapPin, Users } from "lucide-react";
 import eloraImage from "@assets/elora.png";
 
 export default function ContactSection() {
@@ -46,7 +46,7 @@ export default function ContactSection() {
                   Ready to elevate your Web3 marketing? Let's discuss your project.
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 mt-10 sm:mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mt-10 sm:mt-12">
                 <div className="text-center flex justify-center">
                   <div className="flex flex-col items-center max-w-[270px]">
                     <div className="text-white mb-3 sm:mb-4">
@@ -56,31 +56,6 @@ export default function ContactSection() {
                     <p className="text-sm sm:text-base md:text-lg text-white font-medium">
                       Global, Remote-First<br />
                       Based in Sevilla, Spain
-                    </p>
-                  </div>
-                </div>
-                <div className="text-center flex justify-center">
-                  <div className="flex flex-col items-center max-w-[270px]">
-                    <div className="text-white mb-3 sm:mb-4">
-                      <Mail size={28} strokeWidth={1.5} className="sm:w-8 sm:h-8 md:w-10 md:h-10" />
-                    </div>
-                    <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-3">Email</h3>
-                    <p className="text-sm sm:text-base md:text-lg text-white font-medium">
-                      <a 
-                        href="mailto:hello@ripto.eth" 
-                        className="hover:text-yellow-100 transition-colors"
-                        aria-label="Email hello@ripto.eth"
-                      >
-                        hello@ripto.eth
-                      </a>
-                      <br />
-                      <a 
-                        href="mailto:laurence@web3.marketing" 
-                        className="hover:text-yellow-100 transition-colors"
-                        aria-label="Email laurence@web3.marketing"
-                      >
-                        laurence@web3.marketing
-                      </a>
                     </p>
                   </div>
                 </div>
