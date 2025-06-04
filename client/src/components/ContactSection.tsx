@@ -54,7 +54,7 @@ export default function ContactSection() {
                     </div>
                     <h3 className="text-base sm:text-xl md:text-2xl font-bold font-poppins text-white mb-3">Location</h3>
                     <p className="text-sm sm:text-base md:text-lg text-white font-medium">
-                      Global, Remote-First<br />
+                      Remote-First (Global)<br />
                       Based in Sevilla, Spain
                     </p>
                   </div>
