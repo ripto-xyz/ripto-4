@@ -97,34 +97,30 @@ export function useWheelNav(disableForFirefox = false) {
       // Simple threshold for home to about navigation only
       const threshold = isLikelyTrackpad ? 100 : 50;
       
-      // Only process if accumulated delta is big enough
-      if (accumulatedDeltaRef.current < threshold) {
+      // Only process if accumulated delta is big enough AND we're on home section
+      if (accumulatedDeltaRef.current < threshold || activeSection !== 'home') {
+        // Allow normal scrolling for all other cases
         return;
       }
       
-      // Prevent default scrolling
-      e.preventDefault();
-      
-      // Mark as scrolling to prevent additional processing
-      isScrollingRef.current = true;
-      lastScrollTimeRef.current = timestamp;
-      accumulatedDeltaRef.current = 0;
-      
-      // No special timestamp tracking needed for simple home->about navigation
-      
-      // Only allow navigation from home to about section
+      // Only prevent default and handle navigation when on home section with enough delta
       if (e.deltaY > 0 && activeSection === 'home') {
+        // Prevent default scrolling only for this specific case
+        e.preventDefault();
+        
+        // Mark as scrolling to prevent additional processing
+        isScrollingRef.current = true;
+        lastScrollTimeRef.current = timestamp;
+        accumulatedDeltaRef.current = 0;
+        
         // Scrolling DOWN from home - go to about section only
         scrollToSection('about');
-      } else {
-        // No navigation allowed for any other sections
-        isScrollingRef.current = false;
+        
+        // Reset scrolling state after animation completes
+        setTimeout(() => {
+          isScrollingRef.current = false;
+        }, 700);
       }
-      
-      // Reset scrolling state after animation completes (simple cooldown for home->about)
-      setTimeout(() => {
-        isScrollingRef.current = false;
-      }, 700);
     };
     
     // Add wheel event listener with passive: false to allow preventDefault
