@@ -1,0 +1,644 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Lithograph Bold';
+  src: url('/fonts/LITHOB.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Enhanced scrolling system - handled by JS instead of CSS snap */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Main content container */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Scroll margins for sections */
+#home {
+  scroll-margin-top: 0;
+}
+
+#about, #portfolio, #services, #contact {
+  scroll-margin-top: 80px;
+}
+
+/* This is moved below to consolidate with existing animation */
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 260 100% 70%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 250 70% 59%;
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 60 4.8% 95.9%;
+  --accent-foreground: 24 9.8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 260 100% 70%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 250 70% 59%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-white;
+    font-family: 'Inter', sans-serif;
+    color: white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    color: white;
+  }
+  
+  /* Ensure all text has proper contrast against the dark background */
+  p, span, div, a, button, li {
+    color: white;
+  }
+}
+
+/* HTML and body styles are already set above */
+
+.static-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    linear-gradient(135deg, 
+      #121212 0%, 
+      #1a1a2e 20%, 
+      #16213e 40%, 
+      #1a1a35 60%, 
+      #121824 80%, 
+      #0a0a18 100%);
+  background-size: 400% 400%;
+  animation: gradientBackground 15s ease infinite;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 0;
+}
+
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid white;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+.loading-text {
+  font-family: sans-serif;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+/* Fade out animation for video quality indicator */
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.fade-out {
+  animation: fadeOut 3s ease-in-out forwards;
+}
+
+/* Base styles for all sections - JS handles scrolling */
+.scroll-section {
+  min-height: 100vh; /* Make all sections at least full viewport height */
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  scroll-margin-top: 120px; /* Increased to prevent navbar overlap */
+  overflow: hidden;
+}
+
+/* Remove margins and padding from sections to connect them */
+section#portfolio {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* Connect contact directly with portfolio */
+section#contact {
+  padding-top: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Keep hero section full height and ensure it's visible initially */
+section#home {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Ensure sections appear in the exact order they're defined in the DOM */
+section#home {
+  order: 1;
+}
+
+section#about {
+  order: 2;
+}
+
+section#portfolio {
+  order: 3;
+}
+
+section#services {
+  order: 4;
+}
+
+section#contact {
+  order: 5;
+}
+
+.portfolio-item {
+  transition: all 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-10px);
+}
+
+.service-card {
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Navigation menu enhancements */
+nav a {
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+nav a.text-primary {
+  background-color: rgba(238, 210, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(181, 104, 255, 0.25);
+}
+
+nav a:active {
+  transform: translateY(1px);
+}
+
+.logo-text {
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.contact-input {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.contact-input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(0px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.5s ease-in-out;
+}
+
+.dark-overlay {
+  @apply absolute inset-0 bg-black/70 z-0;
+}
+
+@keyframes spyroFloat {
+  0% { transform: translateY(0) rotateX(10deg); }
+  50% { transform: translateY(-3px) rotateX(12deg); }
+  100% { transform: translateY(0) rotateX(10deg); }
+}
+
+@keyframes spyroGlow {
+  0% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
+  50% { filter: brightness(1.15) drop-shadow(0 0 4px rgba(255, 236, 27, 0.5)); }
+  100% { filter: brightness(1) drop-shadow(0 0 2px rgba(255, 236, 27, 0.3)); }
+}
+
+@keyframes portalFloat {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(-1deg); }
+  50% { transform: translateY(0) rotate(0deg); }
+  75% { transform: translateY(8px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes portalGlow {
+  0% { filter: brightness(1) drop-shadow(0 0 5px rgba(138, 43, 226, 0.4)); }
+  50% { filter: brightness(1.2) drop-shadow(0 0 15px rgba(138, 43, 226, 0.7)); }
+  100% { filter: brightness(1) drop-shadow(0 0 5px rgba(138, 43, 226, 0.4)); }
+}
+
+.spyro-portal {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  animation: 
+    portalFloat 6s ease-in-out infinite,
+    portalGlow 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Responsive adjustments for the portal */
+@media (min-width: 768px) {
+  .spyro-portal {
+    max-width: 500px;
+  }
+}
+
+/* Spyro-inspired logo text style */
+.yellow-logo-text {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  position: relative;
+  display: inline-block;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  
+  /* Text coloring - bright yellow from the Spyro font */
+  color: #FFFF80 !important;
+  
+  /* 3D shadow effects to match Spyro font's depth */
+  text-shadow: 
+    /* Top highlight for that shiny look */
+    0 -1px 0 #FFFFA0,
+    /* Main 3D layers - right and bottom offset shadow with gradually darkening yellows */
+    0px 1px 0 #E6DB74,
+    0px 2px 0 #CFC76B,
+    0px 3px 0 #BDB959, 
+    1px 4px 0 #A09E2F,
+    1px 5px 0 #8C8A28,
+    /* Bottom shadow for depth */
+    2px 6px 5px rgba(0, 0, 0, 0.4);
+  
+  /* Character styling */
+  letter-spacing: 1.5px;
+  -webkit-text-stroke: 0.7px #827D00;
+  
+  /* 3D transformation - slight tilt for depth */
+  transform: rotateX(10deg);
+  
+  /* Animations */
+  animation: 
+    spyroFloat 5s ease-in-out infinite,
+    spyroGlow 4s ease-in-out infinite;
+}
+
+/* Shadow elements for enhanced 3D shading */
+.yellow-logo-shadow {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Darker colors for the shadow */
+  color: #6B6500;
+  /* Position slightly offset for 3D effect - left and down */
+  transform: translate(-2px, 2px);
+  /* Blur the shadow slightly */
+  filter: blur(1px);
+  /* No animation on the shadow element */
+  opacity: 0.4;
+}
+
+/* Right-side shadow for dimension */
+.yellow-logo-shadow-right {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Brighter color for right side highlight */
+  color: #A09E2F;
+  /* Position slightly offset to the right */
+  transform: translate(2px, 0px);
+  /* Blur the shadow slightly */
+  filter: blur(1px);
+  /* No animation on the shadow element */
+  opacity: 0.5;
+}
+
+/* Bottom shadow for depth */
+.yellow-logo-shadow-bottom {
+  font-family: 'Arial Black', 'Impact', sans-serif;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  /* Darker brown/shadow color */
+  color: #5D5700;
+  /* Make it a bit bigger to create depth impression */
+  transform: scale(1.02);
+  /* Heavier blur for deeper shadow */
+  filter: blur(2px);
+  /* Lower opacity */
+  opacity: 0.35;
+}
+
+
+
+/* Elora character animation */
+@keyframes eloraFloat {
+  0% { transform: translateY(0) rotate(6deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+  100% { transform: translateY(0) rotate(6deg); }
+}
+
+.elora-character {
+  animation: eloraFloat 5s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.elora-character:hover {
+  animation-play-state: paused;
+  transform: scale(1.15) rotate(-8deg);
+  transition: transform 0.5s ease;
+}
+
+.elora-character img {
+  transition: filter 0.5s ease;
+}
+
+.elora-character:hover img {
+  filter: drop-shadow(0 0 15px rgba(255, 210, 100, 0.8)) brightness(1.15);
+}
+
+
+
+/* Improved loading indicator with spinner */
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  border-radius: 12px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+.loading-text {
+  font-family: 'Lithograph Bold', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 16px;
+  opacity: 0.8;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+/* Global text color for the dark video background */
+body, p, h1, h2, h3, h4, h5, h6, a, button, li, .text-foreground, .text-primary-foreground, .text-secondary-foreground {
+  color: white;
+}
+
+/* Form controls need a different contrast */
+input, textarea, select {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Special styling exceptions */
+/* 1. Gradient text needs to be transparent */
+.bg-clip-text.text-transparent {
+  color: transparent !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+
+/* 2. Yellow logo text needs its specific color */
+.yellow-logo-text {
+  color: #FFFF80 !important;
+}
+
+/* Yellow logo container animation */
+@keyframes yellowLogoFloat {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  25% { transform: translateY(-3px) translateX(2px) rotate(0.3deg); }
+  50% { transform: translateY(-1px) translateX(3px) rotate(0.5deg); }
+  75% { transform: translateY(2px) translateX(-1px) rotate(-0.3deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+.yellow-logo-container {
+  display: inline-block;
+  animation: yellowLogoFloat 6s ease-in-out infinite;
+}
+
+/* Spyro Logo PNG animations */
+@keyframes spyroLogoFloat {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); }
+  25% { transform: translateY(-2px) translateX(1px) rotate(0.2deg); }
+  50% { transform: translateY(-1px) translateX(2px) rotate(0.4deg); }
+  75% { transform: translateY(1px) translateX(-1px) rotate(-0.2deg); }
+  100% { transform: translateY(0) translateX(0) rotate(0deg); }
+}
+
+.spyro-logo-animated {
+  animation: spyroLogoFloat 6s ease-in-out infinite;
+}
+
+/* Individual letter animations with slight delays and variations */
+.letter-animated-1 {
+  animation: letterFloat1 3.1s ease-in-out infinite;
+}
+
+.letter-animated-2 {
+  animation: letterFloat2 2.9s ease-in-out infinite;
+}
+
+.letter-animated-3 {
+  animation: letterFloat3 3.2s ease-in-out infinite;
+}
+
+.letter-animated-4 {
+  animation: letterFloat4 3.0s ease-in-out infinite;
+}
+
+.letter-animated-5 {
+  animation: letterFloat5 3.3s ease-in-out infinite;
+}
+
+@keyframes letterFloat1 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1.5px) rotate(0.2deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}
+
+@keyframes letterFloat2 {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-1px) translateX(0.6px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes letterFloat3 {
+  0% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-0.8px) translateX(-0.4px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes letterFloat4 {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(0.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+@keyframes letterFloat5 {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-1.2px) rotate(-0.3deg); }
+  100% { transform: translateY(0) rotate(0deg); }
+}

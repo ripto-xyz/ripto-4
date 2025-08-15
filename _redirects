@@ -1,6 +1,1 @@
-# Handle client-side routing
-/*    /index.html   200
-
-# API redirects - fallback to static JSON files
-/api/about    /api/about.json   200
-/api/portfolio    /api/portfolio.json   200
+/* /index.html 200
