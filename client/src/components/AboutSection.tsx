@@ -107,7 +107,7 @@ export default function AboutSection() {
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
                   <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full">
                     <img src={appleLogo} alt="Apple" className="h-14 md:h-18 lg:h-22 xl:h-28 object-contain flex-shrink-0" />
-                    <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 xl:h-24 object-contain flex-shrink-0" />
+                    <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 xl:h-24 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
                   </div>
                 </div>
                 
