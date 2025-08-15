@@ -52,7 +52,7 @@ export default function AboutSection() {
   const stats: Stat[] = aboutData?.stats || [
     { value: "50+", label: "Projects Launched" },
     { value: "$100M+", label: "Total Raised" },
-    { value: "250K+", label: "Community Members" },
+    { value: "2017", label: "BTC first purchased from an ATM" },
     { value: "8 Years", label: "Web3 Experience" }
   ];
   
