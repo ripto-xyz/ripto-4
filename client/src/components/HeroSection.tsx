@@ -7,11 +7,11 @@ export default function HeroSection() {
       <div className="container mx-auto px-4 z-10 relative">
         <div className="ml-0 md:ml-4 lg:ml-20 xl:ml-24 max-w-3xl">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-3 leading-tight">
-            <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500 drop-shadow-sm tracking-tighter">
+            <span className="bg-clip-text text-transparent bg-gradient-to-br from-purple-400 via-purple-500 to-orange-500 drop-shadow-sm tracking-tight">
               Web3 Growth
             </span>
           </h1>
-          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl">
+          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl tracking-tight">
             that doesn't rely on hype from a fleeting airdrop...
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
