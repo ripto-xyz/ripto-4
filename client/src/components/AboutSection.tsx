@@ -113,14 +113,14 @@ export default function AboutSection() {
                 
                 {/* Everclear logo */}
                 <div className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
-                  <img src={everclearLogo} alt="Everclear" className="h-16 md:h-20 lg:h-24 xl:h-28 max-w-full object-contain" />
+                  <img src={everclearLogo} alt="Everclear" className="h-20 md:h-24 lg:h-28 xl:h-32 max-w-full object-contain" />
                 </div>
                 
                 {/* Remaining stats */}
                 {stats.slice(2).map((stat, index) => (
                   <div key={index + 2} className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
-                    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 lg:mb-6">{stat.value}</div>
-                    <p className="text-white/80 font-medium text-base sm:text-lg md:text-xl lg:text-2xl">{stat.label}</p>
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 md:mb-3">{stat.value}</div>
+                    <p className="text-white/80 font-medium text-sm sm:text-base">{stat.label}</p>
                   </div>
                 ))}
               </div>
