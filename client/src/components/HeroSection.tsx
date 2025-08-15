@@ -23,7 +23,7 @@ export default function HeroSection() {
               }}
               className="px-8 py-3 bg-primary hover:bg-secondary text-white font-medium rounded-full transition-colors duration-300 text-center"
             >
-              View Our Work
+              View My Work
             </a>
             <a 
               href="#contact" 
