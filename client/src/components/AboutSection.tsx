@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SpyroPortal from "./SpyroPortal";
 import { fetchWithFallback } from "../utils/api";
+import appleLogo from "@assets/apple_1755274762626.png";
+import appleNameLogo from "@assets/apple_Name_1755274762626.png";
+import everclearLogo from "@assets/Everclear-Logo-White1_1755274762627.png";
 
 // Define types for the about data
 interface Stat {
@@ -99,8 +102,22 @@ export default function AboutSection() {
         <div className="mt-8 md:mt-12 lg:mt-16">
           <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 shadow-xl border border-white/20 w-full">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
-              {stats.map((stat, index) => (
-                <div key={index} className="p-2 md:p-3">
+              {/* Apple logo with name */}
+              <div className="p-2 md:p-3 flex flex-col items-center justify-center">
+                <div className="flex items-center justify-center gap-3 mb-2">
+                  <img src={appleLogo} alt="Apple" className="h-8 w-8 md:h-10 md:w-10" />
+                  <img src={appleNameLogo} alt="Apple" className="h-6 md:h-8" />
+                </div>
+              </div>
+              
+              {/* Everclear logo */}
+              <div className="p-2 md:p-3 flex flex-col items-center justify-center">
+                <img src={everclearLogo} alt="Everclear" className="h-8 md:h-12 max-w-[150px] object-contain" />
+              </div>
+              
+              {/* Remaining stats */}
+              {stats.slice(2).map((stat, index) => (
+                <div key={index + 2} className="p-2 md:p-3">
                   <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 md:mb-3">{stat.value}</div>
                   <p className="text-white/80 font-medium text-sm sm:text-base">{stat.label}</p>
                 </div>
