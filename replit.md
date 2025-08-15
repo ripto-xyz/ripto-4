@@ -30,9 +30,17 @@ Preferred communication style: Simple, everyday language.
 
 ## Build System
 - **Development**: Vite dev server with HMR and React Fast Refresh
-- **Production**: Vite builds frontend to `dist/public`, ESBuild bundles backend to `dist`
-- **Static Deployment**: Special build process for Cloudflare Pages deployment without backend
+- **Production**: Multiple build configurations for different deployment scenarios
+  - `vite.config.ts`: Development build (outputs to `dist/public`)
+  - `vite.config.prod.ts`: Production build (outputs to `dist` for deployment)
+- **Static Deployment**: Use `build-static.js` script for frontend-only deployment
+- **Full-Stack Deployment**: Use `build-deploy.js` script for complete application
 - **Asset Handling**: Video compression and optimization for web delivery
+
+## Deployment Scripts
+- **build-static.js**: Frontend-only build for static hosting (Netlify, Vercel, Cloudflare Pages)
+- **build-deploy.js**: Full-stack build including backend server
+- **cloudflare-build.js**: Legacy Cloudflare Pages build (now deprecated in favor of build-static.js)
 
 ## Deployment Strategies
 - **Full-Stack**: Traditional hosting with both frontend and backend
