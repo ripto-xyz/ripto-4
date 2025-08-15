@@ -104,15 +104,15 @@ export default function AboutSection() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
               {/* Apple logo with name */}
               <div className="p-2 md:p-3 flex flex-col items-center justify-center">
-                <div className="flex items-center justify-center gap-4 md:gap-6 mb-2">
-                  <img src={appleLogo} alt="Apple" className="h-12 w-12 md:h-16 md:w-16 lg:h-20 lg:w-20" />
-                  <img src={appleNameLogo} alt="Apple" className="h-10 md:h-14 lg:h-16" />
+                <div className="flex items-center justify-center gap-6 md:gap-8 mb-2">
+                  <img src={appleLogo} alt="Apple" className="h-16 md:h-24 lg:h-32 object-contain" />
+                  <img src={appleNameLogo} alt="Apple" className="h-14 md:h-20 lg:h-24 object-contain" />
                 </div>
               </div>
               
               {/* Everclear logo */}
               <div className="p-2 md:p-3 flex flex-col items-center justify-center">
-                <img src={everclearLogo} alt="Everclear" className="h-12 md:h-16 lg:h-20 max-w-[200px] md:max-w-[250px] lg:max-w-[300px] object-contain" />
+                <img src={everclearLogo} alt="Everclear" className="h-16 md:h-24 lg:h-32 max-w-[300px] md:max-w-[400px] lg:max-w-[500px] object-contain" />
               </div>
               
               {/* Remaining stats */}
