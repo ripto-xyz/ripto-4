@@ -103,17 +103,21 @@ export default function AboutSection() {
           <div className="max-w-[1400px] mx-auto">
             <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 w-full">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
-                {/* Apple logo with name */}
-                <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full">
-                    <img src={appleLogo} alt="Apple" className="h-10 md:h-12 lg:h-16 xl:h-20 object-contain flex-shrink-0" />
-                    <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 xl:h-24 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
+                {/* Apple and Everclear logos with shared label */}
+                <div className="md:col-span-2 col-span-2 flex flex-col items-center justify-center">
+                  <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-12 mb-2">
+                    {/* Apple logo with name */}
+                    <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5">
+                      <img src={appleLogo} alt="Apple" className="h-10 md:h-12 lg:h-16 xl:h-20 object-contain flex-shrink-0" />
+                      <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 xl:h-24 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
+                    </div>
+                    
+                    {/* Everclear logo */}
+                    <div className="flex items-center justify-center">
+                      <img src={everclearLogo} alt="Everclear" className="h-14 md:h-18 lg:h-22 xl:h-28 w-auto object-contain" />
+                    </div>
                   </div>
-                </div>
-                
-                {/* Everclear logo */}
-                <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <img src={everclearLogo} alt="Everclear" className="h-14 md:h-18 lg:h-22 xl:h-28 w-auto object-contain max-w-full" />
+                  <p className="text-white/80 font-medium text-sm sm:text-base md:text-lg">Professional Experience</p>
                 </div>
                 
                 {/* Remaining stats */}
@@ -123,17 +127,6 @@ export default function AboutSection() {
                     <p className="text-white/80 font-medium text-sm sm:text-base md:text-lg">{stat.label}</p>
                   </div>
                 ))}
-              </div>
-              
-              {/* Professional Experience label centered under both logos */}
-              <div className="mt-1 md:mt-2">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
-                  <div className="md:col-span-2 col-span-2 flex justify-center">
-                    <p className="text-white/80 font-medium text-sm sm:text-base md:text-lg">Professional Experience</p>
-                  </div>
-                  <div className="hidden md:block"></div>
-                  <div className="hidden md:block"></div>
-                </div>
               </div>
             </div>
           </div>
