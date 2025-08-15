@@ -105,15 +105,15 @@ export default function AboutSection() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 text-center">
                 {/* Apple logo with name */}
                 <div className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
-                  <div className="flex items-center justify-center gap-4 md:gap-6 lg:gap-8">
-                    <img src={appleLogo} alt="Apple" className="h-16 md:h-20 lg:h-24 xl:h-28 object-contain" />
-                    <img src={appleNameLogo} alt="Apple" className="h-14 md:h-18 lg:h-20 xl:h-24 object-contain" />
+                  <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5">
+                    <img src={appleLogo} alt="Apple" className="h-14 md:h-18 lg:h-22 object-contain" />
+                    <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-18 object-contain" />
                   </div>
                 </div>
                 
                 {/* Everclear logo */}
                 <div className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
-                  <img src={everclearLogo} alt="Everclear" className="h-28 md:h-36 lg:h-44 xl:h-48 w-auto object-contain" style={{ maxWidth: 'none' }} />
+                  <img src={everclearLogo} alt="Everclear" className="h-14 md:h-18 lg:h-22 max-w-full object-contain" />
                 </div>
                 
                 {/* Remaining stats */}
