@@ -53,7 +53,7 @@ export default function AboutSection() {
     { value: "50+", label: "Projects Launched" },
     { value: "$100M+", label: "Total Raised" },
     { value: "250K+", label: "Community Members" },
-    { value: "5 Years", label: "Web3 Experience" }
+    { value: "8 Years", label: "Web3 Experience" }
   ];
   
   // Default technologies if API call isn't complete
