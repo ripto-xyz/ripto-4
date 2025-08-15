@@ -46,7 +46,7 @@ export default function ContactSection() {
                   with yours truly...
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 lg:gap-16 xl:gap-20 mt-10 sm:mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 sm:gap-16 lg:gap-24 xl:gap-32 mt-10 sm:mt-12 px-4 sm:px-8 md:px-12">
                 <div className="text-center flex justify-center">
                   <div className="flex flex-col items-center">
                     <div className="text-white mb-3 sm:mb-4">
