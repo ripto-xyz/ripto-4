@@ -104,7 +104,7 @@ export default function AboutSection() {
             <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 w-full">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 text-center">
                 {/* Apple logo with name */}
-                <div className="p-2 md:p-4 lg:p-6 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
+                <div className="p-2 md:p-3 lg:p-4 flex flex-col items-center justify-center h-20 md:h-24 lg:h-28">
                   <div className="flex items-center justify-center gap-2 md:gap-3 lg:gap-4 max-w-full">
                     <img src={appleLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 object-contain flex-shrink-0" />
                     <img src={appleNameLogo} alt="Apple" className="h-10 md:h-14 lg:h-16 object-contain flex-shrink-0" />
@@ -112,14 +112,14 @@ export default function AboutSection() {
                 </div>
                 
                 {/* Everclear logo */}
-                <div className="p-2 md:p-4 lg:p-6 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
+                <div className="p-2 md:p-3 lg:p-4 flex flex-col items-center justify-center h-20 md:h-24 lg:h-28">
                   <img src={everclearLogo} alt="Everclear" className="h-12 md:h-16 lg:h-20 max-w-full object-contain" />
                 </div>
                 
                 {/* Remaining stats */}
                 {stats.slice(2).map((stat, index) => (
-                  <div key={index + 2} className="p-2 md:p-4 lg:p-6 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 md:mb-3">{stat.value}</div>
+                  <div key={index + 2} className="p-2 md:p-3 lg:p-4 flex flex-col items-center justify-center h-20 md:h-24 lg:h-28">
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">{stat.value}</div>
                     <p className="text-white/80 font-medium text-sm sm:text-base">{stat.label}</p>
                   </div>
                 ))}
