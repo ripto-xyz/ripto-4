@@ -107,10 +107,10 @@ export default function AboutSection() {
                 <div className="col-span-2 flex flex-col items-center justify-center h-32 md:h-36 lg:h-40">
                   <div className="flex items-center justify-center gap-6 md:gap-8 lg:gap-12 w-full max-w-full">
                     <div className="flex items-center gap-3 md:gap-4 lg:gap-5">
-                      <img src={appleLogo} alt="Apple" className="h-12 md:h-14 lg:h-18 xl:h-22 object-contain flex-shrink-0" />
-                      <img src={appleNameLogo} alt="Apple" className="h-14 md:h-18 lg:h-22 xl:h-26 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
+                      <img src={appleLogo} alt="Apple" className="h-16 md:h-20 lg:h-24 xl:h-28 object-contain flex-shrink-0" />
+                      <img src={appleNameLogo} alt="Apple" className="h-18 md:h-22 lg:h-26 xl:h-32 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
                     </div>
-                    <img src={everclearLogo} alt="Everclear" className="h-12 md:h-14 lg:h-18 xl:h-22 w-auto object-contain" />
+                    <img src={everclearLogo} alt="Everclear" className="h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain" />
                   </div>
                   <p className="text-white/80 font-medium text-sm sm:text-base md:text-lg mt-1">Professional Experience</p>
                 </div>
