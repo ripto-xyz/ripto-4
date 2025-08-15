@@ -13,14 +13,10 @@ import { getNextSectionId, getPrevSectionId, scrollToSection, sectionIds } from 
  * @param disableForFirefox - Whether to disable wheel navigation for Firefox (defaults to false)
  */
 export function useWheelNav(disableForFirefox = false) {
-  // State refs to persist across renders
+  // State refs to persist across renders (simplified for home->about navigation only)
   const isScrollingRef = useRef(false);
   const lastScrollTimeRef = useRef(0);
   const accumulatedDeltaRef = useRef(0);
-  const scrollWindowStartTimeRef = useRef(0);
-  const scrollCountInWindowRef = useRef(0);
-  const lastPortfolioNavigationTimeRef = useRef(0); // When we last navigated from portfolio
-  const lastServicesNavigationTimeRef = useRef(0); // When we last navigated from services
   
   // Debug flag - set to false for production
   const isDebugMode = false;
@@ -98,105 +94,8 @@ export function useWheelNav(disableForFirefox = false) {
       // Get current active section
       const activeSection = getActiveSection();
       
-      // Handle time windows for accumulated scrolls (only for portfolio section)
-      if (activeSection === 'portfolio') {
-        const TIME_WINDOW_MS = 600; // 600ms time window (increased from 500ms)
-        
-        // Start a new time window if needed
-        if (timestamp - scrollWindowStartTimeRef.current > TIME_WINDOW_MS) {
-          scrollWindowStartTimeRef.current = timestamp;
-          scrollCountInWindowRef.current = 1;
-        } else {
-          // Still in the same time window, increment the count
-          scrollCountInWindowRef.current++;
-        }
-        
-        // For portfolio section: require more deliberate scrolling patterns
-        if (scrollCountInWindowRef.current <= 3) { // Increased from 2 to 3 events needed
-          // Significantly reduce the accumulated delta for the first few scroll events
-          // This makes it much harder to trigger navigation with just a few quick scroll events
-          accumulatedDeltaRef.current = Math.min(accumulatedDeltaRef.current, 40);
-        }
-      }
-      
-      // Check if the portfolio section is in its cooldown period
-      let isPortfolioInCooldown = false;
-      if (activeSection === 'portfolio') {
-        const PORTFOLIO_COOLDOWN_MS = 3000; // 3-second cooldown for portfolio section
-        const timeSinceLastNavigation = timestamp - lastPortfolioNavigationTimeRef.current;
-        isPortfolioInCooldown = timeSinceLastNavigation < PORTFOLIO_COOLDOWN_MS;
-        
-        if (isPortfolioInCooldown && isDebugMode) {
-          console.log(`Portfolio in cooldown! ${Math.round((PORTFOLIO_COOLDOWN_MS - timeSinceLastNavigation)/1000)}s remaining`);
-        }
-      }
-      
-      // Check if the services section is in its cooldown period
-      let isServicesInCooldown = false;
-      if (activeSection === 'services') {
-        const SERVICES_COOLDOWN_MS = 2000; // 2-second cooldown for services section
-        const timeSinceLastNavigation = timestamp - lastServicesNavigationTimeRef.current;
-        isServicesInCooldown = timeSinceLastNavigation < SERVICES_COOLDOWN_MS;
-        
-        if (isServicesInCooldown && isDebugMode) {
-          console.log(`Services in cooldown! ${Math.round((SERVICES_COOLDOWN_MS - timeSinceLastNavigation)/1000)}s remaining`);
-        }
-      }
-      
-      // Set appropriate threshold based on section and cooldown status
-      let threshold;
-      if (activeSection === 'portfolio') {
-        if (isPortfolioInCooldown) {
-          // Much higher threshold during the cooldown period
-          threshold = isLikelyTrackpad ? 600 : 350; // Increased for less sensitivity
-        } else {
-          // Standard threshold for portfolio without cooldown
-          threshold = isLikelyTrackpad ? 350 : 200; // Increased for less sensitivity
-        }
-      } else if (activeSection === 'services') {
-        if (isServicesInCooldown) {
-          // Higher threshold during the cooldown period
-          threshold = isLikelyTrackpad ? 400 : 200; // Restored to original value
-        } else {
-          // Standard threshold for services without cooldown
-          threshold = isLikelyTrackpad ? 150 : 80; // Restored to original value
-        }
-      } else {
-        // Normal threshold for other sections
-        threshold = isLikelyTrackpad ? 100 : 50;
-      }
-      
-      // Enhanced debug logging - but be careful not to cause runtime errors
-      if (isDebugMode) {
-        try {
-          // Create additional info for portfolio section
-          let scrollInfo = '';
-          if (activeSection === 'portfolio') {
-            scrollInfo = `, Scroll count: ${scrollCountInWindowRef.current}, Window age: ${timestamp - scrollWindowStartTimeRef.current}ms`;
-          }
-          
-          // Create cooldown indicators
-          let cooldownInfo = '';
-          if (isPortfolioInCooldown) {
-            cooldownInfo += ' [PORTFOLIO COOLDOWN]';
-          }
-          if (isServicesInCooldown) {
-            cooldownInfo += ' [SERVICES COOLDOWN]';
-          }
-          
-          // Log everything safely
-          console.log(
-            `Section: ${activeSection}${scrollInfo}, ` +
-            `Device: ${isLikelyTrackpad ? 'trackpad' : 'mouse'}, ` + 
-            `Delta: ${Math.round(e.deltaY)}, ` +
-            `Threshold: ${threshold}, ` + 
-            `Accumulated: ${Math.round(accumulatedDeltaRef.current)}${cooldownInfo}`
-          );
-        } catch (err) {
-          // Silently fail if there are any errors in the debug logging
-          console.log('Debug logging error, continuing navigation');
-        }
-      }
+      // Simple threshold for home to about navigation only
+      const threshold = isLikelyTrackpad ? 100 : 50;
       
       // Only process if accumulated delta is big enough
       if (accumulatedDeltaRef.current < threshold) {
@@ -211,61 +110,21 @@ export function useWheelNav(disableForFirefox = false) {
       lastScrollTimeRef.current = timestamp;
       accumulatedDeltaRef.current = 0;
       
-      // Update timestamps for sections with cooldown periods
-      if (activeSection === 'portfolio') {
-        lastPortfolioNavigationTimeRef.current = timestamp;
-      } else if (activeSection === 'services') {
-        lastServicesNavigationTimeRef.current = timestamp;
-      }
+      // No special timestamp tracking needed for simple home->about navigation
       
-      // Navigate to the next/previous section with additional safeguards
-      if (e.deltaY > 0) {
-        // Scrolling DOWN - go to next section
-        const nextSection = getNextSectionId(activeSection);
-        if (nextSection) {
-          // If coming from portfolio, make sure we clear any pending animations
-          if (activeSection === 'portfolio') {
-            // Forcefully stop any ongoing animations first
-            window.scrollTo({ top: window.scrollY });
-          }
-          
-          // Then do the smooth scroll to the target section
-          scrollToSection(nextSection);
-        } else {
-          // No next section available
-          isScrollingRef.current = false;
-        }
+      // Only allow navigation from home to about section
+      if (e.deltaY > 0 && activeSection === 'home') {
+        // Scrolling DOWN from home - go to about section only
+        scrollToSection('about');
       } else {
-        // Scrolling UP - go to previous section
-        const prevSection = getPrevSectionId(activeSection);
-        if (prevSection) {
-          // If coming from services, make sure we clear any pending animations first
-          if (activeSection === 'services') {
-            // Forcefully stop any ongoing animations first
-            window.scrollTo({ top: window.scrollY });
-          }
-          
-          // Then do the smooth scroll to the target section
-          scrollToSection(prevSection);
-        } else {
-          // No previous section available
-          isScrollingRef.current = false;
-        }
+        // No navigation allowed for any other sections
+        isScrollingRef.current = false;
       }
       
-      // Reset scrolling state after animation completes
-      let cooldownTime;
-      if (activeSection === 'portfolio') {
-        cooldownTime = 1000; // Longer cooldown for portfolio
-      } else if (activeSection === 'services') {
-        cooldownTime = 800; // Moderate cooldown for services
-      } else {
-        cooldownTime = 700; // Normal cooldown for other sections
-      }
-      
+      // Reset scrolling state after animation completes (simple cooldown for home->about)
       setTimeout(() => {
         isScrollingRef.current = false;
-      }, cooldownTime);
+      }, 700);
     };
     
     // Add wheel event listener with passive: false to allow preventDefault
