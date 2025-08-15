@@ -1,0 +1,32 @@
+[
+  {
+    "id": "defi-protocol-launch",
+    "title": "DeFi Protocol Launch",
+    "categories": "Strategy, Community Building, Social Media",
+    "imageUrl": "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Comprehensive marketing strategy for a new DeFi protocol, focusing on community growth and user acquisition.",
+    "challenge": "Launch a new DeFi protocol in a crowded market with established competitors while building trust and security awareness.",
+    "solution": "Developed a multi-phase marketing strategy focused on education, community building, and strategic partnerships with influencers.",
+    "results": "Successfully onboarded 50,000+ users within 3 months, secured $25M in TVL, and established a thriving Discord community of 35,000 members.",
+    "testimonial": {
+      "text": "The marketing strategy Laurence developed was crucial to our successful launch. His expertise in Web3 community building helped us stand out in a crowded market.",
+      "author": "Alex Chen, Founder"
+    },
+    "technologies": ["Discord", "Twitter", "Telegram", "Medium", "Community DAO"]
+  },
+  {
+    "id": "nft-collection-launch",
+    "title": "NFT Collection Launch",
+    "categories": "Content Creation, Community Management",
+    "imageUrl": "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    "description": "Created and executed a full-scale marketing campaign for a 10,000 piece generative NFT art collection.",
+    "challenge": "Generate excitement and demand for a new NFT collection in a competitive market without an established brand or community.",
+    "solution": "Created an immersive storytelling experience across social platforms, exclusive Discord community, and targeted influencer partnerships.",
+    "results": "Sold out all 10,000 NFTs within 48 hours, generated over $4M in primary sales, and built a sustainable secondary market with 15% royalties.",
+    "testimonial": {
+      "text": "Working with Laurence transformed our NFT launch from a simple collection drop to a cultural moment. His strategic approach to community building created real lasting value.",
+      "author": "Maya Williams, Creative Director"
+    },
+    "technologies": ["Discord", "Twitter", "OpenSea", "Ethereum", "Collaborative NFT Drops"]
+  }
+]
