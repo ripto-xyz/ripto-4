@@ -12,7 +12,7 @@ export default function HeroSection() {
             </span>
           </h1>
           <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl">
-            Innovative marketing solutions for blockchain projects and decentralized platforms
+            that doesn't rely on hype from a fleeting airdrop...
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a 
