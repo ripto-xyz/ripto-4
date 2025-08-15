@@ -102,25 +102,25 @@ export default function AboutSection() {
         <div className="mt-8 md:mt-12 lg:mt-16">
           <div className="max-w-[1400px] mx-auto">
             <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 w-full">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 text-center">
                 {/* Apple logo with name */}
-                <div className="p-2 md:p-3 flex flex-col items-center justify-center h-24 md:h-32 lg:h-40">
-                  <div className="flex items-center justify-center gap-3 md:gap-4">
-                    <img src={appleLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 object-contain" />
-                    <img src={appleNameLogo} alt="Apple" className="h-10 md:h-14 lg:h-16 object-contain" />
+                <div className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
+                  <div className="flex items-center justify-center gap-4 md:gap-6 lg:gap-8">
+                    <img src={appleLogo} alt="Apple" className="h-16 md:h-20 lg:h-24 xl:h-28 object-contain" />
+                    <img src={appleNameLogo} alt="Apple" className="h-14 md:h-18 lg:h-20 xl:h-24 object-contain" />
                   </div>
                 </div>
                 
                 {/* Everclear logo */}
-                <div className="p-2 md:p-3 flex flex-col items-center justify-center h-24 md:h-32 lg:h-40">
-                  <img src={everclearLogo} alt="Everclear" className="h-12 md:h-16 lg:h-20 max-w-full object-contain" />
+                <div className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
+                  <img src={everclearLogo} alt="Everclear" className="h-16 md:h-20 lg:h-24 xl:h-28 max-w-full object-contain" />
                 </div>
                 
                 {/* Remaining stats */}
                 {stats.slice(2).map((stat, index) => (
-                  <div key={index + 2} className="p-2 md:p-3 flex flex-col items-center justify-center h-24 md:h-32 lg:h-40">
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2 md:mb-3">{stat.value}</div>
-                    <p className="text-white/80 font-medium text-sm sm:text-base">{stat.label}</p>
+                  <div key={index + 2} className="p-4 md:p-6 lg:p-8 flex flex-col items-center justify-center h-32 md:h-40 lg:h-48">
+                    <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 lg:mb-6">{stat.value}</div>
+                    <p className="text-white/80 font-medium text-base sm:text-lg md:text-xl lg:text-2xl">{stat.label}</p>
                   </div>
                 ))}
               </div>
