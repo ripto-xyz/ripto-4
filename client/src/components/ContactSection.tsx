@@ -43,7 +43,7 @@ export default function ContactSection() {
               <div className="text-center mb-6 sm:mb-8">
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 font-poppins text-white">Get in Touch</h2>
                 <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-medium">
-                  Ready to elevate your Web3 marketing? Let's discuss your project.
+                  with yours truly...
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 mt-10 sm:mt-12">
