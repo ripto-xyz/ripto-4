@@ -51,7 +51,7 @@ export function scrollToSection(sectionId: string): void {
   // Offset mapping - adjusted for optimal section positioning
   const offsets: {[key: string]: number} = {
     'home': 0,     // Home should have no offset
-    'about': 120,  // Increased to ensure hero disappears completely
+    'about': 200,  // Increased to ensure complete hero section disappears and about section is fully visible
     'portfolio': 120,
     'services': 120,
     'contact': 80,  // Reduced offset for contact to make it appear sooner
