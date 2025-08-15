@@ -126,7 +126,7 @@ export default function AboutSection() {
               </div>
               
               {/* Professional Experience label centered under both logos */}
-              <div className="mt-4 md:mt-6">
+              <div className="mt-1 md:mt-2">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
                   <div className="md:col-span-2 col-span-2 flex justify-center">
                     <p className="text-white/80 font-medium text-sm sm:text-base md:text-lg">Professional Experience</p>
