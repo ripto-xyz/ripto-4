@@ -41,7 +41,7 @@ export default function ContactSection() {
             </div>
             <div className="bg-[#D81B60] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#D81B60]/20 relative overflow-visible w-full mx-auto mt-4">
               <div className="text-center mb-6 sm:mb-8">
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 font-poppins text-white">Get in Touch</h2>
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 font-poppins text-white">Get in touch</h2>
                 <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto font-medium italic">
                   with yours truly...
                 </p>
