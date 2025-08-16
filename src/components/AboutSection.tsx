@@ -105,15 +105,15 @@ export default function AboutSection() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
                 {/* Apple logo with name */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full">
-                    <img src={appleLogo} alt="Apple" className="h-6 md:h-8 lg:h-10 xl:h-12 object-contain flex-shrink-0 -mt-1" />
-                    <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 xl:h-24 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
+                  <div className="flex items-center justify-center gap-4 md:gap-5 lg:gap-6 w-full max-w-full">
+                    <img src={appleLogo} alt="Apple" className="h-8 md:h-12 lg:h-14 xl:h-16 object-contain flex-shrink-0 -mt-1" />
+                    <img src={appleNameLogo} alt="Apple" className="h-16 md:h-20 lg:h-24 xl:h-28 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
                   </div>
                 </div>
                 
                 {/* Everclear logo */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <img src={everclearLogo} alt="Everclear" className="h-14 md:h-18 lg:h-22 xl:h-28 w-auto object-contain max-w-full" />
+                  <img src={everclearLogo} alt="Everclear" className="h-18 md:h-22 lg:h-26 xl:h-32 w-auto object-contain max-w-full" />
                 </div>
                 
                 {/* Remaining stats */}
