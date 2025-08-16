@@ -113,7 +113,7 @@ export default function AboutSection() {
                 
                 {/* Everclear logo */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <img src={everclearLogo} alt="Everclear" className="h-20 md:h-24 lg:h-28 xl:h-36 w-auto object-contain max-w-full" />
+                  <img src={everclearLogo} alt="Everclear" className="h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain max-w-full" />
                 </div>
                 
                 {/* Remaining stats */}
