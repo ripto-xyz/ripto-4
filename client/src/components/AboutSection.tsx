@@ -102,7 +102,7 @@ export default function AboutSection() {
         <div className="mt-8 md:mt-12 lg:mt-16">
           <div className="max-w-[1400px] mx-auto">
             <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 w-full">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center place-items-center">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-12 text-center place-items-center">
                 {/* Apple logo with name */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
                   <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full">
@@ -113,7 +113,7 @@ export default function AboutSection() {
                 
                 {/* Everclear logo */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <img src={everclearLogo} alt="Everclear" className="h-16 md:h-20 lg:h-24 xl:h-28 w-auto object-contain max-w-full" />
+                  <img src={everclearLogo} alt="Everclear" className="h-18 md:h-24 lg:h-28 xl:h-32 w-auto object-contain max-w-full" />
                 </div>
                 
                 {/* Remaining stats */}
