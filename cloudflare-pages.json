@@ -1,15 +1,9 @@
 {
+  "compatibility_date": "2024-08-16",
   "build": {
-    "command": "npm run build:cloudflare",
-    "output_directory": "dist",
-    "root_directory": "."
+    "command": "node build-universal.js",
+    "cwd": ".",
+    "watch_dir": "."
   },
-  "headers": {
-    "/*": {
-      "Cache-Control": "public, max-age=3600"
-    },
-    "/assets/*": {
-      "Cache-Control": "public, max-age=31536000, immutable"
-    }
-  }
+  "pages_build_output_dir": "./dist"
 }

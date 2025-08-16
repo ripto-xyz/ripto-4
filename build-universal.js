@@ -17,6 +17,29 @@ try {
   // Build with static config
   console.log('📦 Building with static configuration...');
   execSync('vite build --config vite.config.static.ts', { stdio: 'inherit' });
+  
+  // Ensure index.html is in root (not in dist/public)
+  const publicIndexPath = path.join('dist', 'public', 'index.html');
+  const rootIndexPath = path.join('dist', 'index.html');
+  
+  if (fs.existsSync(publicIndexPath) && !fs.existsSync(rootIndexPath)) {
+    console.log('📁 Moving index.html to root directory...');
+    fs.renameSync(publicIndexPath, rootIndexPath);
+    
+    // Also move assets if they're in public
+    const publicAssetsPath = path.join('dist', 'public', 'assets');
+    const rootAssetsPath = path.join('dist', 'assets');
+    
+    if (fs.existsSync(publicAssetsPath) && !fs.existsSync(rootAssetsPath)) {
+      fs.renameSync(publicAssetsPath, rootAssetsPath);
+    }
+    
+    // Remove empty public directory
+    const publicDir = path.join('dist', 'public');
+    if (fs.existsSync(publicDir)) {
+      fs.rmSync(publicDir, { recursive: true, force: true });
+    }
+  }
 
   // Ensure all static JSON files exist
   console.log('📄 Ensuring static JSON files exist...');
