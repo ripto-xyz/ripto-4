@@ -1,81 +1,71 @@
-# Cloudflare Pages Troubleshooting Guide
+# Cloudflare Pages Troubleshooting - Final Fix
 
-Since you're still getting a 404 error, let's work through the most common issues:
+## Issue Identified
+Your Cloudflare Pages is still using the default `npm run build` command instead of our custom `node build-universal.js`. This is why the log shows:
 
-## 1. Try These Build Configurations
-
-### Option A: Simple Build Command
-In Cloudflare Pages settings, try:
-- Build command: `npm run build`
-- Output directory: `dist`
-
-### Option B: Static Build Script
-- Build command: `node build-static.js`
-- Output directory: `dist`
-
-### Option C: Updated Cloudflare Script
-- Build command: `node cloudflare-build.js`
-- Output directory: `dist`
-
-## 2. Check Your Cloudflare Pages Build Logs
-
-Look for these specific indicators in your Cloudflare build logs:
-
-**SUCCESS indicators:**
-- Build completes without errors
-- Shows files like `index.html` being created
-- No "command not found" errors
-
-**FAILURE indicators:**
-- Node.js version errors
-- Missing dependencies
-- Command not found errors
-
-## 3. Most Common Issues & Solutions
-
-### Issue: Node.js Version
-**Solution:** Set Node.js to version 18 in Cloudflare Pages environment variables:
-- Variable: `NODE_VERSION`
-- Value: `18`
-
-### Issue: Build Command Not Found
-**Solution:** Use absolute paths or npm scripts:
 ```
-npx vite build --config vite.config.prod.ts
+../dist/public/index.html    (WRONG LOCATION)
 ```
 
-### Issue: Wrong Output Directory
-**Solution:** Double-check that "Build output directory" is exactly `dist` (no leading slash, no `./dist`)
+Instead of:
 
-## 4. Alternative: Try Manual Upload
-
-If automated builds keep failing:
-1. Run `node cloudflare-build.js` locally
-2. Download the `dist` folder
-3. Use Cloudflare Pages direct upload feature
-
-## 5. Test the Simple Version
-
-I created a test.html file. Try accessing:
-`https://your-domain.pages.dev/test.html`
-
-If the test page works but your main site doesn't, it's a React/SPA routing issue.
-
-## 6. Check _redirects File
-
-Your `_redirects` file should contain:
 ```
-/* /index.html 200
+../dist/index.html           (CORRECT LOCATION)
 ```
 
-## 7. Debug Steps for Build Logs
+## Root Cause
+Cloudflare is ignoring the build configuration because:
+1. It's using the default `npm run build` from package.json
+2. The wrangler.toml file wasn't properly configured for Pages
 
-In your next Cloudflare build, look for:
-1. Does `node cloudflare-build.js` run successfully?
-2. Do you see "✅ Cloudflare Pages build complete!"?
-3. Are files listed in the dist directory?
-4. Any errors about missing files or permissions?
+## Complete Fix Applied
 
-## Next Steps
+### 1. Updated wrangler.toml
+Fixed the configuration to use the correct build command:
+```toml
+name = "ripto-4"
+compatibility_date = "2024-08-16"
+pages_build_output_dir = "./dist"
 
-Try Option A (npm run build) first as it's the simplest. If that doesn't work, share your Cloudflare build logs and I can help debug the specific error messages.
+[build]
+command = "node build-universal.js"
+cwd = ""
+```
+
+### 2. Alternative: Manual Cloudflare Dashboard Settings
+If wrangler.toml is still being ignored, manually set these in your Cloudflare Pages dashboard:
+
+**Build Configuration:**
+- Framework preset: `None`
+- Build command: `node build-universal.js`
+- Build output directory: `dist`
+- Root directory: (leave empty)
+
+**Environment Variables:**
+- `NODE_VERSION`: `18`
+
+### 3. Verification Steps
+After the next deployment, your build log should show:
+```
+../dist/index.html                           0.54 kB
+```
+NOT:
+```
+../dist/public/index.html                    0.54 kB
+```
+
+### 4. If Still Not Working
+Try these steps in order:
+
+1. **Delete and recreate** the Cloudflare Pages project
+2. **Use manual settings** instead of relying on wrangler.toml
+3. **Verify the build command** in the dashboard shows `node build-universal.js`
+
+### Expected Result
+The next deployment should:
+- ✅ Use `node build-universal.js` command
+- ✅ Output `index.html` to root directory (`dist/index.html`)
+- ✅ Load your site without 404 errors
+- ✅ Display all content correctly
+
+The wrangler.toml fix should resolve the build command issue causing the wrong file structure.

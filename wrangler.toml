@@ -1,17 +1,7 @@
+name = "ripto-4"
+compatibility_date = "2024-08-16"
+pages_build_output_dir = "./dist"
+
 [build]
-command = "node cloudflare-build.js"
+command = "node build-universal.js"
 cwd = ""
-watch_dir = "client"
-
-[build.upload]
-format = "modules"
-dir = "dist"
-main = "./index.html"
-
-[[build.upload.rules]]
-type = "Text"
-globs = ["**/*.html"]
-
-[[build.upload.rules]]
-type = "Data"
-globs = ["**/*"]
