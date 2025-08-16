@@ -3,14 +3,19 @@
  * when deployed to Cloudflare Pages without a backend
  */
 
-// Check if we're in Cloudflare Pages environment (no backend)
+// Check if we're in static hosting environment (no backend)
 const isStaticHosting = () => {
-  // Check if we're in a production build
+  // Always try static files first in production
   if (import.meta.env.PROD) {
-    // We can use more specific detection here if needed
     return true;
   }
-  return false;
+  
+  // In development, check if we're on a static hosting domain
+  const hostname = window.location.hostname;
+  return hostname.includes('.pages.dev') || 
+         hostname.includes('.netlify.app') || 
+         hostname.includes('.vercel.app') ||
+         hostname.includes('.github.io');
 };
 
 /**
@@ -18,28 +23,33 @@ const isStaticHosting = () => {
  * @param endpoint API endpoint path (e.g., '/api/about')
  */
 export async function fetchWithFallback<T>(endpoint: string): Promise<T> {
+  // In static hosting, go directly to JSON files
+  if (isStaticHosting()) {
+    console.log(`Using static JSON for ${endpoint}`);
+    const staticPath = `${endpoint}.json`;
+    const staticResponse = await fetch(staticPath);
+    if (!staticResponse.ok) {
+      throw new Error(`Static JSON file not found: ${staticPath}`);
+    }
+    return await staticResponse.json() as T;
+  }
+  
+  // In development with backend, try API first
   try {
-    // First try the live API
     const response = await fetch(endpoint);
     if (!response.ok) {
       throw new Error(`API request failed: ${response.status}`);
     }
     return await response.json() as T;
   } catch (error) {
-    console.log(`Falling back to static JSON for ${endpoint}`);
+    console.log(`API failed, falling back to static JSON for ${endpoint}`);
     
-    // If running in static hosting, use the prepared JSON files
-    if (isStaticHosting()) {
-      // Convert /api/about to /api/about.json
-      const staticPath = `${endpoint}.json`;
-      const staticResponse = await fetch(staticPath);
-      if (!staticResponse.ok) {
-        throw new Error(`Static JSON fallback failed: ${staticResponse.status}`);
-      }
-      return await staticResponse.json() as T;
+    // Fallback to static JSON
+    const staticPath = `${endpoint}.json`;
+    const staticResponse = await fetch(staticPath);
+    if (!staticResponse.ok) {
+      throw new Error(`Both API and static JSON failed for ${endpoint}`);
     }
-    
-    // Re-throw the error if we're not in static hosting
-    throw error;
+    return await staticResponse.json() as T;
   }
 }

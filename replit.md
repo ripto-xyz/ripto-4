@@ -32,15 +32,23 @@ Preferred communication style: Simple, everyday language.
 - **Development**: Vite dev server with HMR and React Fast Refresh
 - **Production**: Multiple build configurations for different deployment scenarios
   - `vite.config.ts`: Development build (outputs to `dist/public`)
+  - `vite.config.static.ts`: Universal static deployment build (outputs to `dist`)
   - `vite.config.prod.ts`: Production build (outputs to `dist` for deployment)
-- **Static Deployment**: Use `build-static.js` script for frontend-only deployment
+- **Static Deployment**: Use `build-universal.js` script for universal static hosting
 - **Full-Stack Deployment**: Use `build-deploy.js` script for complete application
 - **Asset Handling**: Video compression and optimization for web delivery
 
 ## Deployment Scripts
-- **build-static.js**: Frontend-only build for static hosting (Netlify, Vercel, Cloudflare Pages)
+- **build-universal.js**: Universal static build for all hosting platforms (Recommended)
+- **build-static.js**: Frontend-only build for static hosting
 - **build-deploy.js**: Full-stack build including backend server
-- **cloudflare-build.js**: Legacy Cloudflare Pages build (now deprecated in favor of build-static.js)
+- **cloudflare-build.js**: Legacy Cloudflare Pages build (deprecated)
+
+## Static Hosting Fix (August 2025)
+- **Issue**: External hosting platforms (Cloudflare Pages, Netlify) couldn't locate files
+- **Root Cause**: Backend API dependencies and incorrect build configuration
+- **Solution**: Created universal static build with proper fallback system
+- **Status**: Fixed - now compatible with all major static hosting platforms
 
 ## Deployment Strategies
 - **Full-Stack**: Traditional hosting with both frontend and backend
