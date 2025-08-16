@@ -69,19 +69,14 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-2 sm:px-6 py-4">
-        {/* Complete redesign for mobile */}
-        <div className="flex flex-nowrap items-center justify-between w-full">
-          {/* Logo container with adjusted vertical position to align with hamburger */}
+        {/* Mobile-first responsive design */}
+        <div className="flex items-center justify-between w-full">
+          {/* Logo container - responsive sizing */}
           <div onClick={(e) => handleNavClick(e, 'home')} 
-               className="cursor-pointer overflow-visible"
-               style={{ 
-                 maxWidth: '80%', 
-                 transform: 'scale(0.9)',
-                 transformOrigin: 'left center',
-                 flex: '0 0 auto',
-                 marginTop: '8px' /* Move the logo down a bit more to align with hamburger */
-               }}>
-            <SpyroLogo className="overflow-visible" />
+               className="cursor-pointer flex-shrink min-w-0 pr-2">
+            <div className="transform scale-75 sm:scale-90 md:scale-100 origin-left">
+              <SpyroLogo className="overflow-visible" />
+            </div>
           </div>
           
           {/* Desktop Menu - will shrink first before wrapping */}
@@ -133,15 +128,16 @@ export default function Navbar({ activeSection, showMobileMenu, setShowMobileMen
             </a>
           </div>
           
-          {/* Mobile menu button - adjusted position for better balance with larger logo */}
-          <div className="flex md:hidden bg-opacity-80 bg-[#1A1A2E] rounded-md absolute right-1 top-4 p-2">
-            <button 
-              onClick={toggleMobileMenu} 
-              className="text-white focus:outline-none"
-              style={{ width: '34px', height: '34px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
-              {showMobileMenu ? <X size={32} /> : <Menu size={32} />}
-            </button>
+          {/* Mobile menu button - flex positioned */}
+          <div className="flex md:hidden flex-shrink-0">
+            <div className="bg-opacity-80 bg-[#1A1A2E] rounded-md p-2">
+              <button 
+                onClick={toggleMobileMenu} 
+                className="text-white focus:outline-none w-8 h-8 flex items-center justify-center"
+              >
+                {showMobileMenu ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
         
