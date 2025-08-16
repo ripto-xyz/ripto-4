@@ -9,7 +9,7 @@ console.log('🚀 Building for Cloudflare Pages...');
 
 // Clean and build
 if (fs.existsSync('dist')) fs.rmSync('dist', { recursive: true, force: true });
-execSync('vite build --config vite.config.static.ts', { stdio: 'inherit' });
+execSync('npx vite build --config vite.config.static.ts', { stdio: 'inherit' });
 
 // Create required API files
 const apiDir = path.join('dist', 'api');

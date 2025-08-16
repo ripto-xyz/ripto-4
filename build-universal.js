@@ -16,7 +16,7 @@ try {
 
   // Build with static config
   console.log('📦 Building with static configuration...');
-  execSync('vite build --config vite.config.static.ts', { stdio: 'inherit' });
+  execSync('npx vite build --config vite.config.static.ts', { stdio: 'inherit' });
   
   // Ensure index.html is in root (not in dist/public)
   const publicIndexPath = path.join('dist', 'public', 'index.html');

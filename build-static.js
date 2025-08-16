@@ -14,7 +14,7 @@ try {
   }
 
   // Run the static build
-  execSync('vite build --config vite.config.static.ts', { stdio: 'inherit' });
+  execSync('npx vite build --config vite.config.static.ts', { stdio: 'inherit' });
 
   // Ensure static JSON files exist
   const apiDir = path.join('dist', 'api');

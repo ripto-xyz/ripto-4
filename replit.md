@@ -46,9 +46,9 @@ Preferred communication style: Simple, everyday language.
 
 ## Static Hosting Fix (August 2025)
 - **Issue**: External hosting platforms (Cloudflare Pages, Netlify) couldn't locate files
-- **Root Cause**: Backend API dependencies and incorrect build configuration
-- **Solution**: Created universal static build with proper fallback system
-- **Status**: Fixed - now compatible with all major static hosting platforms
+- **Root Cause**: Backend API dependencies, wrangler.toml conflicts, and vite command execution issues
+- **Solution**: Removed wrangler.toml, created npx-based build scripts, proper fallback system
+- **Status**: Fixed - now compatible with all major static hosting platforms using manual dashboard configuration
 
 ## Deployment Strategies
 - **Full-Stack**: Traditional hosting with both frontend and backend
