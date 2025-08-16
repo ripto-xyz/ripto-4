@@ -1,0 +1,17 @@
+[build]
+command = "node cloudflare-build.js"
+cwd = ""
+watch_dir = "client"
+
+[build.upload]
+format = "modules"
+dir = "dist"
+main = "./index.html"
+
+[[build.upload.rules]]
+type = "Text"
+globs = ["**/*.html"]
+
+[[build.upload.rules]]
+type = "Data"
+globs = ["**/*"]

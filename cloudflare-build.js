@@ -6,9 +6,9 @@ import { execSync } from 'child_process';
 console.log('🔧 Building for Cloudflare Pages...');
 
 try {
-  // Use the production config that outputs directly to dist/
-  console.log('📦 Building frontend with production configuration...');
-  execSync('vite build --config vite.config.prod.ts', { stdio: 'inherit' });
+  // Use the Cloudflare-specific config 
+  console.log('📦 Building frontend with Cloudflare configuration...');
+  execSync('vite build --config vite.config.cloudflare.js', { stdio: 'inherit' });
   
   console.log('✅ Cloudflare Pages build complete!');
   console.log('📁 Output directory: ./dist/');
