@@ -1,89 +1,46 @@
-# Cloudflare Pages Setup Guide
+# Cloudflare Pages Setup - Manual Configuration Required
 
-## Build Configuration for Cloudflare Pages
+## Issue Resolved
+The wrangler.toml `[build]` section is not supported by Cloudflare Pages. The configuration must be set manually in the Cloudflare dashboard.
 
-### Required Settings in Cloudflare Pages Dashboard:
-
-1. **Build command:** `node cloudflare-build.js`
-2. **Build output directory:** `dist`
-3. **Node.js version:** `18` or higher
-4. **Environment variables:** None required for static deployment
-
-### Alternative Build Commands (if needed):
-- `npm run build` (uses default config)
-- `node build-static.js` (also works)
-
-## Troubleshooting the 404 Error
-
-If you're getting "No webpage was found" error, check these settings:
-
-### 1. Verify Build Output Directory
-- Should be set to `dist` (not `dist/public`)
-- The build creates `index.html` at `dist/index.html`
-
-### 2. Check Build Command
-Current recommended: `node cloudflare-build.js`
-
-### 3. Verify Build Success
-In Cloudflare Pages build logs, you should see:
-```
-✅ Cloudflare Pages build complete!
-📁 Output directory: ./dist/
-🌐 Ready for Cloudflare Pages deployment
+## Fixed wrangler.toml
+Updated to only include supported settings:
+```toml
+name = "ripto-4"
+compatibility_date = "2024-08-16"
+pages_build_output_dir = "./dist"
 ```
 
-### 4. Common Issues & Fixes
+## Manual Configuration Required
 
-**Issue:** Build fails with missing dependencies
-**Fix:** Ensure Node.js version is set to 18+ in Cloudflare Pages settings
+You must set these settings **manually in your Cloudflare Pages dashboard**:
 
-**Issue:** 404 on deployment
-**Fix:** Check that "Build output directory" is set to `dist` (not `public` or `dist/public`)
+### Build & Deployments Settings
+1. Go to your Cloudflare Pages project
+2. Navigate to Settings > Build & deployments
+3. Set these exact values:
 
-**Issue:** Assets not loading
-**Fix:** Verify the `_redirects` file contains: `/* /index.html 200`
+**Build Configuration:**
+- Framework preset: `None`
+- Build command: `node build-static.js`
+- Build output directory: `dist`
+- Root directory: (leave empty)
 
-### 5. Manual Verification Steps
+**Environment Variables:**
+- Add variable: `NODE_VERSION` = `18`
 
-You can test the build locally:
-```bash
-# Run the build
-node cloudflare-build.js
+### Alternative Build Commands (try in order):
+1. `node build-static.js` (recommended)
+2. `node build-universal.js`
+3. `vite build --config vite.config.static.ts`
 
-# Check the output
-ls -la dist/
-# Should show index.html at the root
-
-# Test locally (optional)
-npx serve dist
+## Verification
+After updating the dashboard settings and triggering a new deployment, you should see:
+```
+../dist/index.html                           0.54 kB
 ```
 
-## Current Build Process
+## Why Manual Configuration is Required
+Cloudflare Pages doesn't support build commands in wrangler.toml for Pages projects - only for Workers. The build configuration must be set through the web dashboard.
 
-The updated `cloudflare-build.js` script:
-1. Uses `vite.config.prod.ts` for correct output structure
-2. Builds directly to `dist/` directory
-3. Includes all necessary files for static hosting
-4. Shows build verification in logs
-
-## Files Structure After Build
-
-```
-dist/
-├── index.html          # Main entry point
-├── assets/             # JS, CSS, images, video
-├── _headers           # Security headers
-├── _redirects         # SPA routing
-├── api/               # Static JSON files
-├── favicon.ico
-└── favicon.png
-```
-
-## Next Steps
-
-1. Update your Cloudflare Pages build settings to use the new configuration
-2. Trigger a new deployment
-3. Check the build logs for the success message
-4. Visit your site - it should now work correctly
-
-If the issue persists, check the Cloudflare Pages build logs for specific error messages.
+This manual setup will resolve the deployment issues you've been experiencing.
