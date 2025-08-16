@@ -102,23 +102,23 @@ export default function AboutSection() {
         <div className="mt-8 md:mt-12 lg:mt-16">
           <div className="max-w-[1400px] mx-auto">
             <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-white/20 w-full">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center place-items-center">
+              <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16 text-center">
                 {/* Apple logo with name */}
-                <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full">
+                <div className="flex items-center justify-center h-24 md:h-28 lg:h-32 flex-shrink-0">
+                  <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5">
                     <img src={appleLogo} alt="Apple" className="h-8 md:h-12 lg:h-14 xl:h-16 object-contain flex-shrink-0 -mt-1" />
                     <img src={appleNameLogo} alt="Apple" className="h-16 md:h-20 lg:h-24 xl:h-28 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
                   </div>
                 </div>
                 
                 {/* Everclear logo */}
-                <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <img src={everclearLogo} alt="Everclear" className="h-18 md:h-24 lg:h-28 xl:h-32 w-auto object-contain max-w-full scale-125" />
+                <div className="flex items-center justify-center h-24 md:h-28 lg:h-32 flex-shrink-0">
+                  <img src={everclearLogo} alt="Everclear" className="h-18 md:h-24 lg:h-28 xl:h-32 w-auto object-contain scale-125" />
                 </div>
                 
                 {/* Remaining stats */}
                 {stats.slice(2).map((stat, index) => (
-                  <div key={index + 2} className="flex flex-col items-center justify-center h-24 md:h-28 lg:h-32">
+                  <div key={index + 2} className="flex flex-col items-center justify-center h-24 md:h-28 lg:h-32 flex-shrink-0 min-w-[120px]">
                     <div className="text-2xl sm:text-3xl md:text-4xl xl:text-5xl font-bold text-white mb-1 md:mb-2">{stat.value}</div>
                     <p className="text-white/80 font-medium text-sm sm:text-base md:text-lg">{stat.label}</p>
                   </div>
