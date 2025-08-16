@@ -52,8 +52,8 @@ export function scrollToSection(sectionId: string): void {
   const offsets: {[key: string]: number} = {
     'home': 0,     // Home should have no offset
     'about': 10,   // Fine-tuned to show both About Me content and stats section properly
-    'portfolio': -40, // Scroll 40px down into the portfolio section
-    'services': -40,  // Scroll 40px down into the services section
+    'portfolio': -10, // Scroll 10px down into the portfolio section
+    'services': -10,  // Scroll 10px down into the services section
     'contact': 80,  // Reduced offset for contact to make it appear sooner
     'default': 120
   };
