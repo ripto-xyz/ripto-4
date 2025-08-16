@@ -11,7 +11,7 @@ export default function HeroSection() {
               Web3 Growth
             </span>
           </h1>
-          <p className="text-lg md:text-xl mb-6 text-gray-300 max-w-2xl tracking-tight ml-2">
+          <p className="text-xl md:text-2xl mb-6 text-gray-300 max-w-2xl tracking-tight ml-2">
             that doesn't rely on fleeting airdrop hype...
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
