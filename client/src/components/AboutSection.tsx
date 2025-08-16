@@ -112,8 +112,8 @@ export default function AboutSection() {
                 </div>
                 
                 {/* Everclear logo */}
-                <div className="flex items-center justify-center">
-                  <img src={everclearLogo} alt="Everclear" className="h-32 md:h-40 lg:h-48 xl:h-56 w-auto object-contain" />
+                <div className="flex items-center justify-center overflow-visible">
+                  <img src={everclearLogo} alt="Everclear" className="!h-32 !md:h-40 !lg:h-48 !xl:h-56 w-auto object-contain scale-150 transform" style={{ height: '8rem', minHeight: '8rem' }} />
                 </div>
                 
                 {/* Remaining stats */}
