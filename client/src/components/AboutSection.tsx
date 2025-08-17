@@ -78,13 +78,7 @@ export default function AboutSection() {
                     I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
                   </p>
                 
-                  {/* Technologies list displayed inline without buttons */}
-                  <div className="mt-6 md:mt-8">
-                    <h3 className="text-lg md:text-xl font-semibold mb-3 text-white/90 md:text-left text-center">Expertise In:</h3>
-                    <p className="text-white text-base sm:text-lg md:text-xl font-medium md:text-left text-center">
-                      {technologies.join(' • ')}
-                    </p>
-                  </div>
+
                 </div>
               </div>
               
