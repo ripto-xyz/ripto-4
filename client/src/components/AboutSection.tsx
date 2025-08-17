@@ -78,7 +78,7 @@ export default function AboutSection() {
                     Deep in the trenches and fluent in the lingo, I've seen firsthand how Crypto Twitter (CT) has grown weary of projects sloppily hyping airdrops that masquerade as 'great' community.
                   </p>
                   <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
-                    Whether in DeFi, NFTs, or the Metaverse, a company's purpose must shine to create emotional bonds, making users feel part of a tribe beyond mere apps or infrastructure. Drawing from first principles and not applying quick fixes, I blend technical expertise with innovative strategies to craft a memorable brand identity.
+                    Whether in DeFi, Middleware, or the Metaverse, a company's purpose must shine to create emotional bonds, making users feel part of a tribe beyond mere apps or infrastructure. Drawing from first principles and not applying quick fixes, I blend technical expertise with innovative strategies to craft brand identities and communities that actually resonate.
                   </p>
                   <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
                     I focus on organic, sustainable growth that builds loyal fans who will tell everyone about your project—delivering something truly memorable and engaging.
