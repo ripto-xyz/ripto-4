@@ -101,7 +101,7 @@ export default function AboutSection() {
         {/* Stats section with matching white semi-transparent background and same max-width */}
         <div className="mt-8 md:mt-12 lg:mt-16">
           <div className="max-w-[1400px] mx-auto">
-            <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-3 sm:p-4 md:p-6 lg:p-8 shadow-xl border border-white/20 w-full">
+            <div className="bg-white bg-opacity-50 backdrop-blur-sm rounded-xl p-2 sm:p-3 md:p-4 lg:p-6 shadow-xl border border-white/20 w-full">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
                 {/* Apple logo with name */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
