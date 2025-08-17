@@ -27,94 +27,79 @@ const aboutData = {
 
 const portfolioData = [
   {
-    id: "defi-protocol-launch",
-    title: "DeFi Protocol Launch",
-    categories: "Strategy, Community Building, Social Media",
+    id: "go-to-market-strategy",
+    title: "Go-to-Market Strategy (rebrand)",
+    categories: "Strategy, Rebranding, Market Positioning",
     imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Comprehensive marketing strategy for a new DeFi protocol, focusing on community growth and user acquisition.",
-    challenge: "Launch a new DeFi protocol in a crowded market with established competitors while building trust and security awareness.",
-    solution: "Developed a multi-phase marketing strategy focused on education, community building, and strategic partnerships with influencers.",
-    results: "Successfully onboarded 50,000+ users within 3 months, secured $25M in TVL, and established a thriving Discord community of 35,000 members.",
+    description: "Comprehensive go-to-market strategy and rebranding for Web3 projects entering new markets or repositioning their brand identity.",
+    challenge: "Redefine brand positioning in a competitive Web3 landscape while maintaining core values and community trust during transition.",
+    solution: "Developed a multi-phase rebranding strategy with market research, competitive analysis, and community-driven messaging framework.",
+    results: "Successfully repositioned brand with 40% increase in market awareness, 60% growth in community engagement, and improved brand perception scores.",
     testimonial: {
-      text: "The marketing strategy Laurence developed was crucial to our successful launch. His expertise in Web3 community building helped us stand out in a crowded market.",
+      text: "Laurence's rebranding strategy transformed our market position. His strategic approach helped us stand out while staying true to our community values.",
       author: "Alex Chen, Founder"
     },
-    technologies: ["Discord", "Twitter", "Telegram", "Medium", "Community DAO"]
+    technologies: ["Market Research", "Brand Strategy", "Community Feedback", "Competitive Analysis", "Positioning"]
   },
   {
-    id: "nft-collection-launch",
-    title: "NFT Collection Launch",
-    categories: "Content Creation, Community Management",
+    id: "native-web3-advertising",
+    title: "Native Web3 Paid Advertising",
+    categories: "Paid Media, Web3 Advertising, Performance Marketing",
     imageUrl: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Created and executed a full-scale marketing campaign for a 10,000 piece generative NFT art collection.",
-    challenge: "Generate excitement and demand for a new NFT collection in a competitive market without an established brand or community.",
-    solution: "Created an immersive storytelling experience across social platforms, exclusive Discord community, and targeted influencer partnerships.",
-    results: "Sold out all 10,000 NFTs within 48 hours, generated over $4M in primary sales, and built a sustainable secondary market with 15% royalties.",
+    description: "Specialized Web3-native advertising campaigns across decentralized platforms and crypto-focused media channels.",
+    challenge: "Navigate Web3 advertising restrictions while reaching crypto-native audiences through authentic, non-intrusive ad experiences.",
+    solution: "Created native advertising campaigns across Web3 media, DeFi platforms, and crypto communities with performance tracking.",
+    results: "Achieved 3.2x ROAS across Web3 channels, 45% lower CPA than traditional advertising, and 25% higher engagement rates.",
     testimonial: {
-      text: "Working with Laurence transformed our NFT launch from a simple collection drop to a cultural moment. His strategic approach to community building created real lasting value.",
-      author: "Maya Williams, Creative Director"
+      text: "The Web3 advertising approach was game-changing. Laurence understood how to reach crypto audiences authentically without feeling like traditional ads.",
+      author: "Maya Williams, CMO"
     },
-    technologies: ["Discord", "Twitter", "OpenSea", "Ethereum", "Collaborative NFT Drops"]
+    technologies: ["DeFi Pulse", "CoinGecko", "Web3 Media", "Crypto Twitter", "Native Advertising"]
   },
   {
-    id: "dao-structure-growth",
-    title: "DAO Structure & Growth",
-    categories: "Strategy, Governance Design, Content",
+    id: "content-marketing-socials",
+    title: "Content Marketing & Socials",
+    categories: "Content Strategy, Social Media, Community Engagement",
     imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Designed and implemented a governance structure for a new DAO, helping establish sustainable growth patterns.",
-    challenge: "Create an effective governance framework that balances decentralization with efficient decision-making for a new community DAO.",
-    solution: "Developed a multi-tiered governance model with specialized working groups, transparent proposal processes, and token-weighted voting mechanisms.",
-    results: "Successfully scaled to 10,000+ DAO members, processed over 75 governance proposals, and distributed $2M in grants to community projects.",
+    description: "Comprehensive content strategy and social media management tailored for Web3 audiences across all major platforms.",
+    challenge: "Create engaging, educational content that builds trust and authority while navigating complex Web3 topics for diverse audiences.",
+    solution: "Developed content calendar with educational threads, community spotlights, technical explanations, and engagement-driven social strategies.",
+    results: "Grew social following by 300%, increased engagement rates by 150%, and generated 500k+ monthly impressions across platforms.",
     testimonial: {
-      text: "Laurence's guidance on DAO structure was invaluable. He helped us navigate complex governance challenges while maintaining our community-first values.",
-      author: "Samantha Lee, Head of Operations"
+      text: "The content strategy transformed our social presence. Laurence created content that educated our community while building genuine engagement.",
+      author: "Samantha Lee, Community Manager"
     },
-    technologies: ["Snapshot", "Discord", "GitcoinDAO", "Tally", "Aragon"]
+    technologies: ["Twitter", "Discord", "Medium", "YouTube", "LinkedIn", "Content Planning"]
   },
   {
-    id: "layer-2-solution",
-    title: "Layer 2 Solution",
-    categories: "Technical Marketing, Developer Relations",
+    id: "community-engagement",
+    title: "Community Engagement",
+    categories: "Community Management, Engagement, Growth Strategy",
     imageUrl: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Led developer marketing initiatives for a new Ethereum Layer 2 scaling solution to drive adoption and integration.",
-    challenge: "Drive developer adoption of a new Layer 2 scaling solution in a technically complex ecosystem with multiple competing solutions.",
-    solution: "Created comprehensive technical documentation, educational content series, developer workshops, and a grants program for early adopters.",
-    results: "Attracted 250+ projects to build on the platform, achieved 150% quarter-over-quarter growth in TVL, and built an active developer community.",
+    description: "Strategic community engagement and management services focused on creating engaged, loyal Web3 communities that drive organic growth.",
+    challenge: "Build authentic Web3 communities that move beyond airdrop hunters to create genuine value and long-term engagement.",
+    solution: "Implemented community frameworks with gamification, exclusive benefits, educational content, and member recognition programs.",
+    results: "Built community of 25,000+ active members, achieved 80% monthly retention rate, and generated 200+ organic referrals monthly.",
     testimonial: {
-      text: "The developer relations program Laurence built was key to our ecosystem growth. His ability to translate complex technical concepts into clear value propositions accelerated our adoption curve.",
-      author: "David Park, CTO"
+      text: "Laurence built a community that feels like a family. The engagement and loyalty we achieved goes far beyond typical Web3 communities.",
+      author: "David Park, Founder"
     },
-    technologies: ["GitHub", "Developer DAO", "ETHGlobal", "Solidity", "Technical Documentation"]
+    technologies: ["Discord", "Telegram", "Community Tools", "Gamification", "Member Analytics"]
   },
   {
-    id: "dex-growth-campaign",
-    title: "DEX Growth Campaign",
-    categories: "User Acquisition, Content, Analytics",
+    id: "press-releases-comarketing",
+    title: "Press Releases & Co-marketing",
+    categories: "Public Relations, Partnership Marketing, Media Relations",
     imageUrl: "https://images.unsplash.com/photo-1639322537138-5e513100b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Executed a comprehensive growth strategy for a decentralized exchange, focusing on user acquisition and liquidity growth.",
-    challenge: "Increase trading volume and liquidity for a DEX in a highly competitive market dominated by established players.",
-    solution: "Implemented a liquidity mining program, strategic token partnerships, educational content series, and community incentives for platform engagement.",
-    results: "Increased trading volume by 300% in 6 months, secured $75M in liquidity across key trading pairs, and built a community of 65,000+ active traders.",
+    description: "Professional press release distribution and strategic co-marketing partnerships to amplify brand reach and credibility.",
+    challenge: "Generate mainstream and crypto media coverage while establishing credible co-marketing partnerships in the competitive Web3 space.",
+    solution: "Created comprehensive media outreach strategy with targeted press releases, journalist relationships, and strategic partnership campaigns.",
+    results: "Secured coverage in 50+ publications, established 15 co-marketing partnerships, and achieved 2M+ earned media impressions.",
     testimonial: {
-      text: "Laurence's growth strategy revolutionized our user acquisition approach. His data-driven methods and deep understanding of DeFi user psychology delivered exceptional results.",
-      author: "Michael Rodriguez, Growth Lead"
+      text: "The media coverage and partnerships Laurence secured gave us the credibility boost we needed. His relationships in crypto media are invaluable.",
+      author: "Michael Rodriguez, Head of Marketing"
     },
-    technologies: ["Dune Analytics", "Twitter", "Discord", "Uniswap", "Liquidity Mining"]
-  },
-  {
-    id: "metaverse-integration",
-    title: "Metaverse Integration",
-    categories: "Brand Strategy, Partnerships, Events",
-    imageUrl: "https://images.unsplash.com/photo-1621504450181-5fdb1eaeb4c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Developed and executed a brand strategy for a traditional company's expansion into the metaverse.",
-    challenge: "Help an established retail brand transition into the metaverse with authentic experiences that resonate with both existing customers and Web3 natives.",
-    solution: "Created a phased metaverse strategy including virtual storefronts, digital collectibles, immersive events, and a virtual-to-physical rewards program.",
-    results: "Launched in 3 major metaverse platforms, sold 25,000+ digital collectibles, and increased brand engagement with 18-35 demographic by 40%.",
-    testimonial: {
-      text: "Our metaverse strategy developed with Laurence opened entirely new revenue streams and audience segments. His creative approach to bridging physical and digital experiences set us apart from competitors.",
-      author: "Jennifer Torres, Marketing Director"
-    },
-    technologies: ["Decentraland", "The Sandbox", "Spatial", "3D Design", "Digital Wearables"]
+    technologies: ["PR Distribution", "Media Outreach", "Partnership Tools", "Press Monitoring", "Co-marketing Platforms"]
   }
 ];
 
