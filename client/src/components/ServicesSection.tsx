@@ -1,9 +1,9 @@
 import { 
   FileText, 
   Users, 
-  FileCode, 
-  Layers2, 
+  Brain, 
   Megaphone, 
+  Hash, 
   LineChart 
 } from "lucide-react";
 
@@ -11,32 +11,32 @@ const services = [
   {
     icon: <FileText className="h-10 w-10" />,
     title: "Strategy Development",
-    description: "Tailored marketing strategies aligned with your blockchain project's unique goals and community."
+    description: "Crafting tailored marketing campaigns that align with your blockchain project's unique goals, fostering deep connections and long-term growth."
   },
   {
     icon: <Users className="h-10 w-10" />,
     title: "Community Building",
-    description: "Creating engaged, loyal communities around your decentralized products and services."
+    description: "Managing community support and interns, running social media channels such as X, Telegram, and Discord, plus designing engaging airdrop campaigns to cultivate loyal, active users around your Web3 project."
   },
   {
-    icon: <FileCode className="h-10 w-10" />,
-    title: "Content Creation",
-    description: "Technical whitepapers, explainer content, and marketing materials that speak to both crypto natives and newcomers."
-  },
-  {
-    icon: <Layers2 className="h-10 w-10" />,
-    title: "Web3 UX/UI",
-    description: "Designing intuitive interfaces that make complex blockchain interactions accessible to all users."
+    icon: <Brain className="h-10 w-10" />,
+    title: "AI Proficiency",
+    description: "Leveraging AI to enhance workflows without replacing the human touch—much like building this site on Replit—ensuring creativity and soul remain at the core."
   },
   {
     icon: <Megaphone className="h-10 w-10" />,
-    title: "Social Promotion",
-    description: "Strategic promotion across Twitter, Discord, Telegram and other key platforms in the Web3 space."
+    title: "Web3 Advertising",
+    description: "Expertise in decentralized ad platforms, PPC strategies, and targeted campaigns for crypto-native audiences, bypassing traditional networks for authentic reach."
+  },
+  {
+    icon: <Hash className="h-10 w-10" />,
+    title: "Social Media Savvy",
+    description: "Mastering X (Twitter) for real-time sentiment analysis, trend-jacking, influencer collaborations, and viral content; plus narrative crafting to simplify DeFi or layer-2 concepts, and forging key partnerships."
   },
   {
     icon: <LineChart className="h-10 w-10" />,
-    title: "Analytics & Insights",
-    description: "Data-driven insights to optimize your marketing efforts and measure on-chain engagement."
+    title: "Blockchain Analytics",
+    description: "Providing data-driven insights across multiple ecosystems and cross-chain activities to optimize marketing and measure on-chain engagement effectively."
   }
 ];
 
