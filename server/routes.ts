@@ -96,11 +96,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         technologies: ["Twitter", "Discord", "Medium", "YouTube", "LinkedIn", "Content Planning"]
       },
       {
-        id: "community-building",
-        title: "Community Building",
+        id: "community-engagement",
+        title: "Community Engagement",
         categories: "Community Management, Engagement, Growth Strategy",
         imageUrl: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-        description: "Strategic community building and management services focused on creating engaged, loyal Web3 communities that drive organic growth.",
+        description: "Strategic community engagement and management services focused on creating engaged, loyal Web3 communities that drive organic growth.",
         challenge: "Build authentic Web3 communities that move beyond airdrop hunters to create genuine value and long-term engagement.",
         solution: "Implemented community frameworks with gamification, exclusive benefits, educational content, and member recognition programs.",
         results: "Built community of 25,000+ active members, achieved 80% monthly retention rate, and generated 200+ organic referrals monthly.",

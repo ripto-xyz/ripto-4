@@ -22,11 +22,11 @@ export const portfolioItems = [
     description: "Comprehensive content strategy and social media management tailored for Web3 audiences across all major platforms."
   },
   {
-    id: "community-building",
-    title: "Community Building",
+    id: "community-engagement",
+    title: "Community Engagement",
     categories: "Community Management, Engagement, Growth Strategy",
     imageUrl: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Strategic community building and management services focused on creating engaged, loyal Web3 communities that drive organic growth."
+    description: "Strategic community engagement and management services focused on creating engaged, loyal Web3 communities that drive organic growth."
   },
   {
     id: "press-releases-comarketing",
