@@ -25,7 +25,7 @@ const services = [
   },
   {
     icon: <Hash className="h-10 w-10" />,
-    title: "Social Media Savvy",
+    title: "Social Promotion",
     description: "Mastering X (Twitter) for real-time sentiment analysis, trend-jacking, influencer collaborations, and viral content; plus narrative crafting to simplify DeFi or layer-2 concepts, and forging key partnerships."
   },
   {
