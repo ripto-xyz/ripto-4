@@ -75,7 +75,13 @@ export default function AboutSection() {
                 </h2>
                 <div className="space-y-4 md:space-y-6">
                   <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
-                    I'm a Web3 native who understands the unique challenges of marketing in the blockchain space. My approach combines deep technical knowledge with creative marketing strategies to help projects stand out.
+                    Deep in the trenches and fluent in the lingo, I've seen firsthand how Crypto Twitter (CT) has grown weary of projects sloppily hyping airdrops that masquerade as 'great' community.
+                  </p>
+                  <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
+                    Whether in DeFi, NFTs, or the Metaverse, a company's purpose must shine to create emotional bonds, making users feel part of a tribe beyond mere apps or infrastructure. Drawing from first principles and not applying quick fixes, I blend technical expertise with innovative strategies to craft a memorable brand identity.
+                  </p>
+                  <p className="text-base sm:text-lg md:text-xl text-white leading-relaxed">
+                    I focus on organic, sustainable growth that builds loyal fans who will tell everyone about your project—delivering something truly memorable and engaging.
                   </p>
                 
 
