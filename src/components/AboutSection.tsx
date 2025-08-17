@@ -105,15 +105,17 @@ export default function AboutSection() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 lg:gap-8 text-center">
                 {/* Apple logo with name */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <div className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full">
+                  <a href="https://www.apple.com/" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 md:gap-4 lg:gap-5 w-full max-w-full hover:opacity-80 transition-opacity">
                     <img src={appleLogo} alt="Apple" className="h-8 md:h-10 lg:h-12 xl:h-14 object-contain flex-shrink-0 -mt-1" />
                     <img src={appleNameLogo} alt="Apple" className="h-12 md:h-16 lg:h-20 xl:h-24 object-contain flex-shrink-0 filter invert brightness-0 contrast-100" />
-                  </div>
+                  </a>
                 </div>
                 
                 {/* Everclear logo */}
                 <div className="flex items-center justify-center h-24 md:h-28 lg:h-32">
-                  <img src={everclearLogo} alt="Everclear" className="h-14 md:h-18 lg:h-22 xl:h-28 w-auto object-contain max-w-full" />
+                  <a href="https://www.everclear.org/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                    <img src={everclearLogo} alt="Everclear" className="h-14 md:h-18 lg:h-22 xl:h-28 w-auto object-contain max-w-full" />
+                  </a>
                 </div>
                 
                 {/* Remaining stats */}
