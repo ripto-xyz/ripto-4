@@ -48,7 +48,7 @@ export default function ServicesSection() {
           <div className="text-center mb-6 md:mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins">Services</h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto italic">
-              "Everything's for sale, my friend. Everything. If I had a sister, I'd sell her in a second."
+              "I offer wonders from the deep places."
             </p>
           </div>
           
