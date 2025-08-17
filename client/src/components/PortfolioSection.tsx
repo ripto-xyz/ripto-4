@@ -50,7 +50,7 @@ export default function PortfolioSection() {
             <div className="text-center mb-6 md:mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins text-white">Portfolio</h2>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto italic">
-                See my wares:
+                "Have a look at my wares. I'm sure there's something to suit you".
               </p>
             </div>
             
