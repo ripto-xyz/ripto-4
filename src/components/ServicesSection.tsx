@@ -48,7 +48,7 @@ export default function ServicesSection() {
           <div className="text-center mb-6 md:mb-8">
             <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins">Services</h2>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto italic">
-              "Your stained fingers attest to your diligence in mixing potions and learning their secrets".
+              "I would serve you humbly, master. Whatever your desire."
             </p>
           </div>
           
