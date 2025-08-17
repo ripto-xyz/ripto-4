@@ -19,11 +19,6 @@ const services = [
     description: "Managing community support and interns, running social media channels such as X, Telegram, and Discord, plus designing engaging airdrop campaigns to cultivate loyal, active users around your Web3 project."
   },
   {
-    icon: <Brain className="h-10 w-10" />,
-    title: "AI Proficiency",
-    description: "Leveraging AI to enhance workflows without replacing the human touch—much like building this site on Replit—ensuring creativity and soul remain at the core."
-  },
-  {
     icon: <Megaphone className="h-10 w-10" />,
     title: "Web3 Advertising",
     description: "Expertise in decentralized ad platforms, PPC strategies, and targeted campaigns for crypto-native audiences, bypassing traditional networks for authentic reach."
@@ -32,6 +27,11 @@ const services = [
     icon: <Hash className="h-10 w-10" />,
     title: "Social Media Savvy",
     description: "Mastering X (Twitter) for real-time sentiment analysis, trend-jacking, influencer collaborations, and viral content; plus narrative crafting to simplify DeFi or layer-2 concepts, and forging key partnerships."
+  },
+  {
+    icon: <Brain className="h-10 w-10" />,
+    title: "AI Proficiency",
+    description: "Leveraging AI to enhance workflows without replacing the human touch—much like building this site on Replit—ensuring creativity and soul remain at the core."
   },
   {
     icon: <LineChart className="h-10 w-10" />,
