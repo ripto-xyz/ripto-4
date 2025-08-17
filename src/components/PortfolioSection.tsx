@@ -47,9 +47,9 @@ export default function PortfolioSection() {
       <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
         <div className="max-w-[1400px] mx-auto">
           <div className="bg-[#FF5733] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#FF5733]/20 relative overflow-hidden w-full mx-auto">
-            <div className="text-center mb-10 md:mb-16">
+            <div className="text-center mb-6 md:mb-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins text-white">Portfolio</h2>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto italic">
                 See my wares:
               </p>
             </div>
