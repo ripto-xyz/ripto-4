@@ -11,32 +11,32 @@ const services = [
   {
     icon: <FileText className="h-10 w-10" />,
     title: "Strategy Development",
-    description: "Crafting tailored marketing campaigns that align with your blockchain project's unique goals, fostering deep connections and long-term growth."
+    description: "Crafting tailored marketing campaigns that align with your project's unique goals, fostering deep connections and long-term growth."
   },
   {
     icon: <Users className="h-10 w-10" />,
     title: "Community Building",
-    description: "Managing community support and interns, running social media channels such as X, Telegram, and Discord, plus designing engaging airdrop campaigns to cultivate loyal, active users around your Web3 project."
+    description: "Managing community support and interns, guiding their social media channels such as X, Telegram, and Discord, plus designing engaging airdrop campaigns to cultivate loyal and active users."
   },
   {
     icon: <Megaphone className="h-10 w-10" />,
     title: "Web3 Advertising",
-    description: "Expertise in decentralized ad platforms, PPC strategies, and targeted campaigns for crypto-native audiences, bypassing traditional networks for authentic reach."
+    description: "Reaching crypto-native audiences through Web3 banner ads placed on protocols and blockchain explorers, utilizing A/B testing and measuring conversions."
   },
   {
     icon: <Hash className="h-10 w-10" />,
     title: "Social Promotion",
-    description: "Mastering X (Twitter) for real-time sentiment analysis, trend-jacking, influencer collaborations, and viral content; plus narrative crafting to simplify DeFi or layer-2 concepts, and forging key partnerships."
+    description: "Narrative crafting through tailored media, utilizing real-time sentiment analysis for content collaborations and co-marketing."
   },
   {
     icon: <Brain className="h-10 w-10" />,
     title: "AI Proficiency",
-    description: "Leveraging AI to enhance workflows without replacing the human touch—much like building this site on Replit—ensuring creativity and soul remain at the core."
+    description: "Leveraging AI to enhance workflows without replacing the human touch, ensuring creativity and soul remain at the core (much like building this site on Replit)."
   },
   {
     icon: <LineChart className="h-10 w-10" />,
     title: "Blockchain Analytics",
-    description: "Providing data-driven insights across multiple ecosystems and cross-chain activities to optimize marketing and measure on-chain engagement effectively."
+    description: "Providing data-driven insights across multiple ecosystems and crosschain activities to optimize growth marketing and measure onchain engagement effectively."
   }
 ];
 
