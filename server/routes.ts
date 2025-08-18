@@ -52,7 +52,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     return res.json([
       {
         id: "go-to-market-strategy",
-        title: "Go-to-Market Strategy (rebrand)",
+        title: "Go-to-Market Rebrand Strategy",
         categories: "Strategy, Rebranding, Market Positioning",
         imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         description: "Comprehensive go-to-market strategy and rebranding for Web3 projects entering new markets or repositioning their brand identity.",
@@ -133,7 +133,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     const portfolioItems = [
       {
         id: "go-to-market-strategy",
-        title: "Go-to-Market Strategy (rebrand)",
+        title: "Go-to-Market Rebrand Strategy",
         categories: "Strategy, Rebranding, Market Positioning",
         imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         description: "Comprehensive go-to-market strategy and rebranding for Web3 projects entering new markets or repositioning their brand identity.",
