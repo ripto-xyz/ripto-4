@@ -130,7 +130,7 @@ try {
       },
       {
         id: "press-releases-comarketing",
-        title: "Press Releases & Co-marketing",
+        title: "Press Releases & Collaborations",
         categories: "Public Relations, Partnership Marketing, Media Relations",
         imageUrl: "https://images.unsplash.com/photo-1639322537138-5e513100b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
         description: "Professional press release distribution and strategic co-marketing partnerships to amplify brand reach and credibility.",
