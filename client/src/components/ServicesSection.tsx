@@ -31,7 +31,7 @@ const services = [
   {
     icon: <Brain className="h-10 w-10" />,
     title: "AI Proficiency",
-    description: "Leveraging AI to enhance workflows without replacing the human touch, ensuring creativity and soul remain at the core (much like building this site on Replit)."
+    description: "Leveraging AI to enhance workflows without replacing the human touch, ensuring creativity and soul remain at the core—much like building this site on Replit!"
   },
   {
     icon: <LineChart className="h-10 w-10" />,
