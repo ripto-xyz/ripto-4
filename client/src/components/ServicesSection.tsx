@@ -36,7 +36,7 @@ const services = [
   {
     icon: <LineChart className="h-10 w-10" />,
     title: "Blockchain Analytics",
-    description: "Providing data-driven insights across multiple ecosystems and crosschain activities to optimize growth marketing and measure onchain engagement effectively."
+    description: "Providing data-driven insights across multiple ecosystems and crosschain activities to optimize growth marketing efforts and measure onchain engagement effectively."
   }
 ];
 
