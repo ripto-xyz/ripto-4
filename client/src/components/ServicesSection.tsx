@@ -26,7 +26,7 @@ const services = [
   {
     icon: <Hash className="h-10 w-10" />,
     title: "Social Promotion",
-    description: "Narrative crafting through tailored media, utilizing real-time sentiment analysis for content collaborations and co-marketing."
+    description: "Narrative crafting through tailored media, basic graphic designs, and utilizing real-time sentiment analysis for content and collaborations."
   },
   {
     icon: <Brain className="h-10 w-10" />,
