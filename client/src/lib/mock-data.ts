@@ -5,7 +5,7 @@ export const portfolioItems = [
     title: "Go-to-Market Rebrand Strategy",
     categories: "Strategy, Rebranding, Market Positioning",
     imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Comprehensive go-to-market strategy and rebranding for Web3 projects entering new markets or repositioning their brand identity."
+    description: "For Everclear's rebrand from Connext, I led the repositioning from a B2C to B2B focus, coupled with a token migration introducing new utility. Our approach ensured a sequential rollout: communicating changes in order, their impact on users and the project, and the sunsetting of the old offering. When the initial tagline fell short, I revisited it from first principles—emphasizing our shift from competing with projects to supporting them—and proposed \"The Backbone of Bridging,\" a self-explanatory alternative to vague phrases like \"the first clearing layer.\""
   },
   {
     id: "native-web3-advertising",
