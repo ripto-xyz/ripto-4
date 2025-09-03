@@ -25,13 +25,17 @@ const isStaticHosting = () => {
 export async function fetchWithFallback<T>(endpoint: string): Promise<T> {
   // In static hosting, go directly to JSON files
   if (isStaticHosting()) {
-    console.log(`Using static JSON for ${endpoint}`);
+    console.log(`🔧 DEBUG: Using static JSON for ${endpoint}`);
     const staticPath = `${endpoint}.json`;
+    console.log(`🔧 DEBUG: Fetching from ${staticPath}`);
     const staticResponse = await fetch(staticPath);
+    console.log(`🔧 DEBUG: Response status: ${staticResponse.status}`);
     if (!staticResponse.ok) {
       throw new Error(`Static JSON file not found: ${staticPath}`);
     }
-    return await staticResponse.json() as T;
+    const data = await staticResponse.json() as T;
+    console.log(`🔧 DEBUG: Data received:`, data);
+    return data;
   }
   
   // In development with backend, try API first
