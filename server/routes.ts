@@ -10,6 +10,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Serve static files including the optimized video
   app.use('/static', express.static(path.join(import.meta.dirname, '..', 'public')));
   
+  // Serve attached assets (images, etc.)
+  app.use('/attached_assets', express.static(path.join(import.meta.dirname, '..', 'attached_assets')));
+  
   // Serve the video file
   app.get("/api/video", (req, res) => {
     const videoPath = path.join(import.meta.dirname, "..", "attached_assets", "spyro short.mov");
