@@ -151,10 +151,11 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                   e.stopPropagation();
                   closeLightbox();
                 }}
-                className="absolute -top-2 -right-2 bg-gradient-to-br from-black via-gray-700 to-white border-2 border-white/50 text-white hover:from-gray-800 hover:via-gray-600 hover:to-gray-300 rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg transition-all duration-300 shadow-2xl backdrop-blur-sm"
+                className="absolute top-2 right-2 bg-gradient-to-br from-black via-gray-700 to-white border-2 border-white/50 text-white hover:from-gray-800 hover:via-gray-600 hover:to-gray-300 rounded-full w-10 h-10 flex items-center justify-center font-bold text-lg transition-all duration-300 shadow-2xl backdrop-blur-sm"
                 style={{ 
                   boxShadow: '0 0 0 2px rgba(0,0,0,0.8), 0 8px 20px rgba(0,0,0,0.6)',
-                  background: 'linear-gradient(135deg, #000000 0%, #4a5568 50%, #ffffff 100%)'
+                  background: 'linear-gradient(135deg, #000000 0%, #4a5568 50%, #ffffff 100%)',
+                  zIndex: 10
                 }}
                 aria-label="Close lightbox"
               >
