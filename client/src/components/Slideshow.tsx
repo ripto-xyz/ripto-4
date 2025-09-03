@@ -69,7 +69,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
         <img
           src={images[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
-          className="w-full h-full object-contain transition-opacity duration-300 cursor-pointer rounded-xl"
+          className="w-full h-full object-cover transition-opacity duration-300 cursor-pointer rounded-xl"
           onClick={openLightbox}
         />
 
@@ -94,6 +94,11 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           </>
         )}
 
+        {/* Debug: Show current image URL */}
+        <div className="absolute top-2 left-2 bg-black/70 text-white text-xs p-1 rounded">
+          {currentIndex + 1}/{images.length}: {images[currentIndex]?.substring(0, 30)}...
+        </div>
+        
         {/* Gradient overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
 
@@ -102,7 +107,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black px-4 py-2 rounded-full"
           style={{ zIndex: 9999 }}
         >
-          {[0,1,2,3,4].map((index) => (
+          {images.map((_, index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
