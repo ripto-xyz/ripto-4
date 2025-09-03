@@ -93,9 +93,12 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           </>
         )}
 
+        {/* Gradient overlay for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
+
         {/* Dot indicators */}
         {images.length > 1 && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 opacity-100 transition-opacity duration-300">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
             {images.map((_, index) => (
               <button
                 key={index}
@@ -110,10 +113,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
             ))}
           </div>
         )}
-
-
-        {/* Gradient overlay for better text visibility */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
       </div>
 
       {/* Click to enlarge text */}
