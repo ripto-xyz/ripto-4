@@ -164,7 +164,10 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                     e.stopPropagation();
                     prevSlide();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-black border-2 border-black rounded-full p-3 transition-all duration-300 shadow-lg"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white border-2 border-white rounded-full p-3 transition-all duration-300 shadow-2xl backdrop-blur-sm"
+                  style={{ 
+                    boxShadow: '0 0 0 3px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.4)'
+                  }}
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-6 h-6" />
@@ -175,7 +178,10 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                     e.stopPropagation();
                     nextSlide();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-black border-2 border-black rounded-full p-3 transition-all duration-300 shadow-lg"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white border-2 border-white rounded-full p-3 transition-all duration-300 shadow-2xl backdrop-blur-sm"
+                  style={{ 
+                    boxShadow: '0 0 0 3px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.4)'
+                  }}
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-6 h-6" />
