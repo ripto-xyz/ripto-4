@@ -130,14 +130,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           }}
           onClick={handleLightboxClick}
         >
-          {/* Close button */}
-          <button
-            onClick={closeLightbox}
-            className="absolute top-6 right-6 text-white hover:text-gray-300 transition-colors z-10 bg-black/30 rounded-full p-2"
-            aria-label="Close lightbox"
-          >
-            <X className="w-6 h-6" />
-          </button>
 
           {/* Full size image with navigation */}
           <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center">
