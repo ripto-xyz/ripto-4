@@ -155,40 +155,40 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                 style={{ maxHeight: '82vh', maxWidth: '86vw' }}
               />
             </div>
-
-            {/* Navigation in lightbox */}
-            {images.length > 1 && (
-              <>
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    prevSlide();
-                  }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white border-2 border-white rounded-full p-3 transition-all duration-300 shadow-2xl backdrop-blur-sm"
-                  style={{ 
-                    boxShadow: '0 0 0 3px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.4)'
-                  }}
-                  aria-label="Previous image"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    nextSlide();
-                  }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white border-2 border-white rounded-full p-3 transition-all duration-300 shadow-2xl backdrop-blur-sm"
-                  style={{ 
-                    boxShadow: '0 0 0 3px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.4)'
-                  }}
-                  aria-label="Next image"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </>
-            )}
           </div>
+
+          {/* Navigation in lightbox - positioned relative to full viewport */}
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevSlide();
+                }}
+                className="absolute left-8 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white border-2 border-white rounded-full p-3 transition-all duration-300 shadow-2xl backdrop-blur-sm z-20"
+                style={{ 
+                  boxShadow: '0 0 0 3px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.4)'
+                }}
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-6 h-6" />
+              </button>
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextSlide();
+                }}
+                className="absolute right-8 top-1/2 -translate-y-1/2 bg-black/80 hover:bg-black text-white border-2 border-white rounded-full p-3 transition-all duration-300 shadow-2xl backdrop-blur-sm z-20"
+                style={{ 
+                  boxShadow: '0 0 0 3px rgba(0,0,0,0.5), 0 10px 25px rgba(0,0,0,0.4)'
+                }}
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-6 h-6" />
+              </button>
+            </>
+          )}
           {/* Image counter - positioned outside the image area */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 text-black text-sm px-4 py-2 rounded-full border border-black/20 shadow-lg">
             {currentIndex + 1} / {images.length}
