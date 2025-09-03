@@ -76,7 +76,7 @@ const portfolioData = [
     title: "Community Engagement",
     categories: "Community Management, Engagement, Growth Strategy",
     imageUrl: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Strategic community engagement and management services focused on creating engaged, loyal Web3 communities that drive organic growth.",
+    description: "I led a network of community leaders to scale Everclear's Telegram communities, developing methodologies to assist them in identifying and engaging with relevant posts on the Everclear Intern X account. Through trial-and-error experimentation, we refined the account's voice to ensure it offered unique value—targeting a distinct audience from the main Everclear X account, which had previously led to overlap. This was achieved via digestible educational content, timely updates, and engaging memes. I also guided leaders in navigating discussions with protocol leads to resolve customer issues effectively.",
     challenge: "Build authentic Web3 communities that move beyond airdrop hunters to create genuine value and long-term engagement.",
     solution: "Implemented community frameworks with gamification, exclusive benefits, educational content, and member recognition programs.",
     results: "Built community of 25,000+ active members, achieved 80% monthly retention rate, and generated 200+ organic referrals monthly.",
