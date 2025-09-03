@@ -116,6 +116,9 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
       </div>
 
+      {/* Click to enlarge text */}
+      <p className="text-center text-sm text-gray-400 mt-2">Click image to enlarge</p>
+
       {/* Lightbox Modal - rendered as portal */}
       {isLightboxOpen && createPortal(
         <div 
