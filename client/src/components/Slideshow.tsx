@@ -64,13 +64,17 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
   return (
     <>
-      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`}>
+      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`} style={{ minHeight: '300px' }}>
         {/* Main image */}
         <img
           src={images[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
           className="w-full h-full object-cover transition-opacity duration-300 cursor-pointer rounded-xl"
           onClick={openLightbox}
+          onLoad={() => console.log(`Image loaded: ${images[currentIndex]}`)}
+          onError={() => console.error(`Image failed to load: ${images[currentIndex]}`)}
+          loading="eager"
+          crossOrigin="anonymous"
         />
 
         {/* Navigation arrows */}
@@ -94,11 +98,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           </>
         )}
 
-        {/* Debug: Show current image URL */}
-        <div className="absolute top-2 left-2 bg-black/70 text-white text-xs p-1 rounded">
-          {currentIndex + 1}/{images.length}: {images[currentIndex]?.substring(0, 30)}...
-        </div>
-        
         {/* Gradient overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
 
