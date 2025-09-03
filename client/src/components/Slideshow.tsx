@@ -98,16 +98,19 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
         {/* Gradient overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
 
-        {/* Dot indicators */}
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-3 z-30 bg-black/70 px-4 py-3 rounded-full backdrop-blur-sm">
-          {images.map((_, index) => (
+        {/* Dot indicators - FIXED */}
+        <div 
+          className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black px-4 py-2 rounded-full"
+          style={{ zIndex: 9999 }}
+        >
+          {[0,1,2,3,4].map((index) => (
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 border ${
+              className={`w-4 h-4 rounded-full border-2 border-white ${
                 index === currentIndex 
-                  ? 'bg-white border-white shadow-lg scale-125' 
-                  : 'bg-white/50 border-white/50 hover:bg-white/75 hover:scale-110'
+                  ? 'bg-white' 
+                  : 'bg-transparent hover:bg-white/50'
               }`}
               aria-label={`Go to image ${index + 1}`}
             />
