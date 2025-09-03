@@ -12,7 +12,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  console.log('Slideshow component rendered with images:', images);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -65,12 +64,12 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
   return (
     <>
-      <div className={`relative aspect-video bg-gray-800 rounded-xl overflow-hidden shadow-lg group ${className}`}>
+      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`}>
         {/* Main image */}
         <img
           src={images[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
-          className="w-full h-full object-contain transition-opacity duration-300 cursor-pointer"
+          className="w-full h-full object-contain transition-opacity duration-300 cursor-pointer rounded-xl"
           onClick={openLightbox}
         />
 
