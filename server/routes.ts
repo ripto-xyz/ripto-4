@@ -59,11 +59,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         categories: "Strategy, Rebranding, Market Positioning",
         imageUrl: "https://picsum.photos/800/450?random=1001",
         slideshowImages: [
-          "/attached_assets/1_mainnet_1756932382134.png",
-          "/attached_assets/2_Everclear_Site_1756932382135.png",
-          "/attached_assets/3_CLEAR_Website_1756932382136.png",
-          "/attached_assets/4_X_1756932382136.png",
-          "/attached_assets/5_Sunset_1756932382137.png"
+          "https://picsum.photos/800/450?random=11",
+          "https://picsum.photos/800/450?random=12",
+          "https://picsum.photos/800/450?random=13",
+          "https://picsum.photos/800/450?random=14",
+          "https://picsum.photos/800/450?random=15"
         ],
         description: "For Everclear's rebrand from Connext, I led the repositioning from a B2C to B2B focus, coupled with a token migration introducing new utility. Our approach ensured a sequential rollout: communicating changes in order, their impact on users and the project, and the sunsetting of the old offering. When the initial tagline fell short, I revisited it from first principles—emphasizing our shift from competing with projects to supporting them—and proposed \"The Backbone of Bridging,\" a self-explanatory alternative to vague phrases like \"the first clearing layer.\"",
         challenge: "Redefine brand positioning in a competitive Web3 landscape while maintaining core values and community trust during transition.",
@@ -175,11 +175,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
         categories: "Strategy, Rebranding, Market Positioning",
         imageUrl: "https://picsum.photos/800/450?random=1001",
         slideshowImages: [
-          "/attached_assets/1_mainnet_1756932382134.png",
-          "/attached_assets/2_Everclear_Site_1756932382135.png",
-          "/attached_assets/3_CLEAR_Website_1756932382136.png",
-          "/attached_assets/4_X_1756932382136.png",
-          "/attached_assets/5_Sunset_1756932382137.png"
+          "https://picsum.photos/800/450?random=11",
+          "https://picsum.photos/800/450?random=12",
+          "https://picsum.photos/800/450?random=13",
+          "https://picsum.photos/800/450?random=14",
+          "https://picsum.photos/800/450?random=15"
         ],
         description: "For Everclear's rebrand from Connext, I led the repositioning from a B2C to B2B focus, coupled with a token migration introducing new utility. Our approach ensured a sequential rollout: communicating changes in order, their impact on users and the project, and the sunsetting of the old offering. When the initial tagline fell short, I revisited it from first principles—emphasizing our shift from competing with projects to supporting them—and proposed \"The Backbone of Bridging,\" a self-explanatory alternative to vague phrases like \"the first clearing layer.\"",
         challenge: "Redefine brand positioning in a competitive Web3 landscape while maintaining core values and community trust during transition.",
