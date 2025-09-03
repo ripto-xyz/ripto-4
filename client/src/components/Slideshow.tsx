@@ -111,12 +111,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           </div>
         )}
 
-        {/* Image counter */}
-        {images.length > 1 && (
-          <div className="absolute top-3 right-3 bg-black/50 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {currentIndex + 1} / {images.length}
-          </div>
-        )}
 
         {/* Gradient overlay for better text visibility */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/30 to-transparent pointer-events-none"></div>
