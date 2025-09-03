@@ -61,6 +61,12 @@ export default function PortfolioSection() {
                   <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8`}>
                     {/* Image/Slideshow */}
                     <div className="w-full md:w-1/2">
+                      {/* Debug info - shows what data we're getting */}
+                      <div className="text-xs text-yellow-300 bg-black/50 p-2 rounded mb-2">
+                        🔍 Images: {item.slideshowImages?.length || 0} | 
+                        Source: {item.slideshowImages?.[0]?.includes('picsum') ? 'PICSUM✓' : item.slideshowImages?.[0]?.includes('unsplash') ? 'UNSPLASH❌' : 'NONE❌'} |
+                        URL: {item.slideshowImages?.[0]?.substring(0, 40)}...
+                      </div>
                       {item.slideshowImages && item.slideshowImages.length > 0 ? (
                       <Slideshow 
                         images={item.slideshowImages} 
