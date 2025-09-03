@@ -32,7 +32,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
       <img
         src={images[currentIndex]}
         alt={`${alt} - Image ${currentIndex + 1}`}
-        className="w-full h-full object-cover transition-opacity duration-300"
+        className="w-full h-full object-contain transition-opacity duration-300"
       />
 
       {/* Navigation arrows */}
