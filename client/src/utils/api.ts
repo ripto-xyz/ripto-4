@@ -5,6 +5,9 @@
 
 // Check if we're in static hosting environment (no backend)
 const isStaticHosting = () => {
+  // FORCE STATIC JSON ALWAYS for testing - bypasses server conflicts
+  return true;
+  
   // Always try static files first in production
   if (import.meta.env.PROD) {
     return true;
