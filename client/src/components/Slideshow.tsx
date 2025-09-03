@@ -95,15 +95,15 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
         {/* Dot indicators */}
         {images.length > 1 && (
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex space-x-2 opacity-100 transition-opacity duration-300">
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 border border-white/30 ${
                   index === currentIndex 
-                    ? 'bg-white' 
-                    : 'bg-white/50 hover:bg-white/75'
+                    ? 'bg-white shadow-lg' 
+                    : 'bg-white/40 hover:bg-white/60'
                 }`}
                 aria-label={`Go to image ${index + 1}`}
               />
