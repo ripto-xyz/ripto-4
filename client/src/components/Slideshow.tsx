@@ -147,12 +147,14 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
           {/* Full size image */}
           <div className="relative max-w-[90vw] max-h-[90vh] flex items-center justify-center">
-            <img
-              src={images[currentIndex]}
-              alt={`${alt} - Image ${currentIndex + 1} (Full Size)`}
-              className="max-w-full max-h-full object-contain"
-              style={{ maxHeight: '90vh', maxWidth: '90vw' }}
-            />
+            <div className="relative bg-white/5 backdrop-blur-sm rounded-lg p-4">
+              <img
+                src={images[currentIndex]}
+                alt={`${alt} - Image ${currentIndex + 1} (Full Size)`}
+                className="max-w-full max-h-full object-contain"
+                style={{ maxHeight: '82vh', maxWidth: '86vw' }}
+              />
+            </div>
 
             {/* Navigation in lightbox */}
             {images.length > 1 && (
@@ -162,7 +164,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                     e.stopPropagation();
                     prevSlide();
                   }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 transition-all duration-300"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-black border-2 border-black rounded-full p-3 transition-all duration-300 shadow-lg"
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-6 h-6" />
@@ -173,18 +175,17 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                     e.stopPropagation();
                     nextSlide();
                   }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/80 text-white rounded-full p-3 transition-all duration-300"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-black border-2 border-black rounded-full p-3 transition-all duration-300 shadow-lg"
                   aria-label="Next image"
                 >
                   <ChevronRight className="w-6 h-6" />
                 </button>
-
-                {/* Image counter in lightbox */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white text-sm px-3 py-2 rounded">
-                  {currentIndex + 1} / {images.length}
-                </div>
               </>
             )}
+          </div>
+          {/* Image counter - positioned outside the image area */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 text-black text-sm px-4 py-2 rounded-full border border-black/20 shadow-lg">
+            {currentIndex + 1} / {images.length}
           </div>
         </div>,
         document.body
