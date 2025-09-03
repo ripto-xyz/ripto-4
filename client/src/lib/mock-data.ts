@@ -4,13 +4,13 @@ export const portfolioItems = [
     id: "go-to-market-strategy",
     title: "Go-to-Market Rebrand Strategy",
     categories: "Strategy, Rebranding, Market Positioning",
-    imageUrl: "https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://picsum.photos/800/450?random=2001",
     slideshowImages: [
-      "/attached_assets/1_mainnet_1756932382134.png",
-      "/attached_assets/2_Everclear_Site_1756932382135.png", 
-      "/attached_assets/3_CLEAR_Website_1756932382136.png",
-      "/attached_assets/4_X_1756932382136.png",
-      "/attached_assets/5_Sunset_1756932382137.png"
+      "https://picsum.photos/800/450?random=1",
+      "https://picsum.photos/800/450?random=2",
+      "https://picsum.photos/800/450?random=3",
+      "https://picsum.photos/800/450?random=4",
+      "https://picsum.photos/800/450?random=5"
     ],
     description: "For Everclear's rebrand from Connext, I led the repositioning from a B2C to B2B focus, coupled with a token migration introducing new utility. Our approach ensured a sequential rollout: communicating changes in order, their impact on users and the project, and the sunsetting of the old offering. When the initial tagline fell short, I revisited it from first principles—emphasizing our shift from competing with projects to supporting them—and proposed \"The Backbone of Bridging,\" a self-explanatory alternative to vague phrases like \"the first clearing layer.\""
   },
@@ -18,7 +18,7 @@ export const portfolioItems = [
     id: "native-web3-advertising",
     title: "Native Web3 Paid Advertising",
     categories: "Paid Media, Web3 Advertising, Performance Marketing",
-    imageUrl: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://picsum.photos/800/450?random=2002",
     slideshowImages: [
       "https://picsum.photos/800/450?random=11",
       "https://picsum.photos/800/450?random=12",
@@ -32,7 +32,7 @@ export const portfolioItems = [
     id: "content-marketing-socials",
     title: "Content Marketing & Socials",
     categories: "Content Strategy, Social Media, Community Engagement",
-    imageUrl: "https://images.unsplash.com/photo-1620321023374-d1a68fbc720d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://picsum.photos/800/450?random=2003",
     slideshowImages: [
       "https://picsum.photos/800/450?random=21",
       "https://picsum.photos/800/450?random=22",
@@ -46,7 +46,7 @@ export const portfolioItems = [
     id: "community-engagement",
     title: "Community Engagement",
     categories: "Community Management, Engagement, Growth Strategy",
-    imageUrl: "https://images.unsplash.com/photo-1622630998477-20aa696ecb05?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://picsum.photos/800/450?random=2004",
     slideshowImages: [
       "https://picsum.photos/800/450?random=31",
       "https://picsum.photos/800/450?random=32",
@@ -60,7 +60,7 @@ export const portfolioItems = [
     id: "press-releases-comarketing",
     title: "Press Releases & Collaborations",
     categories: "Public Relations, Partnership Marketing, Media Relations",
-    imageUrl: "https://images.unsplash.com/photo-1639322537138-5e513100b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    imageUrl: "https://picsum.photos/800/450?random=2005",
     slideshowImages: [
       "https://picsum.photos/800/450?random=41",
       "https://picsum.photos/800/450?random=42",
