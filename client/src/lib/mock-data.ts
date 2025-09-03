@@ -33,7 +33,7 @@ export const portfolioItems = [
     title: "Press Releases & Collaborations",
     categories: "Public Relations, Partnership Marketing, Media Relations",
     imageUrl: "https://images.unsplash.com/photo-1639322537138-5e513100b36e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    description: "Professional press release distribution and strategic co-marketing partnerships to amplify brand reach and credibility."
+    description: "I coordinated partnerships with Arbitrum and the Near Foundation, emphasizing Everclear's status as an Arbitrum Orbit rollup in all communications. This involved close collaboration with Arbitrum's marketing team to align on joint initiatives. For the Near Foundation partnership, which included raising $10 million, I crafted a streamlined narrative to effectively share the story across X and key Web3 publications such as CoinDesk, Business Insider, and CoinMarketCap. In parallel, I led co-marketing efforts with a broader network of partners, including various chains and protocols, to amplify reach and impact."
   }
 ];
 
