@@ -190,12 +190,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
             </div>
           </div>
 
-          {/* Image counter - positioned outside the image area */}
-          {images.length > 1 && (
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 text-black text-sm px-4 py-2 rounded-full border border-black/20 shadow-lg">
-              {currentIndex + 1} / {images.length}
-            </div>
-          )}
         </div>,
         document.body
       )}
