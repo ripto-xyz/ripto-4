@@ -58,10 +58,10 @@ export default function PortfolioSection() {
             
             <div className="space-y-10 md:space-y-16">
               {portfolioItems.map((item: PortfolioItem, index: number) => (
-                <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8`}>
-                  {/* Image/Slideshow */}
-                  <div className="w-full md:w-1/2">
-                    {item.slideshowImages && item.slideshowImages.length > 0 ? (
+                  <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8`}>
+                    {/* Image/Slideshow */}
+                    <div className="w-full md:w-1/2">
+                      {item.slideshowImages && item.slideshowImages.length > 0 ? (
                       <Slideshow 
                         images={item.slideshowImages} 
                         alt={item.title}
