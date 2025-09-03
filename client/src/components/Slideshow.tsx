@@ -117,7 +117,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
       </div>
 
       {/* Click to enlarge text */}
-      <p className="text-center text-sm text-gray-400 mt-2">Click image to enlarge</p>
+      <p className="text-center text-sm text-gray-300 mt-2 italic">Click image to enlarge</p>
 
       {/* Lightbox Modal - rendered as portal */}
       {isLightboxOpen && createPortal(
