@@ -28,16 +28,12 @@ const isStaticHosting = () => {
 export async function fetchWithFallback<T>(endpoint: string): Promise<T> {
   // In static hosting, go directly to JSON files
   if (isStaticHosting()) {
-    console.log(`🔧 DEBUG: Using static JSON for ${endpoint}`);
     const staticPath = `${endpoint}.json`;
-    console.log(`🔧 DEBUG: Fetching from ${staticPath}`);
     const staticResponse = await fetch(staticPath);
-    console.log(`🔧 DEBUG: Response status: ${staticResponse.status}`);
     if (!staticResponse.ok) {
       throw new Error(`Static JSON file not found: ${staticPath}`);
     }
     const data = await staticResponse.json() as T;
-    console.log(`🔧 DEBUG: Data received:`, data);
     
     // FORCE PICSUM URLS - Fix deployment issue where old data still exists
     if (endpoint === '/api/portfolio' && Array.isArray(data)) {
@@ -52,7 +48,6 @@ export async function fetchWithFallback<T>(endpoint: string): Promise<T> {
           `https://picsum.photos/800/450?random=${index * 10 + 5}`
         ]
       }));
-      console.log(`🔧 DEBUG: Fixed portfolio data with Picsum URLs:`, fixedData);
       return fixedData as T;
     }
     
