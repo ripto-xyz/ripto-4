@@ -35,22 +35,6 @@ export async function fetchWithFallback<T>(endpoint: string): Promise<T> {
     }
     const data = await staticResponse.json() as T;
     
-    // FORCE PICSUM URLS - Fix deployment issue where old data still exists
-    if (endpoint === '/api/portfolio' && Array.isArray(data)) {
-      const fixedData = data.map((item: any, index: number) => ({
-        ...item,
-        imageUrl: `https://picsum.photos/800/450?random=${2001 + index}`,
-        slideshowImages: [
-          `https://picsum.photos/800/450?random=${index * 10 + 1}`,
-          `https://picsum.photos/800/450?random=${index * 10 + 2}`,
-          `https://picsum.photos/800/450?random=${index * 10 + 3}`,
-          `https://picsum.photos/800/450?random=${index * 10 + 4}`,
-          `https://picsum.photos/800/450?random=${index * 10 + 5}`
-        ]
-      }));
-      return fixedData as T;
-    }
-    
     return data;
   }
   
