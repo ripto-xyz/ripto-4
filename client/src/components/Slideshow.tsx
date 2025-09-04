@@ -68,7 +68,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
   return (
     <>
-      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`} style={{ minHeight: '300px', zIndex: 1, position: 'relative', overflow: 'hidden' }}>
+      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`} style={{ minHeight: '300px' }}>
         {/* Main image - Using guaranteed working images */}
         <img
           src={workingImages[currentIndex]}
@@ -84,7 +84,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
             <button
               onClick={prevSlide}
               className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300 opacity-0 group-hover:opacity-100"
-              style={{ zIndex: 2 }}
+
               aria-label="Previous image"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -93,7 +93,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
             <button
               onClick={nextSlide}
               className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300 opacity-0 group-hover:opacity-100"
-              style={{ zIndex: 2 }}
+
               aria-label="Next image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -105,7 +105,6 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
         {/* Dot indicators - FIXED */}
         <div 
           className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black px-4 py-2 rounded-full"
-          style={{ zIndex: 3 }}
         >
           {workingImages.map((_, index) => (
             <button
