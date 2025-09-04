@@ -68,7 +68,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
   return (
     <>
-      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`} style={{ minHeight: '200px' }}>
+      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`} style={{ minHeight: '200px', overflow: 'hidden' }}>
         {/* Main image - Using guaranteed working images */}
         <img
           src={workingImages[currentIndex]}
@@ -83,7 +83,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
           <>
             <button
               onClick={prevSlide}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300 opacity-0 group-hover:opacity-100"
+              className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
 
               aria-label="Previous image"
             >
@@ -92,7 +92,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
             
             <button
               onClick={nextSlide}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-all duration-300 opacity-0 group-hover:opacity-100"
+              className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
 
               aria-label="Next image"
             >
