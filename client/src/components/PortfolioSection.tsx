@@ -58,9 +58,9 @@ export default function PortfolioSection() {
             
             <div className="space-y-10 md:space-y-16">
               {portfolioItems.map((item: PortfolioItem, index: number) => (
-                  <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8 relative`}>
+                  <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-6 md:gap-8 items-start`}>
                     {/* Image/Slideshow */}
-                    <div className="w-full md:w-1/2 relative overflow-hidden">
+                    <div className="w-full md:w-1/2 flex-shrink-0">
                       {item.slideshowImages && item.slideshowImages.length > 0 ? (
                       <Slideshow 
                         images={item.slideshowImages} 
@@ -92,7 +92,7 @@ export default function PortfolioSection() {
                   </div>
                   
                   {/* Text content */}
-                  <div className="w-full md:w-1/2 flex flex-col justify-center">
+                  <div className="w-full md:w-1/2 flex flex-col justify-center flex-grow min-w-0">
                     <h3 className="text-xl sm:text-2xl font-bold mb-3 font-poppins text-white">{item.title}</h3>
                     
                     <p className="text-sm text-white/80 mb-3 font-medium">{item.categories}</p>
