@@ -68,7 +68,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
 
   return (
     <>
-      <div className={`relative w-full bg-gray-800 rounded-xl shadow-lg group ${className}`} style={{ aspectRatio: '16/9', minHeight: '250px', maxHeight: '400px' }}>
+      <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`}>
         {/* Main image - Using guaranteed working images */}
         <img
           src={workingImages[currentIndex]}
