@@ -65,7 +65,7 @@ export default function PortfolioSection() {
                       <Slideshow 
                         images={item.slideshowImages} 
                         alt={item.title}
-                        className="cursor-pointer"
+                        className="cursor-pointer max-w-md w-full"
                       />
                     ) : (
                       <div className="relative aspect-video bg-gray-800 rounded-xl overflow-hidden shadow-lg flex items-center justify-center group cursor-pointer">
