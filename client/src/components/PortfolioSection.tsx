@@ -44,7 +44,7 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/5_Sunset_1756989645481.png"
   ],
   4: [ // Section 5 - Press Releases
-    "/attached_assets/1_Business_1757028270161.png",
+    "/attached_assets/1_Business_1757028624524.png",
     "/attached_assets/2_NEAR_1757027968458.png",
     "/attached_assets/3_Arb_1757027968458.png",
     "/attached_assets/4_Uni_1757027968458.png",
