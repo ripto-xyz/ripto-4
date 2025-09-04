@@ -101,13 +101,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         id: "content-marketing-socials",
         title: "Content Marketing & Socials",
         categories: "Content Strategy, Social Media, Community Engagement",
-        imageUrl: "https://picsum.photos/800/450?random=1003",
+        imageUrl: "/attached_assets/1_Everclear_Site_1756989645481.png",
         slideshowImages: [
-          "https://picsum.photos/800/450?random=21",
-          "https://picsum.photos/800/450?random=22",
-          "https://picsum.photos/800/450?random=23",
-          "https://picsum.photos/800/450?random=24",
-          "https://picsum.photos/800/450?random=25"
+          "/attached_assets/1_Everclear_Site_1756989645481.png",
+          "/attached_assets/2_mainnet_1756989645482.png",
+          "/attached_assets/3_CLEAR_Website_1756989645482.png",
+          "/attached_assets/4_X_1756989645483.png",
+          "/attached_assets/5_Sunset_1756989645481.png"
         ],
         description: "Previously, content creation felt reactive, often resulting in filler posts due to a lack of structured ideas. To address this, I established a comprehensive content calendar, ensuring a consistent flow of high-quality topics across categories like educational content, thought leadership, partnerships, and community engagement. I also revamped post formatting for greater appeal—making them concise, readable, and engaging—while providing concept graphics to guide the designer and emphasizing high-quality, appropriate replies to user interactions. By directing this content marketing campaign, I elevated key engagement KPIs by 204% within three months.",
         challenge: "Create engaging, educational content that builds trust and authority while navigating complex Web3 topics for diverse audiences.",
@@ -123,13 +123,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         id: "community-engagement",
         title: "Community Engagement",
         categories: "Community Management, Engagement, Growth Strategy",
-        imageUrl: "https://picsum.photos/800/450?random=1004",
+        imageUrl: "/attached_assets/1_Everclear_Site_1756989645481.png",
         slideshowImages: [
-          "https://picsum.photos/800/450?random=31",
-          "https://picsum.photos/800/450?random=32",
-          "https://picsum.photos/800/450?random=33",
-          "https://picsum.photos/800/450?random=34",
-          "https://picsum.photos/800/450?random=35"
+          "/attached_assets/1_Everclear_Site_1756989645481.png",
+          "/attached_assets/2_mainnet_1756989645482.png",
+          "/attached_assets/3_CLEAR_Website_1756989645482.png",
+          "/attached_assets/4_X_1756989645483.png",
+          "/attached_assets/5_Sunset_1756989645481.png"
         ],
         description: "I led a network of community leaders to scale Everclear's Telegram communities, developing methodologies to assist them in identifying and engaging with relevant posts on the Everclear Intern X account. Through trial-and-error experimentation, we refined the account's voice to ensure it offered unique value—targeting a distinct audience from the main Everclear X account, which had previously led to overlap. This was achieved via digestible educational content, timely updates, and engaging memes. I also guided leaders in navigating discussions with protocol leads to resolve customer issues effectively.",
         challenge: "Build authentic Web3 communities that move beyond airdrop hunters to create genuine value and long-term engagement.",
@@ -145,13 +145,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         id: "press-releases-comarketing",
         title: "Press Releases & Collaborations",
         categories: "Public Relations, Partnership Marketing, Media Relations",
-        imageUrl: "https://picsum.photos/800/450?random=1005",
+        imageUrl: "/attached_assets/1_Everclear_Site_1756989645481.png",
         slideshowImages: [
-          "https://picsum.photos/800/450?random=41",
-          "https://picsum.photos/800/450?random=42",
-          "https://picsum.photos/800/450?random=43",
-          "https://picsum.photos/800/450?random=44",
-          "https://picsum.photos/800/450?random=45"
+          "/attached_assets/1_Everclear_Site_1756989645481.png",
+          "/attached_assets/2_mainnet_1756989645482.png",
+          "/attached_assets/3_CLEAR_Website_1756989645482.png",
+          "/attached_assets/4_X_1756989645483.png",
+          "/attached_assets/5_Sunset_1756989645481.png"
         ],
         description: "I coordinated partnerships with Arbitrum and the Near Foundation, highlighting Everclear's Arbitrum Orbit rollup status in all communications. This included collaborating with Arbitrum's marketing team on joint initiatives. For the $10 million Near Foundation raise, I developed a concise narrative for X and Web3 outlets like CoinDesk, Business Insider, and CoinMarketCap. Simultaneously, I directed co-marketing with various chains and protocols to boost reach, while overseeing livestream styles—curating questions, flow, and topics for new partners.",
         challenge: "Generate mainstream and crypto media coverage while establishing credible co-marketing partnerships in the competitive Web3 space.",
@@ -239,13 +239,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         id: "community-engagement",
         title: "Community Engagement",
         categories: "Community Management, Engagement, Growth Strategy",
-        imageUrl: "https://picsum.photos/800/450?random=1004",
+        imageUrl: "/attached_assets/1_Everclear_Site_1756989645481.png",
         slideshowImages: [
-          "https://picsum.photos/800/450?random=31",
-          "https://picsum.photos/800/450?random=32",
-          "https://picsum.photos/800/450?random=33",
-          "https://picsum.photos/800/450?random=34",
-          "https://picsum.photos/800/450?random=35"
+          "/attached_assets/1_Everclear_Site_1756989645481.png",
+          "/attached_assets/2_mainnet_1756989645482.png",
+          "/attached_assets/3_CLEAR_Website_1756989645482.png",
+          "/attached_assets/4_X_1756989645483.png",
+          "/attached_assets/5_Sunset_1756989645481.png"
         ],
         description: "I led a network of community leaders to scale Everclear's Telegram communities, developing methodologies to assist them in identifying and engaging with relevant posts on the Everclear Intern X account. Through trial-and-error experimentation, we refined the account's voice to ensure it offered unique value—targeting a distinct audience from the main Everclear X account, which had previously led to overlap. This was achieved via digestible educational content, timely updates, and engaging memes. I also guided leaders in navigating discussions with protocol leads to resolve customer issues effectively.",
         challenge: "Build authentic Web3 communities that move beyond airdrop hunters to create genuine value and long-term engagement.",
@@ -261,13 +261,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
         id: "press-releases-comarketing",
         title: "Press Releases & Collaborations",
         categories: "Public Relations, Partnership Marketing, Media Relations",
-        imageUrl: "https://picsum.photos/800/450?random=1005",
+        imageUrl: "/attached_assets/1_Everclear_Site_1756989645481.png",
         slideshowImages: [
-          "https://picsum.photos/800/450?random=41",
-          "https://picsum.photos/800/450?random=42",
-          "https://picsum.photos/800/450?random=43",
-          "https://picsum.photos/800/450?random=44",
-          "https://picsum.photos/800/450?random=45"
+          "/attached_assets/1_Everclear_Site_1756989645481.png",
+          "/attached_assets/2_mainnet_1756989645482.png",
+          "/attached_assets/3_CLEAR_Website_1756989645482.png",
+          "/attached_assets/4_X_1756989645483.png",
+          "/attached_assets/5_Sunset_1756989645481.png"
         ],
         description: "I coordinated partnerships with Arbitrum and the Near Foundation, highlighting Everclear's Arbitrum Orbit rollup status in all communications. This included collaborating with Arbitrum's marketing team on joint initiatives. For the $10 million Near Foundation raise, I developed a concise narrative for X and Web3 outlets like CoinDesk, Business Insider, and CoinMarketCap. Simultaneously, I directed co-marketing with various chains and protocols to boost reach, while overseeing livestream styles—curating questions, flow, and topics for new partners.",
         challenge: "Generate mainstream and crypto media coverage while establishing credible co-marketing partnerships in the competitive Web3 space.",
