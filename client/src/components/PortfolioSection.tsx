@@ -44,11 +44,11 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/5_Sunset_1756989645481.png"
   ],
   4: [ // Section 5 - Press Releases
-    "/attached_assets/1_Everclear_Site_1756989645481.png",
-    "/attached_assets/2_mainnet_1756989645482.png",
-    "/attached_assets/3_CLEAR_Website_1756989645482.png",
-    "/attached_assets/4_X_1756989645483.png",
-    "/attached_assets/5_Sunset_1756989645481.png"
+    "/attached_assets/1_Business_1757027968457.png",
+    "/attached_assets/2_NEAR_1757027968458.png",
+    "/attached_assets/3_Arb_1757027968458.png",
+    "/attached_assets/4_Uni_1757027968458.png",
+    "/attached_assets/5_Tron_1757027968459.png"
   ]
 };
 
