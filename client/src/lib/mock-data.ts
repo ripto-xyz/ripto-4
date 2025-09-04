@@ -4,13 +4,13 @@ export const portfolioItems = [
     id: "go-to-market-strategy",
     title: "Go-to-Market Rebrand Strategy",
     categories: "Strategy, Rebranding, Market Positioning",
-    imageUrl: "https://picsum.photos/800/450?random=2001",
+    imageUrl: "/attached_assets/1_Everclear_Site_1756947227037.png",
     slideshowImages: [
-      "https://picsum.photos/800/450?random=1",
-      "https://picsum.photos/800/450?random=2",
-      "https://picsum.photos/800/450?random=3",
-      "https://picsum.photos/800/450?random=4",
-      "https://picsum.photos/800/450?random=5"
+      "/attached_assets/1_Everclear_Site_1756947227037.png",
+      "/attached_assets/2_mainnet_1756947227037.png",
+      "/attached_assets/3_CLEAR_Website_1756947227038.png",
+      "/attached_assets/4_X_1756947227038.png",
+      "/attached_assets/5_Sunset_1756947227039.png"
     ],
     description: "For Everclear's rebrand from Connext, I led the repositioning from a B2C to B2B focus, coupled with a token migration introducing new utility. Our approach ensured a sequential rollout: communicating changes in order, their impact on users and the project, and the sunsetting of the old offering. When the initial tagline fell short, I revisited it from first principles—emphasizing our shift from competing with projects to supporting them—and proposed \"The Backbone of Bridging,\" a self-explanatory alternative to vague phrases like \"the first clearing layer.\""
   },
