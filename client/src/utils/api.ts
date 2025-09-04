@@ -9,12 +9,6 @@ const isStaticHosting = () => {
   if (import.meta.env.DEV) {
     return false; // Use backend API in development
   }
-  return true; // Use static files for production deployment
-  
-  // Always try static files first in production
-  if (import.meta.env.PROD) {
-    return true;
-  }
   
   // In development, check if we're on a static hosting domain
   const hostname = window.location.hostname;
