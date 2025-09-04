@@ -11,6 +11,7 @@ interface SlideshowProps {
 export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '' }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set());
 
   // Use actual images passed from props, with fallback placeholder if needed
   const workingImages = images.length > 0 ? images : [
@@ -20,6 +21,19 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
     'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTBiOTgxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgNDwvdGV4dD48L3N2Zz4=',
     'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOGI1Y2Y2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgNTwvdGV4dD48L3N2Zz4='
   ];
+
+  // Preload all images for faster switching
+  useEffect(() => {
+    workingImages.forEach((src, index) => {
+      if (!src.startsWith('data:image/svg+xml') && !imagesLoaded.has(index)) {
+        const img = new Image();
+        img.onload = () => {
+          setImagesLoaded(prev => new Set(prev).add(index));
+        };
+        img.src = src;
+      }
+    });
+  }, [workingImages, imagesLoaded]);
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % workingImages.length);
