@@ -74,11 +74,11 @@ try {
         categories: "Strategy, Rebranding, Market Positioning",
         imageUrl: "/attached_assets/1_Everclear_Site_1756947227037.png",
     slideshowImages: [
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMzM3YWI3Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgMTwvdGV4dD48L3N2Zz4=",
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjNDI4NWY0Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgMjwvdGV4dD48L3N2Zz4=",
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZWY0NDQ0Ci8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgMzwvdGV4dD48L3N2Zz4=",
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMTBiOTgxIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgNDwvdGV4dD48L3N2Zz4=",
-      "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOGI1Y2Y2Ci8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgNTwvdGV4dD48L3N2Zz4="
+      "/attached_assets/1_Everclear_Site_1756947227037.png",
+      "/attached_assets/2_Everclear_Site_1756932382135.png",
+      "/attached_assets/3_CLEAR_Website_1756932382136.png",
+      "/attached_assets/4_X_1756932382136.png",
+      "/attached_assets/5_Sunset_1756932382137.png"
     ],
         description: "For Everclear's rebrand from Connext, I led the repositioning from a B2C to B2B focus, coupled with a token migration introducing new utility. Our approach ensured a sequential rollout: communicating changes in order, their impact on users and the project, and the sunsetting of the old offering. When the initial tagline fell short, I revisited it from first principles—emphasizing our shift from competing with projects to supporting them—and proposed \"The Backbone of Bridging,\" a self-explanatory alternative to vague phrases like \"the first clearing layer.\"",
         challenge: "Redefine brand positioning in a competitive Web3 landscape while maintaining core values and community trust during transition.",
@@ -180,6 +180,24 @@ try {
       }
     ];
     fs.writeFileSync(portfolioPath, JSON.stringify(portfolioData));
+  }
+
+  // Copy attached assets to build directory
+  console.log('📸 Copying attached assets...');
+  const attachedAssetsSource = 'attached_assets';
+  const attachedAssetsTarget = path.join('dist', 'attached_assets');
+  
+  if (fs.existsSync(attachedAssetsSource)) {
+    // Remove existing target directory if it exists
+    if (fs.existsSync(attachedAssetsTarget)) {
+      fs.rmSync(attachedAssetsTarget, { recursive: true, force: true });
+    }
+    
+    // Copy the entire attached_assets directory
+    fs.cpSync(attachedAssetsSource, attachedAssetsTarget, { recursive: true });
+    console.log('✅ Assets copied successfully');
+  } else {
+    console.log('⚠️  No attached_assets directory found');
   }
 
   // Verify critical files exist
