@@ -105,6 +105,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
         {/* Dot indicators - FIXED */}
         <div 
           className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black px-4 py-2 rounded-full"
+          style={{ maxWidth: '90%' }}
         >
           {workingImages.map((_, index) => (
             <button
