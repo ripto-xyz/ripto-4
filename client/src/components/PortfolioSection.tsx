@@ -13,12 +13,57 @@ interface PortfolioItem {
   description: string;
 }
 
+// Client-side slideshow image override to bypass deployment issues
+const SLIDESHOW_OVERRIDES = {
+  0: [ // Section 1 - Everclear
+    "/attached_assets/1_Everclear_Site_1756989645481.png",
+    "/attached_assets/2_mainnet_1756989645482.png", 
+    "/attached_assets/3_CLEAR_Website_1756989645482.png",
+    "/attached_assets/4_X_1756989645483.png",
+    "/attached_assets/5_Sunset_1756989645481.png"
+  ],
+  1: [ // Section 2 - Slise Advertising
+    "/attached_assets/1_Slise_1757002746363.png",
+    "/attached_assets/2_Slise_1757002746363.png",
+    "/attached_assets/3_Backbone_1757002746364.png",
+    "/attached_assets/4_rebalance_1757002746364.png", 
+    "/attached_assets/5_Dune_1757002746364.png"
+  ],
+  2: [ // Section 3 - Content Marketing
+    "/attached_assets/1_Everclear_Site_1756989645481.png",
+    "/attached_assets/2_mainnet_1756989645482.png",
+    "/attached_assets/3_CLEAR_Website_1756989645482.png", 
+    "/attached_assets/4_X_1756989645483.png",
+    "/attached_assets/5_Sunset_1756989645481.png"
+  ],
+  3: [ // Section 4 - Community Engagement  
+    "/attached_assets/1_Everclear_Site_1756989645481.png",
+    "/attached_assets/2_mainnet_1756989645482.png",
+    "/attached_assets/3_CLEAR_Website_1756989645482.png",
+    "/attached_assets/4_X_1756989645483.png", 
+    "/attached_assets/5_Sunset_1756989645481.png"
+  ],
+  4: [ // Section 5 - Press Releases
+    "/attached_assets/1_Everclear_Site_1756989645481.png",
+    "/attached_assets/2_mainnet_1756989645482.png",
+    "/attached_assets/3_CLEAR_Website_1756989645482.png",
+    "/attached_assets/4_X_1756989645483.png",
+    "/attached_assets/5_Sunset_1756989645481.png"
+  ]
+};
+
 export default function PortfolioSection() {
-  const { data: portfolioItems = [] } = useQuery<PortfolioItem[]>({
+  const { data: rawPortfolioItems = [] } = useQuery<PortfolioItem[]>({
     queryKey: ['/api/portfolio'],
     queryFn: () => fetchWithFallback<PortfolioItem[]>('/api/portfolio'),
     staleTime: Infinity,
   });
+
+  // Override slideshow images with working attached assets
+  const portfolioItems = rawPortfolioItems.map((item, index) => ({
+    ...item,
+    slideshowImages: SLIDESHOW_OVERRIDES[index as keyof typeof SLIDESHOW_OVERRIDES] || item.slideshowImages
+  }));
   
   const [isVisible, setIsVisible] = useState(false);
   
