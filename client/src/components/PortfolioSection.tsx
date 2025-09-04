@@ -48,7 +48,7 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/2_NEAR_1757027968458.png",
     "/attached_assets/3_Arb_1757027968458.png",
     "/attached_assets/4_Uni_1757027968458.png",
-    "/attached_assets/5_Tron_1757027968459.png"
+    "/attached_assets/5_Tron_1757029188266.png"
   ]
 };
 
