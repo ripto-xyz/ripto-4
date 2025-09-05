@@ -1,0 +1,69 @@
+2025-09-05T18:31:01.457902Z	Cloning repository...
+2025-09-05T18:31:28.232607Z	From https://github.com/ripto-xyz/ripto-4
+2025-09-05T18:31:28.233045Z	 * branch            dc85cdd125ad355b914f7141e983f7207df9e3f9 -> FETCH_HEAD
+2025-09-05T18:31:28.233182Z	
+2025-09-05T18:31:29.931037Z	HEAD is now at dc85cdd Update project to ensure all assets and content are correctly included for deployment
+2025-09-05T18:31:29.931515Z	
+2025-09-05T18:31:30.007475Z	
+2025-09-05T18:31:30.007952Z	Using v2 root directory strategy
+2025-09-05T18:31:30.029931Z	Success: Finished cloning repository files
+2025-09-05T18:31:32.228077Z	Checking for configuration in a Wrangler configuration file (BETA)
+2025-09-05T18:31:32.228805Z	
+2025-09-05T18:31:33.393271Z	No wrangler.toml file found. Continuing.
+2025-09-05T18:31:33.460147Z	Detected the following tools from environment: npm@10.9.2, nodejs@22.16.0
+2025-09-05T18:31:33.460626Z	Installing project dependencies: npm clean-install --progress=false
+2025-09-05T18:31:37.967518Z	npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+2025-09-05T18:31:37.979692Z	npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+2025-09-05T18:31:42.376041Z	
+2025-09-05T18:31:42.376303Z	added 477 packages, and audited 478 packages in 9s
+2025-09-05T18:31:42.376441Z	
+2025-09-05T18:31:42.376558Z	64 packages are looking for funding
+2025-09-05T18:31:42.376698Z	  run `npm fund` for details
+2025-09-05T18:31:42.39801Z	
+2025-09-05T18:31:42.398271Z	6 moderate severity vulnerabilities
+2025-09-05T18:31:42.398432Z	
+2025-09-05T18:31:42.39855Z	To address issues that do not require attention, run:
+2025-09-05T18:31:42.398669Z	  npm audit fix
+2025-09-05T18:31:42.398822Z	
+2025-09-05T18:31:42.398999Z	To address all issues (including breaking changes), run:
+2025-09-05T18:31:42.399132Z	  npm audit fix --force
+2025-09-05T18:31:42.39927Z	
+2025-09-05T18:31:42.399411Z	Run `npm audit` for details.
+2025-09-05T18:31:42.425966Z	Executing user command: node build-universal.js
+2025-09-05T18:31:42.670198Z	🚀 Building for universal static deployment...
+2025-09-05T18:31:42.670443Z	🧹 Cleaning previous build...
+2025-09-05T18:31:42.671549Z	📦 Building with static configuration...
+2025-09-05T18:31:43.371048Z	[36mvite v5.4.19 [32mbuilding for production...[36m[39m
+2025-09-05T18:31:43.421614Z	transforming...
+2025-09-05T18:31:43.782834Z	Browserslist: browsers data (caniuse-lite) is 11 months old. Please run:
+2025-09-05T18:31:43.783095Z	  npx update-browserslist-db@latest
+2025-09-05T18:31:43.78357Z	  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+2025-09-05T18:31:44.560879Z	
+2025-09-05T18:31:44.563865Z	/fonts/LITHOB.ttf referenced in /fonts/LITHOB.ttf didn't resolve at build time, it will remain unchanged to be resolved at runtime
+2025-09-05T18:31:46.525716Z	[32m✓[39m 1682 modules transformed.
+2025-09-05T18:31:46.69631Z	rendering chunks...
+2025-09-05T18:31:46.713486Z	computing gzip size...
+2025-09-05T18:31:46.724523Z	[2m../dist/[22m[32mindex.html                                               [39m[1m[2m     0.54 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+2025-09-05T18:31:46.725188Z	[2m../dist/[22m[2massets/[22m[32mPIPE-BUVqOEQD.png                                 [39m[1m[2m     4.20 kB[22m[1m[22m
+2025-09-05T18:31:46.725315Z	[2m../dist/[22m[2massets/[22m[32mC-Ciyj3vpK.png                                    [39m[1m[2m     4.34 kB[22m[1m[22m
+2025-09-05T18:31:46.725424Z	[2m../dist/[22m[2massets/[22m[32mH-D__HSxQT.png                                    [39m[1m[2m     4.44 kB[22m[1m[22m
+2025-09-05T18:31:46.725493Z	[2m../dist/[22m[2massets/[22m[32mP-CWGEF6A8.png                                    [39m[1m[2m     4.62 kB[22m[1m[22m
+2025-09-05T18:31:46.725565Z	[2m../dist/[22m[2massets/[22m[32mU-BAo95pQd.png                                    [39m[1m[2m     4.62 kB[22m[1m[22m
+2025-09-05T18:31:46.725659Z	[2m../dist/[22m[2massets/[22m[32mN-BfjZoSZ5.png                                    [39m[1m[2m     4.71 kB[22m[1m[22m
+2025-09-05T18:31:46.725749Z	[2m../dist/[22m[2massets/[22m[32mE-ELOajCAB.png                                    [39m[1m[2m     4.76 kB[22m[1m[22m
+2025-09-05T18:31:46.726003Z	[2m../dist/[22m[2massets/[22m[32mO-BQoTZQVA.png                                    [39m[1m[2m     5.12 kB[22m[1m[22m
+2025-09-05T18:31:46.726144Z	[2m../dist/[22m[2massets/[22m[32mR-_l4IHQ04.png                                    [39m[1m[2m     5.21 kB[22m[1m[22m
+2025-09-05T18:31:46.72628Z	[2m../dist/[22m[2massets/[22m[32mA-_rmeXJHi.png                                    [39m[1m[2m     6.26 kB[22m[1m[22m
+2025-09-05T18:31:46.726399Z	[2m../dist/[22m[2massets/[22m[32mEverclear-Logo-White1_1755274762627-B-MbukB2.png  [39m[1m[2m    10.20 kB[22m[1m[22m
+2025-09-05T18:31:46.726497Z	[2m../dist/[22m[2massets/[22m[32mapple_1755274762626-CbRNQAO_.png                  [39m[1m[2m    13.27 kB[22m[1m[22m
+2025-09-05T18:31:46.726597Z	[2m../dist/[22m[2massets/[22m[32mapple_Name_1755274762626-DwudYODB.png             [39m[1m[2m    17.95 kB[22m[1m[22m
+2025-09-05T18:31:46.726694Z	[2m../dist/[22m[2massets/[22m[32melora-DJGAqoJW.png                                [39m[1m[2m   172.49 kB[22m[1m[22m
+2025-09-05T18:31:46.726818Z	[2m../dist/[22m[2massets/[22m[32mSpyro New 2(1)-MBlNX2lT.mp4                       [39m[1m[2m10,245.82 kB[22m[1m[22m
+2025-09-05T18:31:46.726915Z	[2m../dist/[22m[2massets/[22m[35mindex-DyZvN23r.css                                [39m[1m[2m    82.99 kB[22m[1m[22m[2m │ gzip:  14.90 kB[22m
+2025-09-05T18:31:46.727039Z	[2m../dist/[22m[2massets/[22m[36mindex-BrQ_iMNy.js                                 [39m[1m[2m   319.41 kB[22m[1m[22m[2m │ gzip: 108.81 kB[22m
+2025-09-05T18:31:46.72714Z	[32m✓ built in 3.33s[39m
+2025-09-05T18:31:46.776241Z	📄 Ensuring static JSON files exist...
+2025-09-05T18:31:46.777326Z	❌ Build failed: Unexpected token 'o', "[object Obj"... is not valid JSON
+2025-09-05T18:31:46.783077Z	Failed: Error while executing user command. Exited with error code: 1
+2025-09-05T18:31:46.794116Z	Failed: build command exited with code: 1
+2025-09-05T18:31:48.722931Z	Failed: error occurred while running build command
