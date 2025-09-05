@@ -30,11 +30,12 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/5_Dune_1757002746364.png"
   ],
   2: [ // Section 3 - Content Marketing
-    "/attached_assets/1_Everclear_Site_1756989645481.png",
-    "/attached_assets/2_mainnet_1756989645482.png",
-    "/attached_assets/3_CLEAR_Website_1756989645482.png", 
-    "/attached_assets/4_X_1756989645483.png",
-    "/attached_assets/5_Sunset_1756989645481.png"
+    "/attached_assets/1_Solana_1757090837848.png",
+    "/attached_assets/2_Bera_1757090837849.png",
+    "/attached_assets/3_lifi_1757090837849.png", 
+    "/attached_assets/4_Ink_1757090837850.png",
+    "/attached_assets/5_Hyper_1757090837847.png",
+    "/attached_assets/6_Across_1757090837847.png"
   ],
   3: [ // Section 4 - Community Engagement  
     "/attached_assets/1_Everclear_Site_1756989645481.png",
