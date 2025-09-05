@@ -38,7 +38,7 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/6_Across_1757090837847.png"
   ],
   3: [ // Section 4 - Community Engagement  
-    "/attached_assets/4_corrected Ripto pic.png_1757105658431.png",
+    "/attached_assets/4_corrected Ripto pic_1757116701344.png",
     "/attached_assets/1_believe_1757091086503.png",
     "/attached_assets/2_buyback_1757091086503.png",
     "/attached_assets/3_plugged_1757091086504.png",
