@@ -69,23 +69,6 @@ export default function PortfolioSection() {
     ...item,
     slideshowImages: SLIDESHOW_OVERRIDES[index as keyof typeof SLIDESHOW_OVERRIDES] || item.slideshowImages
   }));
-
-  if (isLoading) {
-    return (
-      <section id="portfolio" className="scroll-section relative">
-        <div className="container-fluid mx-auto px-4 sm:px-6 z-10 relative py-12 sm:py-16 md:py-20">
-          <div className="max-w-[1400px] mx-auto">
-            <div className="bg-[#FF5733] bg-opacity-50 backdrop-blur-sm rounded-xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-xl border border-[#FF5733]/20 relative w-full mx-auto">
-              <div className="text-center">
-                <h2 className="text-3xl md:text-4xl font-bold mb-3 md:mb-4 font-poppins text-white">Portfolio</h2>
-                <p className="text-lg md:text-xl text-white/90">Loading...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -121,6 +104,11 @@ export default function PortfolioSection() {
               </p>
             </div>
             
+            {isLoading ? (
+              <div className="text-center">
+                <p className="text-lg md:text-xl text-white/90">Loading...</p>
+              </div>
+            ) : (
             <div className="space-y-6 md:space-y-16">
               {portfolioItems.map((item: PortfolioItem, index: number) => (
                   <div key={index} className={`flex flex-col ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} gap-4 md:gap-8 items-stretch md:items-start`}>
@@ -174,6 +162,7 @@ export default function PortfolioSection() {
                 </div>
               ))}
             </div>
+            )}
             
             <div className="text-center mt-8 md:mt-12">
               <a 
