@@ -56,7 +56,7 @@ const SLIDESHOW_OVERRIDES = {
 
 export default function PortfolioSection() {
   const { data: rawPortfolioItems = [] } = useQuery<PortfolioItem[]>({
-    queryKey: ['/api/portfolio'],
+    queryKey: ['/api/portfolio', Date.now()],
     queryFn: () => fetchWithFallback<PortfolioItem[]>('/api/portfolio'),
     staleTime: 0,
   });
