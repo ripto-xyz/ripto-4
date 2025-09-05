@@ -16,7 +16,7 @@ const services = [
   {
     icon: <Users className="h-10 w-10" />,
     title: "Community Building",
-    description: "Managing community support and interns, guiding their social media channels such as X, Telegram, and Discord, plus designing engaging airdrop campaigns to cultivate loyal and active users."
+    description: "Managing community support and interns, guiding their social media channels such as X, Telegram, and Discord, plus designing engaging community quests to cultivate loyal and active users."
   },
   {
     icon: <Megaphone className="h-10 w-10" />,
