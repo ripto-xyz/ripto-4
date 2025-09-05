@@ -197,6 +197,13 @@ try {
   } else {
     console.log('⚠️  No attached_assets directory found');
   }
+  
+  // Copy headers file with image caching optimizations
+  console.log('🔧 Copying optimized headers...');
+  if (fs.existsSync('_headers')) {
+    fs.copyFileSync('_headers', path.join('dist', '_headers'));
+    console.log('✅ Headers copied successfully');
+  }
 
   // Verify critical files exist
   console.log('✅ Verifying build output...');

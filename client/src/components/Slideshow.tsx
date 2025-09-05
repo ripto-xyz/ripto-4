@@ -22,17 +22,45 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
     'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjQ1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjOGI1Y2Y2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+SW1hZ2UgNTwvdGV4dD48L3N2Zz4='
   ];
 
-  // Preload all images for faster switching
+  // Progressive image loading - load first 3 immediately, then preload others
   useEffect(() => {
-    workingImages.forEach((src, index) => {
-      if (!src.startsWith('data:image/svg+xml') && !imagesLoaded.has(index)) {
-        const img = new Image();
-        img.onload = () => {
-          setImagesLoaded(prev => new Set(prev).add(index));
-        };
-        img.src = src;
+    const loadImage = (src: string, index: number, priority: boolean = false) => {
+      if (src.startsWith('data:image/svg+xml') || imagesLoaded.has(index)) return;
+      
+      const img = new Image();
+      // Add loading priority for first few images
+      if (priority) {
+        img.loading = 'eager';
+      } else {
+        img.loading = 'lazy';
       }
+      
+      img.onload = () => {
+        setImagesLoaded(prev => new Set(prev).add(index));
+      };
+      
+      img.onerror = () => {
+        console.warn(`Failed to load image: ${src}`);
+      };
+      
+      img.src = src;
+    };
+
+    // Load first image immediately with high priority
+    if (workingImages[0]) loadImage(workingImages[0], 0, true);
+    
+    // Load next 2 images with high priority
+    workingImages.slice(1, 3).forEach((src, idx) => {
+      setTimeout(() => loadImage(src, idx + 1, true), 100 * idx);
     });
+    
+    // Preload remaining images with lower priority after a delay
+    setTimeout(() => {
+      workingImages.slice(3).forEach((src, idx) => {
+        loadImage(src, idx + 3, false);
+      });
+    }, 500);
+    
   }, [workingImages, imagesLoaded]);
 
   const nextSlide = () => {
@@ -83,13 +111,15 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
   return (
     <>
       <div className={`relative aspect-video bg-gray-800 rounded-xl shadow-lg group ${className}`}>
-        {/* Main image - Using guaranteed working images */}
+        {/* Main image with optimized loading */}
         <img
           src={workingImages[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
           className="w-full h-full object-contain transition-opacity duration-300 cursor-pointer rounded-xl"
           style={{ zIndex: 1 }}
           onClick={openLightbox}
+          loading={currentIndex < 3 ? "eager" : "lazy"}
+          decoding="async"
         />
 
         {/* Navigation arrows */}
@@ -161,6 +191,8 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
                 alt={`${alt} - Image ${currentIndex + 1} (Full Size)`}
                 className="max-w-full max-h-full object-contain"
                 style={{ maxHeight: '82vh', maxWidth: '86vw' }}
+                loading="eager"
+                decoding="async"
               />
 
               {/* Close button positioned at top right of image */}
