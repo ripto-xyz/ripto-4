@@ -38,11 +38,12 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/6_Across_1757090837847.png"
   ],
   3: [ // Section 4 - Community Engagement  
-    "/attached_assets/1_Everclear_Site_1756989645481.png",
-    "/attached_assets/2_mainnet_1756989645482.png",
-    "/attached_assets/3_CLEAR_Website_1756989645482.png",
-    "/attached_assets/4_X_1756989645483.png", 
-    "/attached_assets/5_Sunset_1756989645481.png"
+    "/attached_assets/1_believe_1757091086503.png",
+    "/attached_assets/2_buyback_1757091086503.png",
+    "/attached_assets/3_plugged_1757091086504.png",
+    "/attached_assets/4_corrected Ripto pic_1757091086504.png", 
+    "/attached_assets/5_CLEAR_1757091086504.png",
+    "/attached_assets/6_Milestone_1757091086502.png"
   ],
   4: [ // Section 5 - Press Releases
     "/attached_assets/1_Business_1757028624524.png",
