@@ -58,7 +58,7 @@ export default function PortfolioSection() {
   const { data: rawPortfolioItems = [] } = useQuery<PortfolioItem[]>({
     queryKey: ['/api/portfolio'],
     queryFn: () => fetchWithFallback<PortfolioItem[]>('/api/portfolio'),
-    staleTime: Infinity,
+    staleTime: 0,
   });
 
   // Override slideshow images with working attached assets
@@ -144,9 +144,14 @@ export default function PortfolioSection() {
                     
                     <p className="text-sm text-white/80 mb-3 font-medium">{item.categories}</p>
                     
-                    <p className="text-base md:text-lg text-white mb-4 leading-relaxed whitespace-pre-line">
-                      {item.description}
-                    </p>
+                    <div className="text-base md:text-lg text-white mb-4 leading-relaxed">
+                      {item.description.split('\n').map((line, lineIndex) => (
+                        <span key={lineIndex}>
+                          {line}
+                          {lineIndex < item.description.split('\n').length - 1 && <br />}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
