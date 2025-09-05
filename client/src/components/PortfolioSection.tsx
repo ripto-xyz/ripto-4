@@ -62,6 +62,7 @@ export default function PortfolioSection() {
     refetchOnMount: true,
   });
 
+  const [isVisible, setIsVisible] = useState(false);
 
   // Override slideshow images with working attached assets
   const portfolioItems = rawPortfolioItems.map((item, index) => ({
@@ -85,8 +86,6 @@ export default function PortfolioSection() {
       </section>
     );
   }
-  
-  const [isVisible, setIsVisible] = useState(false);
   
   useEffect(() => {
     const observer = new IntersectionObserver(
