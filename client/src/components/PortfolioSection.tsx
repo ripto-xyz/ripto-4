@@ -148,8 +148,6 @@ export default function PortfolioSection() {
                   <div className="w-full md:w-1/2 flex flex-col justify-center flex-grow min-w-0">
                     <h3 className="text-xl sm:text-2xl font-bold mb-3 font-poppins text-white">{item.title}</h3>
                     
-                    <p className="text-sm text-white/80 mb-3 font-medium">{item.categories}</p>
-                    
                     <div className="text-base md:text-lg text-white mb-4 leading-relaxed space-y-2">
                       {item.description.split('\n').map((line, lineIndex) => (
                         <div key={lineIndex} className="mb-2">
