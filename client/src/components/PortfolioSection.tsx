@@ -150,12 +150,17 @@ export default function PortfolioSection() {
                     
                     <p className="text-sm text-white/80 mb-3 font-medium">{item.categories}</p>
                     
-                    <div className="text-base md:text-lg text-white mb-4 leading-relaxed">
+                    <div className="text-base md:text-lg text-white mb-4 leading-relaxed space-y-2">
                       {item.description.split('\n').map((line, lineIndex) => (
-                        <span key={lineIndex}>
-                          {line}
-                          {lineIndex < item.description.split('\n').length - 1 && <br />}
-                        </span>
+                        <div key={lineIndex} className="mb-2">
+                          {line.split('**').map((part, partIndex) => 
+                            partIndex % 2 === 1 ? (
+                              <strong key={partIndex} className="font-bold">{part}</strong>
+                            ) : (
+                              <span key={partIndex}>{part}</span>
+                            )
+                          )}
+                        </div>
                       ))}
                     </div>
                   </div>
