@@ -41,7 +41,7 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/1_believe_1757091086503.png",
     "/attached_assets/2_buyback_1757091086503.png",
     "/attached_assets/3_plugged_1757091086504.png",
-    "/attached_assets/4_corrected Ripto pic_1757091086504.png", 
+    "/attached_assets/4_corrected Ripto pic.png_1757105658431.png", 
     "/attached_assets/5_CLEAR_1757091086504.png",
     "/attached_assets/6_Milestone_1757091086502.png"
   ],
