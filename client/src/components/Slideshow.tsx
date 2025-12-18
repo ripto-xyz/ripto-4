@@ -6,9 +6,10 @@ interface SlideshowProps {
   images: string[];
   alt: string;
   className?: string;
+  imageObjectFit?: 'contain' | 'cover';
 }
 
-export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '' }) => {
+export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '', imageObjectFit = 'contain' }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [imagesLoaded, setImagesLoaded] = useState<Set<number>>(new Set());
@@ -115,7 +116,7 @@ export const Slideshow: React.FC<SlideshowProps> = ({ images, alt, className = '
         <img
           src={workingImages[currentIndex]}
           alt={`${alt} - Image ${currentIndex + 1}`}
-          className="w-full h-full object-cover transition-opacity duration-300 cursor-pointer rounded-xl"
+          className={`w-full h-full ${imageObjectFit === 'cover' ? 'object-cover' : 'object-contain'} transition-opacity duration-300 cursor-pointer rounded-xl`}
           style={{ zIndex: 1 }}
           onClick={openLightbox}
           loading={currentIndex < 3 ? "eager" : "lazy"}
