@@ -25,8 +25,8 @@ const SLIDESHOW_OVERRIDES = {
   1: [ // Section 2 - Slise Advertising
     "/attached_assets/1_Slise_1757002746363.png",
     "/attached_assets/2_Slise_1757002746363.png",
-    "/attached_assets/3_Backbone_1757002746364.png",
-    "/attached_assets/4_rebalance_1757002746364.png", 
+    "/attached_assets/backbone_before_after_1766075688900.png",
+    "/attached_assets/rebalance_before_fter_1766075688901.png", 
     "/attached_assets/5_Dune_1757002746364.png"
   ],
   2: [ // Section 3 - Content Marketing
