@@ -121,7 +121,7 @@ export default function PortfolioSection() {
                         images={item.slideshowImages} 
                         alt={item.title}
                         className="cursor-pointer mx-auto"
-                        imageObjectFit={index === 3 ? 'cover' : 'contain'}
+                        coverImageIndices={index === 3 ? [0] : []}
                       />
                     ) : (
                       <div className="relative aspect-video bg-gray-800 rounded-xl overflow-hidden shadow-lg flex items-center justify-center group cursor-pointer">
