@@ -38,6 +38,7 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/6_Across_1757090837847.png"
   ],
   3: [ // Section 4 - Community Engagement  
+    "/attached_assets/Everclear_Ecosystem_Map_1766073306439.png",
     "/attached_assets/4_corrected Ripto pic_1757116701344.png",
     "/attached_assets/1_believe_1757091086503.png",
     "/attached_assets/2_buyback_1757091086503.png",
@@ -50,7 +51,8 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/2_NEAR_1757027968458.png",
     "/attached_assets/3_Arb_1757027968458.png",
     "/attached_assets/4_Uni_1757027968458.png",
-    "/attached_assets/5_Tron_1757029188266.png"
+    "/attached_assets/5_Tron_1757029188266.png",
+    "/attached_assets/BaseEverclear1_1766073388841.png"
   ]
 };
 
