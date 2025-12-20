@@ -38,7 +38,7 @@ const SLIDESHOW_OVERRIDES = {
     "/attached_assets/6_Across_1757090837847.png"
   ],
   3: [ // Section 4 - Community Engagement  
-    "/attached_assets/Everclear_Ecosystem_Map_1766073306439.png",
+    "/attached_assets/Everclear_Ecosystem_Map_1766240263407.png",
     "/attached_assets/4_corrected Ripto pic_1757116701344.png",
     "/attached_assets/1_believe_1757091086503.png",
     "/attached_assets/2_buyback_1757091086503.png",
